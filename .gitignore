@@ -5,7 +5,7 @@
 /themes/twentythirteen
 /themes/twentysixteen
 /themes/index.php
-/plugins
 /index.php
 .DS_Store
+/plugins/*
 !/plugins/ss-event-dates
