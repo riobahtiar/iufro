@@ -8,3 +8,4 @@
 /plugins
 /index.php
 .DS_Store
+!/plugins/ss-event-dates
