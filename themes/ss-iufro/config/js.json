@@ -1,0 +1,13 @@
+[{
+    "name": "bootstrap",
+    "file": "js/bootstrap.min.js"
+}, {
+    "name": "app",
+    "file": "js/app.js"
+}, {
+    "name": ".matchHeight",
+    "file": "js/jquery.matchHeight-min.js"
+}, {
+    "name": "stellar",
+    "file": "js/jquery.stellar.js"
+}]

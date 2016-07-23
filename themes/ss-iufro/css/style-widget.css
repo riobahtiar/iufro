@@ -1,0 +1,116 @@
+/* Carousel */
+
+.ss-slideshow {
+    position: relative;
+}
+
+.ss-slideshow,
+.ss-slideshow a {
+    color: #fff;
+}
+
+.ss-slideshow .ss-slide {
+    left: 0;
+    right: 0;
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+    min-height: 600px;
+}
+
+.ss-slideshow.ss-parts-carousel .ss-slide {
+    position: relative !important;
+}
+
+.overlay-bg .ss-slideshow .ss-slide:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    content: "";
+    background: rgba(0, 0, 0, 0.46);
+}
+
+.ss-slideshow .ss-slide-caption {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding: 40px 60px;
+    z-index: 60;
+}
+
+.ss-slideshow .ss-browse:after {
+    font: normal normal normal 22px/1 FontAwesome;
+    text-rendering: auto;
+    position: absolute;
+    z-index: 100;
+    right: 0;
+    padding: 19px 23px;
+    height: 60px;
+    width: 60px;
+    color: #fff;
+    top: 50%;
+    margin-top: -30px;
+}
+.ss-slideshow .ss-browse {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 10%;
+    z-index: 110;
+    padding: 0 20px;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.ss-slideshow .ss-browse.ss-left {
+    left: 0;
+    text-align: left;
+}
+
+.ss-slideshow .ss-browse.ss-left:after {
+    content: "\f053";
+    right: auto;
+    left: 0;
+}
+
+.ss-slideshow .ss-browse.ss-right {
+    right: 0;
+    text-align: right;
+}
+
+.ss-slideshow .ss-browse.ss-right:after {
+    content: "\f054";
+}
+
+.ss-slideshow .ss-slide-navigation {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 5px;
+    text-align: center;
+    z-index: 110;
+}
+
+.ss-slideshow .ss-slide-navigation span {
+    color: #fff;
+    font-family: FontAwesome;
+    text-rendering: auto;
+    margin: 0 2px;
+    ;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.ss-slideshow .ss-slide-navigation span:before {
+    content: "\f111";
+}
+
+.ss-slideshow .ss-slide-navigation .cycle-pager-active:before {
+    content: "\f10c";
+}

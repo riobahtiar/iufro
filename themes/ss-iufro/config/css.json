@@ -1,0 +1,25 @@
+[{
+    "name": "bootstrap",
+    "file": "css/bootstrap.min.css"
+}, {
+    "name": "main",
+    "file": "style.css"
+}, {
+    "name": "custom-css",
+    "file": "css/custom.css"
+}, {
+    "name": "style-widget",
+    "file": "css/style-widget.css"
+}, {
+    "name": "mobile",
+    "file": "css/mobile.css"
+}, {
+    "name": "font-awesome",
+    "file": "css/font-awesome.min.css"
+}, {
+    "name": "font",
+    "url": "https://fonts.googleapis.com/css?family=Roboto:400,500,700"
+}, {
+    "name": "post-like-css",
+    "file": "css/simple-likes-public.css"
+}]
