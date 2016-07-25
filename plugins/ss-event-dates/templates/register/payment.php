@@ -5,8 +5,20 @@ if(isset($_GET['step']) && $_GET['step']=="payment"){
 	$post_url="";
 }
 
+// get data from DB about user
+
+// get detail user from wordpress user
+global $current_user;
+wp_get_current_user();
+$euser_email = $current_user->user_email;
+//get user data
+global $wpdb;
+$query="SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email}'";
+$user_detail = $wpdb->get_row( $query, ARRAY_A );
+
+
 // mid conf
-if(isset($_POST['mid-conf']) && $_POST['mid-conf']=="on" ){
+if(isset($user_detail['euser_meta_type'])){
   $mid_conf=$_POST['mid-conf'];
     // Pricing Post Conference
         if ( $_POST["mid-conf-child"] == "gunung-kidul" ) {
@@ -25,10 +37,12 @@ if(isset($_POST['mid-conf']) && $_POST['mid-conf']=="on" ){
 if(isset($_POST['post-conf']) && $_POST['post-conf']=="on" ){
   $post_conf=$_POST['post-conf'];
     // Pricing Post Conference
-        if ( $_POST["post-conf-child"] == "pekanbaru" ) {
-          $price_post_conf = 300;
-        }elseif ( $_POST["post-conf-child"] == "pacitan" ) {
-          $price_post_conf = 500;
+        if ( $_POST["post-conf-child"] == "pacitan" ) {
+          $price_post_conf = 250;
+        }elseif ( $_POST["post-conf-child"] == "pekanbaru_shared" ) {
+          $price_post_conf = 475;
+        }elseif ( $_POST["post-conf-child"] == "pekanbaru_single" ) {
+          $price_post_conf = 510;
         }else{
           $price_post_conf = 0;
         }
@@ -36,15 +50,15 @@ if(isset($_POST['post-conf']) && $_POST['post-conf']=="on" ){
   $price_post_conf = 0;
 }
 
-if ($user_detail['euser_type']=="author_type") {
- $total_price=$price_post_conf+400;
+if ($user_detail['euser_type']=="local student") {
+ $total_price=$price_post_conf+20;
 }elseif ($user_detail['euser_type']=="local regular") {
- $total_price=$price_post_conf+300;
+ $total_price=$price_post_conf+30;
+}elseif ($user_detail['euser_type']=="foreign") {
+ $total_price=$price_post_conf+400;
 }else{
   $total_price=0;
 }
-
-
 
 ?>
 
@@ -90,17 +104,41 @@ if ($user_detail['euser_type']=="author_type") {
 <div class="col-md-12">
 <br><br><br>
 <hr>
+
+
+<table class="table table-striped">
+<thead>
+  <tr style="font-weight: bold;">
+    <th>Name</th>
+    <th>Details</th>
+    <th>Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Laughing Bacchus Winecellars</td>
+    <td>Yoshi Tannamuri</td>
+    <td>Canada</td>
+  </tr>
+  <tr>
+    <td>Magazzini Alimentari Riuniti</td>
+    <td>Giovanni Rovelli</td>
+    <td>Italy</td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+
+
 <?php
-echo "Testting<br>";
-// Calculation for all transaction
+$arr = array(1, 2, 3, 4);
+foreach ($arr as &$value) {
+    $value = $value * 2;
+}
 ?>
 <dl class="dl-horizontal">
-<?php
-echo "<br>price_mid_conf:".$price_mid_conf;
-echo "<br>price_post_conf:".$price_post_conf;
-echo "<br>mid-conf:".$mid_conf;
-echo "<br>post-conf:".$post_conf;
-?>
   <dt>NET Total</dt>
   <dd><h3>$ 200 USD</h3></dd>
 </dl>
