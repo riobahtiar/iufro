@@ -1,6 +1,6 @@
 <?php
 if(isset($_GET['step']) && $_GET['step']=="payment"){
-	$post_url=get_permalink()."?step=detail_profil";
+	$post_url=get_permalink()."?step=pay_later";
 }else{
 	$post_url="";
 }

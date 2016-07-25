@@ -62,7 +62,12 @@ echo " -success login- ";
 								break;
 							case 'paynow':
 								require_once dirname(__FILE__) . '/register/pay_now.php';
-								break;			
+								break;
+
+							case 'pay_later':
+								require_once dirname(__FILE__) . '/register/pay_later.php';
+								break;
+
 							default:
 								require_once dirname(__FILE__) . '/dashboard/account.php';
 								break;

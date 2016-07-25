@@ -8,6 +8,5 @@ $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
 $headers[] = 'Cc: Gamma Aieska <gamma@softwareseni.com>';
 $headers[] = 'Cc: Rio Hotmail <riobahtiar@live.com>'; // note you can just use a simple email address
 wp_mail( $to, $subject, $body, $headers );
-
-
+echo "Check Your Email";
 ?>
