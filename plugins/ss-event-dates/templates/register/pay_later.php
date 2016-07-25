@@ -2,7 +2,7 @@
 
 $to = 'riob@softwareseni.com';
 $subject = 'Yoww Laa Testing Pay Later';
-$body = 'From Rio Bahtiar IUFRO, Paylater Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi dolores dolore, earum doloribus, veritatis reiciendis qui numquam consequuntur nihil nostrum maiores, quas mollitia accusantium iure et. Laboriosam rem, aspernatur sit! <br> <strong>Is Bold text</strong>';
+$body = 'From Rio Bahtiar IUFRO, Paylater Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi dolores dolore, earum doloribus, veritatis reiciendis qui numquam consequuntur nihil nostrum maiores, quas mollitia accusantium iure et. Laboriosam rem, aspernatur sit! <br> <strong>Is Bold text</strong><br><hr><br>send from: http://staging.iufroacacia2017.com';
 $headers[] = 'Content-Type: text/html; charset=UTF-8';
 $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
 $headers[] = 'Cc: Gamma Aieska <gamma@softwareseni.com>';
