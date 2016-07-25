@@ -1,0 +1,9 @@
+.panel{
+	color: #333;
+}
+.panel a{
+	color: #333;
+}
+.panel-default > .panel-heading{
+	background-color: #eee;
+}

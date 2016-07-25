@@ -1,0 +1,33 @@
+.ss-dev{
+	position: absolute;
+	z-index: 9999;
+	border: 1px dashed;
+	padding: 0px 20px;
+	background-color: rgba(0, 0, 0, 0.4);
+	font-size: 14px;
+	font-family: courier;
+	color: #fff;
+}
+
+.ss-dev h3{
+	display: inline-block;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.ss-dev a{
+	color: #fff;
+	display: inline-block;
+	padding: 0px 15px;
+	background-color: #666;
+}
+
+.ss-dev a:hover{
+	font-weight: bold;
+	background-color: #444;
+}
+
+.ss-dev:hover{
+	background-color: rgba(0, 0, 0, 1);
+	cursor: pointer;
+}

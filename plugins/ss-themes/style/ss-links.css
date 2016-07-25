@@ -1,0 +1,248 @@
+/* Basic Layout Style */
+.ss-links-container {
+    list-style: none;
+    width: 100%;
+    margin: 0px auto 15px;
+    padding: 0px;
+    text-align: center;
+    font-size: 0;
+    margin-left: -5px;
+    margin-right: -5px;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.ss-links-container > li {
+    display: inline-block;
+    padding: 5px 5px;
+    margin: 0px;
+    font-size: 14px;
+    vertical-align: top;
+}
+
+.ss-links-container > li img{
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    vertical-align: middle;
+}
+
+.ss-links-single-container{
+	text-align: center;
+}
+
+.ss-links-img-container{
+    display: inline-block;
+    vertical-align: middle;
+
+    display: -webkit-box;     
+    display: -webkit-flex;     
+    display: -ms-flexbox;     
+    display: flex;     
+    -webkit-box-orient: vertical;     
+    -webkit-box-direction: normal;     
+    -webkit-flex-direction: column;     
+    -ms-flex-direction: column;     
+    flex-direction: column;     
+    -webkit-box-pack: center;     
+    -webkit-justify-content: center;     
+    -ms-flex-pack: center;     
+    justify-content: center; 
+}
+
+.ss-links-title{
+	display: block;
+	margin: 2px auto;
+}
+
+/* column for desktop */
+.ss-links-1-col li {
+    width:100%;
+}
+.ss-links-2-col li {
+    width:50%;
+}
+.ss-links-3-col li {
+    width:33.33%;
+}
+.ss-links-4-col li {
+    width:25%;
+}
+.ss-links-5-col li {
+    width:20%;
+}
+.ss-links-6-col li {
+    width:16.66%;
+}
+.ss-links-7-col li {
+    width:14.28%;
+}   
+.ss-links-8-col li {
+    width:12.5%;
+}
+.ss-links-9-col li {
+    width:11.1%;
+}
+.ss-links-10-col li {
+    width:10%;
+}
+.ss-links-11-col li {
+    width:9.09%;
+}
+.ss-links-12-col li {
+    width:8.33%;
+}
+.ss-links-13-col li {
+    width:7.69%;
+}
+.ss-links-14-col li {
+    width:7.14%;
+}
+.ss-links-15-col li {
+    width:6.66%;
+}
+.ss-links-16-col li {
+    width:6.25%;
+}
+.ss-links-17-col li {
+    width:14.28%;
+}
+.ss-links-18-col li {
+    width:5.55%;
+}
+.ss-links-19-col li {
+    width:5.26%;
+}
+.ss-links-20-col li {
+    width:5%;
+}
+
+/* breakpoint for tablet */
+@media (max-width:768px){
+    .ss-links-1-col-tb li {
+        width:100%;
+
+    }
+    .ss-links-2-col-tb li {
+        width:50%;
+        
+    }
+    .ss-links-3-col-tb li {
+        width:33.33%;
+
+    }
+    .ss-links-4-col-tb li {
+        width:25%;
+
+    }
+    .ss-links-5-col-tb li {
+        width:20%;
+
+    }
+    .ss-links-6-col-tb li {
+        width:16.66%;
+
+    }
+    .ss-links-7-col-tb li {
+        width:14.28%;
+
+    }   
+    .ss-links-8-col-tb li {
+        width:12.5%;
+
+    }
+    .ss-links-9-col-tb li {
+        width:11.1%;
+
+    }
+    .ss-links-10-col-tb li {
+        width:10%;
+
+    }
+}
+
+/* breakpoint for mobile */
+@media (max-width:480px){
+    .ss-links-1-col-mb li {
+        width:100%;
+
+    }
+    .ss-links-2-col-mb li {
+        width:50%;
+
+    }
+    .ss-links-3-col-mb li {
+        width:33.33%;
+
+    }
+    .ss-links-4-col-mb li {
+        width:25%;
+
+    }
+    .ss-links-5-col-mb li {
+        width:20%;
+
+    }
+    .ss-links-6-col-mb li {
+        width:16.66%;
+
+    }
+    .ss-links-7-col-mb li {
+        width:14.28%;
+
+    }   
+    .ss-links-8-col-mb li {
+        width:12.5%;
+
+    }
+    .ss-links-9-col-tb li {
+        width:11.1%;
+
+    }
+    .ss-links-10-col-tb li {
+        width:10%;
+
+    }
+}
+
+/* style 1: simple opacity */
+.ss-links-style-1 .ss-links-single-container:hover img{
+    -webkit-transition: all .3s; /* For Safari 3.1 to 6.0 */
+    transition: all .3s;
+    opacity: 0.5;
+}
+
+/* style 2: simple grayscale */
+.ss-links-style-2 img{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+.ss-links-style-2 .ss-links-single-container:hover img{
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+    opacity: 1;
+}
+
+/* style 3: simple sepia */
+.ss-links-style-3 img{
+    -webkit-filter: sepia(100%);
+    filter: sepia(100%);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+.ss-links-style-3 .ss-links-single-container:hover img{
+    -webkit-filter: sepia(0);
+    filter: sepia(0);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+    opacity: 1;
+}
+

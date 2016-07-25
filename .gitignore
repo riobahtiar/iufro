@@ -1,11 +1,7 @@
-/uploads
 /upgrade
 /themes/twentyfifteen
 /themes/twentyfourteen
 /themes/twentythirteen
 /themes/twentysixteen
-/themes/index.php
-/index.php
 .DS_Store
-/plugins/*
-!/plugins/ss-event-dates
+
