@@ -21,7 +21,7 @@ if(isset($_GET['step']) && $_GET['step']=="addon"){
 			</div>
 			<div class="row">
 				<div class="col-md-6">
-					<input type="radio" name="mid-conf-trip" value="gunung-kidul" checked>
+					<input type="radio" name="mid-conf-child" value="gunung-kidul" checked>
 				 	<div class = "thumbnail">
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Gunungkidul.jpg" alt = "Gunungkidul">
 			     	</div>
@@ -29,12 +29,12 @@ if(isset($_GET['step']) && $_GET['step']=="addon"){
 			    	<a href="<?php echo site_url(); ?>/field-trip/pacitan/" target="_blank">Learn more.</a> 
 			    </div>
 				<div class="col-md-6">
-					<input type="radio" name="mid-conf-trip" value="klaten">
+					<input type="radio" name="mid-conf-child" value="klaten">
 					<div class = "thumbnail">
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Klaten.jpg" alt = "Klaten">
 			     	</div>
 			    	Klaten<br>
-			    	<a href="<?php echo site_url(); ?>/field-trip/pacitan/" target="_blank">Learn more.</a> 
+			    	<a href="<?php echo site_url(); ?>/field-trip/klaten/" target="_blank">Learn more.</a> 
 			    </div>
 			</div>
 		</div> 
@@ -45,14 +45,14 @@ if(isset($_GET['step']) && $_GET['step']=="addon"){
 			</div>
 			<div class="row">
 				<div class="col-md-6">
-					<input type="radio" name="post-conf" value="" id="radio-custom-toggle">
+					<input type="radio" name="post-conf-child" value="pekanbaru" id="radio-custom-toggle">
 					<div class = "thumbnail">
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Pekanbaru.jpg" alt = "Pekanbaru">
 			     	</div>
 			      	Pekanbaru
 			    </div>
 				<div class="col-md-6">
-					<input type="radio" name="post-conf-trip" value="250">
+					<input type="radio" name="post-conf-child" value="pacitan">
 					<div class = "thumbnail">
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Pacitan.jpg" alt = "Pacitan">
 			     	</div>

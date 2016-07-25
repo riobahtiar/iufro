@@ -1,12 +1,13 @@
 <?php
 	global $wpdb;
 	global $current_user;
-    get_currentuserinfo();
+    wp_get_current_user();
   	$euser_email = $current_user->user_email;
 
-  	if(isset($_POST['mid-conf']) && $_POST['mid-conf']=="on" ){
-  		$mid_conf = $_POST['mid-conf-des'];
+  	// Mid Conference
 
+  	if(isset($_POST['mid-conf']) && $_POST['mid-conf']=="on" ){
+  		$mid_conf = $_POST['mid-conf-child'];
   		$wpdb->insert( 
 			'wp_ss_event_package', 
 			array( 	'package_user' => $euser_email, 
@@ -15,10 +16,21 @@
 				), 
 			array( '%s','%s','%s')
 		);
+
+		// Pricing Mid Conference
+  			// if ( $_POST["post-conf-child"] == "pekanbaru" ) {
+  			//   $pricepostconf=40;
+  			// }elseif ( $_POST["post-conf-child"] == "pacitan" ) {
+  			//   $pricepostconf=50;
+  			// }else{
+  			//   $pricepostconf=0;
+  			// }
   	}
 
+  	// Post Conference
+
   	if(isset($_POST['post-conf']) && $_POST['post-conf']=="on" ){
-  		$post_conf = $_POST['post-conf-des'];
+  		$post_conf = $_POST['post-conf-child'];
 
   		$wpdb->insert( 
 			'wp_ss_event_package', 
@@ -28,6 +40,15 @@
 				), 
 			array( '%s','%s','%s')
 		);
+
+		// Pricing Post Conference
+  			// if ( $_POST["mid-conf-child"] == "gunung-kidul" ) {
+  			//   $pricemidconf=20;
+  			// }elseif ( $_POST["mid-conf-child"] == "klaten" ) {
+  			//   $pricemidconf=30;
+  			// }else{
+  			//   $pricemidconf=0;
+  			// }		
   	}
 
   	if(isset($_POST['dinner-conf']) && $_POST['dinner-conf']=="on" ){

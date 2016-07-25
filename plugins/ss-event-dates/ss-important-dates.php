@@ -728,11 +728,5 @@ function blockusers_init() {
     }
 }
 
-/**
- * Enqueu Scripts and assets
- * @riobahtiar
- */
-require_once plugin_dir_path(__FILE__) . "addons/assets.php";
-
 
 ?>

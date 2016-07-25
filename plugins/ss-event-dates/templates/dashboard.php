@@ -10,7 +10,7 @@ if ( isset($_POST['submit']) ){
 
 // get detail user from wordpress user
 global $current_user;
-    get_currentuserinfo();
+    wp_get_current_user();
   	$euser_email = $current_user->user_email;
 
 //check login user
@@ -19,13 +19,14 @@ if(!is_user_logged_in()){
 	wp_redirect(get_site_url().'/login');
 
 }else{
+echo " -success login- "; 
 
 	global $wpdb;
-	//get detail user from table wp_ss_event_user_detail
 	$query="SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email}'";
 	$user_detail = $wpdb->get_row( $query, ARRAY_A );
 	
-		if ($user_detail['euser_meta_type']=="free_type"){ 
+		if ($user_detail['euser_meta_type']=="free_type"){
+		echo " -not is free type- "; 
 				switch ($_GET['step']) {
 					case 'free':
 						require_once dirname(__FILE__) . '/register/free.php';
@@ -39,39 +40,43 @@ if(!is_user_logged_in()){
 						break;
 				}	
 		}elseif ( $user_detail['euser_meta_type']=="author_type" || $user_detail['euser_meta_type']=="participant_type" ){ 
-			//author
-			//check if user using menu back, if not go to else condition depend on user last step
-			if(isset($_GET['step'])){
-				switch ($_GET['step']) {
-					case 'membership':
-						require_once dirname(__FILE__) . '/register/membership.php';
-						break;
-					case 'detail_profil':
-						require_once dirname(__FILE__) . '/dashboard/account.php';
-						break;
-					case 'addon':
-						require_once dirname(__FILE__) . '/register/addon.php';
-						break;
-					case 'payment':
-						require_once dirname(__FILE__) . '/register/payment.php';
-						break;
-					case 'paynow':
-						require_once dirname(__FILE__) . '/register/pay_now.php';
-						break;
-					
-					default:
-						require_once dirname(__FILE__) . '/dashboard/account.php';
-						break;
-				}
-			}else{
-				if ($user_detail['euser_addon']==0){
-					require_once dirname(__FILE__) . '/register/addon.php';
-				} else if ($user_detail['euser_payment']==0){
-					require_once dirname(__FILE__) . '/register/payment.php';
-				} else {
-					require_once dirname(__FILE__) . '/dashboard/account.php';
-				}
-			} 
+			echo " -ini user author atau participant- ";
+			if ( empty($user_detail['euser_type'])) {
+				echo " -is empty euser_type- ";
+				require_once dirname(__FILE__) . '/register/membership.php';
+			} else {
+				echo " -not participant- "; 
+					if(isset($_GET['step'])){
+						switch ($_GET['step']) {
+							case 'membership':
+								require_once dirname(__FILE__) . '/register/membership.php';
+								break;
+							case 'detail_profil':
+								require_once dirname(__FILE__) . '/dashboard/account.php';
+								break;
+							case 'addon':
+								require_once dirname(__FILE__) . '/register/addon.php';
+								break;
+							case 'payment':
+								require_once dirname(__FILE__) . '/register/payment.php';
+								break;
+							case 'paynow':
+								require_once dirname(__FILE__) . '/register/pay_now.php';
+								break;			
+							default:
+								require_once dirname(__FILE__) . '/dashboard/account.php';
+								break;
+						}
+					}else{
+						if ($user_detail['euser_addon']==0){
+							require_once dirname(__FILE__) . '/register/addon.php';
+						} else if ($user_detail['euser_payment']==0){
+							require_once dirname(__FILE__) . '/register/payment.php';
+						} else {
+							require_once dirname(__FILE__) . '/dashboard/account.php';
+						}
+					} 				
+			}
 
 			//end author
 		} else {
@@ -80,6 +85,7 @@ if(!is_user_logged_in()){
 			echo "</div>";
 		}
 
+//end of check login user
 }
 
 ?>
