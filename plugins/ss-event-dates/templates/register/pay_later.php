@@ -2,7 +2,7 @@
 
 $to = 'riob@softwareseni.com';
 $subject = 'Yoww Laa Testing Pay Later';
-$body[] = '
+$body.= '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -35,40 +35,13 @@ $body[] = '
             </div>
             <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
 ';
-$body[] = 'Testing Graphical Email</div>';
+$body.= 'Testing Graphical Email</div>';
 
 
-$body[] =  'Below are your details :
-Registration Number : 1234
-Full Name : Mr. / Mrs. xxx
-Address : xxx
-Membership Type : Local-Regular Participant
-Field Trip : 
-   - Mid Conference : Gunungkidul
-   - Post Conference : Pacitan
-Dinner Conference : Yes 
-FEE INFORMATION
-Conference Fee :
-* Local Participant : 
-   - Early Bird Registration (1 Jan 2017 - 30 Apr 2017) : $23
-   - Regular Registration (1 May 2017 - 24 Jul 2017) : $39
-   - Student : $20
-* Foreigner
-   - Early Bird Registration (1 Jan 2017 - 30 Apr 2017) : $350
-   - Regular Registration (1 May 2017 - 24 Jul 2017) : $400
-Post Conference Field Trip Fee :
-*Pekanbaru
-   - Single Room : $510/pax
-   - Shared Room : $475/pax
-*Pacitan : $250/pax
-PAYMENT METHOD 
-We accept the payment via Paypal and iPaymu.
-Please access to your payment page by clicking on link below :
-|| Button Payment || >>> Link to "Pay Now" page.
-*Registration fee will be determined based on the date you do the payment (early bird / regular), or by your type of user (local/foreigner/student).';
+$body.=  'testing sua';
 
 
-$body[] = '
+$body.= '
             <div>
                 <p style="font-size:16px;">We are looking forward to welcoming your guest at IUFRO ACACIA CONFERENCE 2017</p>
                 <p style="font-size:16px;">Should you require any further assistance, please do not hesitate to contact us on address below: </p>
