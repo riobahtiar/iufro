@@ -76,24 +76,15 @@ if ($user_detail['euser_type']=="local student") {
   $total_price=0;
 }
 
-
-
-
-
-
-
-
-
-
 $to = $euser_email;
 $subject = 'Thank you for participating on IUFRO ACACIA 2017';
-$body.= '
+$body .= '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>IUFRO</title>
+        <title>IUFRO ACACIA 2017</title>
         <style type="text/css">
 @media (max-width: 992px) {
     #content {
@@ -120,20 +111,18 @@ $body.= '
             </div>
             <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
 ';
-$body.= 'Thank you for participating on IUFRO ACACIA Conference 2017</div>';
+$body .= 'Thank you for participating on IUFRO ACACIA Conference 2017</div>';
 
 
-$body.=  '<div>
-
-Below are your details :<br>
+$body .= '<div>Below are your details :<br>
 Registration Number : 1234<br>
-Full Name : Mr. / Mrs. xxx<br>
-Address : xxx<br>
-Membership Type : Local-Regular Participant<br>
+Full Name : '.$enam.'<br>
+Address : '.$enam.'<br>
+Membership Type : '.$enam.'<br>
 Field Trip : <br>
-&nbsp;&nbsp;- Mid Conference : Gunungkidul<br>
-&nbsp;&nbsp;- Post Conference : Pacitan<br>
-Dinner Conference : Yes <br>
+&nbsp;&nbsp;- Mid Conference : '.$string_mid_conf.'<br>
+&nbsp;&nbsp;- Post Conference : '.$string_post_conf.'<br>
+Dinner Conference : '.$enam.' <br>
 FEE INFORMATION<br><br>
 Conference Fee :<br>
 * Local Participant : <br>
@@ -150,7 +139,7 @@ Post Conference Field Trip Fee :<br>
 *Pacitan : $250/pax<br><br>
 PAYMENT METHOD <br>
 We accept the payment via Paypal and iPaymu.<br>
-Please access to your payment page by <a href="'.get_permalink()."'/login'".'">Login</a> to your account and choose menu payment summary on Dashboard page<br>
+Please access to your payment page by <a href="http://www.iufroacacia2017.com/login">Login</a> to your account and choose menu payment summary on Dashboard page<br>
 *Registration fee will be determined based on the date you do the payment (early bird / regular), or by your type of user (local/foreigner/student).<br>
 Should you require any further assistance, please do not hesitate to contact us on address below:<br>
 Center of Forest Biotechnology and Tree Improvement<br>
@@ -159,8 +148,7 @@ Phone: 0274-895954<br>
 Email: secretariat@iufroacacia2017.com<br>
 </div>';
 
-
-$body.= '
+$body .= '
             <div>
                 <p style="font-size:16px;">We are looking forward to welcoming your guest at IUFRO ACACIA CONFERENCE 2017</p>
                 <p style="font-size:16px;">Should you require any further assistance, please do not hesitate to contact us on address below: </p>
@@ -174,8 +162,6 @@ $body.= '
 
 </html>
 ';
-
-
 
 $headers[] = 'Content-Type: text/html; charset=UTF-8';
 $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
