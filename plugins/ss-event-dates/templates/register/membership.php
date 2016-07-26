@@ -18,14 +18,14 @@ if(isset($_GET['step']) && $_GET['step']=="membership"){
 				<div class="panel panel-default">
 					<div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#local">
 					 	<h2 class="panel-title accordion-toggle">
-						 	<label><input type="radio" name="account" value="local"> <i class="fa fa-user" aria-hidden="true"></i> Local Participant </label> <span class="pull-right">Detail <i class="fa fa-question-circle" aria-hidden="true"></i></span>
+						 	<label><input type="radio" name="account" value="local"> <i class="fa fa-user" aria-hidden="true"></i> Local</label> <span class="pull-right">Detail <i class="fa fa-question-circle" aria-hidden="true"></i></span>
 						</h2>
 					</div>
 					<div id="local" class="panel-collapse collapse">
 						<div class="panel-body">
 Able to upload and download papers.<br><br>
 
-Registration fee for local participant :<br>
+Registration fee for local :<br>
 - Early bird registration (1st January - 30th April 2017) : USD 23<br>
 - Regular registration (1st May - 24th July 2017) : USD 39<br>
 - Student : USD 20<br><br>
@@ -34,7 +34,7 @@ Also has the ability to choose the available field trip that we provide (there w
 
 The payable fee covers registration for the Conference, welcome reception, banquet conference dinner, conference bag and souvenir, mid-conference tour, and tea/coffee and lunch.<br><br>
 
-Please choose your local participant type:<br>
+Please choose your local type:<br>
 							<label><input type="radio" name="local" value="regular" checked>Regular</label>
 							<label><input type="radio" name="local" value="student">Student</label>
 							<label id="std-card" class="hidden"> Please upload your student card<input id="input-card" type="file" name="student_card"></label>
@@ -44,14 +44,14 @@ Please choose your local participant type:<br>
 				<div class="panel panel-default">
 					<div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#foreign">
 					 	<h2 class="panel-title accordion-toggle">
-							<label><input type="radio" name="account" value="foreign"> <i class="fa fa-user" aria-hidden="true"></i> Foreinger Participant </label> <span class="pull-right">Detail <i class="fa fa-question-circle" aria-hidden="true"></i></span>
+							<label><input type="radio" name="account" value="foreign"> <i class="fa fa-user" aria-hidden="true"></i> Foreinger </label> <span class="pull-right">Detail <i class="fa fa-question-circle" aria-hidden="true"></i></span>
 						</h2>
 					</div>
 					<div id="foreign" class="panel-collapse collapse in">
 						<div class="panel-body">
 Able to upload and download papers.<br><br>
 
-Registration fee for foreigner participant :<br>
+Registration fee for foreigner :<br>
 - Early bird registration (1st January - 30th April 2017) : USD 350<br>
 - Regular registration (1st May - 24th July 2017) : USD 400<br><br>
 

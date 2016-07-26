@@ -168,17 +168,12 @@ if(!empty($poster_download)){
 </div>
 <?php
 
-$mailexploder = mailexploder("@",$euser_email);
-array_pop($mailexploder);
-$newstring = join('@', $mailexploder);
-
-
  ?>
 <form action="<?php echo $post_url; ?>" method="post">
 <input type="hidden" name="total_amount" value="<?php echo $total_price; ?>">
-<input type="hidden" name="payname" value="IUFRO PY-<?php echo $newstring ?>">
+<input type="hidden" name="payname" value="IUFRO PY-<?php echo date('Ymd') ?>">
 <div>
-  	<a href="<?php echo get_permalink(); ?>?step=addon" class="btn btn-default pull-left">Back</a>
+  	<a href="<?php echo get_permalink()."?step=addon"; ?>" class="btn btn-default pull-left">Back</a>
   	<button type="submit" name="submit" class="btn btn-default pull-right" value="payment">Pay Now</button>
 
   	<a href="<?php echo get_permalink(); ?>?step=pay_later" class="btn btn-default pull-right">Pay Later</a>
