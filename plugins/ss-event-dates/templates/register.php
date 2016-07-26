@@ -16,7 +16,8 @@ if ( isset($_POST['submit'] ) ) {
     //save custom data into table  wp_ss_event_user_detail
     save_custom_userdata($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type);
     $success = complete_registration($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type);
-    echo "<br>Validate Data 1 ". $fullname." + ".$password." + ".$email." + ".$phone." + ".$address." + ".$zip." + ".$city." + ".$state." + ".$country." + ".$user_reg_type;
+    //echo "<br>Validate Data 1 ". $fullname." + ".$password." + ".$email." + ".$phone." + ".$address." + ".$zip." + ".$city." + ".$state." + ".$country." + ".$user_reg_type;
+
 }
 
 if ($success == 0){
@@ -39,12 +40,27 @@ function complete_registration($fullname, $password, $email, $phone, $address, $
         );
         $user = wp_insert_user( $userdata );
         echo 'Please login and complete your registeration here <a href="' . get_site_url() . '/login">login page</a>.'; 
-        echo "<br>Validate Data 2 ". $fullname." + ".$password." + ".$email." + ".$phone." + ".$address." + ".$zip." + ".$city." + ".$state." + ".$country." + ".$user_reg_type;
+        //echo "<br>Validate Data 2 ". $fullname." + ".$password." + ".$email." + ".$phone." + ".$address." + ".$zip." + ".$city." + ".$state." + ".$country." + ".$user_reg_type;
         return 1;    
+}
+
+function generateRandomString($length) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
 }
 
 function save_custom_userdata($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type){
     global $wpdb;
+
+$wpdb->get_results( 'SELECT COUNT(*) FROM wp_ss_event_user_detail' );
+$num_rows=$wpdb->num_rows;
+$barcode=$num_rows.date('Ymd').rand(1000, 9999);
+$randAct=generateRandomString(15);
     $wpdb->insert( 
                 'wp_ss_event_user_detail', 
                 array( 
@@ -56,8 +72,9 @@ function save_custom_userdata($fullname, $password, $email, $phone, $address, $z
                     'euser_city' => $city, 
                     'euser_state' => $state, 
                     'euser_country' => $country,
-                    'euser_meta_type' => $user_reg_type
-                    
+                    'euser_meta_type' => $user_reg_type,
+                    'euser_activationkey' => $randAct,
+                    'euser_barcode' => $barcode           
                 ), 
                 array(
                 '%s',
@@ -68,11 +85,27 @@ function save_custom_userdata($fullname, $password, $email, $phone, $address, $z
                 '%s',
                 '%s',
                 '%s',
+                '%s',
+                '%s',
                 '%s') 
             );
-    echo "<br>Validate Data 3 ". $fullname." + ".$password." + ".$email." + ".$phone." + ".$address." + ".$zip." + ".$city." + ".$state." + ".$country." + ".$user_reg_type;
+    //echo "<br>Validate Data 3 ". $fullname." + ".$password." + ".$email." + ".$phone." + ".$address." + ".$zip." + ".$city." + ".$state." + ".$country." + ".$user_reg_type;
     }
 
+
+$to = $euser_email;
+$subject = 'Welcome to IUFRO ACACIA 2017';
+$body .= '
+Hello '.$fullname.' 
+<hr>';
+$body .= 'Thank you for signing up with WordPress.com. You created a WordPress.com account with your Akismet sign up. Akismet is just one of several glorious doodads brought to you by the jolly people at Automattic. Click the button below to activate your account.<br>';
+$body .= '<a href="http://staging.iufroacacia2017.com/redir_xcmil?user_auth='.$randAct.'&fromxmail=true">Activate Account</a><hr>Adew';
+
+$headers[] = 'Content-Type: text/html; charset=UTF-8';
+$headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
+$headers[] = 'Cc: Rio Hotmail <riobahtiar@live.com>'; // note you can just use a simple email address
+wp_mail( $to, $subject, $body, $headers );
+echo "Check Your Email";
 
 
 
