@@ -750,7 +750,7 @@
         $user_auth=$_GET['user_auth'];
         //get user data
         global $wpdb;
-        $query="SELECT * FROM wp_ss_event_user_detail WHERE user_auth = '{$user_auth}'";
+        $query="SELECT * FROM wp_ss_event_user_detail WHERE euser_activationkey = '{$user_auth}'";
         $user_detail = $wpdb->get_row( $query, ARRAY_A );
         if (isset($user_auth)){
             echo "Selamat Akun ".$user_detail['euser_fullname']." Sukses di Aktifkan";
