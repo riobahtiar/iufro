@@ -90,9 +90,9 @@ $randAct=generateRandomString(15);
                 '%s') 
             );
     //echo "<br>Validate Data 3 ". $fullname." + ".$password." + ".$email." + ".$phone." + ".$address." + ".$zip." + ".$city." + ".$state." + ".$country." + ".$user_reg_type;
-    }
 
 
+// The Email Account
 $to = $euser_email;
 $subject = 'Welcome to IUFRO ACACIA 2017';
 $body .= '
@@ -105,7 +105,14 @@ $headers[] = 'Content-Type: text/html; charset=UTF-8';
 $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
 $headers[] = 'Cc: Rio Hotmail <riobahtiar@live.com>'; // note you can just use a simple email address
 wp_mail( $to, $subject, $body, $headers );
-echo "Check Your Email";
+
+
+
+    }
+
+
+
+
 
 
 
