@@ -93,13 +93,15 @@ $randAct=generateRandomString(15);
 
 
 // The Email Account
-$to = $euser_email;
+$to = $email;
 $subject = 'Welcome to IUFRO ACACIA 2017';
 $body .= '
 Hello '.$fullname.' 
 <hr>';
-$body .= 'Thank you for signing up with WordPress.com. You created a WordPress.com account with your Akismet sign up. Akismet is just one of several glorious doodads brought to you by the jolly people at Automattic. Click the button below to activate your account.<br>';
-$body .= '<a href="http://staging.iufroacacia2017.com/redir_xcmil?user_auth='.$randAct.'&fromxmail=true">Activate Account</a><hr>Adew';
+$body .= 'Welcome to your personal IUFRO ACACIA 2017 account.<br>
+
+To activate your IUFRO ACACIA 2017 account please validate your email address. Simply click the button below:<br>';
+$body .= '<a href="http://staging.iufroacacia2017.com/redir_xcmil?user_auth='.$randAct.'&fromxmail=true">Activate Account</a><hr>';
 
 $headers[] = 'Content-Type: text/html; charset=UTF-8';
 $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';

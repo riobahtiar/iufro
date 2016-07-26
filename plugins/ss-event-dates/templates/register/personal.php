@@ -22,15 +22,17 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <h2>There are 3 types of account</h2>
-        <hr>
-        <p>Lorem ipsum dolor sit amet amet ipsum dolor sit amet amet:</p>
-        <h3>Free Account</h3>
-        <p>Lorem ipsum dolor sit amet amet ipsum dolor sit amet amet Lorem ipsum dolor sit amet amet ipsum dolor sit amet amet</p>
-        <h3>Participant</h3>
-        <p>Lorem ipsum dolor sit amet amet ipsum dolor sit amet amet Lorem ipsum dolor sit amet amet ipsum dolor sit amet amet</p>
-        <h3>Author</h3>
-        <p>Lorem ipsum dolor sit amet amet ipsum dolor sit amet amet Lorem ipsum dolor sit amet amet ipsum dolor sit amet amet</p>
+        <h2>Account types :</h2>
+<h3>Free Account</h3>
+<p>Free account will not participate on the conference. Free account user able to login into website and read papers that created by our author, but will not able to download it.
+Free account user can upgrade his membership type (into author or participant) later.</p>
+<h3>Author :</h3>
+<p>Will participate on the conference as the author. There's registration fee for Author.
+To be an author, user need to submit document (abstract, paper, and poster) on the form after finishing registration phase.
+Author also able to join extra field trip during the conference (extra charge will be applied).</p>
+<h3>Participant :</h3>
+<p>Will participate on the conference as the participant. There's registration fee for Participant.  No need to upload any file.
+Paticipant also able to join extra field trip during the conference (extra charge will be applied).</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
