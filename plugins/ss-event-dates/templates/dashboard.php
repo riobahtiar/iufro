@@ -63,13 +63,15 @@ echo " -success login- ";
 							case 'paynow':
 								require_once dirname(__FILE__) . '/register/pay_now.php';
 								break;
-
 							case 'pay_later':
 								require_once dirname(__FILE__) . '/register/pay_later.php';
 								break;
+							case 'default':
+								require_once dirname(__FILE__) . '/register/default_page.php';
+								break;
 
 							default:
-								require_once dirname(__FILE__) . '/dashboard/account.php';
+								require_once dirname(__FILE__) . '/register/default_page.php';
 								break;
 						}
 					}else{
@@ -78,7 +80,7 @@ echo " -success login- ";
 						} else if ($user_detail['euser_payment']==0){
 							require_once dirname(__FILE__) . '/register/payment.php';
 						} else {
-							require_once dirname(__FILE__) . '/dashboard/account.php';
+							require_once dirname(__FILE__) . '/register/default_page.php';
 						}
 					} 				
 			}
