@@ -399,14 +399,14 @@
         echo $output;
     } 
 
-    add_action('pre_get_posts','custom_pre_get_posts',9,1);
-    function custom_pre_get_posts($query) {
-        if ( is_main_query() ) {
+    // add_action('pre_get_posts','custom_pre_get_posts',9,1);
+    // function custom_pre_get_posts($query) {
+    //     if ( is_main_query() ) {
 
-        } else { 
+    //     } else { 
 
-        }
-    }
+    //     }
+    // }
 
     add_action('wp','blog_reload',5,1);
     function blog_reload($wp) {

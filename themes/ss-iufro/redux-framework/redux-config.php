@@ -1720,7 +1720,78 @@
             
         )
     ) );
-    
+
+    /*
+     *  IUFRO Acacia 2017
+     * @author Rio Bahtiar
+     *
+     */
+    Redux::setSection( $opt_name, array(
+        'title'            => 'IUFRO 2017',
+        'id'               => 'iufro',
+        'desc'             => 'Options for IUFRO Conference',
+        'icon'             => 'el el-smiley'
+    ) );
+
+    Redux::setSection( $opt_name, array(
+        'title'      => 'User',
+        'id'         => 'iufro-user-control',
+        'desc'       => '',
+        'subsection' => true,
+        'icon'       => 'el el-blind',
+        'fields'     => array(
+            array(
+                'id'       => 'iufro-user-reg',
+                'type'     => 'section',
+                'title'    => 'User Control',
+                'subtitle' => 'User Registration and management control',
+                'indent'   => true,
+            ),
+
+            array(
+                'id'       => 'user-register',
+                'type'     => 'switch',
+                'title'    => 'Registration',
+                'subtitle' => 'tick on to enable registration',
+            ),
+            array(
+                'id'       => 'user-login',
+                'type'     => 'switch',
+                'title'    => 'Registration',
+                'subtitle' => 'tick on to enable login(it will also disable registration)',
+            )
+
+        ) 
+    ) );
+
+    Redux::setSection( $opt_name, array(
+        'title'      => 'General',
+        'id'         => 'iufro-general',
+        'desc'       => '',
+        'subsection' => true,
+        'icon'       => 'el el-wrench-alt',
+        'fields'     => array(
+            array(
+                'id'       => 'section-gen-x1',
+                'type'     => 'section',
+                'title'    => 'General',
+                'subtitle' => 'General Options',
+                'indent'   => true,
+            ),
+            array(
+                'id'       => 'gen-disable-payment-author',
+                'type'     => 'section',
+                'title'    => 'Payment (Author)',
+                'subtitle' => 'the control of web dashboard',
+                'indent'   => true,
+            ),
+
+
+        ) 
+    ) );
+
+
+
     /*
      * <--- END SECTIONS
      */

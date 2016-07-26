@@ -64,9 +64,9 @@ if(isset($_GET['step']) && $_GET['step']=="addon"){
 			    <div class="col-md-12 pekanbaru-selected">
 <div class="custom-toggle" id="custom-toggle">
 <div class="well">
-    <input type="radio" name="post-conf-trip" id="single-room" value="pekanbaru_single">
+    <input type="radio" name="post-conf-child" id="single-room" value="pekanbaru_single">
     Single room = USD. 510/pax<br>
-    <input type="radio" name="post-conf-trip" id="shared-room" value="pekanbaru_shared">
+    <input type="radio" name="post-conf-child" id="shared-room" value="pekanbaru_shared">
     Shared room = USD. 475/pax
 </div>
 </div>
