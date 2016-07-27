@@ -746,7 +746,7 @@
         // User activation
 
     function user_activation() {
-        ob_start();
+    if (isset($_GET['user_auth'])){
         $user_auth=$_GET['user_auth'];
         //get user data
         global $wpdb;
@@ -757,8 +757,10 @@
         }else{
             echo "<h3>Sorry Error 404</h3>";
         }
+    }else{
+            echo "<h3>Sorry Error 404</h3>";
+        }
         
-        ob_end_flush();
     }
 
     add_shortcode( 'user_activation', 'user_activation' );
