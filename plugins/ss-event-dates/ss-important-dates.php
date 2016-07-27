@@ -24,18 +24,32 @@
         $db_version = '1.0';
 
         $sql_euser = "CREATE TABLE IF NOT EXISTS `{$user_table}` (
-            `euser_id` bigint(20) NOT NULL AUTO_INCREMENT,
-            `euser_fullname` int(250) NOT NULL,
-            `euser_phone` varchar(40) NOT NULL,
-            `euser_email` varchar(150) NOT NULL,
-            `euser_address` varchar(255) NOT NULL,
-            `euser_zip` varchar(11) NOT NULL,
-            `euser_city` varchar(11) NOT NULL,
-            `euser_state` varchar(11) NOT NULL,
-            `euser_country` varchar(11) NOT NULL,
-            `euser_type` varchar(11) NOT NULL,
-            `created_at` datetime NOT NULL,
-            `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `euser_id` bigint(20) NOT NULL,
+  `euser_fullname` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `euser_phone` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `euser_email` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `euser_address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `euser_zip` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `euser_city` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `euser_state` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `euser_country` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `euser_meta_type` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `euser_type` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `euser_stdcard_id` int(11) NOT NULL,
+  `euser_addon` int(11) NOT NULL,
+  `euser_payment` int(11) NOT NULL,
+  `euser_abstrak` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `euser_paper` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `euser_poster` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `euser_addon_mid` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `euser_addon_post` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `euser_addon_dinner` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `euser_status` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'disabled',
+  `euser_activationkey` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `euser_payment_status` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `euser_barcode` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
             primary key (euser_id)
         ) ENGINE=InnoDB $charset_collate;";
 
@@ -728,43 +742,44 @@
         }
     }
 
-    // // Generator Acak string
-    // function incrementalHash($len = 5){
-    //   $charset = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    //   $base = strlen($charset);
-    //   $result = '';
+    // Generator Acak string
+    function incrementalHash($len = 5){
+      $charset = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+      $base = strlen($charset);
+      $result = '';
 
-    //   $now = explode(' ', microtime())[1];
-    //   while ($now >= $base){
-    //     $i = $now % $base;
-    //     $result = $charset[$i] . $result;
-    //     $now /= $base;
-    //   }
-    //   return substr($result, -5);
-    // }
+      $now = explode(' ', microtime())[1];
+      while ($now >= $base){
+        $i = $now % $base;
+        $result = $charset[$i] . $result;
+        $now /= $base;
+      }
+      return substr($result, -5);
+    }
 
-        // User activation
 
-    // function user_activation() {
-    // if (isset($_GET['user_auth'])){
-    //     $user_auth=$_GET['user_auth'];
-    //     //get user data
-    //     global $wpdb;
-    //     $query="SELECT * FROM wp_ss_event_user_detail WHERE euser_activationkey = '{$user_auth}'";
-    //     $user_detail = $wpdb->get_row( $query, ARRAY_A );
-    //     if (isset($user_auth)){
-    //         echo "Selamat Akun ".$user_detail['euser_fullname']." Sukses di Aktifkan";
-    //     }else{
-    //         echo "<h3>Sorry Error 404</h3>";
-    //     }
-    // }else{
-    //         echo "<h3>Sorry Error 404</h3>";
-    //     }
+    function user_activation() {
+        ob_start();
+    if (isset($_GET['user_auth'])){
+        $user_auth=$_GET['user_auth'];
+        //get user data
+        global $wpdb;
+        $query="SELECT * FROM wp_ss_event_user_detail WHERE euser_activationkey = '{$user_auth}'";
+        $user_detail = $wpdb->get_row( $query, ARRAY_A );
+        if (isset($user_auth)){
+            echo "Selamat Akun ".$user_detail['euser_fullname']." Sukses di Aktifkan";
+        }else{
+            echo "<h3>Sorry Error 404</h3>";
+        }
+    }else{
+            echo "<h3>Sorry Error 404</h3>";
+        }
+      return ob_get_clean();  
+    }
+
+    add_shortcode( 'user_activation', 'user_activation' );
+
         
-    // }
-
-    // add_shortcode( 'user_activation', 'user_activation' );
-
 
 
     ?>
