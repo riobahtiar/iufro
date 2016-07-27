@@ -762,16 +762,23 @@
         $user_auth=$_GET['user_auth'];
         //get user data
         global $wpdb;
-        $query="SELECT * FROM wp_ss_event_user_detail WHERE euser_activationkey = '{$user_auth}'";
+        $query="SELECT * FRpOM wp_ss_event_user_detail WHERE euser_activationkey = '{$user_auth}'";
         $user_detail = $wpdb->get_row( $query, ARRAY_A );
         if (isset($user_auth)){
             echo "Selamat Akun ".$user_detail['euser_fullname']." Sukses di Aktifkan";
         }else{
-            echo "<h3>Sorry Error 404</h3>";
+            echo "
+<h1>Oops!</h1><br>
+<p>We can't seem to find the page you're looking for.</p>
+<h4>Error code: <strong>404</strong></h4>
+            ";
         }
     }else{
-            echo "<h3>Sorry Error 404</h3>";
-        }
+            echo "
+<h1>Oops!</h1><br>
+<p>We can't seem to find the page you're looking for.</p>
+<h4>Error code: <strong>404</strong></h4>
+            ";        }
       return ob_get_clean();  
     }
 
