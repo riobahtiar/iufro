@@ -17,23 +17,14 @@
 			array( '%s','%s','%s')
 		);
 
-		// Pricing Mid Conference
-  			// if ( $_POST["post-conf-child"] == "pekanbaru" ) {
-  			//   $pricepostconf=40;
-  			// }elseif ( $_POST["post-conf-child"] == "pacitan" ) {
-  			//   $pricepostconf=50;
-  			// }else{
-  			//   $pricepostconf=0;
-  			// }
+  		$wpdb->update( 
+		    'wp_ss_event_user_detail', 
+		    array( 'euser_addon_mid' => $mid_conf ), 
+		    array( 'euser_email' => $euser_email ), 
+		    array( '%s'), 
+		    array( '%s' ) 
+  		);
   	}
-
-
-
-
-
-
-
-
 
   	// Post Conference
 
@@ -49,14 +40,13 @@
 			array( '%s','%s','%s')
 		);
 
-		// Pricing Post Conference
-  			// if ( $_POST["mid-conf-child"] == "gunung-kidul" ) {
-  			//   $pricemidconf=20;
-  			// }elseif ( $_POST["mid-conf-child"] == "klaten" ) {
-  			//   $pricemidconf=30;
-  			// }else{
-  			//   $pricemidconf=0;
-  			// }		
+		$wpdb->update( 
+		    'wp_ss_event_user_detail', 
+		    array( 'euser_addon_post' => $post_conf ), 
+		    array( 'euser_email' => $euser_email ), 
+		    array( '%s'), 
+		    array( '%s' ) 
+  		);		
   	}
 
   	if(isset($_POST['dinner-conf']) && $_POST['dinner-conf']=="on" ){
@@ -68,6 +58,14 @@
 				), 
 			array( '%s','%s')
 		);
+
+		$wpdb->update( 
+		    'wp_ss_event_user_detail', 
+		    array( 'euser_addon_dinner' => 'Yes' ), 
+		    array( 'euser_email' => $euser_email ), 
+		    array( '%s'), 
+		    array( '%s' ) 
+  		);	
   	}
 
   	if(isset($_FILES['abstrak']) && $_FILES['abstrak']!="" ){

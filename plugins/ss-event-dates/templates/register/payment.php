@@ -5,9 +5,6 @@ if(isset($_GET['step']) && $_GET['step']=="payment"){
 	$post_url="";
 }
 
-
-
-
 // get Get User Login
 global $current_user;
 wp_get_current_user();
@@ -18,25 +15,25 @@ global $wpdb;
 $query="SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email}'";
 $user_detail = $wpdb->get_row( $query, ARRAY_A );
 
-// Get Event Package Details
-$mid_conf_q="SELECT * FROM wp_ss_event_package 
-WHERE package_user = '{$euser_email}' 
-AND package_item = 'Mid Conference'";
+// // Get Event Package Details
+// $mid_conf_q="SELECT * FROM wp_ss_event_package 
+// WHERE package_user = '{$euser_email}' 
+// AND package_item = 'Mid Conference'";
 
-$post_conf_q="SELECT * FROM wp_ss_event_package 
-WHERE package_user = '{$euser_email}' 
-AND package_item = 'Post Conference'";
+// $post_conf_q="SELECT * FROM wp_ss_event_package 
+// WHERE package_user = '{$euser_email}' 
+// AND package_item = 'Post Conference'";
 
-$mid_conf_var = $wpdb->get_row( $mid_conf_q, ARRAY_A );
-$post_conf_var = $wpdb->get_row( $post_conf_q, ARRAY_A );
+// $mid_conf_var = $wpdb->get_row( $mid_conf_q, ARRAY_A );
+// $post_conf_var = $wpdb->get_row( $post_conf_q, ARRAY_A );
 
 // mid conf
-if(isset($mid_conf_var['package_detail'])){
+if(isset($user_detail['euser_addon_mid'] )){
 
-        if ( $mid_conf_var['package_detail'] == "gunung-kidul" ) {
+        if ( $user_detail['euser_addon_mid'] == "gunung-kidul" ) {
           $string_mid_conf="Gunung Kidul";
           $price_mid_conf = 0;
-        }elseif ( $mid_conf_var['package_detail'] == "klaten" ) {
+        }elseif ( $user_detail['euser_addon_mid'] == "klaten" ) {
           $string_mid_conf="Klaten";
           $price_mid_conf = 0;
         }else{
@@ -50,15 +47,15 @@ if(isset($mid_conf_var['package_detail'])){
 }
 
 // post conf
-if(isset($post_conf_var['package_detail'])){
+if(isset($user_detail['euser_addon_post'])){
     // Pricing Post Conference
-        if ( $post_conf_var['package_detail'] == "pacitan" ) {
+        if ( $user_detail['euser_addon_post'] == "pacitan" ) {
           $string_post_conf="Pacitan ( USD 250 )";
           $price_post_conf = 250;
-        }elseif ( $post_conf_var['package_detail'] == "pekanbaru_shared" ) {
+        }elseif ( $user_detail['euser_addon_post'] == "pekanbaru_shared" ) {
           $string_post_conf="Pekanbaru | Shared Room ( USD 475 )";
           $price_post_conf = 475;
-        }elseif ( $post_conf_var['package_detail'] == "pekanbaru_single" ) {
+        }elseif ( $user_detail['euser_addon_post'] == "pekanbaru_single" ) {
           $string_post_conf="Pekanbaru | Single Room ( USD 510 )";
           $price_post_conf = 510;
         }else{
@@ -69,6 +66,12 @@ if(isset($post_conf_var['package_detail'])){
   $string_post_conf=" - ";
   $price_post_conf = 0;
 }
+
+if(isset($user_detail['euser_addon_dinner'])){
+  $string_dinner=" Yes ";
+}
+
+
 
     // Paymen Dates Earlybird
     $paymentDate = date('Y-m-d');
@@ -128,15 +131,15 @@ if ($user_detail['euser_type']=="local student") {
 <h5>Field Trip</h5>
 <dl class="dl-horizontal">
   <dt>Mid Conference Trip</dt>
-  <dd><?php echo $string_mid_conf;   ?>  </dd>
+  <dd><?php echo $string_mid_conf; ?>  </dd>
 </dl>
 <dl class="dl-horizontal">
   <dt>Post Conference Trip</dt>
-  <dd><?php echo $string_post_conf;   ?> </dd>
+  <dd><?php echo $string_post_conf; ?> </dd>
 </dl>
 <dl class="dl-horizontal">
   <dt>Dinner Conference</dt>
-  <dd>Yes</dd>
+  <dd><?php echo $string_dinner; ?></dd>
 </dl>
 </div>
 <div class="col-md-6">
@@ -199,6 +202,7 @@ if(!empty($poster_download)){
   	<button type="submit" name="submit" class="btn btn-default pull-right" value="payment">Pay Now</button>
 
   	<a href="<?php echo get_permalink(); ?>?step=pay_later" class="btn btn-default pull-right">Pay Later</a>
+
 </div>
 </form>
 </div>

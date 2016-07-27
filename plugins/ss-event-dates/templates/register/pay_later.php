@@ -115,10 +115,10 @@ $body .= 'Thank you for participating on IUFRO ACACIA Conference 2017</div>';
 
 
 $body .= '<div>Below are your details :<br>
-Registration Number : 1234<br>
-Full Name : '.$enam.'<br>
-Address : '.$enam.'<br>
-Membership Type : '.$enam.'<br>
+Registration Number : '.$user_detail['euser_barcode'].'<br>
+Full Name : '.$user_detail['euser_fullname'].'<br>
+Address : '.$user_detail['euser_address'].'<br>
+Membership Type : '.$user_detail['euser_type'].'-'.$user_detail['euser_meta_type'].'<br>
 Field Trip : <br>
 &nbsp;&nbsp;- Mid Conference : '.$string_mid_conf.'<br>
 &nbsp;&nbsp;- Post Conference : '.$string_post_conf.'<br>

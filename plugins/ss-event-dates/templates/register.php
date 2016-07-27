@@ -94,10 +94,7 @@ $randAct=generateRandomString(15);
 
 // The Email Account
 $to = $email;
-$subject = 'Welcome to IUFRO ACACIA 2017';
-$body .= '
-Hello '.$fullname.' 
-<hr>';
+$subject = 'Registration  IUFRO ACACIA 2017';
 
 $body .= '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -105,7 +102,7 @@ $body .= '
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>IUFRO ACACIA 2017</title>
+        <title>IUFRO</title>
         <style type="text/css">
 @media (max-width: 992px) {
     #content {
@@ -131,21 +128,57 @@ $body .= '
                 <h2 style="text-align:center;color:#809062;margin-top: 0;">Dear Sir / Madam</h2>
             </div>
             <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
+                Welcome to your personal IUFRO ACACIA 2017 account.
+            </div>
+            <div style="width:100%;text-align: left;border-bottom:1px solid #809062;">
+                <p>Below are your login details:</p>
+            </div>
 ';
-$body .= 'Thank you for participating on IUFRO ACACIA Conference 2017</div><br>';
+$body .= '
+<div id="registration" style="padding:15px 0;">
+                <table>
+                    <tbody style="color:#525252;font-size:16px;">
+                        <tr>
+                            <td>Username</td>
+                            <td>:</td>
+                            <td>'.$randAct.'</td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td>:</td>
+                            <td>'.$randAct.'</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+</div>
+            <div style="width:100%;text-align: left;border-bottom:1px solid #809062;">
+                <p>To activate your IUFRO ACACIA 2017 account please validate your email address. Simply click the button below:</p>
+                <a href="http://staging.iufroacacia2017.com/redir_xcmil?user_auth='.$randAct.'&fromxmail=true" style="background-color: #809062;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">ACTIVATE</a>
+            </div>
+
+';
 
 
-$body .= 'Welcome to your personal IUFRO ACACIA 2017 account.<br>
-<hr>
-To activate your IUFRO ACACIA 2017 account please validate your email address. Simply click the button below:<br>';
-$body .= '<a href="http://staging.iufroacacia2017.com/redir_xcmil?user_auth='.$randAct.'&fromxmail=true">Activate Account</a><hr>';
+$body .= '
+            <div>
+                <p style="font-size:16px;">Should you require any further assistance, please do not hesitate to contact us on address below: </p>
+                <p style="font-size:12px;margin: 0;color:#809062">Center of Forest Biotechnology and Tree Improvement</p>
+                <p style="font-size:12px;margin: 0;color:#809062">Jl. Palagan Tentara Pelajar KM 15 Purwobinangun, Pakem, Sleman, Yogyakarta 55582</p>
+                <p style="font-size:12px;margin: 0;color:#809062">Phone: 0274-895954</p>
+                <p style="font-size:12px;margin: 0;color:#809062">Email: secretariat@iufroacacia2017.com</p>
+            </div>
+        </div>
+    </body>
+
+</html>
+';
 
 $headers[] = 'Content-Type: text/html; charset=UTF-8';
 $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
+$headers[] = 'Reply-To: IUFRO ACACIA TEAM <secretariat@iufroacacia2017.com>';
 $headers[] = 'Cc: Rio Hotmail <riobahtiar@live.com>'; // note you can just use a simple email address
 wp_mail( $to, $subject, $body, $headers );
-
-
 
     }
 
