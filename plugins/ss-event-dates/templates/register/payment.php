@@ -194,7 +194,7 @@ if(!empty($poster_download)){
 <?php
 
  ?>
-<form action="<?php echo $post_url; ?>" method="post">
+<form action="<?php echo get_permalink()."?step=paynow"; ?>" method="post">
 <input type="hidden" name="total_amount" value="<?php echo $total_price; ?>">
 <input type="hidden" name="payname" value="IUFRO PY-<?php echo date('Ymd') ?>">
 <div>
