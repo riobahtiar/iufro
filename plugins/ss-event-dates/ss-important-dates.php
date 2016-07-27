@@ -1,6 +1,5 @@
-    <?php
-
-    /*
+<?php
+/*
     Plugin Name: SS Event Dates Post
     Description: SS plugin that will create a custom post type displaying Important Dates.
     Version: 1.0
@@ -12,9 +11,8 @@
     - Gamma
     - Bayu
     - Ginanjar
-
-    */
-
+*/
+   
     function ss_event_install()
     {
         global $wpdb;
