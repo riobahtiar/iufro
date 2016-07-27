@@ -745,25 +745,25 @@
 
         // User activation
 
-    function user_activation() {
-    if (isset($_GET['user_auth'])){
-        $user_auth=$_GET['user_auth'];
-        //get user data
-        global $wpdb;
-        $query="SELECT * FROM wp_ss_event_user_detail WHERE euser_activationkey = '{$user_auth}'";
-        $user_detail = $wpdb->get_row( $query, ARRAY_A );
-        if (isset($user_auth)){
-            echo "Selamat Akun ".$user_detail['euser_fullname']." Sukses di Aktifkan";
-        }else{
-            echo "<h3>Sorry Error 404</h3>";
-        }
-    }else{
-            echo "<h3>Sorry Error 404</h3>";
-        }
+    // function user_activation() {
+    // if (isset($_GET['user_auth'])){
+    //     $user_auth=$_GET['user_auth'];
+    //     //get user data
+    //     global $wpdb;
+    //     $query="SELECT * FROM wp_ss_event_user_detail WHERE euser_activationkey = '{$user_auth}'";
+    //     $user_detail = $wpdb->get_row( $query, ARRAY_A );
+    //     if (isset($user_auth)){
+    //         echo "Selamat Akun ".$user_detail['euser_fullname']." Sukses di Aktifkan";
+    //     }else{
+    //         echo "<h3>Sorry Error 404</h3>";
+    //     }
+    // }else{
+    //         echo "<h3>Sorry Error 404</h3>";
+    //     }
         
-    }
+    // }
 
-    add_shortcode( 'user_activation', 'user_activation' );
+    // add_shortcode( 'user_activation', 'user_activation' );
 
 
 
