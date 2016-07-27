@@ -759,7 +759,6 @@
 
 
     function user_activation() {
-        ob_start();
     if (isset($_GET['user_auth'])){
         $user_auth=$_GET['user_auth'];
         //get user data
@@ -774,7 +773,6 @@
     }else{
             echo "<h3>Sorry Error 404</h3>";
         }
-      return ob_get_clean();  
     }
 
     // add_shortcode( 'user_activation', 'user_activation' );
