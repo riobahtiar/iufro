@@ -69,6 +69,8 @@ if(isset($user_detail['euser_addon_post'])){
 
 if(isset($user_detail['euser_addon_dinner'])){
   $string_dinner=" Yes ";
+}else{
+  $string_dinner=" No ";
 }
 
 

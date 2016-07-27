@@ -759,9 +759,9 @@
     function user_activation() {
         ob_start();
     if (isset($_GET['user_auth'])){
-        $user_auth=$_GET['user_auth'];
+        $user_auth= sanitize_text_field( $_GET['user_auth'] );
         //get user data
-        global $wpdb;
+        global $wpdb; 
         $query="SELECT * FROM wp_ss_event_user_detail WHERE euser_activationkey = '{$user_auth}'";
         $user_detail = $wpdb->get_row( $query, ARRAY_A );
         $userchecker = $wpdb->update( 

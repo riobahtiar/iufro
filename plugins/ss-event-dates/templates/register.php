@@ -141,12 +141,12 @@ $body .= '
                         <tr>
                             <td>Username</td>
                             <td>:</td>
-                            <td>'.$randAct.'</td>
+                            <td>'.$fullname.'</td>
                         </tr>
                         <tr>
                             <td>Password</td>
                             <td>:</td>
-                            <td>'.$randAct.'</td>
+                            <td>'.$password.'</td>
                         </tr>
 
                     </tbody>
