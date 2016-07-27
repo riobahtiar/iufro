@@ -141,9 +141,7 @@
     }
 
     function ss_important_date() {
-        ob_start();
         html_important_date_code();
-        return ob_get_clean();
     }
 
     add_shortcode( 'ss_important_date', 'ss_important_date' );
@@ -236,9 +234,7 @@
     }
 
     function homepage_post() {
-        ob_start();
         html_homepage_post_code();
-        return ob_get_clean();
     }
 
     add_shortcode( 'homepage_post', 'homepage_post' );
