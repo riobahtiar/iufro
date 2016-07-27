@@ -141,7 +141,9 @@
     }
 
     function ss_important_date() {
+        ob_start();
         html_important_date_code();
+        return ob_get_clean();
     }
 
     add_shortcode( 'ss_important_date', 'ss_important_date' );
@@ -234,7 +236,9 @@
     }
 
     function homepage_post() {
+        ob_start();
         html_homepage_post_code();
+        return ob_get_clean();
     }
 
     add_shortcode( 'homepage_post', 'homepage_post' );
@@ -451,21 +455,21 @@
      * @param  array
      * @return string
      */
-    // function ss_event_system($atts)
-    // {
-    //     ob_start();
-    //     $attr = shortcode_atts(array('template' => ''), $atts);
-    //     extract($attr);
-    //     $__required_template = plugin_dir_path(__FILE__) . "templates/{$template}.php";
-    //     if (!empty($template) && file_exists($__required_template)) {
-    //         require_once $__required_template;
-    //     }
-    //     $contents = ob_get_contents();
-    //     ob_end_clean();
-    //     return $contents;
-    // }
+    function ss_event_system($atts)
+    {
+        ob_start();
+        $attr = shortcode_atts(array('template' => ''), $atts);
+        extract($attr);
+        $__required_template = plugin_dir_path(__FILE__) . "templates/{$template}.php";
+        if (!empty($template) && file_exists($__required_template)) {
+            require_once $__required_template;
+        }
+        $contents = ob_get_contents();
+        ob_end_clean();
+        return $contents;
+    }
 
-    // add_shortcode('ss_event_system', 'ss_event_system');
+    add_shortcode('ss_event_system', 'ss_event_system');
 
     /**
     * add metabox on custom post
@@ -755,6 +759,7 @@
 
 
     function user_activation() {
+        ob_start();
     if (isset($_GET['user_auth'])){
         $user_auth=$_GET['user_auth'];
         //get user data
@@ -769,6 +774,7 @@
     }else{
             echo "<h3>Sorry Error 404</h3>";
         }
+      return ob_get_clean();  
     }
 
     // add_shortcode( 'user_activation', 'user_activation' );
