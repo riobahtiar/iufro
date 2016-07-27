@@ -728,20 +728,20 @@
         }
     }
 
-    // Generator Acak string
-    function incrementalHash($len = 5){
-      $charset = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-      $base = strlen($charset);
-      $result = '';
+    // // Generator Acak string
+    // function incrementalHash($len = 5){
+    //   $charset = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    //   $base = strlen($charset);
+    //   $result = '';
 
-      $now = explode(' ', microtime())[1];
-      while ($now >= $base){
-        $i = $now % $base;
-        $result = $charset[$i] . $result;
-        $now /= $base;
-      }
-      return substr($result, -5);
-    }
+    //   $now = explode(' ', microtime())[1];
+    //   while ($now >= $base){
+    //     $i = $now % $base;
+    //     $result = $charset[$i] . $result;
+    //     $now /= $base;
+    //   }
+    //   return substr($result, -5);
+    // }
 
         // User activation
 
