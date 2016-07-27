@@ -775,7 +775,7 @@
       return ob_get_clean();  
     }
 
-    // add_shortcode( 'user_activation', 'user_activation' );
+     add_shortcode( 'user_activation', 'user_activation' );
 
         
 
