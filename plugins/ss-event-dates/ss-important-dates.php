@@ -762,27 +762,48 @@
         $user_auth=$_GET['user_auth'];
         //get user data
         global $wpdb;
-        $query="SELECT * FRpOM wp_ss_event_user_detail WHERE euser_activationkey = '{$user_auth}'";
+        $query="SELECT * FROM wp_ss_event_user_detail WHERE euser_activationkey = '{$user_auth}'";
         $user_detail = $wpdb->get_row( $query, ARRAY_A );
-        if (isset($user_auth)){
-            echo "<div class='alert alert-danger'>Congratulation ".$user_detail['euser_fullname'].", your account has been activated</div>";
-        }else{
+        $userchecker = $wpdb->update( 
+            'wp_ss_event_user_detail', 
+            array( 'euser_status' => 'activated' ), 
+            array( 'euser_activationkey' => $user_auth ), 
+            array( '%s'), 
+            array( '%s' ) 
+        );
+        if ( $userchecker === false ){
             echo "<div class='alert alert-danger'>
-<h1>Oops!</h1><br>
-<p>We can't seem to find the page you're looking for.</p>
-<h4>Error code: <strong>404</strong></h4>
-<br>
-<br></div>
-            ";
+                    <h1>Oops!</h1><br>
+                    <p>We can't seem to find the page you're looking for.</p>
+                    <h4>Error code: <strong>404</strong></h4>
+                    <br>
+                    <br></div>";
+        } elseif ( $userchecker === 0 ) {
+            echo "<div class='alert alert-danger'>
+                    <h1>Oops!</h1><br>
+                    <p>We can't seem to find the page you're looking for.</p>
+                    <h4>Error code: <strong>404</strong></h4>
+                    <br>
+                    <br></div>";
+        } elseif ( $userchecker > 0 ) {
+            echo "<div class='alert alert-danger'>Congratulation ".$user_detail['euser_fullname'].", your account has been activated. Please Login to your account to continue event registration.</div>";
+        } else{
+            echo "<div class='alert alert-danger'>
+                    <h1>Oops!</h1><br>
+                    <p>We can't seem to find the page you're looking for.</p>
+                    <h4>Error code: <strong>404</strong></h4>
+                    <br>
+                    <br></div>";
         }
+
     }else{
             echo "<div class='alert alert-danger'>
-<h1>Oops!</h1><br>
-<p>We can't seem to find the page you're looking for.</p>
-<h4>Error code: <strong>404</strong></h4>
-<br>
-<br></div>
-            ";        }
+                    <h1>Oops!</h1><br>
+                    <p>We can't seem to find the page you're looking for.</p>
+                    <h4>Error code: <strong>404</strong></h4>
+                    <br>
+                    <br></div>";
+    }
       return ob_get_clean();  
     }
 
