@@ -1734,9 +1734,9 @@
     ) );
 
     Redux::setSection( $opt_name, array(
-        'title'      => 'User',
+        'title'      => 'Conference',
         'id'         => 'iufro-user-control',
-        'desc'       => '',
+        'desc'       => 'Conference Settings',
         'subsection' => true,
         'icon'       => 'el el-blind',
         'fields'     => array(
@@ -1747,7 +1747,6 @@
                 'subtitle' => 'User Registration and management control',
                 'indent'   => true,
             ),
-
             array(
                 'id'       => 'user-register',
                 'type'     => 'switch',
@@ -1759,7 +1758,22 @@
                 'type'     => 'switch',
                 'title'    => 'Registration',
                 'subtitle' => 'tick on to enable login(it will also disable registration)',
+            ),
+            array(
+                'id'       => 'iufro-pricing-foregner',
+                'type'     => 'section',
+                'title'    => 'Pricing Configuration for Foreigner',
+                'subtitle' => 'User Registration and management control',
+                'indent'   => true,
+            ),  
+            array(
+                'id'       => 'user-login',
+                'type'     => 'switch',
+                'title'    => 'Registration',
+                'subtitle' => 'tick on to enable login(it will also disable registration)',
             )
+
+
 
         ) 
     ) );

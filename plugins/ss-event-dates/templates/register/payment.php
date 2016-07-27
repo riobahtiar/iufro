@@ -70,15 +70,37 @@ if(isset($post_conf_var['package_detail'])){
   $price_post_conf = 0;
 }
 
+    // Paymen Dates Earlybird
+    $paymentDate = date('Y-m-d');
+    $paymentDate=date('Y-m-d', strtotime($paymentDate));
+    $earlyBirdBegin = date('Y-m-d', strtotime("01/1/2016"));
+    $earlyBirdEnd = date('Y-m-d', strtotime("04/30/2017"));
+
+
 if ($user_detail['euser_type']=="local student") {
   $user_string = "Local | Students ( Rates apply USD 20 )";
   $total_price=$price_post_conf+20;
 }elseif ($user_detail['euser_type']=="local regular") {
-  $user_string = "Local | Regular ( Rates apply USD 30 )";
-  $total_price=$price_post_conf+30;
+  // Early Bird Conf
+    if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd))
+    {
+        $user_string = "Local | Regular ( Early Bird rates apply USD 23 )";
+        $total_price=$price_post_conf+23;
+    } else {
+        $user_string = "Local | Regular ( Rates apply USD 39 )";
+        $total_price=$price_post_conf+39;
+    }
 }elseif ($user_detail['euser_type']=="foreigner") {
-  $user_string = "Foreign   ( Rates apply USD 400 )";
-  $total_price=$price_post_conf+400;
+
+    if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd))
+    {
+        $user_string = "Foreign ( Early Bird rates apply USD 350 )";
+        $total_price=$price_post_conf+350;
+    } else {
+        $user_string = "Foreign ( Rates apply USD 400 )";
+        $total_price=$price_post_conf+400;
+    }
+
 }else{
   $total_price=0;
 }
