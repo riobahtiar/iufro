@@ -39,7 +39,8 @@ function complete_registration($fullname, $password, $email, $phone, $address, $
         'country'   	=>   $country,
         );
         $user = wp_insert_user( $userdata );
-        echo 'Please login and complete your registeration here <a href="' . get_site_url() . '/login">login page</a>.'; 
+        echo '<div class="well register-thankyou">Thank you for registering on IUFRO ACACIA CONFERENCE 2017.<br>
+Please check your email to activate your account.</div>'; 
         //echo "<br>Validate Data 2 ". $fullname." + ".$password." + ".$email." + ".$phone." + ".$address." + ".$zip." + ".$city." + ".$state." + ".$country." + ".$user_reg_type;
         return 1;    
 }
@@ -94,7 +95,7 @@ $randAct=generateRandomString(15);
 
 // The Email Account
 $to = $email;
-$subject = 'Registration  IUFRO ACACIA 2017';
+$subject = 'Email Activation | IUFRO ACACIA CONFERENCE 2017';
 
 $body = '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -128,7 +129,7 @@ $body = '
                 <h2 style="text-align:center;color:#809062;margin-top: 0;">Dear Sir / Madam</h2>
             </div>
             <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
-                Welcome to your personal IUFRO ACACIA 2017 account.
+                Welcome to your personal IUFRO ACACIA CONFERENCE 2017 account.
             </div>
             <div style="width:100%;text-align: left;border-bottom:1px solid #809062;">
                 <p>Below are your login details:</p>
@@ -140,7 +141,7 @@ $body .= '
                         <tr>
                             <td>Username</td>
                             <td>:</td>
-                            <td>'.$fullname.'</td>
+                            <td>'.$email.'</td>
                         </tr>
                         <tr>
                             <td>Password</td>

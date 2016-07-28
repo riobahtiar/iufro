@@ -786,7 +786,7 @@
                     <br>
                     <br></div>";
         } elseif ( $userchecker > 0 ) {
-            echo "<div class='alert alert-danger'>Congratulation ".$user_detail['euser_fullname'].", your account has been activated. Please Login to your account to continue event registration.</div>";
+            echo "<div class='alert alert-danger'>Congratulation ".$user_detail['euser_fullname'].", your account has been activated. Please <a href='".get_permalink()."/login'>Login</a> to your account to continue event registration.</div>";
         } else{
             echo "<div class='alert alert-danger'>
                     <h1>Oops!</h1><br>
