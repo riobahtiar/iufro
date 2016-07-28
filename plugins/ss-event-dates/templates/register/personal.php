@@ -66,7 +66,7 @@ Paticipant also able to join extra field trip during the conference (extra charg
 		  	</div>
 		  	<div class="form-group form-group col-md-6">
 		    	<label for="phone">Phone number</label>
-		    	<input type="number" class="form-control" name="phone" id="phone" placeholder="Phone Number" value="<?php if(isset( $_POST['phone'] ))  echo $_POST['phone']; else echo null; ?>" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+		    	<input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number" value="<?php if(isset( $_POST['phone'] ))  echo $_POST['phone']; else echo null; ?>" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 		  	</div>
 	  	</div>
 	  	<div class="row">
@@ -86,7 +86,7 @@ Paticipant also able to join extra field trip during the conference (extra charg
 	  	<div class="row">
 		  	<div class="form-group col-md-6">
 		    	<label for="zip">Zip Code</label>
-		    	<input type="number" class="form-control" name="zip" id="zip" placeholder="Zip Code" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="<?php if(isset( $_POST['zip'] ))  echo $_POST['zip']; else echo null; ?>">
+		    	<input type="text" class="form-control" name="zip" id="zip" placeholder="Zip Code" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="<?php if(isset( $_POST['zip'] ))  echo $_POST['zip']; else echo null; ?>">
 		  	</div>
 		  	<div class="form-group form-group col-md-6">
 		    	<label for="city">City</label>

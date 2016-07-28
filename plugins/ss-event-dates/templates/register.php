@@ -96,7 +96,7 @@ $randAct=generateRandomString(15);
 $to = $email;
 $subject = 'Registration  IUFRO ACACIA 2017';
 
-$body .= '
+$body = '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -132,8 +132,7 @@ $body .= '
             </div>
             <div style="width:100%;text-align: left;border-bottom:1px solid #809062;">
                 <p>Below are your login details:</p>
-            </div>
-';
+            </div>';
 $body .= '
 <div id="registration" style="padding:15px 0;">
                 <table>
@@ -156,7 +155,6 @@ $body .= '
                 <p>To activate your IUFRO ACACIA 2017 account please validate your email address. Simply click the button below:</p>
                 <a href="http://staging.iufroacacia2017.com/redir_xcmil?user_auth='.$randAct.'&fromxmail=true" style="background-color: #809062;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">ACTIVATE</a>
             </div>
-
 ';
 
 
