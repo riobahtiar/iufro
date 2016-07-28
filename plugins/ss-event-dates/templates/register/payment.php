@@ -83,40 +83,38 @@ if(isset($user_detail['euser_addon_dinner'])){
 
 
 if ($user_detail['euser_type']=="local student") {
-  $user_string = "Local | Students ( Rates apply USD 20 )";
+  $user_string = "Local | Students";
   $total_price=$price_post_conf+20;
+  $user_price=20;
 }elseif ($user_detail['euser_type']=="local regular") {
   // Early Bird Conf
     if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd))
     {
-        $user_string = "Local | Regular ( Early Bird rates apply USD 23 )";
+        $user_string = "Local | Regular ( Early Bird Rates )";
         $total_price=$price_post_conf+23;
+        $user_price=23;
     } else {
-        $user_string = "Local | Regular ( Rates apply USD 39 )";
+        $user_string = "Local | Regular ( Regular Rates )";
         $total_price=$price_post_conf+39;
+        $user_price=39;
     }
 }elseif ($user_detail['euser_type']=="foreigner") {
 
     if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd))
     {
-        $user_string = "Foreign ( Early Bird rates apply USD 350 )";
+        $user_string = "Foreign ( Early Bird Rates )";
         $total_price=$price_post_conf+350;
+        $user_price=350;
     } else {
-        $user_string = "Foreign ( Rates apply USD 400 )";
+        $user_string = "Foreign ( Regular Rates )";
         $total_price=$price_post_conf+400;
+        $user_price=400;
     }
 
 }else{
   $total_price=0;
 }
 
-  // Get Redux Settings
-  global $ss_theme_opt; 
-  
-  //-----------PAGE HEADER-------------------
-  if(isset($ss_theme_opt['datatest'])){
-      echo "<div class='well'>".$user_detail['euser_type']." Redux Settings OK".$ss_theme_opt['datatest']." </div>";
-  }
 
 ?>
 
@@ -124,26 +122,13 @@ if ($user_detail['euser_type']=="local student") {
 <h3>Summaries</h3>
 <div class="payment-info">
 <p>Here you can see the details of your transaction activity.</p>
-<h4>Type of Membership</h4>
-<p>you are choose <?php echo $user_string; ?></p>
 <hr>
 <h4>Add On Facilities</h4>
 <div class="row">
 <div class="col-md-6">
-<h5>Field Trip</h5>
-<dl class="dl-horizontal">
-  <dt>Mid Conference Trip</dt>
-  <dd><?php echo $string_mid_conf; ?>  </dd>
-</dl>
-<dl class="dl-horizontal">
-  <dt>Post Conference Trip</dt>
-  <dd><?php echo $string_post_conf; ?> </dd>
-</dl>
-<dl class="dl-horizontal">
-  <dt>Dinner Conference</dt>
-  <dd><?php echo $string_dinner; ?></dd>
-</dl>
+
 </div>
+<?php if ($user_detail['euser_meta_type']!="participant_type") {?>
 <div class="col-md-6">
 <h5>Your Documents</h5>
 <?php 
@@ -178,18 +163,74 @@ if(!empty($poster_download)){
 }
 ?>
 </div>
+<?php } ?>
 <div class="col-md-12">
-<br><br><br>
+<table class="table table-bordered">
+    <thead>
+      <tr class="success">
+        <th>No</th>
+        <th>Name</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1 </td>
+        <td>
+<dl class="dl-horizontal">
+  <dt>Membership</dt>
+  <dd><?php echo $user_string; ?>  </dd>
+</dl>
+        </td>
+        <td><?php echo $user_price; ?></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>
+<dl class="dl-horizontal">
+  <dt>Mid Conference Trip</dt>
+  <dd><?php echo $string_mid_conf; ?>  </dd>
+</dl>
+        </td>
+        <td>Free</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>
+<dl class="dl-horizontal">
+  <dt>Post Conference Trip</dt>
+  <dd><?php echo $string_post_conf; ?> </dd>
+</dl>
+
+        </td>
+        <td>$<?php echo $price_post_conf; ?></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>
+<dl class="dl-horizontal">
+  <dt>Dinner Conference</dt>
+  <dd><?php echo $string_dinner; ?></dd>
+</dl>
+        </td>
+        <td> Free </td>
+      </tr>
+    </tbody>
+    <tfoot>
+    <tr class="success">
+      <td colspan="2" > Net Total </td>
+      <td>$<?php echo $total_price; ?> USD</td>
+    </tr>
+  </tfoot>
+  </table>
+
+</div>
 <hr>
-<div>
+<?php if ($user_detail['euser_meta_type']!="participant_type") {?>
+<div class="well payment-alert">
   You may continue to the payment after your document has been Approved by us. 
 </div>
-
-<dl class="dl-horizontal">
-  <dt>NET Total</dt>
-  <dd><h3>USD <?php echo $total_price; ?></h3></dd>
-</dl>
-</div>
+<?php } ?>
 </div><!-- row -->
 
 </div>

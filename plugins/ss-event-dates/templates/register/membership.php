@@ -42,7 +42,7 @@ Please choose your local type:<br>
 				<div class="panel panel-default">
 					<div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#foreign">
 					 	<h2 class="panel-title accordion-toggle">
-							<label><input type="radio" name="account" value="foreign"> <i class="fa fa-user" aria-hidden="true"></i> Foreinger </label> <span class="pull-right">Detail <i class="fa fa-question-circle" aria-hidden="true"></i></span>
+							<label><input type="radio" name="account" value="foreign"> <i class="fa fa-user" aria-hidden="true"></i> Foreigner </label> <span class="pull-right">Detail <i class="fa fa-question-circle" aria-hidden="true"></i></span>
 						</h2>
 					</div>
 					<div id="foreign" class="panel-collapse collapse in">

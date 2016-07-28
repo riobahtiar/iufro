@@ -111,27 +111,15 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 		<label> <span>Upload Poster</span> <input id="mydoc3" name="poster" type="file" /></label>
 	</div>
 	<div>
-<?php }
-
-else{
-?>
-
-<div class="well">
-<input id="okeread" type="checkbox" name="readme_ok" value="readme">&nbsp; Oke I already check all the information I have entered. and ready to go payment
-</div>
+<?php } ?>
 
 
-<?php
-}
-
-
- ?>
 		<a href="<?php echo get_permalink(); ?>?step=membership" class="btn btn-default pull-left">Back</a>
-	  	<button id="btnval" type="submit" name="submit" class="btn btn-default pull-right" value="addon" disabled>Next</button>
+	  	<button id="btnval" type="submit" name="submit" class="btn btn-default pull-right" value="addon" <?php if ( $user_detail['euser_meta_type'] == 'author_type' ) {?>disabled<?php } ?>>Next</button>
 	</div>
 </div>
 </form>
-
+<?php if ($user_detail['euser_meta_type'] == 'author_type') {?>
 <script type="text/javascript">
 //validate all form upload
 	jQuery('#form-addon').on('change', function() {
@@ -154,3 +142,4 @@ else{
 			    
 	});
 </script>
+<?php } ?>
