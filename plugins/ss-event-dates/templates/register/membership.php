@@ -67,69 +67,6 @@ The payable fee covers registration for the Conference, welcome reception, banqu
 	</form>
 </div>
 <script type="text/javascript">
-	// jQuery('#form-membership').on('change', function() {
-	//    if(jQuery('input[name=local]:checked', '#form-membership').val()=="regular"){
-	//    		jQuery( "#std-card" ).addClass( "hidden" );
-	//    }
-	//    if(jQuery('input[name=local]:checked', '#form-membership').val()=="student"){
-	//    		jQuery( "#std-card" ).removeClass( "hidden" );
-	//    }  
-	// });
-
-	// jQuery("#form-membership").submit(function(e){
-	// 	// alert('please upload your student card');
-	// 	if(jQuery('input[name=local]:checked', '#form-membership').val()=="student"){
-	//    		if (jQuery('#input-card').val()==''){
-	// 			alert('please upload your student card');
-	// 			e.preventDefault(e);
-	// 		}	
-	//    	}  	
- //    });
-	jQuery('#form-membership button').click(function() {
-	   if(jQuery('input[name=account]:checked').val()=="local"){
-	   		// Run Second code
-			   if(jQuery('input[name=local]:checked').val()=="regular"){
-			   		jQuery( "#std-card" ).addClass( "hidden" );
-			   }
-
-			   if(jQuery('input[name=local]:checked').val()=="student"){
-			   		jQuery( "#std-card" ).removeClass( "hidden" );
-
-			   		if (jQuery('#input-card').val() !==''){
-						jQuery("#form-membership").submit();
-			   		} else {
-			   			alert("student card is empty")
-			   		}
-			   }  
-
-	   } else {
-	   		jQuery( "#std-card" ).removeClass( "hidden" );
-	   		jQuery('input[name=local]').prop('checked', false);
-	   }  
-	   return false;
-	});
-
-
-
-
-
-
-
-
-// var makeRadiosDeselectableByName = function(name){
-//     $('input[name=' + name + ']').click(function() {
-//         if($(this).attr('previousValue') == 'true'){
-//             $(this).attr('checked', false)
-//         } else {
-//             $('input[name=' + name + ']').attr('previousValue', false);
-//         }
-
-//         $(this).attr('previousValue', $(this).attr('checked'));
-//     });
-// };
-
-
-
 
 </script>
 
