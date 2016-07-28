@@ -23,8 +23,6 @@ if(isset($_GET['step']) && $_GET['step']=="membership"){
 					</div>
 					<div id="local" class="panel-collapse collapse">
 						<div class="panel-body">
-Able to upload and download papers.<br><br>
-
 Registration fee for local :<br>
 - Early bird registration (1st January - 30th April 2017) : USD 23<br>
 - Regular registration (1st May - 24th July 2017) : USD 39<br>
@@ -49,8 +47,6 @@ Please choose your local type:<br>
 					</div>
 					<div id="foreign" class="panel-collapse collapse in">
 						<div class="panel-body">
-Able to upload and download papers.<br><br>
-
 Registration fee for foreigner :<br>
 - Early bird registration (1st January - 30th April 2017) : USD 350<br>
 - Regular registration (1st May - 24th July 2017) : USD 400<br><br>
@@ -71,14 +67,14 @@ The payable fee covers registration for the Conference, welcome reception, banqu
 	</form>
 </div>
 <script type="text/javascript">
-	jQuery('#form-membership').on('change', function() {
-	   if(jQuery('input[name=local]:checked', '#form-membership').val()=="regular"){
-	   		jQuery( "#std-card" ).addClass( "hidden" );
-	   }
-	   if(jQuery('input[name=local]:checked', '#form-membership').val()=="student"){
-	   		jQuery( "#std-card" ).removeClass( "hidden" );
-	   }  
-	});
+	// jQuery('#form-membership').on('change', function() {
+	//    if(jQuery('input[name=local]:checked', '#form-membership').val()=="regular"){
+	//    		jQuery( "#std-card" ).addClass( "hidden" );
+	//    }
+	//    if(jQuery('input[name=local]:checked', '#form-membership').val()=="student"){
+	//    		jQuery( "#std-card" ).removeClass( "hidden" );
+	//    }  
+	// });
 
 	// jQuery("#form-membership").submit(function(e){
 	// 	// alert('please upload your student card');
@@ -89,5 +85,51 @@ The payable fee covers registration for the Conference, welcome reception, banqu
 	// 		}	
 	//    	}  	
  //    });
+	jQuery('#form-membership button').click(function() {
+	   if(jQuery('input[name=account]:checked').val()=="local"){
+	   		// Run Second code
+			   if(jQuery('input[name=local]:checked').val()=="regular"){
+			   		jQuery( "#std-card" ).addClass( "hidden" );
+			   }
+
+			   if(jQuery('input[name=local]:checked').val()=="student"){
+			   		jQuery( "#std-card" ).removeClass( "hidden" );
+
+			   		if (jQuery('#input-card').val() !==''){
+						jQuery("#form-membership").submit();
+			   		} else {
+			   			alert("student card is empty")
+			   		}
+			   }  
+
+	   } else {
+	   		jQuery( "#std-card" ).removeClass( "hidden" );
+	   		jQuery('input[name=local]').prop('checked', false);
+	   }  
+	   return false;
+	});
+
+
+
+
+
+
+
+
+// var makeRadiosDeselectableByName = function(name){
+//     $('input[name=' + name + ']').click(function() {
+//         if($(this).attr('previousValue') == 'true'){
+//             $(this).attr('checked', false)
+//         } else {
+//             $('input[name=' + name + ']').attr('previousValue', false);
+//         }
+
+//         $(this).attr('previousValue', $(this).attr('checked'));
+//     });
+// };
+
+
+
+
 </script>
 
