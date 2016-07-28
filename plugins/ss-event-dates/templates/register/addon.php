@@ -37,7 +37,7 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Gunungkidul.jpg" alt = "Gunungkidul">
 			     	</div>
 			      	Gunungkidul<br>
-			    	<a href="<?php echo site_url(); ?>/field-trip/pacitan/" target="_blank">Learn more.</a> 
+			    	<a href="<?php echo site_url(); ?>/field-trip/gunung-kidul" target="_blank">Learn more.</a> 
 			    </div>
 				<div class="col-md-6">
 					<input type="radio" name="mid-conf-child" value="klaten">

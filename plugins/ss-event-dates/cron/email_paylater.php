@@ -1,7 +1,12 @@
-<?php 
+<?php
+	$parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
+	require_once( $parse_uri[0] . 'wp-load.php' );
+	
+	global $current_user;
+    get_currentuserinfo();
+  	$euser_email = $current_user->user_email;
 
-// Cron Job Email Reminder for Users 
-
-
-// define('__ROOT__', dirname(dirname(__FILE__))); 
-// require_once(__ROOT__.'/config.php'); 
+	global $wpdb;
+	$query="SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email}'";
+	$user_detail = $wpdb->get_row( $query, ARRAY_A );
+?>

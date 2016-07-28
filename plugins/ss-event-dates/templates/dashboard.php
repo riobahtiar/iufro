@@ -9,7 +9,7 @@ if ( isset($_POST['submit']) ){
 
 
 // get detail user from wordpress user
-global $current_user;
+	global $current_user;
     wp_get_current_user();
   	$euser_email = $current_user->user_email;
 
@@ -19,7 +19,6 @@ if(!is_user_logged_in()){
 	wp_redirect(get_site_url().'/login');
 
 }else{
-echo " -success login- "; 
 
 	global $wpdb;
 	$query="SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email}'";

@@ -1,5 +1,28 @@
 <h3>Your Profile</h3>
 <div class="container">
+<?php
+	global $current_user;
+    wp_get_current_user();
+  	$euser_email = $current_user->user_email;
+  	global $wpdb;
+	$query="SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email}'";
+	$user_detail = $wpdb->get_row( $query, ARRAY_A );
+
+if($user_detail['euser_meta_type']!=="free"){ ?>
+	<div class="row">
+		<div class="col-md-4"><h3>User Dashboard</h3></div>
+
+		<div class="col-md-8">
+		<ol class="breadcrumb">
+		  <li><a href="<?php echo get_permalink()."?step=membership"; ?>">Membership</a></li>
+		  <li><a href="<?php echo get_permalink()."?step=addon"; ?>">Addons</a></li>
+		  <li><a href="<?php echo get_permalink()."?step=payment"; ?>">Payment Summary</a></li>
+		</ol>
+		</div>
+	</div><!-- end row -->
+
+<?php } ?>
+
 	<div id="main-profile">
 		<div class="col-md-8">
 			<table class="table">

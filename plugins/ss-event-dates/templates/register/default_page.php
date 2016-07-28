@@ -8,7 +8,7 @@
   <li><a href="<?php echo get_permalink()."?step=payment"; ?>">Payment Summary</a></li>
 </ol>
 </div>
-</div>
+</div><!-- end row -->
 </div>
 
 

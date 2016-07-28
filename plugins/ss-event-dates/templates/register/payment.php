@@ -182,7 +182,7 @@ if(!empty($poster_download)){
   <dd><?php echo $user_string; ?>  </dd>
 </dl>
         </td>
-        <td><?php echo $user_price; ?></td>
+        <td>US$ <?php echo $user_price; ?></td>
       </tr>
       <tr>
         <td>2</td>
@@ -203,7 +203,7 @@ if(!empty($poster_download)){
 </dl>
 
         </td>
-        <td>$<?php echo $price_post_conf; ?></td>
+        <td>US$ <?php echo $price_post_conf; ?></td>
       </tr>
       <tr>
         <td>4</td>
@@ -219,7 +219,7 @@ if(!empty($poster_download)){
     <tfoot>
     <tr class="success">
       <td colspan="2" > Net Total </td>
-      <td>$<?php echo $total_price; ?> USD</td>
+      <td>US$ <?php echo $total_price; ?></td>
     </tr>
   </tfoot>
   </table>

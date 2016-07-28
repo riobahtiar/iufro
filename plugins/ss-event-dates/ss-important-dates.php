@@ -129,7 +129,7 @@
     				            -moz-background-size: cover;
     				            -o-background-size: cover;"
     				    class="imgf ">';
-    	      	//echo " 	<a href=".post_permalink($post->ID).">view detail</a>";
+    	      	//echo " 	<a href=".get_permalink($post->ID).">view detail</a>";
                 echo '  <a href="http://www.iufroacacia2017.com/dates-venue/dates/">view detail</a>';
             	echo '	</div></div>';
             	echo '	</div>';
@@ -179,7 +179,7 @@
      			echo '<div class="content">';
      			the_excerpt();
      			echo '</div>';
-     			echo '<a class="btn" href="'.post_permalink($post->ID).'">Read More</a>';
+     			echo '<a class="btn" href="'.get_permalink($post->ID).'">Read More</a>';
      			echo '</div>';
      			break;
         	endwhile;
@@ -195,7 +195,7 @@
 
         	while ( $custom_query->have_posts() ) : $custom_query->the_post();
         		echo '<div class="col-md-12">';
-     			echo '<div class="title"><a href="'.post_permalink($post->ID).'">';
+     			echo '<div class="title"><a href="'.get_permalink($post->ID).'">';
      			the_title();
      			echo '</a></div>';
      			echo '<div class="content">';
@@ -214,7 +214,7 @@
         	echo '<div role="tabpanel" class="tab-pane" id="popular">';
     		while ( $custom_query->have_posts() ) : $custom_query->the_post();
      		echo '<div class="col-md-12">';
-     			echo '<div class="title"><a href="'.post_permalink($post->ID).'">';
+     			echo '<div class="title"><a href="'.get_permalink($post->ID).'">';
      			the_title();
      			echo '</a></div>';
      			echo '<div class="content">';

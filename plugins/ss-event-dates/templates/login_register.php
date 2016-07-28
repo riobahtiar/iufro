@@ -14,6 +14,6 @@
 	global $current_user;
 	wp_get_current_user(); 
 	echo $current_user->display_name;	
-?>, <a class="edit-my-profile" href="<?php echo get_site_url().'/login/user_dashboard?step=detail_profil' ?>">Edit Profile</a>
+?>
 </div>
 <?php }?>
