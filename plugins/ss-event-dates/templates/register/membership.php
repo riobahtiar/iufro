@@ -67,6 +67,35 @@ The payable fee covers registration for the Conference, welcome reception, banqu
 	</form>
 </div>
 <script type="text/javascript">
+	jQuery('#form-membership').on("change", function(){
+		if(jQuery('input[name=account]:checked').val()=="local"){
+	   		// Run Second code
+			   if(jQuery('input[name=local]:checked').val()=="regular"){
+			   		jQuery( "#std-card" ).addClass( "hidden" );
+			   }
 
+			   if(jQuery('input[name=local]:checked').val()=="student"){
+			   		jQuery( "#std-card" ).removeClass( "hidden" );
+			   }  
+
+	   } else {
+	   		jQuery( "#std-card" ).removeClass( "hidden" );
+	   		jQuery('input[name=local]').prop('checked', false);
+	   } 
+	})
+
+	jQuery('#form-membership button').click(function() {
+	   if(jQuery('input[name=account]:checked').val()=="local"){
+			   if(jQuery('input[name=local]:checked').val()=="student"){
+			   		if (jQuery('#input-card').val() !==''){
+						jQuery("#form-membership").submit();
+			   		} else {
+			   			alert("student card is empty");
+			   			return false;
+			   		}
+			   }  
+
+	   }
+	});
 </script>
 
