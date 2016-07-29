@@ -12,11 +12,11 @@
 
 <?php if($user_detail['euser_meta_type']!=="free_type"){ ?>
 		<div class="col-md-8">
-		<ol class="user_dashboard">
+		<ul class="menu-dashboard">
 		  <li><a href="<?php echo get_permalink()."?step=membership"; ?>">Membership</a></li>
 		  <li><a href="<?php echo get_permalink()."?step=addon"; ?>">Addons</a></li>
 		  <li><a href="<?php echo get_permalink()."?step=payment"; ?>">Payment Summary</a></li>
-		</ol>
+		</ul>
 		</div>
 <?php } ?>
 	</div><!-- end row -->
