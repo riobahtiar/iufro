@@ -48,7 +48,7 @@
 		</div>
 		<div class="col-md-4">
 			<button class="btn" id="change-password" onclick="changePassword()">Change Password</button>
-			<?php if($user_detail['euser_type']=="free"){ ?>
+			<?php if($user_detail['euser_meta_type']=="free_type"){ ?>
 				<button class="btn" id="change-type" onclick="resetMembership()">upgrade participant type</button>
 			<?php } ?>
 		</div>
