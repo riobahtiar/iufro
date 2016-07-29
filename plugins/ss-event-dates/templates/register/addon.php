@@ -86,12 +86,10 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 			</div>
 		</div>
 	</div>
-	<?php if ($user_detail['euser_type']!="foreigner") {?>
 	<div class="field-trip">
 		<div class="col-md-8"> <span>Dinner Conference<span> </div>
 		<div class="col-md-4"><input class="switch-btn" data-on="Yes" data-off="No" type="checkbox" name="dinner-conf" checked data-toggle="toggle"></div>
 	</div>
-	<?php } ?>
 <br>
 
 
