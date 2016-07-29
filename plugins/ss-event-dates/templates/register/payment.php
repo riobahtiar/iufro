@@ -123,7 +123,6 @@ if ($user_detail['euser_type']=="local student") {
 <div class="payment-info">
 <p>Here you can see the details of your transaction activity.</p>
 <hr>
-<h4>Add On Facilities</h4>
 <div class="row">
 <div class="col-md-6">
 

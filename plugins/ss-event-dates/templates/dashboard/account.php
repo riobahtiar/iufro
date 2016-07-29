@@ -1,4 +1,3 @@
-<h3>Your Profile</h3>
 <div class="container">
 <?php
 	global $current_user;
@@ -7,11 +6,11 @@
   	global $wpdb;
 	$query="SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email}'";
 	$user_detail = $wpdb->get_row( $query, ARRAY_A );
-
-if($user_detail['euser_meta_type']!=="free"){ ?>
+ ?>
 	<div class="row">
 		<div class="col-md-4"><h3>User Dashboard</h3></div>
 
+<?php if($user_detail['euser_meta_type']!=="free_type"){ ?>
 		<div class="col-md-8">
 		<ol class="breadcrumb">
 		  <li><a href="<?php echo get_permalink()."?step=membership"; ?>">Membership</a></li>
@@ -19,9 +18,10 @@ if($user_detail['euser_meta_type']!=="free"){ ?>
 		  <li><a href="<?php echo get_permalink()."?step=payment"; ?>">Payment Summary</a></li>
 		</ol>
 		</div>
+<?php } ?>
 	</div><!-- end row -->
 
-<?php } ?>
+
 
 	<div id="main-profile">
 		<div class="col-md-8">
