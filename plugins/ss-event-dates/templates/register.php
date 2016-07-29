@@ -3,6 +3,7 @@ $success = 0;
 
 if ( isset($_POST['submit'] ) ) {
     $fullname   =   sanitize_user( $_POST['salutation'].$_POST['title']." ".$_POST['fullname'] );
+    $c_password   =   esc_attr( $_POST['c_password'] );
     $password   =   esc_attr( $_POST['password'] );
     $email      =   sanitize_email( $_POST['email'] );
     $phone      =   sanitize_text_field( $_POST['phone'] );
