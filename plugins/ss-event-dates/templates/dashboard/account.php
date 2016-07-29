@@ -40,7 +40,7 @@
 		<div class="col-md-8">
 			<table class="table">
 				<tr><td>Username</td><td>:</td><td><?php echo $user_detail['euser_email']; ?></td></tr>
-				<tr><td>User type</td><td>:</td><td><?php echo $user_detail['euser_type']; ?> participant</td></tr>
+				<tr><td>User type</td><td>:</td><td><?php echo $user_detail['euser_meta_type']; ?> participant</td></tr>
 				<?php if($user_detail['euser_type']=="local student"){ ?>
 				<tr><td>Student Card</td><td>:</td><td><img class="student-card" src="<?php echo wp_get_attachment_url($user_detail['euser_stdcard_id']); ?>" ></td></tr>	
 				<?php }?>
