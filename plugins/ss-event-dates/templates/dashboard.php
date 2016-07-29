@@ -76,11 +76,11 @@ if(!is_user_logged_in()){
 								require_once dirname(__FILE__) . '/register/pay_later.php';
 								break;
 							case 'default':
-								require_once dirname(__FILE__) . '/register/default_page.php';
+								require_once dirname(__FILE__) . '/dashboard/account.php';
 								break;
 
 							default:
-								require_once dirname(__FILE__) . '/register/default_page.php';
+								require_once dirname(__FILE__) . '/dashboard/account.php';
 								break;
 						}
 					}else{
@@ -89,7 +89,7 @@ if(!is_user_logged_in()){
 						} else if ($user_detail['euser_payment']==0){
 							require_once dirname(__FILE__) . '/register/payment.php';
 						} else {
-							require_once dirname(__FILE__) . '/register/default_page.php';
+							require_once dirname(__FILE__) . '/dashboard/account.php';
 						}
 					} 				
 			}

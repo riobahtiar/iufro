@@ -37,7 +37,7 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Gunungkidul.jpg" alt = "Gunungkidul">
 			     	</div>
 			      	Gunungkidul<br>
-			    	<a href="<?php echo site_url(); ?>/field-trip/gunung-kidul" target="_blank">Learn more.</a> 
+			    	<a href="<?php echo site_url(); ?>/field-trip/gunung-kidul" target="_blank">Learn more</a> 
 			    </div>
 				<div class="col-md-6">
 					<input type="radio" name="mid-conf-child" value="klaten">
@@ -45,7 +45,7 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Klaten.jpg" alt = "Klaten">
 			     	</div>
 			    	Klaten<br>
-			    	<a href="<?php echo site_url(); ?>/field-trip/klaten/" target="_blank">Learn more.</a> 
+			    	<a href="<?php echo site_url(); ?>/field-trip/klaten/" target="_blank">Learn more</a> 
 			    </div>
 			</div>
 		</div> 
@@ -60,7 +60,8 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 					<div class = "thumbnail">
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Pekanbaru.jpg" alt = "Pekanbaru">
 			     	</div>
-			      	Pekanbaru
+			      	Pekanbaru<br>
+			    	<a href="<?php echo site_url(); ?>/field-trip/pekanbaru" target="_blank">Learn more</a>
 			    </div>
 				<div class="col-md-6">
 					<input type="radio" name="post-conf-child" value="pacitan">
@@ -68,17 +69,17 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Pacitan.jpg" alt = "Pacitan">
 			     	</div>
 			    	Pacitan 
-			    	<p class="item-price-x">USD. 250/pax<br>
-			    	<a href="<?php echo site_url(); ?>/field-trip/pacitan/" target="_blank">Learn more.</a>
+			    	<p class="item-price-x">US$ 250/pax<br>
+			    	<a href="<?php echo site_url(); ?>/field-trip/pacitan/" target="_blank">Learn more</a>
 			    	</p>
 			    </div>
 			    <div class="col-md-12 pekanbaru-selected">
 <div class="custom-toggle" id="custom-toggle">
 <div class="well">
     <input type="radio" name="post-conf-child" id="single-room" value="pekanbaru_single">
-    Single room = USD. 510/pax<br>
+    Single room = US$ 510/pax<br>
     <input type="radio" name="post-conf-child" id="shared-room" value="pekanbaru_shared">
-    Shared room = USD. 475/pax
+    Shared room = US$ 475/pax
 </div>
 </div>
 			    </div>
