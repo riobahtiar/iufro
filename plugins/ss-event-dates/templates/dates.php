@@ -20,24 +20,23 @@
 		<div class="container ">
 		<?php while ( $custom_query->have_posts() ) : $custom_query->the_post();?>
 			<div class="col-md-12 pre-event-item">
-				<div class="col-md-12 text-center title">
-					<?php echo the_title() ?>
-				</div>
 				<div class="content-wrap">
-					<div class="col-md-3 dates">
+					<div class="col-md-4 dates">
 					<?php
-						echo '  <h2 class="date-day">'.date("d", strtotime( get_post_meta( get_the_ID(), 'rw_date', true ) )).'<span>'.date("S", strtotime( get_post_meta( get_the_ID(), 'rw_date', true ) )).'</span></h2>';
+						echo '  <div class="date-one"><h2 class="date-day">'.date("d", strtotime( get_post_meta( get_the_ID(), 'rw_date', true ) )).'<span>'.date("S", strtotime( get_post_meta( get_the_ID(), 'rw_date', true ) )).'</span></h2>';
 			        	if ((get_post_meta( get_the_ID(), 'rw_date_end', true ))){
-		        		echo '  <h4>'.date("F Y", strtotime( get_post_meta( get_the_ID(), 'rw_date', true ) )).'</h4>';
+		        		echo '  <h4>'.date("F Y", strtotime( get_post_meta( get_the_ID(), 'rw_date', true ) )).'</h4></div>';
 			        	echo '  <h2> - </h2>';
-			        	echo '  <h2 class="date-day">'.date("d", strtotime( get_post_meta( get_the_ID(), 'rw_date_end', true ) )).'<span>'.date("S", strtotime( get_post_meta( get_the_ID(), 'rw_date_end', true ) )).'</span></h2>';
-			        	echo '  <h4>'.date("F Y", strtotime( get_post_meta( get_the_ID(), 'rw_date_end', true ) )).'</h4>';
+
+			        	echo '  <div class="date-two"><h2 class="date-day">'.date("d", strtotime( get_post_meta( get_the_ID(), 'rw_date_end', true ) )).'<span>'.date("S", strtotime( get_post_meta( get_the_ID(), 'rw_date_end', true ) )).'</span></h2>';
+			        	echo '  <h4>'.date("F Y", strtotime( get_post_meta( get_the_ID(), 'rw_date_end', true ) )).'</h4></div>';
 			        	} else {
-			        	echo '  <h4>'.date("F Y", strtotime( get_post_meta( get_the_ID(), 'rw_date', true ) )).'</h4>';
+			        	echo '  <h4>'.date("F Y", strtotime( get_post_meta( get_the_ID(), 'rw_date', true ) )).'</h4></div>';
 			        	}
 		        	?>
 					</div>
-					<div class="col-md-9 content">
+					<div class="col-md-8 content">
+						<?php echo the_title() ?>
 						<?php echo the_content() ?>
 					</div>
 				</div>
