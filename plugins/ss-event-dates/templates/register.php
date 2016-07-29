@@ -54,7 +54,7 @@ function registration_validation( $fullname, $password, $email, $phone, $c_passw
 
     if ( is_wp_error( $reg_errors ) ) {
         foreach ( $reg_errors->get_error_messages() as $error ) {
-            echo '<div>';
+            echo '<div class="alert alert-warning">';
             echo '<strong>ERROR</strong>:';
             echo $error . '<br/>';
             echo '</div>';           
