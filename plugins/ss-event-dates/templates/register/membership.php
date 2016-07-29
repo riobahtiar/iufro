@@ -95,6 +95,9 @@ The payable fee covers registration for the Conference, welcome reception, banqu
 			   		}
 			   }  
 
+	   }else if(jQuery('input[name=account]').val()==''){
+	   		alert("Please choose one of membership type");
+			return false;
 	   }
 	});
 </script>
