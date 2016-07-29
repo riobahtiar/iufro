@@ -66,6 +66,7 @@ function registration_validation( $fullname, $password, $email, $phone, $c_passw
 
 
 function complete_registration($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type) {
+    global $reg_errors;
     if ( 1 > count( $reg_errors->get_error_messages() ) ) {
         $userdata = array(
         'user_login'    =>   $email,
@@ -98,6 +99,7 @@ function generateRandomString($length) {
 }
 
 function save_custom_userdata($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type){
+    global $reg_errors;
     if ( 1 > count( $reg_errors->get_error_messages() ) ) {
     global $wpdb;
     $wpdb->get_results( 'SELECT COUNT(*) FROM wp_ss_event_user_detail' );
