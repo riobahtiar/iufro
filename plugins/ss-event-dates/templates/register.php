@@ -13,10 +13,10 @@ if ( isset($_POST['submit'] ) ) {
     $country    =   sanitize_text_field( $_POST['country'] );
     $user_reg_type   =  $_POST['user_type'];
 
-    //save custom data into table  wp_ss_event_user_detail
+    registration_validation( $fullname, $password, $email, $phone, $c_password, $address, $zip, $city, $state, $country, $user_reg_type);
     save_custom_userdata($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type);
     $success = complete_registration($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type);
-    //echo "<br>Validate Data 1 ". $fullname." + ".$password." + ".$email." + ".$phone." + ".$address." + ".$zip." + ".$city." + ".$state." + ".$country." + ".$user_reg_type;
+
 
 }
 
@@ -25,7 +25,48 @@ if ($success == 0){
 }
 
 
+
+//
+if ($success == 0){
+    require_once dirname(__FILE__) . '/register/personal.php';
+}
+
+function registration_validation( $fullname, $password, $email, $phone, $c_password, $address, $zip, $city, $state, $country, $user_reg_type) {
+    global $reg_errors;
+    $reg_errors = new WP_Error;
+    if ( empty( $fullname ) || empty( $password ) || empty( $email ) || empty( $phone ) || empty( $c_password ) || empty( $zip ) || empty( $city ) || empty( $state ) || empty( $country ) || empty( $user_reg_type ) ) {
+        $reg_errors->add('field', 'Required form field is missing');
+    }
+    if ( 5 > strlen( $password ) ) {
+        $reg_errors->add( 'password', 'Password length must be greater than 5' );
+    }
+    if ($password != $c_password ) {
+        $reg_errors->add( 'password', 'Password and confirmation password must be same' );
+    }
+
+    if ( !is_email( $email ) ) {
+        $reg_errors->add( 'email_invalid', 'Email is not valid' );
+    }
+
+    if ( email_exists( $email ) ) {
+        $reg_errors->add( 'email', 'Email Already in use' );
+    }
+
+    if ( is_wp_error( $reg_errors ) ) {
+        foreach ( $reg_errors->get_error_messages() as $error ) {
+            echo '<div>';
+            echo '<strong>ERROR</strong>:';
+            echo $error . '<br/>';
+            echo '</div>';           
+        }    
+    }
+}
+
+
+
+
 function complete_registration($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type) {
+    if ( 1 > count( $reg_errors->get_error_messages() ) ) {
         $userdata = array(
         'user_login'    =>   $email,
         'user_email'    =>   $email,
@@ -42,7 +83,8 @@ function complete_registration($fullname, $password, $email, $phone, $address, $
         echo '<div class="well register-thankyou">Thank you for registering on IUFRO ACACIA CONFERENCE 2017.<br>
 Please check your email to activate your account.</div>'; 
         //echo "<br>Validate Data 2 ". $fullname." + ".$password." + ".$email." + ".$phone." + ".$address." + ".$zip." + ".$city." + ".$state." + ".$country." + ".$user_reg_type;
-        return 1;    
+        return 1;
+    }    
 }
 
 function generateRandomString($length) {
@@ -56,8 +98,8 @@ function generateRandomString($length) {
 }
 
 function save_custom_userdata($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type){
-    global $wpdb;
-
+    if ( 1 > count( $reg_errors->get_error_messages() ) ) {
+global $wpdb;
 $wpdb->get_results( 'SELECT COUNT(*) FROM wp_ss_event_user_detail' );
 $num_rows=$wpdb->num_rows;
 $barcode=$num_rows.date('Ymd').rand(1000, 9999);
@@ -178,7 +220,7 @@ $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
 $headers[] = 'Reply-To: IUFRO ACACIA TEAM <secretariat@iufroacacia2017.com>';
 $headers[] = 'Cc: Rio Hotmail <riobahtiar@live.com>'; // note you can just use a simple email address
 wp_mail( $to, $subject, $body, $headers );
-
+}
     }
 
 
