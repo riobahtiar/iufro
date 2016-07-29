@@ -36,6 +36,9 @@ if(isset($user_detail['euser_addon_mid'] )){
         }elseif ( $user_detail['euser_addon_mid'] == "klaten" ) {
           $string_mid_conf="Klaten";
           $price_mid_conf = 0;
+        }elseif ( $user_detail['euser_addon_mid'] == "mount-merapi" ) {
+          $string_mid_conf="Mount Merapi";
+          $price_mid_conf = 0;
         }else{
           $string_mid_conf=" - ";
           $price_mid_conf = 0;

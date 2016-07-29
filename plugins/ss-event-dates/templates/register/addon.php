@@ -47,6 +47,14 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 			    	Klaten<br>
 			    	<a href="<?php echo site_url(); ?>/field-trip/klaten/" target="_blank">Learn more</a> 
 			    </div>
+				<div class="col-md-6">
+					<input type="radio" name="mid-conf-child" value="mount-merapi">
+					<div class = "thumbnail">
+			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/merapi-1.png" alt = "Mount Merapi">
+			     	</div>
+			    	Mount Merapi<br>
+			    	<a href="<?php echo site_url(); ?>/field-trip/mount-merapi/" target="_blank">Learn more</a> 
+			    </div>
 			</div>
 		</div> 
 		<div class="col-md-6">
