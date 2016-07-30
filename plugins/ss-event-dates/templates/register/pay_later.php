@@ -33,13 +33,13 @@ if(isset($user_detail['euser_addon_mid'] )){
 if(isset($user_detail['euser_addon_post'])){
     // Pricing Post Conference
         if ( $user_detail['euser_addon_post'] == "pacitan" ) {
-          $string_post_conf="Pacitan ( USD 250 )";
+          $string_post_conf="Pacitan ( US$ 250 )";
           $price_post_conf = 250;
         }elseif ( $user_detail['euser_addon_post'] == "pekanbaru_shared" ) {
-          $string_post_conf="Pekanbaru | Shared Room ( USD 475 )";
+          $string_post_conf="Pekanbaru | Shared Room ( US$ 475 )";
           $price_post_conf = 475;
         }elseif ( $user_detail['euser_addon_post'] == "pekanbaru_single" ) {
-          $string_post_conf="Pekanbaru | Single Room ( USD 510 )";
+          $string_post_conf="Pekanbaru | Single Room ( US$ 510 )";
           $price_post_conf = 510;
         }else{
           $string_post_conf=" - ";
@@ -57,13 +57,13 @@ if(isset($user_detail['euser_addon_dinner'])){
 }
 
 if ($user_detail['euser_type']=="local student") {
-  $user_string = "Local | Students ( Rates apply USD 20 )";
+  $user_string = "Local | Students ( Rates apply US$ 20 )";
   $total_price=$price_post_conf+20;
 }elseif ($user_detail['euser_type']=="local regular") {
-  $user_string = "Local | Regular ( Rates apply USD 30 )";
+  $user_string = "Local | Regular ( Rates apply US$ 30 )";
   $total_price=$price_post_conf+30;
 }elseif ($user_detail['euser_type']=="foreigner") {
-  $user_string = "Foreign   ( Rates apply USD 400 )";
+  $user_string = "Foreign   ( Rates apply US$ 400 )";
   $total_price=$price_post_conf+400;
 }else{
   $total_price=0;
@@ -149,6 +149,11 @@ $body = '
                             <td>Dinner Conference</td>
                             <td>:</td>
                             <td>'.$user_detail['euser_addon_dinner'].'</td>
+                        </tr>
+                        <tr>
+                            <td>NET TOTAL</td>
+                            <td>:</td>
+                            <td> US$ '.$total_price.'</td>
                         </tr>
                     </tbody>
                 </table>
