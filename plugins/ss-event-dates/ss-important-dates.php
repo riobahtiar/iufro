@@ -12,7 +12,18 @@
     - Bayu
     - Ginanjar
 */
-   
+
+
+define( 'IUFRO_DIR', plugin_dir_path( __FILE__ ) );
+
+/*
+* Include Dashboard
+*/
+
+require_once( IUFRO_DIR . 'addons/admin_dashboard.php' );
+
+
+
     function ss_event_install()
     {
         global $wpdb;
