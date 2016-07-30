@@ -5,13 +5,56 @@
  */
 
 
+function dash_css() {
+	$x = is_rtl() ? 'left' : 'right';
+
+	echo "
+	<style type='text/css'>
+.etable {
+    border: 1px solid #ddd;
+    font-size: 13px;
+}
+.etable {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.etable {
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: table;
+    background: white;
+}
+
+.etable>tbody>tr>td, .etable>tbody>tr>th, .etable>tfoot>tr>td, .etable>tfoot>tr>th, .etable>thead>tr>td, .etable>thead>tr>th {
+    border: 1px solid #ddd;
+}
+.etable>tbody>tr>td, .etable>tbody>tr>th, .etable>tfoot>tr>td, .etable>tfoot>tr>th, .etable>thead>tr>td, .etable>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+.etable thead{
+	background: green;
+	color: white;
+	border-color: black;
+}
+	</style>
+	";
+}
+
+add_action( 'admin_head', 'dash_css' );
+
+
 // create custom plugin settings menu
 add_action('admin_menu', 'init_iufro_dash');
 
 function init_iufro_dash() {
 
 	//create new top-level menu
-	add_menu_page('IUFRO U', 'Users', 'administrator', IUFRO_DIR, 'users_page_control' , plugins_url('ss-event-dates/assets/plant1.png', IUFRO_DIR) );
+	add_menu_page('IUFRO U', 'Users', 'administrator', IUFRO_DIR, 'users_page_control' , plugins_url('ss-event-dates/assets/man.png', IUFRO_DIR) );
 }
 
 
