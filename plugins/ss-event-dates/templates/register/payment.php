@@ -15,18 +15,6 @@ global $wpdb;
 $query="SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email}'";
 $user_detail = $wpdb->get_row( $query, ARRAY_A );
 
-// // Get Event Package Details
-// $mid_conf_q="SELECT * FROM wp_ss_event_package 
-// WHERE package_user = '{$euser_email}' 
-// AND package_item = 'Mid Conference'";
-
-// $post_conf_q="SELECT * FROM wp_ss_event_package 
-// WHERE package_user = '{$euser_email}' 
-// AND package_item = 'Post Conference'";
-
-// $mid_conf_var = $wpdb->get_row( $mid_conf_q, ARRAY_A );
-// $post_conf_var = $wpdb->get_row( $post_conf_q, ARRAY_A );
-
 // mid conf
 if(isset($user_detail['euser_addon_mid'] )){
 
