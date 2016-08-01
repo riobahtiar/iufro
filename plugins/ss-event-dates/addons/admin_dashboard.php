@@ -71,8 +71,8 @@ function users_page_control() {
   <th width="10%">ID</th>
   <th width="14%">Name</th>
   <th width="14%">Files</th>
-  <th width="14%">Status</th>
-  <th width="17%">Addon</th>
+  <th width="10%">Status</th>
+  <th width="21%">Addon</th>
   <th width="14%">Payment</th>
   <th width="8%">Last Login</th>
   <th width="8%">Act</th>
@@ -189,6 +189,40 @@ Poster: <a href="<?php wp_get_attachment_url( $show_me->euser_poster ); ?>" targ
 <?php } if (isset( $show_me->euser_stdcard_id )) { ?>
   Student Card: <a href="<?php wp_get_attachment_url( $show_me->stdcard_id ); ?>" target="_blank">Download</a><br>
 <?php } ?>
+<hr>
+<?php
+$abstract_download = wp_get_attachment_url( $show_me->euser_abstrak );
+$paper_download = wp_get_attachment_url( $show_me->euser_paper  );
+$poster_download = wp_get_attachment_url( $show_me->euser_poster  );
+if(!empty($abstract_download)){
+ ?>
+<dl class="dl-horizontal">
+  <dt>Abstract</dt>
+  <dd><a href="<?php echo $abstract_download; ?>">Download</a></dd>
+</dl>
+<?php
+}
+if(!empty($paper_download)){
+?>
+<dl class="dl-horizontal">
+  <dt>Paper</dt>
+  <dd><a href="<?php echo $paper_download; ?>">Download</a></dd>
+</dl>
+<?php
+}
+if(!empty($poster_download)){
+  //var_dump($poster_download); 
+?>
+<dl class="dl-horizontal">
+  <dt>Poster</dt>
+  <dd><a href="<?php echo $poster_download; ?>">Download</a></dd>
+</dl>
+<?php
+}
+?>
+
+
+
   </td>
   <td><?php echo $show_me->euser_status; ?></td>
   <td>
