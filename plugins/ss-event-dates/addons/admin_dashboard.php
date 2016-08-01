@@ -180,16 +180,6 @@ if ( $show_me->euser_type =="local student") {
   <td><?php echo $show_me->euser_barcode; ?></td>
   <td><?php echo $show_me->euser_fullname.$show_me->euser_abstrak.$show_me->euser_poster.$string_mid_conf; ?></td>
   <td>
-<?php   if (isset( $show_me->euser_abstrak )) { ?>
-Abstract: <a href="<?php wp_get_attachment_url( $show_me->euser_abstrak ); ?>" target="_blank">Download</a><br>
-<?php } if (isset( $show_me->euser_paper )) { ?>
-Paper: <a href="<?php wp_get_attachment_url( $show_me->euser_paper ); ?>" target="_blank">Download</a><br>
-<?php } if (isset( $show_me->euser_poster )) { ?>
-Poster: <a href="<?php wp_get_attachment_url( $show_me->euser_poster ); ?>" target="_blank">Download</a><br>
-<?php } if (isset( $show_me->euser_stdcard_id )) { ?>
-  Student Card: <a href="<?php wp_get_attachment_url( $show_me->stdcard_id ); ?>" target="_blank">Download</a><br>
-<?php } ?>
-<hr>
 <?php
 $abstract_download = wp_get_attachment_url( $show_me->euser_abstrak );
 $paper_download = wp_get_attachment_url( $show_me->euser_paper  );
