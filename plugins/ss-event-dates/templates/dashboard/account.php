@@ -64,6 +64,7 @@
 </div>
 <script type="text/javascript">
 	function editProfile(){
+		console.log('editProfile');
 		jQuery.ajax({ url: "<?php echo  plugins_url('ss-event-dates').'/templates/dashboard/edit_profile.php'; ?>",cache: false})
 		.done(function( html ){
 		    jQuery( "#main-profile" ).html(html);
@@ -71,6 +72,7 @@
 	}
 
 	function cancelAjax(){
+		console.log('cancelAjax');
 		jQuery.ajax({ url: "<?php echo  plugins_url('ss-event-dates').'/templates/dashboard/profile.php'; ?>",cache: false})
 		.done(function( html ){
 		    jQuery( "#main-profile" ).html(html);
@@ -82,6 +84,7 @@
 	}
 
 	function resetMembership(){
+		console.log('resetMembership');
 		if (confirm("are you sure want to upgrade?")){
 			jQuery.ajax({ 
 				url: "<?php echo  plugins_url('ss-event-dates').'/templates/dashboard/model.php'; ?>",
@@ -95,6 +98,7 @@
 	}
 
 	function saveProfile(){
+		console.log('saveProfile');
 		if (confirm("Save changes?")){
 			var from_form = jQuery( "#profile-form" ).serialize();
 			jQuery.ajax({ 
