@@ -99,7 +99,7 @@ function generateRandomString($length) {
     return $randomString;
 }
 
-function save_custom_userdata($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type){
+function save_custom_userdata($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country, $user_reg_type){
     global $reg_errors;
     if ( 1 > count( $reg_errors->get_error_messages() ) ) {
     global $wpdb;
