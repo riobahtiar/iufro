@@ -79,7 +79,7 @@ if(!is_user_logged_in()){
 								require_once dirname(__FILE__) . '/register/paypal_success.php';
 								break;
 							case 'paypal_nfy':
-								require_once dirname(__FILE__) . '/register/paypal_ipn.php';
+								require_once dirname(__FILE__) . '/register/py_ipn.php';
 								break;
 							case 'default':
 								require_once dirname(__FILE__) . '/dashboard/account.php';

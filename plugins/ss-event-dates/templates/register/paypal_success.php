@@ -1,5 +1,5 @@
 <?php
-$product=$_POST['trxname'];
+$product=$_GET['trxname'];
 
 
  ?>
