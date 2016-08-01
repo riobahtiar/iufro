@@ -1,6 +1,10 @@
 <?php
 
-// Response from Paypal
+    $parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
+    require_once( $parse_uri[0] . 'wp-load.php' );
+    
+    global $current_user;
+    wp_get_current_user();
     // read the post from PayPal system and add 'cmd'
     $req = 'cmd=_notify-validate';
     foreach ($_POST as $key => $value) {
@@ -89,7 +93,7 @@
     }   
 
 
-
+?>
 
 
 

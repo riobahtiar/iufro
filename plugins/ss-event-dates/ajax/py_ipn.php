@@ -1,6 +1,7 @@
 <?php
 // Response from Paypal
-    // read the post from PayPal system and add 'cmd'
+    $parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
+    require_once( $parse_uri[0] . 'wp-load.php' );
     $req = 'cmd=_notify-validate';
     foreach ($_POST as $key => $value) {
         $value = urlencode(stripslashes($value));
