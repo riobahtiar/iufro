@@ -72,7 +72,7 @@ function users_page_control() {
   <th width="14%">Name</th>
   <th width="14%">Files</th>
   <th width="14%">Status</th>
-  <th width="17%">Details</th>
+  <th width="17%">Addon</th>
   <th width="14%">Payment</th>
   <th width="8%">Last Login</th>
   <th width="8%">Act</th>
@@ -81,13 +81,129 @@ function users_page_control() {
 <tbody>
 <?php 
 foreach ( $get_members as $show_me ) {
+
+// mid conf
+if(isset($show_me->euser_addon_mid )){
+
+        if ( $show_me->euser_addon_mid == "gunung-kidul" ) {
+          $string_mid_conf="Gunung Kidul";
+          $price_mid_conf = 0;
+        }elseif ( $show_me->euser_addon_mid == "klaten" ) {
+          $string_mid_conf="Klaten";
+          $price_mid_conf = 0;
+        }elseif ( $show_me->euser_addon_mid == "mount-merapi" ) {
+          $string_mid_conf="Mount Merapi";
+          $price_mid_conf = 0;
+        }else{
+          $string_mid_conf=" - ";
+          $price_mid_conf = 0;
+        } 
+
+}else{
+  $string_mid_conf=" - ";
+  $price_mid_conf == 0;
+}
+
+// post conf
+if(isset($show_me->euser_addon_post )){
+    // Pricing Post Conference
+        if ( $show_me->euser_addon_post  == "pacitan" ) {
+          $string_post_conf="Pacitan ( USD 250 )";
+          $price_post_conf = 250;
+        }elseif ( $show_me->euser_addon_post  == "pekanbaru_shared" ) {
+          $string_post_conf="Pekanbaru | Shared Room ( USD 475 )";
+          $price_post_conf = 475;
+        }elseif ( $show_me->euser_addon_post  == "pekanbaru_single" ) {
+          $string_post_conf="Pekanbaru | Single Room ( USD 510 )";
+          $price_post_conf = 510;
+        }else{
+          $string_post_conf=" - ";
+          $price_post_conf = 0;
+        }
+}else{
+  $string_post_conf=" - ";
+  $price_post_conf = 0;
+}
+
+if(isset( $show_me->euser_addon_dinner )){
+  $string_dinner=" Yes ";
+}else{
+  $string_dinner=" No ";
+}
+
+
+
+
+    // Paymen Dates Earlybird
+ $paymentDate = $show_me->euser_payment_date;
+ $paymentDate=date('Y-m-d', strtotime($paymentDate));
+ $earlyBirdBegin = date('Y-m-d', strtotime("01/1/2016"));
+ $earlyBirdEnd = date('Y-m-d', strtotime("04/30/2017"));
+
+
+if ( $show_me->euser_type =="local student") {
+  $user_string = "Local | Students";
+  $total_price=$price_post_conf+20;
+  $user_price=20;
+}elseif ( $show_me->euser_type =="local regular") {
+  // Early Bird Conf
+    if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd))
+    {
+        $user_string = "Local | Regular ( Early Bird Rates )";
+        $total_price=$price_post_conf+23;
+        $user_price=23;
+    } else {
+        $user_string = "Local | Regular ( Regular Rates )";
+        $total_price=$price_post_conf+39;
+        $user_price=39;
+    }
+}elseif ( $show_me->euser_type =="foreigner") {
+
+    if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd))
+    {
+        $user_string = "Foreign ( Early Bird Rates )";
+        $total_price=$price_post_conf+350;
+        $user_price=350;
+    } else {
+        $user_string = "Foreign ( Regular Rates )";
+        $total_price=$price_post_conf+400;
+        $user_price=400;
+    }
+
+}else{
+  $total_price=0;
+}
+
+
 ?>
-<tr id="rio_t-<?php echo $show_me->euser_id; ?>">
+<tr id="euser-<?php echo $show_me->euser_id; ?>">
   <td><?php echo $show_me->euser_barcode; ?></td>
   <td><?php echo $show_me->euser_fullname; ?></td>
-  <td><?php echo $show_me->euser_email; ?></td>
+  <td>
+<?php   if (isset( $show_me->euser_abstrak )) { ?>
+Abstract: <a href="<?php echo wp_get_attachment_url( $show_me->euser_abstrak ); ?>" target="_blank">Download</a><br>
+<?php } if (isset( $show_me->euser_paper )) { ?>
+Paper: <a href="<?php echo wp_get_attachment_url( $show_me->euser_paper ); ?></td>" target="_blank">Download</a><br>
+<?php } if (isset( $show_me->euser_poster )) { ?>
+Poster: <a href="<?php echo wp_get_attachment_url( $show_me->euser_poster ); ?></td>" target="_blank">Download</a><br>
+<?php } if (isset( $show_me->euser_stdcard_id )) { ?>
+  Student Card: <a href="<?php echo wp_get_attachment_url( $show_me->stdcard_id ); ?></td>" target="_blank">Download</a><br>
+<?php } ?>
+  </td>
   <td><?php echo $show_me->euser_status; ?></td>
-  <td><?php echo $show_me->euser_addon; ?></td>
+  <td>
+  	
+<?php   if ($user_string) { ?>
+User Type: <?php echo $user_string; ?><br>
+<?php } if (isset( $string_mid_conf )) { ?>
+Trip Mid Conference : <?php echo $string_mid_conf; ?><br>
+<?php } if (isset( $string_post_conf )) { ?>
+Trip Post Conference : <?php echo $string_post_conf; ?><br>
+<?php } if (isset( $string_dinner )) { ?>
+  Dinner : <?php echo $string_dinner; ?><br>
+<?php } ?>
+
+  </td>
   <td><?php echo $show_me->euser_payment_status; ?></td>
   <td><?php echo $show_me->updated_at; ?></td>
   <td>
