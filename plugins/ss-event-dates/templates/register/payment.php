@@ -229,7 +229,7 @@ if(!empty($poster_download)){
  ?>
 <form action="<?php echo get_permalink()."?step=paynow"; ?>" method="post">
 <input type="hidden" name="total_amount" value="<?php echo $total_price; ?>">
-<input type="hidden" name="payname" value="IUFRO PY-<?php echo date('Ymd') ?>">
+<input type="hidden" name="payname" value="IUFRO TRX-<?php echo $user_detail['euser_barcode'].str_shuffle('AIUEO') ?>">
 <div>
   	<a href="<?php echo get_permalink()."?step=addon"; ?>" class="btn btn-default pull-left">Back</a>
   	<button type="submit" name="submit" class="btn btn-default pull-right" value="payment">Pay Now</button>

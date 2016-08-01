@@ -1,4 +1,5 @@
-<div class="container">
+
+
 <?php
 	global $current_user;
     wp_get_current_user();
@@ -7,6 +8,7 @@
 	$query="SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email}'";
 	$user_detail = $wpdb->get_row( $query, ARRAY_A );
  ?>
+ <div class="container">
 	<div class="row">
 		<div class="col-md-4"><h3>User Dashboard</h3></div>
 

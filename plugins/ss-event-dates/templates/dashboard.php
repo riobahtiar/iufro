@@ -75,6 +75,12 @@ if(!is_user_logged_in()){
 							case 'pay_later':
 								require_once dirname(__FILE__) . '/register/pay_later.php';
 								break;
+							case 'paypal_success':
+								require_once dirname(__FILE__) . '/register/paypal_success.php';
+								break;
+							case 'paypal_nfy':
+								require_once dirname(__FILE__) . '/register/paypal_ipn.php';
+								break;
 							case 'default':
 								require_once dirname(__FILE__) . '/dashboard/account.php';
 								break;
