@@ -784,3 +784,10 @@ blockquote.right {
 .size-medium {}
 .size-thumbnail {}
 
+.error404 #mapDiv{
+	display: none;
+}
+
+.error404 .only-show-venue{
+	display: none !important;
+}

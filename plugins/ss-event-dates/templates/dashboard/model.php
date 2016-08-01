@@ -43,6 +43,17 @@
 					), 
 					array( '%s' ) 
 				);
+					$wpdb->update( 
+					'wp_users', 
+					array( 
+						'display_name' => $_POST['euser_fullname']
+					), 
+					array( 'user_login' => $euser_email ), 
+					array( 
+						'%s'	
+					), 
+					array( '%s' ) 
+				);
 				break;
 
 			case 'update_password':

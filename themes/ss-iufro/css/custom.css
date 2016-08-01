@@ -158,21 +158,21 @@
         margin: 0;
     }
 
-    #ss_parts_widget-2 a:nth-of-type(1) {
+    #ss_parts_widget-2-part-10 .ss-btn-group a:nth-of-type(1) {
         color: #fff;
         background-color: #809260;
         padding: 7px 20px;
         text-transform: uppercase;
         font-weight: 500;
-        margin-right: 20px;
+        margin-right: 15px;
         transition: all .3s ease;
     }
 
-    #ss_parts_widget-2 a:nth-of-type(1):hover {
+    #ss_parts_widget-2-part-10 .ss-btn-group a:nth-of-type(1):hover {
         background-color: #abcd05;
     }
 
-    #ss_parts_widget-2 a:nth-of-type(2) {
+    #ss_parts_widget-2-part-10 .ss-btn-group a:nth-of-type(2) {
         color: #fff;
         background-color: #abcd05;
         padding: 7px 20px;
@@ -181,7 +181,7 @@
         transition: all .3s ease;
     }
 
-    #ss_parts_widget-2 a:nth-of-type(2):after {
+    #ss_parts_widget-2-part-10 .ss-btn-group a:nth-of-type(2):after {
         content: '\f061';
         font-family: FontAwesome;
         margin-left: 5px;
@@ -190,7 +190,7 @@
         line-height: 1.8;
     }
 
-    #ss_parts_widget-2 a:nth-of-type(2):hover {
+    #ss_parts_widget-2-part-10 .ss-btn-group a:nth-of-type(2):hover {
         color: #3f4835;
     }
 
@@ -727,8 +727,13 @@
 
     #footer-top .col-md-6 img {
         height: 100px;
-        width: 100px;
+        width: 135px;
         object-fit: cover;
+        float: left;
+    }
+
+    #footer-top .col-md-6 *> br {
+        display: none;
     }
     /*Footer Middle & Footer Bottom*/
 
@@ -982,7 +987,11 @@
         -webkit-box-pack: center;
         -webkit-box-orient: vertical;
         border: 1px solid #cbccc4;
-        border-top: 0;
+        padding: 10px 0;
+    }
+
+    .pre-event-item .date-day {
+        padding-right: 5px;
     }
 
     .pre-event-item .content-wrap {
@@ -991,11 +1000,13 @@
     }
 
     .pre-event-item .content {
-        background-color: #fff;
+        background-color: #809062;
         padding: 15px;
         border: 1px solid #cbccc4;
-        border-top: 0;
         border-left: 0;
+        color: #fff;
+        font-size: 24px;
+        text-transform: uppercase;
     }
 
     .dates h4 {
@@ -1014,11 +1025,20 @@
         margin: 5px 0;
         font-size: 40px;
     }
+
+    .pre-event-item .date-one> *,
+    .pre-event-item .date-two> * {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .pre-event-item .content p {
+        font-size: 18px;
+    }
     /*Rundown item */
 
     .rundown-item {
-        margin-bottom: 30px;
-        padding: 0;
+        padding-bottom: 30px;
         margin: 0;
     }
 
@@ -1956,6 +1976,7 @@
         height: 100%;
         background: rgba(242, 242, 242, 0.7);
         top: 0;
+        left: 0;
         bottom: 0;
         z-index: 10;
     }
@@ -2065,5 +2086,209 @@
     .presenter-detail {
         background-color: #fff;
         border: 1px solid #cbccc6;
-        padding: 0 15px !important;
+    }
+
+    .presenter-detail .thumbnail {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    .presenter-detail .thumbnail img {
+        height: 300px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .presenter-detail .detail {
+        padding: 0 15px;
+        margin: 0;
+    }
+
+    .presenter-detail .col-md-8.content {
+        padding: 0;
+    }
+
+    .presenter-detail .detail p {
+        border-top: 1px solid #eeeeee;
+        padding-top: 15px;
+    }
+
+    .entry ul {
+        padding-top: 0px;
+    }
+
+    .page .only-show-venue {
+        display: none;
+    }
+
+    .page.page-id-418 .only-show-venue {
+        display: block;
+    }
+    /*Venue page*/
+
+    .venue-title {
+        margin: 0;
+        background-color: #809260;
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 10px 0;
+        line-height: 1;
+        border: 1px solid #cbccc4;
+    }
+
+    .venue-title h3 {
+        font-weight: normal;
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .venue-container {
+        background-color: #fff;
+    }
+
+    .venue-gallery .col-md-9 img {
+        width: 100%;
+        object-fit: cover;
+        border: 1px solid #ccc;
+    }
+
+    .venue-gallery .col-md-3 img {
+        padding: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+    }
+
+    .venue-gallery {
+        padding: 30px 60px 0;
+    }
+
+    .venue-content {
+        padding: 30px 60px;
+    }
+
+    .venue-content h3 {
+        padding: 30px 15px;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        margin: 0;
+    }
+
+    .venue-loc {
+        padding: 10px 15px;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+    }
+
+    .venue-content p {
+        padding: 0 15px;
+    }
+    /*Btn top right after login : welcoming user*/
+
+    .welcome-user {
+        float: right;
+        margin-top: 10px;
+    }
+    /*Disable dinner */
+
+    .container> .field-trip:nth-of-type(2).disable:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(242, 242, 242, 0.7);
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 10;
+    }
+
+    .container> .field-trip:nth-of-type(2) {
+        position: relative;
+    }
+
+    .field-trip .col-md-4> div[data-toggle="toggle"] {
+        z-index: 11;
+    }
+    /* Pay now */
+    /*#post-139> .entry> .container {
+        padding: 0;
+    }*/
+    /*#post-139> .entry> .container> .col-md-6:not(:last-child) {
+        border-right: 1px solid #ccc;
+    }*/
+
+    #post-139 .entry hr {
+        display: none;
+    }
+
+    .pay-wrap {
+        background-color: #f2f2f2;
+        padding: 15px;
+    }
+    /*User dashboard menu */
+
+    ul.menu-dashboard {
+        list-style-type: none;
+        text-align: right;
+    }
+
+    ul.menu-dashboard li {
+        background-color: #abcd05;
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 25px;
+        margin-bottom: 15px;
+    }
+
+    ul.menu-dashboard li:hover {
+        background-color: #92af03;
+    }
+
+    ul.menu-dashboard li a {
+        color: #fff;
+        font-weight: 500;
+    }
+    /*Error 404 */
+
+    .error404 .page-hero .entry-title {
+        position: relative;
+        top: 0;
+        margin: 0;
+        padding-top: 40px;
+    }
+
+    .error404 .page-hero .container-custom {
+        position: relative;
+    }
+
+    .error404 #content .container>.row {
+        margin: 0;
+    }
+    /*Gunung kidul page*/
+
+    #page-content .entry .gallery img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+        border: none;
+    }
+
+    #page-content .entry .gallery-item {
+        padding: 0 15px;
+        float: none;
+        display: inline-block;
+    }
+
+    #page-content .entry .gallery {
+        margin: 0 -15px !important;
+        font-size: 0;
+        text-align: center;
+    }
+    /*add on facilities*/
+
+    .field-trip:nth-of-type(1)> .col-md-6> .field-trip-wrap>.row .col-md-6:not(:last-child) .field-trip-wrap {
+        margin-bottom: 30px;
     }

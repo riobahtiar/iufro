@@ -80,7 +80,7 @@
     #header-top .ss-btn-group {
         float: left;
     }
-    #ss_parts_widget-2 a:nth-of-type(1) {
+    #ss_parts_widget-2 .ss-btn-group a:nth-of-type(1) {
         border: 1px solid #fff;
         margin-right: 5px !important;
     }
@@ -166,6 +166,67 @@
     }
     .sponsor .gallery-item {
         width: 100% !Important;
+    }
+    .welcome section#section-header-middle {
+        position: absolute;
+        right: 0;
+        bottom: 43px;
+        z-index: 1000;
+        box-shadow: none;
+    }
+}
+
+@media (max-width: 767px) {
+    /*Nav header welcome user */
+    .welcome #section-header-top {
+        border-bottom: none;
+    }
+    .welcome #header {
+        position: relative;
+    }
+    .welcome #ss_parts_widget-2-part-10 {
+        position: relative;
+        bottom: 0;
+        float: left;
+        left: 0;
+        padding: 15px !important;
+        z-index: 999;
+        width: auto;
+        background: #809062;
+        padding: 0;
+        margin: 0px -15px;
+        border: 0px;
+    }
+    .welcome-user {
+        color: #fff;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .welcome section#section-header-middle {
+        bottom: -50px;
+        z-index: 997;
+        width: 100%;
+    }
+    .welcome #header {
+        position: relative;
+    }
+    .welcome-user {
+        color: #fff;
+        margin-left: 10px;
+    }
+}
+
+@media (min-width: 550px) and (max-width: 767px) {
+    .welcome section#section-header-middle {
+        padding: 10px 0;
+        bottom: 0;
+    }
+    .welcome #ss_parts_widget-2-part-10 {
+        width: 100%;
+    }
+    .welcome-user {
+        margin-right: 6px !important;
     }
 }
 
@@ -263,6 +324,21 @@
     .payment-info .dl-horizontal dd a {
         margin: 10px 0;
     }
+    .venue-container {
+        margin: 0 15px;
+    }
+    .venue-gallery .col-md-3 img {
+        height: 200px;
+        object-fit: cover;
+    }
+    .venue-gallery .col-md-9 img {
+        margin-bottom: 20px;
+        height: 400px;
+    }
+    .venue-gallery,
+    .venue-content {
+        padding: 30px 15px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -294,6 +370,12 @@
     }
     .wp-caption {
         width: 100% !important;
+    }
+    ul.menu-dashboard {
+        text-align: center;
+    }
+    ul.menu-dashboard li {
+        display: block;
     }
 }
 
