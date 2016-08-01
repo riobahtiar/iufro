@@ -3,7 +3,7 @@
 	require_once( $parse_uri[0] . 'wp-load.php' );
 	
 	global $current_user;
-    get_currentuserinfo();
+    wp_get_current_user();
   	$euser_email = $current_user->user_email;
 
 	global $wpdb;

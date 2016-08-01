@@ -2,7 +2,7 @@
 
 if ($_POST['account']=="free"){
 	global $current_user;
-    get_currentuserinfo();
+    wp_get_current_user();
   	$euser_email = $current_user->user_email;
 
 	global $wpdb;
@@ -18,7 +18,7 @@ if ($_POST['account']=="free"){
 
 if ($_POST['account']=="foreign"){
   	global $current_user;
-    get_currentuserinfo();
+    wp_get_current_user();
     $euser_email = $current_user->user_email;
 
     global $wpdb;
@@ -34,7 +34,7 @@ if ($_POST['account']=="foreign"){
 
 if ($_POST['account']=="local"){
   global $current_user;
-    get_currentuserinfo();
+    wp_get_current_user();
     $euser_email = $current_user->user_email;
 
     if( ! empty( $_FILES ) ) {
