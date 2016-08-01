@@ -8,14 +8,14 @@
 
   	if(isset($_POST['mid-conf']) && $_POST['mid-conf']=="on" ){
   		$mid_conf = $_POST['mid-conf-child'];
-  		$wpdb->insert( 
-			'wp_ss_event_package', 
-			array( 	'package_user' => $euser_email, 
-					'package_item' => 'Mid Conference', 
-					'package_detail' => $mid_conf
-				), 
-			array( '%s','%s','%s')
-		);
+  // 		$wpdb->insert( 
+		// 	'wp_ss_event_package', 
+		// 	array( 	'package_user' => $euser_email, 
+		// 			'package_item' => 'Mid Conference', 
+		// 			'package_detail' => $mid_conf
+		// 		), 
+		// 	array( '%s','%s','%s')
+		// );
 
   		$wpdb->update( 
 		    'wp_ss_event_user_detail', 
@@ -31,14 +31,14 @@
   	if(isset($_POST['post-conf']) && $_POST['post-conf']=="on" ){
   		$post_conf = $_POST['post-conf-child'];
 
-  		$wpdb->insert( 
-			'wp_ss_event_package', 
-			array( 	'package_user' => $euser_email, 
-					'package_item' => 'Post Conference', 
-					'package_detail' => $post_conf
-				), 
-			array( '%s','%s','%s')
-		);
+  // 		$wpdb->insert( 
+		// 	'wp_ss_event_package', 
+		// 	array( 	'package_user' => $euser_email, 
+		// 			'package_item' => 'Post Conference', 
+		// 			'package_detail' => $post_conf
+		// 		), 
+		// 	array( '%s','%s','%s')
+		// );
 
 		$wpdb->update( 
 		    'wp_ss_event_user_detail', 
