@@ -178,16 +178,16 @@ if ( $show_me->euser_type =="local student") {
 ?>
 <tr id="euser-<?php echo $show_me->euser_id; ?>">
   <td><?php echo $show_me->euser_barcode; ?></td>
-  <td><?php echo $show_me->euser_fullname; ?></td>
+  <td><?php echo $show_me->euser_fullname.$show_me->euser_abstrak.$show_me->euser_poster.$string_mid_conf; ?></td>
   <td>
 <?php   if (isset( $show_me->euser_abstrak )) { ?>
 Abstract: <a href="<?php echo wp_get_attachment_url( $show_me->euser_abstrak ); ?>" target="_blank">Download</a><br>
 <?php } if (isset( $show_me->euser_paper )) { ?>
-Paper: <a href="<?php echo wp_get_attachment_url( $show_me->euser_paper ); ?></td>" target="_blank">Download</a><br>
+Paper: <a href="<?php echo wp_get_attachment_url( $show_me->euser_paper ); ?>" target="_blank">Download</a><br>
 <?php } if (isset( $show_me->euser_poster )) { ?>
-Poster: <a href="<?php echo wp_get_attachment_url( $show_me->euser_poster ); ?></td>" target="_blank">Download</a><br>
+Poster: <a href="<?php echo wp_get_attachment_url( $show_me->euser_poster ); ?>" target="_blank">Download</a><br>
 <?php } if (isset( $show_me->euser_stdcard_id )) { ?>
-  Student Card: <a href="<?php echo wp_get_attachment_url( $show_me->stdcard_id ); ?></td>" target="_blank">Download</a><br>
+  Student Card: <a href="<?php echo wp_get_attachment_url( $show_me->stdcard_id ); ?>" target="_blank">Download</a><br>
 <?php } ?>
   </td>
   <td><?php echo $show_me->euser_status; ?></td>
