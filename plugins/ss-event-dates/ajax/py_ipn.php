@@ -1,5 +1,6 @@
 <?php
 // Response from Paypal
+if ($_GET['py_socket_accept'] == true){
     $parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
     require_once( $parse_uri[0] . 'wp-load.php' );
     $req = 'cmd=_notify-validate';
@@ -199,5 +200,8 @@ wp_mail( $to, $subject, $body, $headers );
         }       
     fclose ($fp);
     }   
+
+echo "<pre>Valid</pre>";
+} // get to validate
 
 ?>
