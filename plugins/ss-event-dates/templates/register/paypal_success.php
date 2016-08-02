@@ -197,11 +197,14 @@ $headers[] = 'From: IUFRO System <payment@iufroacacia2017.com>';
 $headers[] = 'Cc: Rio Hotmail <riobahtiar@live.com>'; 
 
 // ==== attachments ==== //
+$generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
+$xbarcode = 'data:image/png;base64,' . base64_encode($generator->getBarcode('345345623423', $generator::TYPE_CODE_128));
+
 $pdf = new FPDF('P', 'pt', array(500,233));
-$pdf->AddFont('Georgiai','','georgiai.php');
+$pdf->AddFont('Helvetica','','helvetica.php');
 $pdf->AddPage();
-$pdf->Image('lib/fpdf/image.jpg',0,0,500);
-$pdf->SetFont('georgiai','',16);
+$pdf->Image($xbarcode,0,0,500);
+$pdf->SetFont('helvetica','',16);
 $pdf->Cell(40,10,'Hello World!');
 // attachment name
 $filename = "test.pdf";
