@@ -19,5 +19,5 @@ $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
 echo '<br><hr>TYPE_CODE_128<br><img height="auto" width="300px" src="data:image/png;base64,' . base64_encode($generator->getBarcode('081231723897', $generator::TYPE_CODE_128)) . '"><br><br><br><br>';
 echo '<br><hr>TYPE_CODE_128_B<br><img height="auto" width="300px" src="data:image/png;base64,' . base64_encode($generator->getBarcode('04563897', $generator::TYPE_CODE_128_B)) . '"><br><br><br><br>';
 echo '<br><hr>TYPE_CODABAR<br><img height="auto" width="300px" src="data:image/png;base64,' . base64_encode($generator->getBarcode('08145654697', $generator::TYPE_CODABAR)) . '"><br><br><br><br>';
-echo '<br><hr>TYPE_EAN_13<br><img height="auto" width="300px" src="data:image/png;base64,' . base64_encode($generator->getBarcode('084565465465497', $generator::TYPE_EAN_13)) . '"><br><br><br><br>';
-echo '<br><hr>TYPE_STANDARD_2_5<br><img height="auto" width="300px" src="data:image/png;base64,' . base64_encode($generator->getBarcode('08145654654697', $generator::TYPE_STANDARD_2_5)) . '"><br>';
+echo '<br><hr>TYPE_RMS4CC<br><img height="auto" width="300px" src="data:image/png;base64,' . base64_encode($generator->getBarcode('084565465465497', $generator::TYPE_RMS4CC)) . '"><br><br><br><br>';
+echo '<br><hr>TYPE_POSTNET<br><img height="auto" width="300px" src="data:image/png;base64,' . base64_encode($generator->getBarcode('08145654654697', $generator::TYPE_POSTNET)) . '"><br>';

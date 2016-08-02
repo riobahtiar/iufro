@@ -4,6 +4,8 @@ global $current_user;
 wp_get_current_user();
 $euser_email = $current_user->user_email;
 
+//require_once plugins_url() . '/ss-event-dates/addons/fpdf/fpdf.php';
+//require_once plugins_url() . '/ss-event-dates/addons/fpdf/fpdf.php';
 // ========= Get Email Data ========= //
 
 
