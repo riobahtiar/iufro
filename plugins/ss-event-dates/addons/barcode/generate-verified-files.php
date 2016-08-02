@@ -14,3 +14,6 @@ file_put_contents('tests/verified-files/081231723897-code128.html', $generatorHT
 
 $generatorSVG = new Picqer\Barcode\BarcodeGeneratorSVG();
 file_put_contents('tests/verified-files/0049000004632-ean13.svg', $generatorSVG->getBarcode('0049000004632', $generatorSVG::TYPE_EAN_13));
+
+$generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
+echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode('081231723897', $generator::TYPE_CODE_128)) . '">';
