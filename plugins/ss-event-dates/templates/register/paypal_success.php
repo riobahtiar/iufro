@@ -3,8 +3,8 @@ $product=$_GET['trxname'];
 global $current_user;
 wp_get_current_user();
 $euser_email = $current_user->user_email;
-
-require_once plugins_url() . '/ss-event-dates/addons/fpdf/fpdf.php';
+echo "<pre>".
+ plugins_url() . '/ss-event-dates/addons/fpdf/fpdf.php'."</pre>";
 // require_once plugins_url() . '/ss-event-dates/addons/barcode/src/BarcodeGenerator.php';
 // require_once plugins_url() . '/ss-event-dates/addons/barcode/src/BarcodeGeneratorPNG.php';
 // ========= Get Email Data ========= //
