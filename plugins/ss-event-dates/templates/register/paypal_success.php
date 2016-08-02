@@ -206,21 +206,9 @@ $pdf->Image('http://staging.iufroacacia2017.com/wp-content/uploads/2016/07/Minis
 $pdf->SetFont('helvetica','',16);
 $pdf->Cell(40,10,'Hello World!');
 // attachment name
-$filename = "test.pdf";
-// encode data (puts attachment in proper format)
-$pdfdoc = $pdf->Output("", "S");
-$attachment = chunk_split(base64_encode($pdfdoc));
-// a random hash will be necessary to send mixed content
-$separator = md5(time());
-// carriage return type (we use a PHP end of line constant)
-$eol = PHP_EOL;
-$attachments = "--".$separator.$eol;
-$attachments .= "Content-Type: application/octet-stream; name=\"".$filename."\"".$eol; 
-$attachments .= "Content-Transfer-Encoding: base64".$eol;
-$attachments .= "Content-Disposition: attachment".$eol.$eol;
-$attachments .= $attachment.$eol;
-$attachments .= "--".$separator."--";
 
-$theattachment = array( WP_CONTENT_DIR . '/uploads/2016/07/lorem_ipsum-3.pdf' );
+// encode data (puts attachment in proper format)
+$pdfdoc = $pdf->Output("Testing_21.pdf", "S");
+$theattachment = array( chunk_split(base64_encode($pdfdoc)) );
 
 wp_mail( $to, $subject, $body, $headers, $theattachment );
