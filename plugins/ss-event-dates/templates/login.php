@@ -26,11 +26,11 @@ $args = array(
 <?php if(isset($_GET['p']) & $_GET['p']=="updated"){ ?>
 	<div class="alert alert-warning">Your Password has ben updated please <a href="<?php echo get_site_url().'/login'; ?>">re-login</a></div>
 <?php } elseif(isset($_GET['p']) & $_GET['p']=="failed"){ ?>
-	<div class="alert alert-warning">Password Error, Please try again. <a href="<?php echo get_site_url().'/login'; ?>">Click Here to Login</a></div>
+	<div class="alert alert-warning">Password Error, Please try again.</div>
 <?php
 wp_login_form( $args );
  }  elseif(isset($_GET['p']) & $_GET['p']=="empty"){ ?>
-	<div class="alert alert-warning">Password Empty, Please try again. <a href="<?php echo get_site_url().'/login'; ?>">Click Here to Login</a></div>
+	<div class="alert alert-warning">Password Empty, Please try again.</div>
 <?php 
 wp_login_form( $args );
 } else { 
