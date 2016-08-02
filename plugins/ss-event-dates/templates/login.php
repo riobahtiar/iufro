@@ -24,9 +24,9 @@ $args = array(
 	'value_remember' => false
 );?>
 <?php if(isset($_GET['p']) & $_GET['p']=="updated"){ ?>
-	<div class="warning">Your Password has ben updated please re-login</div>
-<?php } else { ?>
-
-<?php wp_login_form( $args ); ?> 
-
-<?php }?>
+	<div class="warning">Your Password has ben updated please <a href="<?php echo get_site_url().'/login'; ?>">re-login</a></div>
+<?php 
+} else { 
+ wp_login_form( $args ); 
+}
+ ?>
