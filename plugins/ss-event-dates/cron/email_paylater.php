@@ -7,13 +7,14 @@
 	$user_detail = $wpdb->get_results($query);
 	echo "<pre>";	
 	foreach ($user_detail as $vuser) {
+		var_dump($vuser);
 		// Conditional Logic for user string payment //
-if(isset($vuser['euser_addon_mid'] )){
+if(isset($vuser->euser_addon_mid )){
 
-        if ( $vuser['euser_addon_mid'] == "gunung-kidul" ) {
+        if ( $vuser->euser_addon_mid == "gunung-kidul" ) {
           $string_mid_conf="Gunung Kidul";
           $price_mid_conf = 0;
-        }elseif ( $vuser['euser_addon_mid'] == "klaten" ) {
+        }elseif ( $vuser->euser_addon_mid == "klaten" ) {
           $string_mid_conf="Klaten";
           $price_mid_conf = 0;
         }else{
@@ -27,15 +28,15 @@ if(isset($vuser['euser_addon_mid'] )){
 }
 
 // post conf
-if(isset($vuser['euser_addon_post'])){
+if(isset($vuser->euser_addon_post)){
     // Pricing Post Conference
-        if ( $vuser['euser_addon_post'] == "pacitan" ) {
+        if ( $vuser->euser_addon_post == "pacitan" ) {
           $string_post_conf="Pacitan ( US$ 250 )";
           $price_post_conf = 250;
-        }elseif ( $vuser['euser_addon_post'] == "pekanbaru_shared" ) {
+        }elseif ( $vuser->euser_addon_post == "pekanbaru_shared" ) {
           $string_post_conf="Pekanbaru | Shared Room ( US$ 475 )";
           $price_post_conf = 475;
-        }elseif ( $vuser['euser_addon_post'] == "pekanbaru_single" ) {
+        }elseif ( $vuser->euser_addon_post == "pekanbaru_single" ) {
           $string_post_conf="Pekanbaru | Single Room ( US$ 510 )";
           $price_post_conf = 510;
         }else{
@@ -47,7 +48,7 @@ if(isset($vuser['euser_addon_post'])){
   $price_post_conf = 0;
 }
 
-if(isset($vuser['euser_addon_dinner'])){
+if(isset($vuser->euser_addon_dinner)){
   $string_dinner=" Yes ";
 }else{
   $string_dinner=" No ";
@@ -62,11 +63,11 @@ if(isset($vuser['euser_addon_dinner'])){
     $earlyBirdEnd = date('Y-m-d', strtotime("04/30/2017"));
 
 
-if ($vuser['euser_type']=="local student") {
+if ($vuser->euser_type=="local student") {
   $user_string = "Local | Students";
   $total_price=$price_post_conf+20;
   $user_price=20;
-}elseif ($vuser['euser_type']=="local regular") {
+}elseif ($vuser->euser_type=="local regular") {
   // Early Bird Conf
     if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd))
     {
@@ -78,7 +79,7 @@ if ($vuser['euser_type']=="local student") {
         $total_price=$price_post_conf+39;
         $user_price=39;
     }
-}elseif ($vuser['euser_type']=="foreigner") {
+}elseif ($vuser->euser_type=="foreigner") {
 
     if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd))
     {
@@ -97,7 +98,7 @@ if ($vuser['euser_type']=="local student") {
 
 
 		// === SEND USER EMAIL === //
-		$to = $vuser['euser_email'];
+		$to = $vuser->euser_email;
 $subject = 'Reminder for Payment';
 $body = '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -150,17 +151,17 @@ Please complete the payment before 24 July 2017.<p>
                         <tr>
                             <td>Registration Number</td>
                             <td>:</td>
-                            <td>'.$vuser['euser_barcode'].'</td>
+                            <td>'.$vuser->euser_barcode.'</td>
                         </tr>
                         <tr>
                             <td>Full Name</td>
                             <td>:</td>
-                            <td>'.$vuser['euser_fullname'].'</td>
+                            <td>'.$vuser->euser_fullname.'</td>
                         </tr>
                         <tr>
                             <td>Address</td>
                             <td>:</td>
-                            <td>'.$vuser['euser_address'].'</td>
+                            <td>'.$vuser->euser_address.'</td>
                         </tr>
                         <tr>
                             <td>Membership Type</td>
@@ -184,7 +185,7 @@ Please complete the payment before 24 July 2017.<p>
                         <tr>
                             <td>Dinner Conference</td>
                             <td>:</td>
-                            <td>'.$vuser['euser_addon_dinner'].'</td>
+                            <td>'.$vuser->euser_addon_dinner.'</td>
                         </tr>
                         <tr>
                             <td>NET TOTAL</td>
@@ -218,8 +219,8 @@ $headers[] = 'Cc: Rio Bahtiar <riob@softwareseni.com>';
 wp_mail( $to, $subject, $body, $headers );
 	// === END SEND USER EMAIL === //
 	
-var_dump($vuser);
-echo "<br>Email Send to ".$vuser['euser_fullname']." at ".date("Y-m-d H:i:s")."<hr>";
+
+echo "<br>Email Send to ".$vuser->euser_fullname." at ".date("Y-m-d H:i:s")."<hr>";
  // ==== UPDATE DATE PAYMENT ==== //
 $wpdb->update( 
           'wp_ss_event_user_detail', 
