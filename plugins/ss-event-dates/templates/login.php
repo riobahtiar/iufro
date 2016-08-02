@@ -25,5 +25,8 @@ $args = array(
 );?>
 <?php if(isset($_GET['p']) & $_GET['p']=="updated"){ ?>
 	<div class="warning">Your Password has ben updated please re-login</div>
-<?php }?>
+<?php } else { ?>
+
 <?php wp_login_form( $args ); ?> 
+
+<?php }?>
