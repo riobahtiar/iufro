@@ -10,7 +10,7 @@ if(is_user_logged_in()){
 $args = array(
 	'echo'           => true,
 	'remember'       => true,
-	'redirect'       => ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'].'/user_dashboard',
+	'redirect'       => site_url().'/user_dashboard',
 	'form_id'        => 'loginform',
 	'id_username'    => 'user_login',
 	'id_password'    => 'user_pass',
