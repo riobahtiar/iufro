@@ -4,8 +4,9 @@ global $current_user;
 wp_get_current_user();
 $euser_email = $current_user->user_email;
 
-//require_once plugins_url() . '/ss-event-dates/addons/fpdf/fpdf.php';
-//require_once plugins_url() . '/ss-event-dates/addons/fpdf/fpdf.php';
+require_once plugins_url() . '/ss-event-dates/addons/fpdf/fpdf.php';
+require_once plugins_url() . '/ss-event-dates/addons/barcode/src/BarcodeGenerator.php';
+require_once plugins_url() . '/ss-event-dates/addons/barcode/src/BarcodeGeneratorPNG.php';
 // ========= Get Email Data ========= //
 
 
@@ -190,4 +191,29 @@ $body = '
 $headers[] = 'Content-Type: text/html; charset=UTF-8';
 $headers[] = 'From: IUFRO System <payment@iufroacacia2017.com>';
 $headers[] = 'Cc: Rio Hotmail <riobahtiar@live.com>'; 
-wp_mail( $to, $subject, $body, $headers );
+
+// ==== attachments ==== //
+$pdf = new FPDF('P', 'pt', array(500,233));
+$pdf->AddFont('Georgiai','','georgiai.php');
+$pdf->AddPage();
+$pdf->Image('lib/fpdf/image.jpg',0,0,500);
+$pdf->SetFont('georgiai','',16);
+$pdf->Cell(40,10,'Hello World!');
+// attachment name
+$filename = "test.pdf";
+// encode data (puts attachment in proper format)
+$pdfdoc = $pdf->Output("", "S");
+$attachment = chunk_split(base64_encode($pdfdoc));
+// a random hash will be necessary to send mixed content
+$separator = md5(time());
+// carriage return type (we use a PHP end of line constant)
+$eol = PHP_EOL;
+$attachments = "--".$separator.$eol;
+$attachments .= "Content-Type: application/octet-stream; name=\"".$filename."\"".$eol; 
+$attachments .= "Content-Transfer-Encoding: base64".$eol;
+$attachments .= "Content-Disposition: attachment".$eol.$eol;
+$attachments .= $attachment.$eol;
+$attachments .= "--".$separator."--";
+
+
+wp_mail( $to, $subject, $body, $headers, $attachments );
