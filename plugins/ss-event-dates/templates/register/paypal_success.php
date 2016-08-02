@@ -197,13 +197,12 @@ $headers[] = 'From: IUFRO System <payment@iufroacacia2017.com>';
 $headers[] = 'Cc: Rio Hotmail <riobahtiar@live.com>'; 
 
 // ==== attachments ==== //
-$generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
-$xbarcode = 'data:image/png;base64,' . base64_encode($generator->getBarcode('345345623423', $generator::TYPE_CODE_128));
+
 
 $pdf = new FPDF('P', 'pt', array(500,233));
 $pdf->AddFont('Helvetica','','helvetica.php');
 $pdf->AddPage();
-$pdf->Image($xbarcode,0,0,500);
+$pdf->Image('http://staging.iufroacacia2017.com/wp-content/uploads/2016/07/Ministry-of-Environment-and-Forestry-Logo.png',0,0,500);
 $pdf->SetFont('helvetica','',16);
 $pdf->Cell(40,10,'Hello World!');
 // attachment name
