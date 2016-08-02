@@ -6,7 +6,7 @@ $euser_email = $current_user->user_email;
 
  ?>
 <div class="alert alert-success">
-	<h2>Hooorray, Your payment completed, you will get a message a moment</h2>
+	<h3>Thank you for completing the payment.<br>Please check your email for the e-ticket. You may print the e-ticket and bring it at the conference.</h3>
 	<p>Transaction Code: <?php echo $product; ?></p>
 </div>
 
@@ -46,16 +46,14 @@ $body = '
                 <h2 style="text-align:center;color:#809062;margin-top: 0;">Dear Sir / Madam</h2>
             </div>
             <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
-                Thank you, your payment was successfully, Transaction Code: '.$product.'
+                Thank you for completing the payment,<br>Transaction Code: '.$product.'
             </div>
             <div style="width:100%;text-align: left;border-bottom:1px solid #809062;">
-                <p>We will verify your payment</p>
+               <p>Payment Success </p>
             </div>
             <br>
             <div>
-                <p>Payment Success </p>
-                <p>We accept the payment via Paypal and iPaymu. Please access to your payment page by <a href="http://www.iufroacacia2017.com/login">Login</a> to your account and choose menu payment summary on Dashboard page</p>
-                <p style="font-style:italic;">*Registration fee will be determined based on the date you do the payment (early bird / regular), or by your type of user (local/foreigner/student).</p>
+                
                 <p style="font-size:16px;">Should you require any further assistance, please do not hesitate to contact us on address below: </p>
                 <p style="font-size:12px;margin: 0;color:#809062">Center of Forest Biotechnology and Tree Improvement</p>
                 <p style="font-size:12px;margin: 0;color:#809062">Jl. Palagan Tentara Pelajar KM 15 Purwobinangun, Pakem, Sleman, Yogyakarta 55582</p>
