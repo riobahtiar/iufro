@@ -5,8 +5,8 @@ wp_get_current_user();
 $euser_email = $current_user->user_email;
 
 require_once plugins_url() . '/ss-event-dates/addons/fpdf/fpdf.php';
-require_once plugins_url() . '/ss-event-dates/addons/barcode/src/BarcodeGenerator.php';
-require_once plugins_url() . '/ss-event-dates/addons/barcode/src/BarcodeGeneratorPNG.php';
+// require_once plugins_url() . '/ss-event-dates/addons/barcode/src/BarcodeGenerator.php';
+// require_once plugins_url() . '/ss-event-dates/addons/barcode/src/BarcodeGeneratorPNG.php';
 // ========= Get Email Data ========= //
 
 
