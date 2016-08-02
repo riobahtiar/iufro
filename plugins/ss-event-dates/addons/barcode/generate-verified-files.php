@@ -16,4 +16,8 @@ $generatorSVG = new Picqer\Barcode\BarcodeGeneratorSVG();
 file_put_contents('tests/verified-files/0049000004632-ean13.svg', $generatorSVG->getBarcode('0049000004632', $generatorSVG::TYPE_EAN_13));
 
 $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
-echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode('081231723897', $generator::TYPE_CODE_128)) . '">';
+echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode('081231723897', $generator::TYPE_CODE_128)) . '"><br>';
+echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode('081231723897', $generator::TYPE_CODE_128_B)) . '"><br>';
+echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode('081231723897', $generator::TYPE_UPC_A)) . '"><br>';
+echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode('081231723897', $generator::TYPE_PLANET)) . '"><br>';
+echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode('081231723897', $generator::TYPE_PHARMA_CODE_TWO_TRACKS)) . '"><br>';
