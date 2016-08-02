@@ -66,7 +66,7 @@ if(isset($user_detail['euser_addon_dinner'])){
 
 
 
-    // Paymen Dates Earlybird
+    // Payment Dates Earlybird
     $paymentDate = date('Y-m-d');
     $paymentDate=date('Y-m-d', strtotime($paymentDate));
     $earlyBirdBegin = date('Y-m-d', strtotime("01/1/2016"));

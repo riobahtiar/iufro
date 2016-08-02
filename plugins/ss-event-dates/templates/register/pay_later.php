@@ -69,6 +69,25 @@ if ($user_detail['euser_type']=="local student") {
   $total_price=0;
 }
 
+
+ // ==== UPDATE DATE PAYMENT ==== //
+$wpdb->update( 
+          'wp_ss_event_user_detail', 
+          array( 
+            'euser_payment_status' => 'Pay Later', 
+            'euser_paylater_date' => date("Y-m-d H:i:s")  
+          ), 
+          array( 'euser_email' => $euser_email ), 
+          array( 
+            '%s', 
+            '%s'  
+          ), 
+          array( '%s' ) 
+        );
+
+
+
+
 $to = $euser_email;
 $subject = 'Thank you for registering IUFRO ACACIA CONFERENCE 2017';
 $body = '
