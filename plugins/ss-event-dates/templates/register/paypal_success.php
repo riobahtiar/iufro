@@ -221,5 +221,6 @@ $attachments .= "Content-Disposition: attachment".$eol.$eol;
 $attachments .= $attachment.$eol;
 $attachments .= "--".$separator."--";
 
+$filesd ='http://staging.iufroacacia2017.com/wp-content/uploads/2016/07/lorem_ipsum-3.pdf';
 
-wp_mail( $to, $subject, $body, $headers, $attachments );
+wp_mail( $to, $subject, $body, $headers, $filesd );
