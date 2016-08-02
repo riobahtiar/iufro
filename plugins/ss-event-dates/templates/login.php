@@ -24,7 +24,11 @@ $args = array(
 	'value_remember' => false
 );?>
 <?php if(isset($_GET['p']) & $_GET['p']=="updated"){ ?>
-	<div class="warning">Your Password has ben updated please <a href="<?php echo get_site_url().'/login'; ?>">re-login</a></div>
+	<div class="alert alert-warning">Your Password has ben updated please <a href="<?php echo get_site_url().'/login'; ?>">re-login</a></div>
+<?php } elseif(isset($_GET['p']) & $_GET['p']=="failed"){ ?>
+	<div class="alert alert-warning">Password Error, Please try again. <a href="<?php echo get_site_url().'/login'; ?>">Click Here to Login</a></div>
+<?php } elseif(isset($_GET['p']) & $_GET['p']=="empty"){ ?>
+	<div class="alert alert-warning">Password Empty, Please try again. <a href="<?php echo get_site_url().'/login'; ?>">Click Here to Login</a></div>
 <?php 
 } else { 
  wp_login_form( $args ); 
