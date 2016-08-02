@@ -4,7 +4,7 @@
 
 	global $wpdb;
 	$query="SELECT * FROM wp_ss_event_user_detail WHERE euser_paylater_date > NOW() - INTERVAL 7 DAY";
-	$user_detail = $wpdb->get_row( $query, ARRAY_A );
+	$user_detail = $wpdb->get_results($query);
 	echo "<pre>";	
 	foreach ($user_detail as $vuser) {
 		// Conditional Logic for user string payment //
