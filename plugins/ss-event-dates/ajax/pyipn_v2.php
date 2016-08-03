@@ -222,14 +222,14 @@ if (strcmp ($res, "VERIFIED") == 0) {
 	$receiver_email = $_POST['receiver_email'];
 	$payer_email = $_POST['payer_email'];
 
-	$packlogs = "item_name >".$item_name."| item_number >".$item_number."| payment_status >".$payment_status."| payment_amount >".$payment_amount."| payment_currency >".$payment_currency."| txn_id >".$txn_id."| receiver_email >".$receiver_email."| payer_email >".$payer_email;
+	$packlogs = 'item_name:'.$item_name.' | item_number:'.$item_number.' | payment_status:'.$payment_status.' | payment_amount:'.$payment_amount.' | payment_currency:'.$payment_currency.' | txn_id:'.$txn_id.' | receiver_email:'.$receiver_email.' | payer_email:'.$payer_email;
 
 	    global $wpdb; 
 		$wpdb->update( 
 			'wp_ss_event_user_detail', 
 			array( 
 				'euser_payment_status' => $payment_status,	// string
-				'euser_payment_meta' => 'tesr'	// integer (number) 
+				'euser_payment_meta' => $packlogs	// integer (number) 
 			), 
 			array( 'euser_barcode' => $barcodeno ), 
 			array( 
