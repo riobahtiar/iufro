@@ -241,8 +241,29 @@ if (strcmp ($res, "VERIFIED") == 0) {
 			), 
 			array( '%d' )) === FALSE){
 
+// === SEND USER EMAIL if FAILED=== //
+$to = 'akhibahtiar@gmail.com';
+$subject = 'Payment Failed and not updated';
+$body = $packlogs;
+$body .= 'payment Success one';
+$headers[] = 'Content-Type: text/html; charset=UTF-8';
+$headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
+$headers[] = 'Cc: Rio Bahtiar <riob@softwareseni.com>'; 
+wp_mail( $to, $subject, $body, $headers );
+// === SEND USER EMAIL === //
+
+
 	}else{
-	 
+// === SEND USER EMAIL if Success //
+$to = 'akhibahtiar@gmail.com';
+$subject = 'Payment Success and updated';
+$body = $packlogs;
+$body .= 'payment failed one';
+$headers[] = 'Content-Type: text/html; charset=UTF-8';
+$headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
+$headers[] = 'Cc: Rio Bahtiar <riob@softwareseni.com>'; 
+wp_mail( $to, $subject, $body, $headers );
+// === SEND USER EMAIL === //
 	}
    
 
@@ -255,6 +276,16 @@ if (strcmp ($res, "VERIFIED") == 0) {
 	if(DEBUG == true) {
 		error_log(date('[Y-m-d H:i e] '). "Invalid IPN: $req" . PHP_EOL, 3, LOG_FILE);
 	}
+	// === SEND USER EMAIL if Success //
+$to = 'akhibahtiar@gmail.com';
+$subject = 'Payment error last invalid';
+$body = $packlogs;
+$body .= 'Payment error last invalid';
+$headers[] = 'Content-Type: text/html; charset=UTF-8';
+$headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
+$headers[] = 'Cc: Rio Bahtiar <riob@softwareseni.com>'; 
+wp_mail( $to, $subject, $body, $headers );
+// === SEND USER EMAIL === //
 }
 
 ?>
