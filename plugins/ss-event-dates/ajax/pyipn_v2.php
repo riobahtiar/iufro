@@ -1,8 +1,8 @@
 <?php
 
 
-if (isset($_GET['screetid'])) {
-    $barcodeno = $_GET['screetid'];
+if (isset($_GET['auth_code'])) {
+    $barcodeno = $_GET['auth_code'];
 
 // Include wp-load
 $parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);

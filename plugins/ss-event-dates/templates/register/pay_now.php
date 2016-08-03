@@ -13,7 +13,7 @@
 <input type="hidden" name="item_name" value="<?php echo $_POST['payname']; ?>">
 <input type="hidden" name="amount" value="<?php echo $_POST['total_amount']; ?>">
 <input type="hidden" name="return" value="<?php echo get_site_url().'/login/user_dashboard?step=paypal_success&trxname='.$_POST['payname']; ?>" />
-<input type="hidden" name="notify_url" value="<?php echo get_site_url()."/wp-content/plugins/ss-event-dates/ajax/py_ipn.php?py_socket_accept=true"; ?>" />
+<input type="hidden" name="notify_url" value="<?php echo get_site_url()."/wp-content/plugins/ss-event-dates/ajax/py_ipn.php?auth_code=".$_POST['ebarcode']; ?>" />
 <input type="hidden" name="cancel_return" value="<?php echo get_site_url()."/login/user_dashboard?step=paypal_cancel"; ?>" />
 <input type="image" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" border="0" name="submit" alt="Check out with PayPal">
 </form>

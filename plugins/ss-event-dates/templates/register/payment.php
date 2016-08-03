@@ -229,6 +229,7 @@ if(!empty($poster_download)){
  ?>
 <form action="<?php echo get_permalink()."?step=paynow"; ?>" method="post">
 <input type="hidden" name="total_amount" value="<?php echo $total_price; ?>">
+<input type="hidden" name="ebarcode" value="<?php echo $user_detail['euser_barcode']; ?>">
 <input type="hidden" name="payname" value="IAC2017-<?php echo $user_detail['euser_barcode'].str_shuffle('AIUEO') ?>">
 <div>
   	<a href="<?php echo get_permalink()."?step=addon"; ?>" class="btn btn-default pull-left">Back</a>
