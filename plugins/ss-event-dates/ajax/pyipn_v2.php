@@ -1,5 +1,18 @@
 <?php
 
+// Include wp-load
+$parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
+require_once( $parse_uri[0] . 'wp-load.php' );
+$upload_dir = wp_upload_dir();
+
+
+//get user data
+global $wpdb;
+
+
+echo '<pre>';
+var_dump($wpdb);
+echo '</pre>';
 
 if (isset($_GET['auth_code'])) {
     $barcodeno = $_GET['auth_code'];
