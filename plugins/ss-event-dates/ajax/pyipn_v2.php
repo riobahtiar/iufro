@@ -229,7 +229,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
 			'wp_ss_event_user_detail', 
 			array( 
 				'euser_payment_status' => $payment_status,	// string
-				'euser_payment_meta' => $packlogs	// integer (number) 
+				'euser_payment_meta' => 'tesr'	// integer (number) 
 			), 
 			array( 'euser_barcode' => $barcodeno ), 
 			array( 
@@ -246,7 +246,7 @@ $subject = 'Payment Success and updated';
 $body = $packlogs.'-'.$barcodeno;
 $body .= ' Payment Success and updated. ';
 $body .= '<br>=====top======';
-$body .= '<br><pre>'.var_dump($user_detail).'</pre><br>';
+$body .= $user_detail['euser_addon_mid'].$user_detail['euser_email'];
 $body .= '=====end======';
 $headers[] = 'Content-Type: text/html; charset=UTF-8';
 $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
