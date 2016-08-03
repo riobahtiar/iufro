@@ -5,10 +5,7 @@ wp_get_current_user();
 $euser_email = $current_user->user_email;
 
 
-// ========= Include PDF Lib & Barcode Lib ========= //
-require_once( IUFRO_DIR . 'addons/fpdf/fpdf.php' );
-require_once( IUFRO_DIR . 'addons/barcode/src/BarcodeGenerator.php' );
-require_once( IUFRO_DIR . 'addons/barcode/src/BarcodeGeneratorPNG.php' );
+
 
 
 // ========= Get Email Data ========= //
@@ -199,16 +196,5 @@ $headers[] = 'Cc: Rio Hotmail <riobahtiar@live.com>';
 // ==== attachments ==== //
 
 
-$pdf = new FPDF('P', 'pt', array(500,233));
-$pdf->AddFont('Helvetica','','helvetica.php');
-$pdf->AddPage();
-$pdf->Image('http://staging.iufroacacia2017.com/wp-content/uploads/2016/07/Ministry-of-Environment-and-Forestry-Logo.png',0,0,500);
-$pdf->SetFont('helvetica','',16);
-$pdf->Cell(40,10,'Hello World!');
-// attachment name
-
-// encode data (puts attachment in proper format)
-$pdfdoc = $pdf->Output("Testing_21.pdf", "S");
-$theattachment = array( chunk_split(base64_encode($pdfdoc)) );
 
 wp_mail( $to, $subject, $body, $headers, $theattachment );
