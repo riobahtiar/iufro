@@ -214,24 +214,10 @@ if (strcmp ($res, "VERIFIED") == 0) {
 	$packlogs = "item_name >".$item_name."| item_number >".$item_number."| payment_status >".$payment_status."| payment_amount >".$payment_amount."| payment_currency >".$payment_currency."| txn_id >".$txn_id."| receiver_email >".$receiver_email."| payer_email >".$payer_email;
 
 	    global $wpdb; 
-		// $wpdb->update( 
-		// 	'wp_ss_event_user_detail', 
-		// 	array( 
-		// 		'euser_payment_status' => 'completed',	// string
-		// 		'euser_payment_meta' => $packlogs	// integer (number) 
-		// 	), 
-		// 	array( 'euser_barcode' => $barcodeno ), 
-		// 	array( 
-		// 		'%s',	
-		// 		'%s'	
-		// 	), 
-		// 	array( '%d' ) 
-		// );
-
-	if( $wpdb->update(
+		$wpdb->update( 
 			'wp_ss_event_user_detail', 
 			array( 
-				'euser_payment_status' => 'completed',	// string
+				'euser_payment_status' => $payment_status,	// string
 				'euser_payment_meta' => $packlogs	// integer (number) 
 			), 
 			array( 'euser_barcode' => $barcodeno ), 
@@ -239,13 +225,27 @@ if (strcmp ($res, "VERIFIED") == 0) {
 				'%s',	
 				'%s'	
 			), 
-			array( '%d' )) === FALSE){
+			array( '%s' ) 
+		);
+
+	if( $wpdb->update(
+			'wp_ss_event_user_detail', 
+			array( 
+				'euser_payment_status' => $payment_status,	// string
+				'euser_payment_meta' => $packlogs	// integer (number) 
+			), 
+			array( 'euser_barcode' => $barcodeno ), 
+			array( 
+				'%s',	
+				'%s'	
+			), 
+			array( '%s' )) === FALSE){
 
 // === SEND USER EMAIL if FAILED=== //
 $to = 'akhibahtiar@gmail.com';
 $subject = 'Payment Failed and not updated';
 $body = $packlogs;
-$body .= 'payment Success one';
+$body .= 'payment failed one';
 $headers[] = 'Content-Type: text/html; charset=UTF-8';
 $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
 $headers[] = 'Cc: Rio Bahtiar <riob@softwareseni.com>'; 
