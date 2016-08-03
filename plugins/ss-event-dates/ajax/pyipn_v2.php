@@ -1,5 +1,93 @@
 <?php
 
+
+if (isset($_GET['screetid'])) {
+    $barcodeno = $_GET['screetid'];
+
+// Include wp-load
+$parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
+require_once( $parse_uri[0] . 'wp-load.php' );
+$upload_dir = wp_upload_dir();
+
+
+//get user data
+global $wpdb;
+$query="SELECT * FROM wp_ss_event_user_detail WHERE euser_barcode = '{$barcodeno}'";
+$user_detail = $wpdb->get_row( $query, ARRAY_A );
+
+if(isset($user_detail['euser_addon_mid'] )){
+
+        if ( $user_detail['euser_addon_mid'] == "gunung-kidul" ) {
+          $string_mid_conf="Gunung Kidul";
+          $price_mid_conf = 0;
+        }elseif ( $user_detail['euser_addon_mid'] == "klaten" ) {
+          $string_mid_conf="Klaten";
+          $price_mid_conf = 0;
+        }else{
+          $string_mid_conf=" - ";
+          $price_mid_conf = 0;
+        } 
+
+}else{
+  $string_mid_conf=" - ";
+  $price_mid_conf == 0;
+}
+
+// post conf
+if(isset($user_detail['euser_addon_post'])){
+    // Pricing Post Conference
+        if ( $user_detail['euser_addon_post'] == "pacitan" ) {
+          $string_post_conf="Pacitan ( US$ 250 )";
+          $price_post_conf = 250;
+        }elseif ( $user_detail['euser_addon_post'] == "pekanbaru_shared" ) {
+          $string_post_conf="Pekanbaru | Shared Room ( US$ 475 )";
+          $price_post_conf = 475;
+        }elseif ( $user_detail['euser_addon_post'] == "pekanbaru_single" ) {
+          $string_post_conf="Pekanbaru | Single Room ( US$ 510 )";
+          $price_post_conf = 510;
+        }else{
+          $string_post_conf=" - ";
+          $price_post_conf = 0;
+        }
+}else{
+  $string_post_conf=" - ";
+  $price_post_conf = 0;
+}
+
+if(isset($user_detail['euser_addon_dinner'])){
+  $string_dinner=" Yes ";
+}else{
+  $string_dinner=" No ";
+}
+
+if ($user_detail['euser_type']=="local student") {
+  $user_string = "Local | Students ( Rates apply US$ 20 )";
+  $total_price=$price_post_conf+20;
+}elseif ($user_detail['euser_type']=="local regular") {
+  $user_string = "Local | Regular ( Rates apply US$ 30 )";
+  $total_price=$price_post_conf+30;
+}elseif ($user_detail['euser_type']=="foreigner") {
+  $user_string = "Foreign   ( Rates apply US$ 400 )";
+  $total_price=$price_post_conf+400;
+}else{
+  $total_price=0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
 // CONFIG: Enable debug mode. This means we'll log requests into 'ipn.log' in the same directory.
 // Especially useful if you encounter network errors or other intermittent problems with IPN (validation).
 // Set this to 0 once you go live or don't require logging.
@@ -11,10 +99,7 @@ define("USE_SANDBOX", 1);
 
 define("LOG_FILE", "./ipn.log");
 
-// Include wp-load
-$parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
-require_once( $parse_uri[0] . 'wp-load.php' );
-$upload_dir = wp_upload_dir();
+
 
 
 // Read POST data
@@ -116,16 +201,51 @@ if (strcmp ($res, "VERIFIED") == 0) {
 	// check that payment_amount/payment_currency are correct
 	// process payment and mark item as paid.
 
-	// assign posted variables to local variables
-	// $item_name = $_POST['item_name'];
-	// $item_number = $_POST['item_number'];
-	// $payment_status = $_POST['payment_status'];
-	// $payment_amount = $_POST['mc_gross'];
-	// $payment_currency = $_POST['mc_currency'];
-	// $txn_id = $_POST['txn_id'];
-	// $receiver_email = $_POST['receiver_email'];
-	// $payer_email = $_POST['payer_email'];
-	
+	//assign posted variables to local variables
+	$item_name = $_POST['item_name'];
+	$item_number = $_POST['item_number'];
+	$payment_status = $_POST['payment_status'];
+	$payment_amount = $_POST['mc_gross'];
+	$payment_currency = $_POST['mc_currency'];
+	$txn_id = $_POST['txn_id'];
+	$receiver_email = $_POST['receiver_email'];
+	$payer_email = $_POST['payer_email'];
+
+	$packlogs = "item_name >".$item_name."| item_number >".$item_number."| payment_status >".$payment_status."| payment_amount >".$payment_amount."| payment_currency >".$payment_currency."| txn_id >".$txn_id."| receiver_email >".$receiver_email."| payer_email >".$payer_email;
+
+	    global $wpdb; 
+		// $wpdb->update( 
+		// 	'wp_ss_event_user_detail', 
+		// 	array( 
+		// 		'euser_payment_status' => 'completed',	// string
+		// 		'euser_payment_meta' => $packlogs	// integer (number) 
+		// 	), 
+		// 	array( 'euser_barcode' => $barcodeno ), 
+		// 	array( 
+		// 		'%s',	
+		// 		'%s'	
+		// 	), 
+		// 	array( '%d' ) 
+		// );
+
+	if( $wpdb->update(
+			'wp_ss_event_user_detail', 
+			array( 
+				'euser_payment_status' => 'completed',	// string
+				'euser_payment_meta' => $packlogs	// integer (number) 
+			), 
+			array( 'euser_barcode' => $barcodeno ), 
+			array( 
+				'%s',	
+				'%s'	
+			), 
+			array( '%d' )) === FALSE){
+
+	}else{
+	 
+	}
+   
+
 	if(DEBUG == true) {
 		error_log(date('[Y-m-d H:i e] '). "Verified IPN: $req ". PHP_EOL, 3, LOG_FILE);
 	}
