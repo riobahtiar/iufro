@@ -105,7 +105,7 @@ function save_custom_userdata($fullname, $password, $email, $phone, $address, $z
     global $wpdb;
     $wpdb->get_results( 'SELECT COUNT(*) FROM wp_ss_event_user_detail' );
     $num_rows=$wpdb->num_rows;
-    $barcode=$num_rows.date('Ymd').rand(1000, 9999);
+    $barcode='17'.date('md').rand(1000, 9999);
     $randAct=generateRandomString(15);
     $wpdb->insert( 
                 'wp_ss_event_user_detail', 

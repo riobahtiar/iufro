@@ -10,23 +10,21 @@ $upload_dir = wp_upload_dir();
 global $wpdb;
 
 
-echo '<pre>';
-var_dump($wpdb);
-echo '</pre>';
+// echo '<pre>';
+// var_dump($wpdb);
+// echo '</pre>';
 
 if (isset($_GET['auth_code'])) {
     $barcodeno = $_GET['auth_code'];
 
-// Include wp-load
-$parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
-require_once( $parse_uri[0] . 'wp-load.php' );
-$upload_dir = wp_upload_dir();
-
-
 //get user data
-global $wpdb;
 $query="SELECT * FROM wp_ss_event_user_detail WHERE euser_barcode = '{$barcodeno}'";
 $user_detail = $wpdb->get_row( $query, ARRAY_A );
+
+
+echo '<pre>';
+var_dump($user_detail);
+echo '</pre>';
 
 if(isset($user_detail['euser_addon_mid'] )){
 
@@ -241,43 +239,21 @@ if (strcmp ($res, "VERIFIED") == 0) {
 			array( '%s' ) 
 		);
 
-	if( $wpdb->update(
-			'wp_ss_event_user_detail', 
-			array( 
-				'euser_payment_status' => $payment_status,	// string
-				'euser_payment_meta' => $packlogs	// integer (number) 
-			), 
-			array( 'euser_barcode' => $barcodeno ), 
-			array( 
-				'%s',	
-				'%s'	
-			), 
-			array( '%s' )) === FALSE){
-
-// === SEND USER EMAIL if FAILED=== //
-$to = 'akhibahtiar@gmail.com';
-$subject = 'Payment Failed and not updated';
-$body = $packlogs;
-$body .= 'payment failed one';
-$headers[] = 'Content-Type: text/html; charset=UTF-8';
-$headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
-$headers[] = 'Cc: Rio Bahtiar <riob@softwareseni.com>'; 
-wp_mail( $to, $subject, $body, $headers );
-// === SEND USER EMAIL === //
 
 
-	}else{
-// === SEND USER EMAIL if Success //
 $to = 'akhibahtiar@gmail.com';
 $subject = 'Payment Success and updated';
-$body = $packlogs;
-$body .= 'payment failed one';
+$body = $packlogs.'-'.$barcodeno;
+$body .= ' Payment Success and updated. ';
+$body .= '<br>=====top======';
+$body .= '<br><pre>'.var_dump($user_detail).'</pre><br>';
+$body .= '=====end======';
 $headers[] = 'Content-Type: text/html; charset=UTF-8';
 $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
 $headers[] = 'Cc: Rio Bahtiar <riob@softwareseni.com>'; 
 wp_mail( $to, $subject, $body, $headers );
 // === SEND USER EMAIL === //
-	}
+
    
 
 	if(DEBUG == true) {
