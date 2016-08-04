@@ -245,12 +245,12 @@ Trip Post Conference : <?php echo $string_post_conf; ?><br>
 </div>
 <script>
 
-jQuery(document).ready(function() {
-    jQuery('#iufro-member').DataTable({
-      buttons: ['copy', 'excel', 'pdf'],
-      responsive: true
-    });
-});
+// jQuery(document).ready(function() {
+//     jQuery('#iufro-member').DataTable({
+//       buttons: ['copy', 'excel', 'pdf'],
+//       responsive: true
+//     });
+// });
 
 var table = jQuery('#iufro-member').DataTable();
  
