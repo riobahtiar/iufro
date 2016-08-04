@@ -13,10 +13,11 @@ function dash_css() {
 .xdetails{
   max-width: 200px;
   display: none;
-  padding: 1px 10px;
+  padding: 7px;
   background-color: #2c3e50;
   color: #ecf0f1;
   font-size: 8px;
+  margin-top: 8px;
 }
 .xdetails p{
   margin: 0;
@@ -283,7 +284,7 @@ Trip Post Conference : <?php echo $string_post_conf; ?><br>
 
   </td>
   <td><?php echo $show_me->euser_payment_status; ?><br>
-  <?php if(!empty($abstract_download)){ ?>
+  <?php if(!empty($euser_payment_meta)){ ?>
 <div class="xdetails"><p><?php echo $show_me->euser_payment_meta; ?></p></div>
 <?php } ?> 
   </td>
