@@ -120,7 +120,7 @@ function users_page_control() {
 <h2>IUFRO ACACIA CONFERENCE 2017</h2>
 <p>Control Dashboard</p>
 <div class="dtbl-btn"></div>
-<p>&nsp;| &nbsp;Payment Details: <button id="ihide">Hide</button>&nbsp;<button id="ishow">Show</button></p>
+<p>&nbsp;| &nbsp;Payment Details: <button id="ihide">Hide</button>&nbsp;<button id="ishow">Show</button></p>
 <table class="etable" id="iufro-member" class="display" cellspacing="0" width="100%">
 <thead>
 <tr>
