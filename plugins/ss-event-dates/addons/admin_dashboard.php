@@ -69,7 +69,7 @@ function users_page_control() {
 <div class="wrap">
 <h2>IUFRO ACACIA CONFERENCE 2017</h2>
 <p>Control Dashboard</p>
-<table id="iufro-member" class="display" cellspacing="0" width="100%">
+<table class="etable" id="iufro-member" class="display" cellspacing="0" width="100%">
 <thead>
 <tr>
   <th width="10%">ID</th>
