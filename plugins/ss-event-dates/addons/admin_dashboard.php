@@ -62,10 +62,14 @@ function users_page_control() {
 	global $wpdb;
 	$get_members = $wpdb->get_results( "SELECT * FROM wp_ss_event_user_detail" );
 ?>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/r-2.1.0/sc-1.4.2/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/r-2.1.0/sc-1.4.2/datatables.min.js"></script>
+
 <div class="wrap">
 <h2>IUFRO ACACIA CONFERENCE 2017</h2>
 <p>Control Dashboard</p>
-<table class="etable">
+<table id="iufro-member" class="display" cellspacing="0" width="100%">
 <thead>
 <tr>
   <th width="10%">ID</th>
@@ -239,25 +243,11 @@ Trip Post Conference : <?php echo $string_post_conf; ?><br>
 </table>
 </div>
 <script>
+
 jQuery(document).ready(function() {
-	jQuery('a.delete').click(function(e) {
-		e.preventDefault();
-		var parent = $(this).parent();
-		$.ajax({
-			type: 'get',
-			url: '<?php echo plugins_url('rio-testimonial/rt-delete.php', IUFRO_DIR); ?>',
-			data: 'ajax=1&delete=' + parent.attr('id').replace('rio_t-',''),
-			beforeSend: function() {
-				parent.animate({'backgroundColor':'#fb6c6c'},300);
-			},
-			success: function() {
-				parent.slideUp(300,function() {
-					parent.remove();
-				});
-			}
-		});
-	});
+    $('#iufro-member').DataTable();
 });
+
 </script>
 <?php } 
 
