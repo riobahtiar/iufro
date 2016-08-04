@@ -254,7 +254,7 @@ Trip Post Conference : <?php echo $string_post_conf; ?><br>
 // });
 
 jQuery(document).ready(function() {
-    var table = $('#iufro-member').DataTable( {
+    var table = jQuery('#iufro-member').DataTable( {
         lengthChange: false,
         buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
     } );
