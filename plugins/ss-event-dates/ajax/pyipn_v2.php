@@ -296,8 +296,8 @@ $pdf->SetXY(47,110);
 $pdf->Write(5,' ~ Post Conference : '.$string_post_conf);
 $pdf->SetXY(45,116);
 $pdf->Write(5,' Dinner Conference : '.$string_dinner);
-$pdf->SetXY(45,1122);
-$pdf->Write(5,' Payment : US$'.$payment_amount.' - Status'.$payment_status);
+$pdf->SetXY(45,122);
+$pdf->Write(5,' Payment : US$'.$payment_amount);
 
 
 
