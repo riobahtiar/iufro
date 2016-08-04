@@ -18,7 +18,7 @@ if(isset($_GET['step']) && $_GET['step']=="membership"){
 				<div class="panel panel-default">
 					<div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#local">
 					 	<h2 class="panel-title accordion-toggle">
-						 	<label><input type="radio" name="account" value="local"> <i class="fa fa-user" aria-hidden="true"></i> Local</label> <span class="pull-right">Detail <i class="fa fa-question-circle" aria-hidden="true"></i></span>
+						 	<label><input type="radio" name="account" value="local" checked> <i class="fa fa-user" aria-hidden="true"></i> Local</label> <span class="pull-right">Detail <i class="fa fa-question-circle" aria-hidden="true"></i></span>
 						</h2>
 					</div>
 					<div id="local" class="panel-collapse collapse">

@@ -216,9 +216,9 @@ if(!empty($poster_download)){
 
 </div>
 <hr>
-<?php if ($user_detail['euser_meta_type']=="author_type") {?>
+<?php if ($user_detail['euser_meta_type']=="author_type" && $user_detail['euser_doc_status'] !== NULL || $user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] == 'accepted' ) {?>
 <div class="well payment-alert">
-  You may continue to the payment after your document has been Approved by us. 
+  You may continue to the payment after your document has been approved by us. 
 </div>
 <?php } ?>
 </div><!-- row -->
@@ -234,8 +234,6 @@ if(!empty($poster_download)){
 <?php if ($user_detail['euser_meta_type']=="author_type" && $user_detail['euser_doc_status'] !== NULL || $user_detail['euser_meta_type']=="participant_type" || $user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] == 'accepted' ) {?>
   	<button type="submit" name="submit" class="btn btn-default pull-right" value="payment">Pay Now</button>
   	<a href="<?php echo get_permalink(); ?>?step=pay_later" class="btn btn-default pull-right">Pay Later</a>
-<?php }else{ ?>
-  <a href="<?php echo get_home_url()."wp-login.php?action=logout&redirect_to=http%3A%2F%2Fstaging.iufroacacia2017.com%2Flogin&_wpnonce=aa4b5af169"; ?>" class="btn btn-primary pull-left">Exit</a>
 <?php } ?>
 </div>
 </form>
