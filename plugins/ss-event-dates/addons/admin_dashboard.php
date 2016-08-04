@@ -245,7 +245,7 @@ Trip Post Conference : <?php echo $string_post_conf; ?><br>
 <script>
 
 jQuery(document).ready(function() {
-    $('#iufro-member').DataTable();
+    jQuery('#iufro-member').DataTable();
 });
 
 </script>
