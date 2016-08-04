@@ -10,6 +10,14 @@ function dash_css() {
 
 	echo "
 	<style type='text/css'>
+.xdetails{
+  max-width: 220px;
+  display: none;
+  padding: 3px;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  font-size: 10px;
+}
 .etable {
     border: 1px solid #ddd;
     font-size: 13px;
@@ -234,8 +242,8 @@ Trip Post Conference : <?php echo $string_post_conf; ?><br>
   </td>
   <td><?php echo $show_me->euser_payment_status; ?><br>
     
-Details <button id="hide">Hide</button><button id="show">Show</button>
-<div class="xdetails"><pre><?php echo $show_me->euser_payment_meta; ?></pre></div>
+Details <button id="ihide">Hide</button><button id="ishow">Show</button>
+<div class="xdetails"><p><?php echo $show_me->euser_payment_meta; ?></p></div>
   </td>
   <td><?php echo $show_me->updated_at; ?></td>
   <td>
