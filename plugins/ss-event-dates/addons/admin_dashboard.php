@@ -12,7 +12,6 @@ function dash_css() {
 	<style type='text/css'>
 .xdetails{
   max-width: 200px;
-  display: none;
   padding: 7px;
   background-color: #2c3e50;
   color: #ecf0f1;
