@@ -57,8 +57,8 @@
 		</div>
 		<div class="col-md-4">
 			<button class="btn" id="change-password" onclick="changePassword()">Change Password</button>
-			<?php if($user_detail['euser_meta_type']=="free_type"){ ?>
-				<button class="btn hidden" id="change-type" onclick="resetMembership()">upgrade participant type</button>
+			<?php if($user_detail['euser_meta_type']!=="author_type"){ ?>
+				<button class="btn hidden" id="change-type" onclick="resetMembership()">Change to participant type</button>
 			<?php } ?>
 		</div>
 	</div>		
@@ -86,7 +86,7 @@
 
 	function resetMembership(){
 		console.log('resetMembership');
-		if (confirm("are you sure want to upgrade?")){
+		if (confirm("Are you sure want to change to Participant Membership?")){
 			jQuery.ajax({ 
 				url: "<?php echo  plugins_url('ss-event-dates').'/templates/dashboard/model.php'; ?>",
 				type: 'POST',

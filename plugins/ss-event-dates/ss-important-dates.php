@@ -101,6 +101,7 @@ require_once( IUFRO_DIR . 'addons/admin_dashboard.php' );
                 'has_archive' => true
             )
         );
+
     }
 
     function html_important_date_code() {
@@ -819,8 +820,6 @@ require_once( IUFRO_DIR . 'addons/admin_dashboard.php' );
     }
 
      add_shortcode( 'user_activation', 'user_activation' );
-
-        
 
 
     ?>

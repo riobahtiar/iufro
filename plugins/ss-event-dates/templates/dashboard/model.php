@@ -17,7 +17,7 @@
 					$wpdb->update( 
 					'wp_ss_event_user_detail', 
 					array( 
-						'euser_type' => '',	
+						'euser_meta_type' => 'participant_type',	
 					), 
 					array( 'euser_email' => $euser_email ), 
 					array( 
