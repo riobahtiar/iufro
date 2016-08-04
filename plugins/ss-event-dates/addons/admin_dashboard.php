@@ -69,6 +69,7 @@ function users_page_control() {
 <div class="wrap">
 <h2>IUFRO ACACIA CONFERENCE 2017</h2>
 <p>Control Dashboard</p>
+<div class="dtbl-btn"></div>
 <table class="etable" id="iufro-member" class="display" cellspacing="0" width="100%">
 <thead>
 <tr>
@@ -247,10 +248,25 @@ Trip Post Conference : <?php echo $string_post_conf; ?><br>
 jQuery(document).ready(function() {
     jQuery('#iufro-member').DataTable({
       buttons: ['copy', 'excel', 'pdf'],
-      responsive: true,
-      autoFill: true
+      responsive: true
     });
 });
+
+var table = jQuery('#iufro-member').DataTable();
+ 
+new jQuery.fn.dataTable.Buttons( table, {
+    buttons: [
+        'copy', 'excel', 'pdf'
+    ]
+} );
+ 
+table.buttons().container()
+    .appendTo( $('.dtbl-btn:eq(0)', table.table().container() ) );
+
+
+
+
+
 
 </script>
 <?php } 
