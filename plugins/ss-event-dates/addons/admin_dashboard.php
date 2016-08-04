@@ -183,7 +183,7 @@ if ( $show_me->euser_type =="local student") {
 ?>
 <tr id="euser-<?php echo $show_me->euser_id; ?>">
   <td><?php echo $show_me->euser_barcode; ?></td>
-  <td><?php echo $show_me->euser_fullname.$show_me->euser_abstrak.$show_me->euser_poster.$string_mid_conf; ?></td>
+  <td><?php echo $show_me->euser_fullname; ?></td>
   <td>
 <?php
 $abstract_download = wp_get_attachment_url( $show_me->euser_abstrak );
@@ -208,7 +208,6 @@ Poster &nbsp;<a href="<?php echo $poster_download; ?>" onclick="window.open(this
 }
 if(!empty($ktm_download)){
 ?>
-<hr>
 Student Card &nbsp;<a href="<?php echo $ktm_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Download</a>
 
 <?php
@@ -227,10 +226,17 @@ Trip Mid Conference : <?php echo $string_mid_conf; ?><br>
 Trip Post Conference : <?php echo $string_post_conf; ?><br>
 <?php } if (isset( $string_dinner )) { ?>
   Dinner : <?php echo $string_dinner; ?><br>
+  Billed : US$<?php echo $total_price; ?> 
 <?php } ?>
 
+
+
   </td>
-  <td><?php echo $show_me->euser_payment_status; ?></td>
+  <td><?php echo $show_me->euser_payment_status; ?><br>
+    
+Details <button id="hide">Hide</button><button id="show">Show</button>
+<div class="xdetails"><pre><?php echo $show_me->euser_payment_meta; ?></pre></div>
+  </td>
   <td><?php echo $show_me->updated_at; ?></td>
   <td>
 <a href="?delete=<?php echo $show_me->ID; ?>" class="delete">Delete</a>
@@ -242,14 +248,6 @@ Trip Post Conference : <?php echo $string_post_conf; ?><br>
 </div>
 <script>
 
-// jQuery(document).ready(function() {
-//     jQuery('#iufro-member').DataTable({
-//       dom: 'Bfrtip',
-//       buttons: ['copy', 'excel', 'pdf'],
-//       responsive: true
-//     });
-// });
-
 jQuery(document).ready(function() {
     var table = jQuery('#iufro-member').DataTable( {
         lengthChange: false,
@@ -260,6 +258,14 @@ jQuery(document).ready(function() {
         .appendTo( '.dtbl-btn' );
 } );
 
+jQuery(document).ready(function(){
+    jQuery("#ihide").click(function(){
+        jQuery(".xdetails").hide();
+    });
+    jQuery("#ishow").click(function(){
+        jQuery(".xdetails").show();
+    });
+});
 
 
 </script>
