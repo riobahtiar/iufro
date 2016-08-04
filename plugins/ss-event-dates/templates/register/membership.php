@@ -93,17 +93,16 @@ The payable fee covers registration for the Conference, welcome reception, banqu
 			   			alert("student card is empty");
 			   			return false;
 			   		}
-			   }  
+			   }else if(jQuery('input[name=local]').val()==''){
+	   				alert("Please choose one of Local Account type");
+					return false;
+	   			}
 
 	   }else if(jQuery('input[name=account]').val()==''){
 	   		alert("Please choose one of membership type");
 			return false;
 	   }
 
-	   if(jQuery('input[name=account]:checked').val()=="local" && jQuery('input[name=local]:checked').val()==""){
-	   		alert("Please choose one of Local Account type");
-			return false;
-	   }
 
 	});
 </script>
