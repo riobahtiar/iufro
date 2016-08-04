@@ -18,6 +18,11 @@ function dash_css() {
   color: #ecf0f1;
   font-size: 10px;
 }
+#ihide,#ishow{
+  background-color: #1abc9c;
+  color: #ecf0f1;
+  padding: 2px;
+}
 .etable {
     border: 1px solid #ddd;
     font-size: 13px;
@@ -242,7 +247,7 @@ Trip Post Conference : <?php echo $string_post_conf; ?><br>
   </td>
   <td><?php echo $show_me->euser_payment_status; ?><br>
     
-Details <button id="ihide">Hide</button><button id="ishow">Show</button>
+Details <button id="ihide">Hide</button>&nbsp;<button id="ishow">Show</button>
 <div class="xdetails"><p><?php echo $show_me->euser_payment_meta; ?></p></div>
   </td>
   <td><?php echo $show_me->updated_at; ?></td>
