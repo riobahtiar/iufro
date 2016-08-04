@@ -216,8 +216,6 @@ if(!empty($poster_download)){
 }
 ?>
 
-
-
   </td>
   <td><?php echo $show_me->euser_status; ?></td>
   <td>
