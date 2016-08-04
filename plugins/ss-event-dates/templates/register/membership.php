@@ -33,7 +33,7 @@ Also has the ability to choose the available field trip that we provide (there w
 The payable fee covers registration for the Conference, welcome reception, banquet conference dinner, conference bag and souvenir, mid-conference tour, and tea/coffee and lunch.<br><br>
 
 Please choose your local type:<br>
-							<label><input type="radio" name="local" value="regular" checked>Regular</label>
+							<label><input type="radio" name="local" value="regular">Regular</label>
 							<label><input type="radio" name="local" value="student">Student</label>
 							<label id="std-card" class="hidden"> Please upload your student card<input id="input-card" type="file" name="student_card"></label>
 						</div>
@@ -69,26 +69,23 @@ The payable fee covers registration for the Conference, welcome reception, banqu
 <script type="text/javascript">
 	jQuery('#form-membership').on("change", function(){
 		if(jQuery('input[name=account]:checked').val()=="local"){
+
 			   if(jQuery('input[name=local]:checked').val()=="regular"){
 			   		jQuery( "#std-card" ).addClass( "hidden" );
-			   }
-
-			   if(jQuery('input[name=local]:checked').val()==""){
-			   		jQuery( "#std-card" ).addClass( "hidden" );
-			   		jQuery('input[name=local]').attr('checked');
 			   }
 
 			   if(jQuery('input[name=local]:checked').val()=="student"){
 			   		jQuery( "#std-card" ).removeClass( "hidden" );
 			   }
 
-	   } else if (jQuery('input[name=account]:checked').val()=="foreign"){
+			   if(jQuery('input[name=local]').val()==""){
+			   		jQuery('input[name=local][name=local]').attr('checked', true)
+			   }  
+
+	   } else {
+	   		jQuery( "#std-card" ).removeClass( "hidden" );
 	   		jQuery('input[name=local]').prop('checked', false);
-	   		jQuery('input[name=local]').removeAttr('checked');
-	   } else{
-
-	   }
-
+	   } 
 
 	})
 
