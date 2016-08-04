@@ -45,7 +45,7 @@ Please choose your local type:<br>
 							<label><input type="radio" name="account" value="foreign"> <i class="fa fa-user" aria-hidden="true"></i> Foreigner </label> <span class="pull-right">Detail <i class="fa fa-question-circle" aria-hidden="true"></i></span>
 						</h2>
 					</div>
-					<div id="foreign" class="panel-collapse collapse in">
+					<div id="foreign" class="panel-collapse collapse">
 						<div class="panel-body">
 Registration fee for foreigner :<br>
 - Early bird registration (1st January - 30th April 2017) : USD 350<br>
