@@ -41,7 +41,6 @@
 	<div id="main-pass">
 		<div class="col-md-8">
 			<table class="table">
-				<tr><td>Username</td><td>:</td><td><?php echo $user_detail['euser_email']; ?></td></tr>
 				<tr><td>User type</td><td>:</td><td><?php 
 				if ($user_detail['euser_meta_type']=="participant_type"){
 					echo "Participant";
