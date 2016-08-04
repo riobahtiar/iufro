@@ -17,7 +17,6 @@ function dash_css() {
   background-color: #2c3e50;
   color: #ecf0f1;
   font-size: 8px;
-  margin-top: 8px;
 }
 .xdetails p{
   margin: 0;
