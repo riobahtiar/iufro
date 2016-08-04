@@ -99,7 +99,7 @@ function users_page_control() {
   <th width="14%">Files</th>
   <th width="10%">Status</th>
   <th width="21%">Addon</th>
-  <th width="14%">Payment&nbsp;<button id="ihide">Hide</button>&nbsp;<button id="ishow">Show</button></th>
+  <th width="14%">Payment <br><button id="ihide">Hide</button>&nbsp;<button id="ishow">Show</button></th>
   <th width="8%">Last Login</th>
   <th width="8%">Act</th>
 </tr>
@@ -254,7 +254,9 @@ Trip Post Conference : <?php echo $string_post_conf; ?><br>
 
   </td>
   <td><?php echo $show_me->euser_payment_status; ?><br>
+  <?php if(!empty($abstract_download)){ ?>
 <div class="xdetails"><p><?php echo $show_me->euser_payment_meta; ?></p></div>
+<?php } ?> 
   </td>
   <td><?php echo $show_me->updated_at; ?></td>
   <td>
