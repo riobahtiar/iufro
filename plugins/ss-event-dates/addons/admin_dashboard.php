@@ -247,24 +247,21 @@ Trip Post Conference : <?php echo $string_post_conf; ?><br>
 
 // jQuery(document).ready(function() {
 //     jQuery('#iufro-member').DataTable({
+//       dom: 'Bfrtip',
 //       buttons: ['copy', 'excel', 'pdf'],
 //       responsive: true
 //     });
 // });
 
-var table = jQuery('#iufro-member').DataTable();
+jQuery(document).ready(function() {
+    var table = $('#iufro-member').DataTable( {
+        lengthChange: false,
+        buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+    } );
  
-new jQuery.fn.dataTable.Buttons( table, {
-    buttons: [
-        'copy', 'excel', 'pdf'
-    ]
+    table.buttons().container()
+        .appendTo( '.dtbl-btn' );
 } );
- 
-table.buttons().container()
-    .appendTo( $('.dtbl-btn:eq(0)', table.table().container() ) );
-
-
-
 
 
 
