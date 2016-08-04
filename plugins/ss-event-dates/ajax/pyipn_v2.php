@@ -83,18 +83,6 @@ if ($user_detail['euser_type']=="local student") {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 }
 // CONFIG: Enable debug mode. This means we'll log requests into 'ipn.log' in the same directory.
 // Especially useful if you encounter network errors or other intermittent problems with IPN (validation).
@@ -330,7 +318,7 @@ $pdf->Output($filename,'F');
 
             // ===== Emails ==== //
 $to = $user_detail['euser_email'];
-$subject = 'Payment Complete Notification | IUFRO SYSTEM';
+$subject = 'Payment Successfull Notification | IUFRO SYSTEM';
 $body = '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -452,11 +440,11 @@ wp_mail( $to, $subject, $body, $headers , $attachments );
 	if(DEBUG == true) {
 		error_log(date('[Y-m-d H:i e] '). "Invalid IPN: $req" . PHP_EOL, 3, LOG_FILE);
 	}
-	// === SEND USER EMAIL if Success //
+	// === SEND USER EMAIL if Invalid //
 $to = 'akhibahtiar@gmail.com';
 $subject = 'Payment error last invalid';
 $body = $packlogs;
-$body .= 'Payment error last invalid';
+$body .= 'Payment error last invalid'.date('l jS \of F Y h:i:s A');
 $headers[] = 'Content-Type: text/html; charset=UTF-8';
 $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
 $headers[] = 'Cc: Rio Bahtiar <riob@softwareseni.com>'; 
