@@ -11,17 +11,25 @@ function dash_css() {
 	echo "
 	<style type='text/css'>
 .xdetails{
-  max-width: 220px;
+  max-width: 200px;
   display: none;
-  padding: 3px;
+  padding: 1px 10px;
   background-color: #2c3e50;
   color: #ecf0f1;
-  font-size: 10px;
+  font-size: 8px;
 }
+.xdetails p{
+  margin: 0;
+}
+
 #ihide,#ishow{
   background-color: #1abc9c;
   color: #ecf0f1;
-  padding: 2px;
+  padding: 2px 7px;
+  border: none;
+}
+#ihide:hover,#ishow:hover{
+  background-color: #16a085;
 }
 .etable {
     border: 1px solid #ddd;
@@ -91,7 +99,7 @@ function users_page_control() {
   <th width="14%">Files</th>
   <th width="10%">Status</th>
   <th width="21%">Addon</th>
-  <th width="14%">Payment</th>
+  <th width="14%">Payment&nbsp;<button id="ihide">Hide</button>&nbsp;<button id="ishow">Show</button></th>
   <th width="8%">Last Login</th>
   <th width="8%">Act</th>
 </tr>
@@ -246,8 +254,6 @@ Trip Post Conference : <?php echo $string_post_conf; ?><br>
 
   </td>
   <td><?php echo $show_me->euser_payment_status; ?><br>
-    
-Details <button id="ihide">Hide</button>&nbsp;<button id="ishow">Show</button>
 <div class="xdetails"><p><?php echo $show_me->euser_payment_meta; ?></p></div>
   </td>
   <td><?php echo $show_me->updated_at; ?></td>
