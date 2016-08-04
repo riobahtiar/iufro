@@ -23,13 +23,41 @@ function dash_css() {
 }
 
 #ihide,#ishow{
-  background-color: #1abc9c;
-  color: #ecf0f1;
-  padding: 2px 7px;
-  border: none;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    margin-right: 0.333em;
+    padding: 0.5em 1em;
+    border: 1px solid #999;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 0.88em;
+    color: black;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: #e9e9e9;
+    background-image: -webkit-linear-gradient(top, #fff 0%, #e9e9e9 100%);
+    background-image: -moz-linear-gradient(top, #fff 0%, #e9e9e9 100%);
+    background-image: -ms-linear-gradient(top, #fff 0%, #e9e9e9 100%);
+    background-image: -o-linear-gradient(top, #fff 0%, #e9e9e9 100%);
+    background-image: linear-gradient(to bottom, #fff 0%, #e9e9e9 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='white', EndColorStr='#e9e9e9');
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-decoration: none;
+    outline: none;
 }
 #ihide:hover,#ishow:hover{
-  background-color: #16a085;
+    border: 1px solid #666;
+    background-color: #e0e0e0;
+    background-image: -webkit-linear-gradient(top, #f9f9f9 0%, #e0e0e0 100%);
+    background-image: -moz-linear-gradient(top, #f9f9f9 0%, #e0e0e0 100%);
+    background-image: -ms-linear-gradient(top, #f9f9f9 0%, #e0e0e0 100%);
+    background-image: -o-linear-gradient(top, #f9f9f9 0%, #e0e0e0 100%);
+    background-image: linear-gradient(to bottom, #f9f9f9 0%, #e0e0e0 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#f9f9f9', EndColorStr='#e0e0e0');
 }
 .etable {
     border: 1px solid #ddd;
@@ -91,7 +119,7 @@ function users_page_control() {
 <h2>IUFRO ACACIA CONFERENCE 2017</h2>
 <p>Control Dashboard</p>
 <div class="dtbl-btn"></div>
-<p>Payment Details: <button id="ihide">Hide</button>&nbsp;<button id="ishow">Show</button></p>
+<p>&nsp;| &nbsp;Payment Details: <button id="ihide">Hide</button>&nbsp;<button id="ishow">Show</button></p>
 <table class="etable" id="iufro-member" class="display" cellspacing="0" width="100%">
 <thead>
 <tr>
