@@ -91,6 +91,7 @@ function users_page_control() {
 <h2>IUFRO ACACIA CONFERENCE 2017</h2>
 <p>Control Dashboard</p>
 <div class="dtbl-btn"></div>
+<p>Payment Details: <button id="ihide">Hide</button>&nbsp;<button id="ishow">Show</button></p>
 <table class="etable" id="iufro-member" class="display" cellspacing="0" width="100%">
 <thead>
 <tr>
@@ -99,7 +100,7 @@ function users_page_control() {
   <th width="14%">Files</th>
   <th width="10%">Status</th>
   <th width="21%">Addon</th>
-  <th width="14%">Payment <br><button id="ihide">Hide</button>&nbsp;<button id="ishow">Show</button></th>
+  <th width="14%">Payment</th>
   <th width="8%">Last Login</th>
   <th width="8%">Act</th>
 </tr>
