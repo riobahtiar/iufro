@@ -21,7 +21,7 @@ if(isset($_GET['step']) && $_GET['step']=="membership"){
 						 	<label><input type="radio" name="account" value="local" checked> <i class="fa fa-user" aria-hidden="true"></i> Local</label> <span class="pull-right">Detail <i class="fa fa-question-circle" aria-hidden="true"></i></span>
 						</h2>
 					</div>
-					<div id="local" class="panel-collapse collapse">
+					<div id="local" class="panel-collapse collapse in">
 						<div class="panel-body">
 Registration fee for local :<br>
 - Early bird registration (1st January - 30th April 2017) : USD 23<br>
