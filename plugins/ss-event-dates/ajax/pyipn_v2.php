@@ -233,7 +233,7 @@ $title= 'IUFRO ACACIA CONFERENCE 2017';
 $pdf=new PDF_Code128();
 $pdf->AddPage('P','A4');
 // Barcode
-$pdf->Cell(28,115,'',1,0,'C');
+$pdf->Cell(28,117,'',1,0,'C');
 $pdf->Rotate(90,88,120);
 $pdf->Code128(100,46,$barcodeno,90,15);
 $pdf->Rotate(0);
@@ -254,7 +254,7 @@ $pdf->SetXY(39,41);
 $pdf->SetFont('Arial','',12);
 $pdf->Write(5,'DATE');
 $pdf->SetXY(49,52);
-$pdf->Write(5,'24 July 2017 - 28 July 2017');
+$pdf->Write(5,'July 24, 2017 - July 28, 2017');
 $pdf->SetXY(119,41);
 $pdf->Write(5,'VENUE');
 $pdf->SetXY(128,47);
@@ -268,7 +268,7 @@ $pdf->Write(5,'Jalan Palagan Tentara Pelajar Km 15,');
 $pdf->SetXY(125,64);
 $pdf->Write(5,'Pakem, Sleman, Yogyakarta 55582');
 $pdf->SetXY(38,70);
-$pdf->Cell(160,55,'',1,0,'C');
+$pdf->Cell(160,57,'',1,0,'C');
 
 
 if ($user_detail['euser_meta_type']=="participant_type"){
@@ -283,7 +283,7 @@ if ($user_detail['euser_meta_type']=="participant_type"){
 $pdf->SetXY(39,71);
 $pdf->Write(5,'DETAILS');
 $pdf->SetXY(45,79);
-$pdf->Write(5,'Full Name : '.$user_detail['euser_addon_mid']);
+$pdf->Write(5,'Full Name : '.$user_detail['euser_fullname']);
 $pdf->SetXY(45,85);
 $pdf->Write(5,'Address : '.$user_detail['euser_address']);
 $pdf->SetXY(45,91);
@@ -296,6 +296,10 @@ $pdf->SetXY(47,110);
 $pdf->Write(5,' ~ Post Conference : '.$string_post_conf);
 $pdf->SetXY(45,116);
 $pdf->Write(5,' Dinner Conference : '.$string_dinner);
+$pdf->SetXY(45,1122);
+$pdf->Write(5,' Payment : US$'.$payment_amount.' - Status'.$payment_status);
+
+
 
 $pdf->SetXY(50,200);
 $pdf->SetFont('Arial','',10);
