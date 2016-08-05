@@ -363,7 +363,7 @@ jQuery(document).ready(function() {
 } );
 
 jQuery(document).ready(function(){
-  jQuery("#iufro-member_filter input[type='search']").attr("placeholder", "..Find Anything..");
+  jQuery("#iufro-member_filter input[type='search']").attr("placeholder", " Find Anything ");
   jQuery("#iufro-member_filter input[type='search']").attr("autofocus");
     jQuery("#ihide").click(function(){
         jQuery(".xdetails").hide();
