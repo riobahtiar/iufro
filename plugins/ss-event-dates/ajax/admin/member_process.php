@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <meta content="IE=edge" http-equiv="X-UA-Compatible">
+                <meta content="width=device-width, initial-scale=1" name="viewport">
+                    <title>
+                    </title>
+                </meta>
+            </meta>
+        </meta>
+    </head>
+<body style="background: #f7f7f7; padding: 20px; font-size: 15px; text-align: center;">
+
 <?php
 $parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
 require_once $parse_uri[0] . 'wp-load.php';
@@ -295,3 +309,7 @@ if ($_GET['do_model'] == 'do_membership') {
 // echo "<pre>";
 // var_dump($wpdb);
 // echo "</pre><hr>Lagi";
+
+?>
+    </body>
+</html>
