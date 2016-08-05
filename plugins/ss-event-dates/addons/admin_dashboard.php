@@ -345,9 +345,9 @@ function foo_render_action_page() {
 }
 add_action( 'admin_action_foo_modal_box', 'foo_render_action_page' );
 echo '<a href="' . $url . '" class="button button-primary thickbox">' . __( 'Add New Customer', 'foo' ) . '</a>';
+echo "<br>";
 ?>
-<script>
-
+<script type="text/javascript">
 jQuery("#iufro-member_filter input[type='search']").attr("placeholder", "..Find Anything..");
 jQuery("#iufro-member_filter input[type='search']").attr("autofocus");
 
