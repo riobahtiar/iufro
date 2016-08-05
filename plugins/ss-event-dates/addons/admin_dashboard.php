@@ -60,7 +60,7 @@ function dash_css() {
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#f9f9f9', EndColorStr='#e0e0e0');
 }
 .etable {
-    border: 1px solid #ddd;
+    border: 1px solid #59524c;
     font-size: 13px;
 }
 .etable {
@@ -77,18 +77,29 @@ function dash_css() {
 }
 
 .etable>tbody>tr>td, .etable>tbody>tr>th, .etable>tfoot>tr>td, .etable>tfoot>tr>th, .etable>thead>tr>td, .etable>thead>tr>th {
-    border: 1px solid #ddd;
+    border: 1px solid #59524c;
 }
 .etable>tbody>tr>td, .etable>tbody>tr>th, .etable>tfoot>tr>td, .etable>tfoot>tr>th, .etable>thead>tr>td, .etable>thead>tr>th {
     padding: 8px;
     line-height: 1.42857143;
     vertical-align: top;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #59524c;
 }
 .etable thead{
-	background: green;
+	background: #59524c;
 	color: white;
 	border-color: black;
+}
+
+div#iufro-member_filter {
+    padding: 5px 10px;
+    background-color: #008000;
+    color: white;
+    margin-right: 2px;
+    margin-bottom: -2px;
+    border-top-width: medium;
+    border-top-style: solid;
+    margin-top: -48px;
 }
 	</style>
 	";
