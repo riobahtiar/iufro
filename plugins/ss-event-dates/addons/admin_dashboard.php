@@ -279,7 +279,7 @@ if ( $show_me->euser_meta_type =="author_type" ) {
 ?>
 <tr id="euser-<?php echo $show_me->euser_id; ?>">
   <td><?php echo $show_me->euser_barcode; ?></td>
-  <td><?php echo $show_me->euser_fullname.' ( as '.$user_meta_string.' )'; ?></td>
+  <td><?php echo $show_me->euser_fullname.' <br>( as '.$user_meta_string.' )'; ?></td>
   <td>
 <?php
 $abstract_download = wp_get_attachment_url( $show_me->euser_abstrak );

@@ -2,10 +2,6 @@
 	$parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
 	require_once( $parse_uri[0] . 'wp-load.php' );
 
-
-	global $wpdb;
-	$query="SELECT * FROM wp_ss_event_user_detail WHERE euser_barcode = '{$euser_barcode}'";
-	$user_detail = $wpdb->get_row( $query, ARRAY_A );
 	// print_r($_POST);
 	if (isset($_POST['do_model'])){
 		switch ($_POST['do_model']) {
