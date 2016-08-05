@@ -16,6 +16,7 @@ function dash_css() {
   background-color: #2c3e50;
   color: #ecf0f1;
   font-size: 8px;
+  display: none;
 }
 .xdetails p{
   margin: 0;
@@ -267,7 +268,7 @@ Student Card &nbsp;<a href="<?php echo $ktm_download; ?>" onclick="window.open(t
   <td><?php echo $show_me->euser_status; ?></td>
   <td>
   	
-<?php   if ($user_string) { ?>
+<?php   if (isset( $user_string )) { ?>
 User Type: <?php echo $user_string; ?><br>
 <?php } if (isset( $string_mid_conf )) { ?>
 Trip Mid Conference : <?php echo $string_mid_conf; ?><br>
@@ -282,7 +283,9 @@ Trip Post Conference : <?php echo $string_post_conf; ?><br>
 
   </td>
   <td><?php echo $show_me->euser_payment_status; ?><br>
-<div class="xdetails"><p><?php echo $show_me->euser_payment_meta; ?></p></div>
+  <?php } if (isset( $show_me->euser_payment_meta )) { ?>
+<div class="xdetails" style="display: none;"><p><?php echo $show_me->euser_payment_meta; ?></p></div>
+<?php } ?>
   </td>
   <td><?php echo $show_me->updated_at; ?></td>
   <td>
