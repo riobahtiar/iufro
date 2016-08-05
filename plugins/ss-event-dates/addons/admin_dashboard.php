@@ -3,7 +3,14 @@
  * @package User Dashboard
  * @author riobahtiar
  */
-
+add_thickbox();
+function modal_action() {
+    define( 'IFRAME_REQUEST', true );
+    iframe_header();
+    iframe_footer();
+    exit;
+}
+add_action( 'admin_action_foo_modal_box', 'modal_action' );
 
 function dash_css() {
 	$x = is_rtl() ? 'left' : 'right';
@@ -319,7 +326,16 @@ Trip Post Conference : <?php echo $string_post_conf; ?><br>
   </td>
   <td><?php echo $show_me->updated_at; ?></td>
   <td>
-<a href="?delete=<?php echo $show_me->ID; ?>" class="delete">Delete</a>
+<?php
+$url = add_query_arg( array(
+    'brcd'    => $show_me->euser_barcode,
+    'type'      => 'member',
+    'TB_iframe' => 'true',
+    'width'     => '800',
+    'height'    => '500'
+), plugins_url('ss-event-dates').'/ajax/admin_model.php' );
+echo '<a href="' . $url . '" class="button button-primary thickbox">' . __( 'options', 'iufro' ) . '</a>';
+?>
   </td>
 </tr>
 <?php } ?>
@@ -327,29 +343,8 @@ Trip Post Conference : <?php echo $string_post_conf; ?><br>
 </table>
 </div>
 
-<?php
-add_thickbox();
-$url = add_query_arg( array(
-    'action'    => 'foo_modal_box',
-    'TB_iframe' => 'true',
-    'width'     => '800',
-    'height'    => '500'
-), 'http://facebook.com' );
 
-function foo_render_action_page() {
-    define( 'IFRAME_REQUEST', true );
-    iframe_header();
-    echo "Tsahhh ";
-    iframe_footer();
-    exit;
-}
-add_action( 'admin_action_foo_modal_box', 'foo_render_action_page' );
-echo '<a href="' . $url . '" class="button button-primary thickbox">' . __( 'Add New Customer', 'foo' ) . '</a>';
-echo "<br>";
-?>
 <script type="text/javascript">
-
-
 jQuery(document).ready(function() {
     var table = jQuery('#iufro-member').DataTable( {
         lengthChange: false,
