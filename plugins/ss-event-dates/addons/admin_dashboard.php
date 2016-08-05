@@ -348,6 +348,8 @@ echo '<a href="' . $url . '" class="button button-primary thickbox">' . __( 'Add
 ?>
 <script>
 
+jQuery("#iufro-member_filter input[type='search']").attr("placeholder", "..Find Anything..")
+
 jQuery(document).ready(function() {
     var table = jQuery('#iufro-member').DataTable( {
         lengthChange: false,
