@@ -313,8 +313,8 @@ add_thickbox();
 $url = add_query_arg( array(
     'action'    => 'foo_modal_box',
     'TB_iframe' => 'true',
-    'width'     => '600',
-    'height'    => '400'
+    'width'     => '800',
+    'height'    => '500'
 ), admin_url( 'admin.php' ) );
 
 function foo_render_action_page() {
