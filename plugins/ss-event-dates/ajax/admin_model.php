@@ -66,13 +66,13 @@ $user_detail = $wpdb->
         <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_process.php'; ?>" type="post">
             <input name="do_model" type="hidden" value="do_doc_approved">
                 <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
-                    <button class="btn btn-danger" type="submit">
+                    <button class="btn btn-primary" type="submit">
                         Approved
                     </button>
                 </input>
             </input>
         </form>
-        <br><br>
+        <br>
             <!--  Rejected -->
             <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_process.php'; ?>" type="post">
                 <input name="do_model" type="hidden" value="do_doc_rejected">
