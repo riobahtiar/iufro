@@ -334,7 +334,7 @@ $url = add_query_arg( array(
     'TB_iframe' => 'true',
     'width'     => '800',
     'height'    => '500'
-), admin_url( 'admin.php' ) );
+), 'http://facebook.com' );
 
 function foo_render_action_page() {
     define( 'IFRAME_REQUEST', true );
