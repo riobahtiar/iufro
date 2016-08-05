@@ -307,6 +307,26 @@ Trip Post Conference : <?php echo $string_post_conf; ?><br>
 </tbody>
 </table>
 </div>
+
+<?php
+add_thickbox();
+$url = add_query_arg( array(
+    'action'    => 'foo_modal_box',
+    'TB_iframe' => 'true',
+    'width'     => '600',
+    'height'    => '400'
+), admin_url( 'admin.php' ) );
+
+function foo_render_action_page() {
+    define( 'IFRAME_REQUEST', true );
+    iframe_header();
+    echo "Tsahhh ";
+    iframe_footer();
+    exit;
+}
+add_action( 'admin_action_foo_modal_box', 'foo_render_action_page' );
+echo '<a href="' . $url . '" class="button button-primary thickbox">' . __( 'Add New Customer', 'foo' ) . '</a>';
+?>
 <script>
 
 jQuery(document).ready(function() {
