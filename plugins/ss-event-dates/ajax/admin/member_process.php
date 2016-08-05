@@ -1,8 +1,8 @@
 <?php
 	$parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
 	require_once( $parse_uri[0] . 'wp-load.php' );
-
-	// print_r($_POST);
+echo $_POST['do_model'].$_POST['user_type'].$_POST['barcode'].'<hr>';
+	 print_r($_POST);
 	if (isset($_POST['do_model'])){
 		switch ($_POST['do_model']) {
 
