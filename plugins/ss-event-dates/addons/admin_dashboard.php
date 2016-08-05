@@ -348,8 +348,7 @@ echo '<a href="' . $url . '" class="button button-primary thickbox">' . __( 'Add
 echo "<br>";
 ?>
 <script type="text/javascript">
-jQuery("#iufro-member_filter input[type='search']").attr("placeholder", "..Find Anything..");
-jQuery("#iufro-member_filter input[type='search']").attr("autofocus");
+
 
 jQuery(document).ready(function() {
     var table = jQuery('#iufro-member').DataTable( {
@@ -362,6 +361,8 @@ jQuery(document).ready(function() {
 } );
 
 jQuery(document).ready(function(){
+  jQuery("#iufro-member_filter input[type='search']").attr("placeholder", "..Find Anything..");
+  jQuery("#iufro-member_filter input[type='search']").attr("autofocus");
     jQuery("#ihide").click(function(){
         jQuery(".xdetails").hide();
     });
