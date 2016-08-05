@@ -283,7 +283,7 @@ Trip Post Conference : <?php echo $string_post_conf; ?><br>
 
   </td>
   <td><?php echo $show_me->euser_payment_status; ?><br>
-  <?php } if (isset( $show_me->euser_payment_meta )) { ?>
+  <?php if (isset( $show_me->euser_payment_meta )) { ?>
 <div class="xdetails" style="display: none;"><p><?php echo $show_me->euser_payment_meta; ?></p></div>
 <?php } ?>
   </td>
