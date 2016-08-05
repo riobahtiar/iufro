@@ -94,8 +94,6 @@ function dash_css() {
 div#iufro-member_filter {
     margin-right: 2px;
     margin-bottom: -2px;
-    border-top-width: medium;
-    border-top-style: solid;
     margin-top: -48px;
     width: 35%;
 }
@@ -108,11 +106,17 @@ div#iufro-member_filter {
     text-align: center;
     font-weight: bold;
     transition: ease-in-out, width .35s ease-in-out;
+    color: #d606da;
 }
 
+#iufro-member_filter label{
+  color:#f1f1f1;
+}
 
 #iufro-member_filter input[type='search']:focus {
     width: 85%;
+    border: #4f0450 medium solid;
+    color: #4f0450;
 }
 
 
