@@ -93,7 +93,7 @@ function dash_css() {
 
 div#iufro-member_filter {
     padding: 5px 10px;
-    background-color: #008000;
+    background-color: #59524c;
     color: white;
     margin-right: 2px;
     margin-bottom: -2px;
@@ -128,7 +128,7 @@ function users_page_control() {
 
 <div class="wrap">
 <h2>IUFRO ACACIA CONFERENCE 2017</h2>
-<p>Control Dashboard</p>
+<h4>Control Dashboard</h4>
 <div class="dtbl-btn"></div>
 <p>&nbsp;| &nbsp;Payment Details: <button id="ihide">Hide</button>&nbsp;<button id="ishow">Show</button></p>
 <table class="etable" id="iufro-member" class="display" cellspacing="0" width="100%">
