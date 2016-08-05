@@ -267,14 +267,12 @@ if ( $show_me->euser_type =="local student") {
 }
 
 if ( $show_me->euser_meta_type =="author_type" ) {
-  $user_meta_string = 'Free Member';
+  $user_meta_string = 'Author Member';
 }elseif ( $show_me->euser_meta_type =="participant_type" ){
   $user_meta_string = 'Participant Member';
 }else{
   $user_meta_string = 'Free Member';
 }
-
-
 
 ?>
 <tr id="euser-<?php echo $show_me->euser_id; ?>">
