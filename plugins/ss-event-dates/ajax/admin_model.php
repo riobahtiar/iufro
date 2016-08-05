@@ -54,20 +54,7 @@ $user_detail = $wpdb->
             </form>
         </p>
         <!-- User Changer -->
-        <h4>
-            Document Status:
-            <strong>
-                <?php
-if ($user_detail['euser_doc_status'] == null) {
-    echo "Document Not Published";
-} elseif ($user_detail['euser_doc_status'] == 'published') {
-    echo "Document Already Published";
-} else {
-    echo "Document Not Published";
-}
-?>
-            </strong>
-        </h4>
+<hr>
         <?php if ($user_detail['euser_doc_status'] == null) {?>
         <h4>
             Document Status:
@@ -85,7 +72,7 @@ if ($user_detail['euser_doc_status'] == null) {
                 </input>
             </input>
         </form>
-        <hr>
+        <br><br>
             <!--  Rejected -->
             <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_process.php'; ?>" type="post">
                 <input name="do_model" type="hidden" value="do_doc_rejected">
