@@ -143,6 +143,25 @@ $user_detail = $wpdb->
                     </input>
                 </input>
             </form>
+            <?php } elseif ($user_detail['euser_doc_status'] == 'unpublished') {?>
+            <h4>
+                Document Status:
+                <strong>
+                    Unpublished
+                </strong>
+            </h4>
+            <div class="well">
+               If you have made a mistake, the button below can re-publish the rejected member.
+            </div>
+			<form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_process.php'; ?>" type="post">
+                <input name="do_model" type="hidden" value="do_doc_publish">
+                    <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
+                        <button class="btn btn-primary" type="submit">
+                            Publish
+                        </button>
+                    </input>
+                </input>
+            </form>
             <?php } else { ?>
             	<strong>Something was wrong, contact Sys Administrator</strong>
             <?php }?>
