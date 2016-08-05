@@ -20,8 +20,7 @@
 <!-- User Changer -->
 <p class="bg-primary">
 <form action="<?php echo plugins_url('ss-event-dates').'/ajax/admin/member_process.php'; ?>" type="post">
-<h4>Change User Type to </h4>
-User Type Changer
+<h4>User Type Changer </h4>
 <input type="hidden" name="do_model" value="do_membership">
 <input type="hidden" name="barcode" value="<?php echo $euser_barcode; ?>">
 <div class="form-group">
@@ -37,20 +36,29 @@ User Type Changer
 </p>
 <!-- User Changer -->
 <p class="bg-success">
+<h4>Document Status: <strong>
+<?php 
+if ($user_detail['euser_doc_status'] == NULL) {
+	echo "Document Not Published";
+} elseif ($user_detail['euser_doc_status'] == 'published') {
+	echo "Document Already Published";
+} else{
+	echo "Document Not Published";
+}
+ ?>
+
+	</strong></h4>
+<!-- Publish -->
 <form action="<?php echo plugins_url('ss-event-dates').'/ajax/admin/member_process.php'; ?>" type="post">
-<h4>Change User Type to </h4>
-User Type Changer
-<input type="hidden" name="do_model" value="do_membership">
+<input type="hidden" name="do_model" value="do_doc_publish">
 <input type="hidden" name="barcode" value="<?php echo $euser_barcode; ?>">
-<div class="form-group">
-  <label for="user_type">User Type</label>
-<select name="user_type" class="form-control">
-  <option value="free_type">Free</option>
-  <option value="participant_type">Participant</option>
-  <option value="author_type">Author</option>
-</select>
-  </div>
-  <button type="submit" class="btn btn-default">Change</button>
+  <button type="submit" class="btn btn-default">Publish</button>
+</form>
+<!-- Stop Publish -->
+<form action="<?php echo plugins_url('ss-event-dates').'/ajax/admin/member_process.php'; ?>" type="post">
+<input type="hidden" name="do_model" value="do_doc_unpublish">
+<input type="hidden" name="barcode" value="<?php echo $euser_barcode; ?>">
+  <button type="submit" class="btn btn-default">Un-Publish</button>
 </form>
 </p>
 <!-- User Changer -->
