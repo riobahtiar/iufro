@@ -21,7 +21,7 @@ $user_detail = $wpdb->
             </meta>
         </meta>
     </head>
-    <body style="padding: 10px">
+    <body style="padding: 17px">
         <!-- User Changer -->
         <p class="bg-primary">
             <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_process.php'; ?>" type="post">
