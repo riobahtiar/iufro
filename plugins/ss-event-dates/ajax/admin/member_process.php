@@ -14,9 +14,9 @@
 					$wpdb->update( 
 					'wp_ss_event_user_detail', 
 					array( 
-						'euser_meta_type' => $_POST['euser_meta_type'],	
+						'euser_meta_type' => $_POST['user_type'],	
 					), 
-					array( 'euser_barcode' => $_POST['euser_barcode'] ), 
+					array( 'euser_barcode' => $_POST['barcode'] ), 
 					array( 
 						'%s',	
 					), 

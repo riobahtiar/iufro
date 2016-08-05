@@ -29,10 +29,12 @@
   </head>
   <body style="padding: 10px">
 <form action="<?php echo plugins_url('ss-event-dates').'/ajax/admin/member_process.php'; ?>" type="post">
-<h3>Change User Type to </h3>
+<h4>Change User Type to </h4>
+<input type="hidden" name="do_model" value="do_membership">
+<input type="hidden" name="barcode" value="<?php echo $euser_barcode; ?>">
 <div class="form-group">
   <label for="user_type">User Type</label>
-  <select name="user_type" class="form-control">
+<select name="user_type" class="form-control">
   <option value="free_type">Free</option>
   <option value="participant_type">Participant</option>
   <option value="author_type">Author</option>
