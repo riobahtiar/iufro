@@ -92,15 +92,30 @@ function dash_css() {
 }
 
 div#iufro-member_filter {
-    padding: 5px 10px;
-    background-color: #59524c;
-    color: white;
     margin-right: 2px;
     margin-bottom: -2px;
     border-top-width: medium;
     border-top-style: solid;
     margin-top: -48px;
+    width: 35%;
 }
+
+
+#iufro-member_filter input[type='search'] {
+    width: 70%;
+    border: #d606da medium solid;
+    border-radius: 23px;
+    text-align: center;
+    font-weight: bold;
+    transition: ease-in-out, width .35s ease-in-out;
+}
+
+
+#iufro-member_filter input[type='search']:focus {
+    width: 85%;
+}
+
+
 	</style>
 	";
 }
