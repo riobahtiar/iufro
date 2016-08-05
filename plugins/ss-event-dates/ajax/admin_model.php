@@ -31,7 +31,7 @@
   <option value="author_type">Author</option>
 </select>
   </div>
-  <button type="submit" class="btn btn-default">Change</button>
+  <button type="submit" class="btn btn-primary">Change</button>
 </form>
 </p>
 <!-- User Changer -->
@@ -48,24 +48,23 @@ if ($user_detail['euser_doc_status'] == NULL) {
  ?>
 
 	</strong></h4>
-<!-- Publish -->
-<form action="<?php echo plugins_url('ss-event-dates').'/ajax/admin/member_process.php'; ?>" type="post">
-<input type="hidden" name="do_model" value="do_doc_publish">
-<input type="hidden" name="barcode" value="<?php echo $euser_barcode; ?>">
-  <button type="submit" class="btn btn-default">Publish</button>
-</form>
+<?php if ($user_detail['euser_doc_status'] == 'published') { ?>
 <!-- Stop Publish -->
 <form action="<?php echo plugins_url('ss-event-dates').'/ajax/admin/member_process.php'; ?>" type="post">
 <input type="hidden" name="do_model" value="do_doc_unpublish">
 <input type="hidden" name="barcode" value="<?php echo $euser_barcode; ?>">
-  <button type="submit" class="btn btn-default">Un-Publish</button>
+  <button type="submit" class="btn btn-danger">Un-Publish</button>
 </form>
 </p>
 <!-- User Changer -->
-
-
-
-
+<?php } else { ?>
+<!-- Publish -->
+<form action="<?php echo plugins_url('ss-event-dates').'/ajax/admin/member_process.php'; ?>" type="post">
+<input type="hidden" name="do_model" value="do_doc_publish">
+<input type="hidden" name="barcode" value="<?php echo $euser_barcode; ?>">
+  <button type="submit" class="btn btn-primary">Publish</button>
+</form>
+ <?php } ?>
 
 
   </body>
