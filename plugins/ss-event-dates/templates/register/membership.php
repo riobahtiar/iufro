@@ -100,11 +100,11 @@ The payable fee covers registration for the Conference, welcome reception, banqu
 
 	   			}
 
-	   }else if(jQuery('input[name=account]').prop('checked') == false){
+	   }else if(jQuery('input[name=account]:checked').val()=="foreign"){
+
+	   }else{
 	   		alert("Please choose one of membership type");
 			return false;
-	   }else{
-	   	
 	   }
 
 
