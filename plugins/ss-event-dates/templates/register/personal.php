@@ -1,3 +1,11 @@
+<?php 
+/*
+* Form registration in frontend
+*/
+?>
+<link rel="stylesheet" href="<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/css/intlTelInput.css'; ?>">
+
+
 <div class="container">
 	<div class="col-md-12">
 		<h2>Your Identity</h2>
@@ -64,6 +72,7 @@ Paticipant also able to join extra field trip during the conference (extra charg
 		    	<label for="email">Email</label>
 		    	<input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php if(isset( $_POST['email'] ))  echo $_POST['email']; else echo null; ?>">
 		  	</div>
+
 		  	<div class="form-group form-group col-md-6">
 		    	<label for="phone">Phone number</label>
 		    	<input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number" value="<?php if(isset( $_POST['phone'] ))  echo $_POST['phone']; else echo null; ?>" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
@@ -116,3 +125,8 @@ Paticipant also able to join extra field trip during the conference (extra charg
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://lab.iamrohit.in/js/location.js"></script>
+<script src="<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/js/intlTelInput.min.js'; ?>"></script>
+<script src="<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/js/utils.js'; ?>"></script>
+<script>
+  jQuery("#phone").intlTelInput();
+</script>
