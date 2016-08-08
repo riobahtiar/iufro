@@ -129,23 +129,23 @@ Paticipant also able to join extra field trip during the conference (extra charg
 
   <script>
     $("#phone").intlTelInput({
-       allowDropdown: false,
-       autoHideDialCode: true,
-       autoPlaceholder: true,
+       allowDropdown: true,
+       //autoHideDialCode: true,
+      // autoPlaceholder: false,
       // dropdownContainer: "body",
       // excludeCountries: ["us"],
-      geoIpLookup: function(callback) {
-        $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
-          var countryCode = (resp && resp.country) ? resp.country : "";
-          callback(countryCode);
-        });
-      },
-       initialCountry: "auto",
+      // geoIpLookup: function(callback) {
+      //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+      //     var countryCode = (resp && resp.country) ? resp.country : "";
+      //     callback(countryCode);
+      //   });
+      // },
+      // initialCountry: "auto",
        nationalMode: false,
       // numberType: "MOBILE",
       // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
-       preferredCountries: 'id',
-       separateDialCode: true,
+       preferredCountries: ['id'],
+      // separateDialCode: true,
       utilsScript: "<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/js/utils.js'; ?>"
     });
   </script>

@@ -20,8 +20,8 @@
   <script src="build/js/intlTelInput.js"></script>
   <script>
     $("#phone").intlTelInput({
-       allowDropdown: false,
-       autoHideDialCode: true,
+       allowDropdown: true,
+       //autoHideDialCode: true,
       // autoPlaceholder: false,
       // dropdownContainer: "body",
       // excludeCountries: ["us"],
@@ -32,11 +32,11 @@
       //   });
       // },
       // initialCountry: "auto",
-      // nationalMode: false,
+       nationalMode: false,
       // numberType: "MOBILE",
       // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
-      // preferredCountries: ['cn', 'jp'],
-       separateDialCode: true,
+       preferredCountries: ['cn', 'jp'],
+      // separateDialCode: true,
       utilsScript: "build/js/utils.js"
     });
   </script>
