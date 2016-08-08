@@ -128,5 +128,7 @@ Paticipant also able to join extra field trip during the conference (extra charg
 <script src="<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/js/intlTelInput.min.js'; ?>"></script>
 <script src="<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/js/utils.js'; ?>"></script>
 <script>
-  jQuery("#phone").intlTelInput();
+  jQuery("#phone").intlTelInput({
+  	preferredCountries: ["id"]
+  });
 </script>
