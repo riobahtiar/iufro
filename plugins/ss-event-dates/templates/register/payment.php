@@ -266,9 +266,9 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 
 </div>
 <hr>
-<?php if ($user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] !== null || $user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] == 'accepted') {?>
+<?php if ($user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] !== null || $user_detail['euser_meta_type'] == "participant_type" || $user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] == 'accepted') {?>
 <div class="well payment-alert">
-  You may continue to the payment after your document has been approved by us.
+  You may continue to the payment after your document has been approved by us!
 </div>
 <?php }?>
 </div><!-- row -->

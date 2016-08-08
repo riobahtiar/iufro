@@ -96,6 +96,8 @@ The payable fee covers registration for the Conference, welcome reception, banqu
 			   }else if(jQuery('input[name=account]:checked').val()=="local" && jQuery('input[name=local]').prop('checked') == false){
 	   				alert("Please choose one of Local Account type");
 					return false;
+	   			}else{
+	   				
 	   			}
 
 	   }else if(jQuery('input[name=account]').prop('checked') == false){
