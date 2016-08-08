@@ -15,10 +15,10 @@ $url = 'https://my.ipaymu.com/payment.htm';
 $params = array(
             'key'      => 'qy8HHvRg1j1HD1F5WG80wLSy0TTzY1', // API Key Merchant / Penjual
             'action'   => 'payment',
-            'product'  => $_POST['payname'],
+            'product'  => $_POST['item_name'],
             'price'    => $_POST['amount'], // Total Harga
             'quantity' => 1,
-            'comments' => 'Extra Details = Product Name: '.$_POST['payname'].' - Barcode: '.$_POST['ebarcode'].' - Amount: '.$_POST['amount'].' - Time: '.date('Y-m-d H:i:s'), // Optional           
+            'comments' => 'Extra Details = Product Name: '.$_POST['item_name'].' - Barcode: '.$_POST['ebarcode'].' - Amount: '.$_POST['amount'].' - Time: '.date('Y-m-d H:i:s'), // Optional           
             'ureturn'  =>   'http://staging.iufroacacia2017.com/login/user_dashboard?step=paypal_cancel',
             'unotify'  =>   'http://staging.iufroacacia2017.com/wp-content/plugins/ss-event-dates/ajax/pyipn_v2.php?auth_code='.$_POST['ebarcode'],
             'ucancel'  =>   'http://staging.iufroacacia2017.com/login/user_dashboard?step=paypal_cancel',
