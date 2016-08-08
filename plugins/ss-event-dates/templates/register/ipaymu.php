@@ -1,9 +1,9 @@
 <?php
-
-
-// https://openexchangerates.org/ convert pricing 
-$app_id = '242fb9ae64974346985dcec68f9986e8';
-$oxr_url = "https://openexchangerates.org/api/latest.json?app_id=" . $app_id;
+if (isset($_GET['step']) && $_GET['step'] == "ipaymu") {
+    $post_url = get_permalink() . "?step=ipaymu";
+} else {
+    $post_url = "";
+}
 
 // Open CURL session:
 $ch = curl_init($oxr_url);
@@ -21,13 +21,13 @@ $url = 'https://my.ipaymu.com/payment.htm';
 $params = array(
             'key'      => 'qy8HHvRg1j1HD1F5WG80wLSy0TTzY1', // API Key Merchant / Penjual
             'action'   => 'payment',
-            'product'  => 'Nama Produk',
-            'price'    => '101000', // Total Harga
+            'product'  => $_POST['payname'],
+            'price'    => $_POST['amount'], // Total Harga
             'quantity' => 1,
-            'comments' => 'Keterangan Produk', // Optional           
-            'ureturn'  => 'http://iufroacacia2017.com/login/_dashboard?step=ipaymu',
-            'unotify'  => 'http://iufroacacia2017.com/login/_dashboard?step=ipaymu',
-            'ucancel'  => 'http://iufroacacia2017.com/login/_dashboard?step=ipaymu',
+            'comments' => 'Extra Details = Product Name: '.$_POST['payname'].' - Barcode: '.$_POST['ebarcode'].' - Amount: '.$_POST['amount'].' - Time: '.date('Y-m-d H:i:s'), // Optional           
+            'ureturn'  =>   get_site_url().'/login/user_dashboard?step=paypal_cancel',
+            'unotify'  =>   get_site_url().'/wp-content/plugins/ss-event-dates/ajax/pyipn_v2.php?auth_code='.$_POST['ebarcode'],
+            'ucancel'  =>   get_site_url().'/login/user_dashboard?step=paypal_cancel',
             'format'   => 'json' // Format: xml / json. Default: xml 
         );
 

@@ -78,8 +78,8 @@ if(!is_user_logged_in()){
 							case 'paypal_success':
 								require_once dirname(__FILE__) . '/register/paypal_success.php';
 								break;
-							case 'test_pdf':
-								require_once dirname(__FILE__) . '/register/eticket.php';
+							case 'ipaymu':
+								require_once dirname(__FILE__) . '/register/ipaymu.php';
 								break;
 							case 'default':
 								require_once dirname(__FILE__) . '/dashboard/account.php';

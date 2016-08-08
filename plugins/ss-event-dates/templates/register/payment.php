@@ -40,20 +40,25 @@ if (isset($user_detail['euser_addon_mid'])) {
     if ($user_detail['euser_addon_mid'] == "gunung-kidul") {
         $string_mid_conf = "Gunung Kidul";
         $price_mid_conf  = 0;
+        $product_mc = "MC1";
     } elseif ($user_detail['euser_addon_mid'] == "klaten") {
         $string_mid_conf = "Klaten";
         $price_mid_conf  = 0;
+        $product_mc = "MC2";
     } elseif ($user_detail['euser_addon_mid'] == "mount-merapi") {
         $string_mid_conf = "Mount Merapi";
         $price_mid_conf  = 0;
+        $product_mc = "MC3";
     } else {
         $string_mid_conf = " - ";
         $price_mid_conf  = 0;
+        $product_mc = "MC0";
     }
 
 } else {
     $string_mid_conf = " - ";
     $price_mid_conf == 0;
+    $product_mc = "MC0";
 }
 
 // post conf
@@ -62,28 +67,36 @@ if (isset($user_detail['euser_addon_post'])) {
     if ($user_detail['euser_addon_post'] == "pacitan") {
         $string_post_conf = "Pacitan ( US$ 250 )";
         $price_post_conf  = 250;
+        $product_pc = "PC1";
     } elseif ($user_detail['euser_addon_post'] == "pekanbaru_shared") {
         $string_post_conf = "Pekanbaru | Shared Room ( US$ 475 )";
         $price_post_conf  = 475;
+        $product_pc = "PC2";
     } elseif ($user_detail['euser_addon_post'] == "pekanbaru_single") {
         $string_post_conf = "Pekanbaru | Single Room ( US$ 510 )";
         $price_post_conf  = 510;
+        $product_pc = "PC3";
     } else {
         $string_post_conf = " - ";
         $price_post_conf  = 0;
+        $product_pc = "PC0";
     }
 } else {
     $string_post_conf = " - ";
     $price_post_conf  = 0;
+    $product_pc = "PC0";
 }
 
 if (isset($user_detail['euser_addon_dinner'])) {
     if ($user_detail['euser_addon_dinner'] == "Yes") {
         $string_dinner = " Yes ";
+        $product_d = "D1";
     } elseif ($user_detail['euser_addon_dinner'] == "No") {
         $string_dinner = " No ";
+        $product_d = "D2";
     } else {
         $string_dinner = "-";
+        $product_d = "D0";
     }
 }
 
@@ -97,16 +110,19 @@ if ($user_detail['euser_type'] == "local student") {
     $user_string = "Local | Students";
     $total_price = $price_post_conf + 20;
     $user_price  = 20;
+    $product_usr = "LS";
 } elseif ($user_detail['euser_type'] == "local regular") {
     // Early Bird Conf
     if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd)) {
         $user_string = "Local | Regular ( Early Bird Rates )";
         $total_price = $price_post_conf + 23;
         $user_price  = 23;
+        $product_usr = "LR-EBR";
     } else {
         $user_string = "Local | Regular ( Regular Rates )";
         $total_price = $price_post_conf + 39;
         $user_price  = 39;
+        $product_usr = "LR-RR";
     }
 } elseif ($user_detail['euser_type'] == "foreigner") {
 
@@ -114,15 +130,21 @@ if ($user_detail['euser_type'] == "local student") {
         $user_string = "Foreign ( Early Bird Rates )";
         $total_price = $price_post_conf + 350;
         $user_price  = 350;
+        $product_usr = "F-EBR";
     } else {
         $user_string = "Foreign ( Regular Rates )";
         $total_price = $price_post_conf + 400;
         $user_price  = 400;
+        $product_usr = "F-RR";
     }
 
 } else {
     $total_price = 0;
 }
+
+// Assemble Product Name
+
+$product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md');
 
 // ======== End of Payment Conditional Block ======== //
 
@@ -257,7 +279,7 @@ if ($user_detail['euser_type'] == "local student") {
 <input type="hidden" name="total_idr_amount" value="<?php echo $idr_total; ?>">
 <input type="hidden" name="total_amount" value="<?php echo $total_price; ?>">
 <input type="hidden" name="ebarcode" value="<?php echo $user_detail['euser_barcode']; ?>">
-<input type="hidden" name="payname" value="IAC2017-<?php echo $user_detail['euser_barcode']; ?>">
+<input type="hidden" name="payname" value="IAC17-<?php echo $product_name ?>">
 <div>
     <a href="<?php echo get_permalink() . "?step=addon"; ?>" class="btn btn-default pull-left">Back</a>
 <?php if ($user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] !== null || $user_detail['euser_meta_type'] == "participant_type" || $user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] == 'accepted') {?>

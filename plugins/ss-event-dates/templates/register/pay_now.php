@@ -28,18 +28,12 @@ Paypal suitable for Foreigner transaction. Support Credit Card and Paypal Credit
 <div class="well">
 IPAYMU suitable for Local Transaction (Indonesia). Support Bank Transfer for various banks in indonesia.
 </div>
-<form action="ipaymu.php" method="post">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="riob-facilitator@softwareseni.com">
-<input type="hidden" name="currency_code" value="USD">
+
+<form action="<?php echo get_permalink() . "?step=ipaymu"; ?>" method="post">
 <input type="hidden" name="item_name" value="<?php echo $_POST['payname']; ?>">
-<input type="hidden" name="amount" value="<?php echo $_POST['total_amount']; ?>">
-<input type="hidden" name="return" value="<?php echo get_site_url().'/login/user_dashboard?step=paypal_success&trxname='.$_POST['payname']; ?>" />
-<input type="hidden" name="notify_url" value="<?php echo get_site_url()."/wp-content/plugins/ss-event-dates/ajax/pyipn_v2.php?auth_code=".$_POST['ebarcode']; ?>" />
-<input type="hidden" name="cancel_return" value="<?php echo get_site_url()."/login/user_dashboard?step=paypal_cancel"; ?>" />
-<input type="image" src="https://my.ipaymu.com/assets/img/logo.png" border="0" name="submit" alt="Check out with IPAYMU">
+<input type="hidden" name="amount" value="<?php echo $_POST['total_idr_amount']; ?>">
+<input type="hidden" name="ebarcode" value="<?php echo $_POST['ebarcode']; ?>">
+<button type="submit" class="btn btn-primary btn-block">PROCESS WITH IPAYMU</button>
 </form>
-
-
 	</div>
 </div>
