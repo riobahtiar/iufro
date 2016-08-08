@@ -176,91 +176,210 @@ function users_page_control()
 <?php
 foreach ($get_members as $show_me) {
 
+// ======== Start Payment Conditional Block ======== //
+
 // mid conf
-        if (isset($show_me->euser_addon_mid)) {
+if (isset($show_me->euser_addon_mid)) {
 
-            if ($show_me->euser_addon_mid == "gunung-kidul") {
-                $string_mid_conf = "Gunung Kidul";
-                $price_mid_conf  = 0;
-            } elseif ($show_me->euser_addon_mid == "klaten") {
-                $string_mid_conf = "Klaten";
-                $price_mid_conf  = 0;
-            } elseif ($show_me->euser_addon_mid == "mount-merapi") {
-                $string_mid_conf = "Mount Merapi";
-                $price_mid_conf  = 0;
-            } else {
-                $string_mid_conf = " - ";
-                $price_mid_conf  = 0;
-            }
+    if ($show_me->euser_addon_mid == "gunung-kidul") {
+        $string_mid_conf = "Gunung Kidul";
+        $price_mid_conf  = 0;
+        $product_mc = "MC1";
+    } elseif ($show_me->euser_addon_mid == "klaten") {
+        $string_mid_conf = "Klaten";
+        $price_mid_conf  = 0;
+        $product_mc = "MC2";
+    } elseif ($show_me->euser_addon_mid == "mount-merapi") {
+        $string_mid_conf = "Mount Merapi";
+        $price_mid_conf  = 0;
+        $product_mc = "MC3";
+    } else {
+        $string_mid_conf = " - ";
+        $price_mid_conf  = 0;
+        $product_mc = "MC0";
+    }
 
-        } else {
-            $string_mid_conf = " - ";
-            $price_mid_conf == 0;
-        }
+} else {
+    $string_mid_conf = " - ";
+    $price_mid_conf == 0;
+    $product_mc = "MC0";
+}
 
 // post conf
-        if (isset($show_me->euser_addon_post)) {
-            // Pricing Post Conference
-            if ($show_me->euser_addon_post == "pacitan") {
-                $string_post_conf = "Pacitan ( USD 250 )";
-                $price_post_conf  = 250;
-            } elseif ($show_me->euser_addon_post == "pekanbaru_shared") {
-                $string_post_conf = "Pekanbaru | Shared Room ( USD 475 )";
-                $price_post_conf  = 475;
-            } elseif ($show_me->euser_addon_post == "pekanbaru_single") {
-                $string_post_conf = "Pekanbaru | Single Room ( USD 510 )";
-                $price_post_conf  = 510;
-            } else {
-                $string_post_conf = " - ";
-                $price_post_conf  = 0;
-            }
-        } else {
-            $string_post_conf = " - ";
-            $price_post_conf  = 0;
-        }
+if (isset($show_me->euser_addon_post)) {
+    // Pricing Post Conference
+    if ($show_me->euser_addon_post == "pacitan") {
+        $string_post_conf = "Pacitan ( US$ 250 )";
+        $price_post_conf  = 250;
+        $product_pc = "PC1";
+    } elseif ($show_me->euser_addon_post == "pekanbaru_shared") {
+        $string_post_conf = "Pekanbaru | Shared Room ( US$ 475 )";
+        $price_post_conf  = 475;
+        $product_pc = "PC2";
+    } elseif ($show_me->euser_addon_post == "pekanbaru_single") {
+        $string_post_conf = "Pekanbaru | Single Room ( US$ 510 )";
+        $price_post_conf  = 510;
+        $product_pc = "PC3";
+    } else {
+        $string_post_conf = " - ";
+        $price_post_conf  = 0;
+        $product_pc = "PC0";
+    }
+} else {
+    $string_post_conf = " - ";
+    $price_post_conf  = 0;
+    $product_pc = "PC0";
+}
 
-        if (isset($show_me->euser_addon_dinner)) {
-            $string_dinner = " Yes ";
-        } else {
-            $string_dinner = " No ";
-        }
+if (isset($show_me->euser_addon_dinner)) {
+    if ($show_me->euser_addon_dinner == "Yes") {
+        $string_dinner = " Yes ";
+        $product_d = "D1";
+    } elseif ($show_me->euser_addon_dinner == "No") {
+        $string_dinner = " No ";
+        $product_d = "D2";
+    } else {
+        $string_dinner = "-";
+        $product_d = "D0";
+    }
+}
 
-        // Paymen Dates Earlybird
-        $paymentDate    = $show_me->euser_payment_date;
-        $paymentDate    = date('Y-m-d', strtotime($paymentDate));
-        $earlyBirdBegin = date('Y-m-d', strtotime("01/1/2016"));
-        $earlyBirdEnd   = date('Y-m-d', strtotime("04/30/2017"));
+// Payment Dates Earlybird
+$paymentDate    = $show_me->euser_payment_date;
+$paymentDate    = date('Y-m-d', strtotime($paymentDate));
+$earlyBirdBegin = date('Y-m-d', strtotime("01/1/2016"));
+$earlyBirdEnd   = date('Y-m-d', strtotime("04/30/2017"));
 
-        if ($show_me->euser_type == "local student") {
-            $user_string = "Local | Students";
-            $total_price = $price_post_conf + 20;
-            $user_price  = 20;
-        } elseif ($show_me->euser_type == "local regular") {
-            // Early Bird Conf
-            if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd)) {
-                $user_string = "Local | Regular ( Early Bird Rates )";
-                $total_price = $price_post_conf + 23;
-                $user_price  = 23;
-            } else {
-                $user_string = "Local | Regular ( Regular Rates )";
-                $total_price = $price_post_conf + 39;
-                $user_price  = 39;
-            }
-        } elseif ($show_me->euser_type == "foreigner") {
+if ($show_me->euser_type == "local student") {
+    $user_string = "Local | Students";
+    $total_price = $price_post_conf + 20;
+    $user_price  = 20;
+    $product_usr = "LS";
+} elseif ($show_me->euser_type == "local regular") {
+    // Early Bird Conf
+    if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd)) {
+        $user_string = "Local | Regular ( Early Bird Rates )";
+        $total_price = $price_post_conf + 23;
+        $user_price  = 23;
+        $product_usr = "LR-EBR";
+    } else {
+        $user_string = "Local | Regular ( Regular Rates )";
+        $total_price = $price_post_conf + 39;
+        $user_price  = 39;
+        $product_usr = "LR-RR";
+    }
+} elseif ($show_me->euser_type == "foreigner") {
 
-            if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd)) {
-                $user_string = "Foreign ( Early Bird Rates )";
-                $total_price = $price_post_conf + 350;
-                $user_price  = 350;
-            } else {
-                $user_string = "Foreign ( Regular Rates )";
-                $total_price = $price_post_conf + 400;
-                $user_price  = 400;
-            }
+    if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd)) {
+        $user_string = "Foreign ( Early Bird Rates )";
+        $total_price = $price_post_conf + 350;
+        $user_price  = 350;
+        $product_usr = "F-EBR";
+    } else {
+        $user_string = "Foreign ( Regular Rates )";
+        $total_price = $price_post_conf + 400;
+        $user_price  = 400;
+        $product_usr = "F-RR";
+    }
 
-        } else {
-            $total_price = 0;
-        }
+} else {
+    $total_price = 0;
+}
+
+// Assemble Product Name
+
+//$product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md');
+
+// ======== End of Payment Conditional Block ======== //
+
+
+
+
+// // mid conf
+//         if (isset($show_me->euser_addon_mid)) {
+
+//             if ($show_me->euser_addon_mid == "gunung-kidul") {
+//                 $string_mid_conf = "Gunung Kidul";
+//                 $price_mid_conf  = 0;
+//             } elseif ($show_me->euser_addon_mid == "klaten") {
+//                 $string_mid_conf = "Klaten";
+//                 $price_mid_conf  = 0;
+//             } elseif ($show_me->euser_addon_mid == "mount-merapi") {
+//                 $string_mid_conf = "Mount Merapi";
+//                 $price_mid_conf  = 0;
+//             } else {
+//                 $string_mid_conf = " - ";
+//                 $price_mid_conf  = 0;
+//             }
+
+//         } else {
+//             $string_mid_conf = " - ";
+//             $price_mid_conf == 0;
+//         }
+
+// // post conf
+//         if (isset($show_me->euser_addon_post)) {
+//             // Pricing Post Conference
+//             if ($show_me->euser_addon_post == "pacitan") {
+//                 $string_post_conf = "Pacitan ( USD 250 )";
+//                 $price_post_conf  = 250;
+//             } elseif ($show_me->euser_addon_post == "pekanbaru_shared") {
+//                 $string_post_conf = "Pekanbaru | Shared Room ( USD 475 )";
+//                 $price_post_conf  = 475;
+//             } elseif ($show_me->euser_addon_post == "pekanbaru_single") {
+//                 $string_post_conf = "Pekanbaru | Single Room ( USD 510 )";
+//                 $price_post_conf  = 510;
+//             } else {
+//                 $string_post_conf = " - ";
+//                 $price_post_conf  = 0;
+//             }
+//         } else {
+//             $string_post_conf = " - ";
+//             $price_post_conf  = 0;
+//         }
+
+//         if (isset($show_me->euser_addon_dinner)) {
+//             $string_dinner = " Yes ";
+//         } else {
+//             $string_dinner = " No ";
+//         }
+
+//         // Paymen Dates Earlybird
+//         $paymentDate    = $show_me->euser_payment_date;
+//         $paymentDate    = date('Y-m-d', strtotime($paymentDate));
+//         $earlyBirdBegin = date('Y-m-d', strtotime("01/1/2016"));
+//         $earlyBirdEnd   = date('Y-m-d', strtotime("04/30/2017"));
+
+//         if ($show_me->euser_type == "local student") {
+//             $user_string = "Local | Students";
+//             $total_price = $price_post_conf + 20;
+//             $user_price  = 20;
+//         } elseif ($show_me->euser_type == "local regular") {
+//             // Early Bird Conf
+//             if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd)) {
+//                 $user_string = "Local | Regular ( Early Bird Rates )";
+//                 $total_price = $price_post_conf + 23;
+//                 $user_price  = 23;
+//             } else {
+//                 $user_string = "Local | Regular ( Regular Rates )";
+//                 $total_price = $price_post_conf + 39;
+//                 $user_price  = 39;
+//             }
+//         } elseif ($show_me->euser_type == "foreigner") {
+
+//             if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd)) {
+//                 $user_string = "Foreign ( Early Bird Rates )";
+//                 $total_price = $price_post_conf + 350;
+//                 $user_price  = 350;
+//             } else {
+//                 $user_string = "Foreign ( Regular Rates )";
+//                 $total_price = $price_post_conf + 400;
+//                 $user_price  = 400;
+//             }
+
+//         } else {
+//             $total_price = 0;
+//         }
 
         if ($show_me->euser_meta_type == "author_type") {
             $user_meta_string = 'Author Member';
