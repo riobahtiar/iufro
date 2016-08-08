@@ -1,8 +1,8 @@
 <?php
-if(isset($_GET['step']) && $_GET['step']=="membership"){
-	$post_url=get_permalink()."?step=addon";
-}else{
-	$post_url="";
+if (isset($_GET['step']) && $_GET['step'] == "membership") {
+    $post_url = get_permalink() . "?step=addon";
+} else {
+    $post_url = "";
 }
 
 ?>
@@ -24,8 +24,8 @@ if(isset($_GET['step']) && $_GET['step']=="membership"){
 					<div id="local" class="panel-collapse collapse in">
 						<div class="panel-body">
 Registration fee for local :<br>
-- Early bird registration (1st January - 30th April 2017) : USD 23<br>
-- Regular registration (1st May - 24th July 2017) : USD 39<br>
+- Early bird registration (1st January - 30th April 2017) : US$ 23<br>
+- Regular registration (1st May - 24th July 2017) : US$ 39<br>
 - Student : USD 20<br><br>
 
 Also has the ability to choose the available field trip that we provide (there will be extra charge for each field trip).<br><br>
@@ -61,7 +61,7 @@ The payable fee covers registration for the Conference, welcome reception, banqu
 		</div>
 		<hr>
 	  	<div>
-	  		<?php /*<button type="submit" class="btn btn-default pull-left">Previous</button>*/ ?>
+	  		<?php /*<button type="submit" class="btn btn-default pull-left">Previous</button>*/?>
 	  		<button type="submit" name="submit" value="membership" class="btn btn-default pull-right">Next</button>
 		</div>
 	</form>
@@ -76,12 +76,12 @@ The payable fee covers registration for the Conference, welcome reception, banqu
 
 			   if(jQuery('input[name=local]:checked').val()=="student"){
 			   		jQuery( "#std-card" ).removeClass( "hidden" );
-			   }  
+			   }
 
 	   } else {
 	   		jQuery( "#std-card" ).removeClass( "hidden" );
 	   		jQuery('input[name=local]').prop('checked', false);
-	   } 
+	   }
 	})
 
 	jQuery('#form-membership button').click(function() {
@@ -93,7 +93,7 @@ The payable fee covers registration for the Conference, welcome reception, banqu
 			   			alert("student card is empty");
 			   			return false;
 			   		}
-			   }else if(jQuery('input[name=local]').prop('checked') == false){
+			   }else if(jQuery('input[name=account]:checked').val()=="local" && jQuery('input[name=local]').prop('checked') == false){
 	   				alert("Please choose one of Local Account type");
 					return false;
 	   			}
