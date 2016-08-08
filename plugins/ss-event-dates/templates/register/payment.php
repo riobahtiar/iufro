@@ -227,6 +227,11 @@ if ($user_detail['euser_type'] == "local student") {
       <td colspan="2" > Net Total </td>
       <td>US$ <?php echo $total_price; ?> | IDR <?php
         $idr_total = $idr_good * $total_price; 
+
+setlocale(LC_MONETARY, 'id_ID');
+echo money_format('Rp. ', $idr_total) . "\n";
+
+
         echo $idr_total."*<br><br><br><hr>";
         echo "*- Current IDR Rates US$1 = IDR ".$idr_good."<br> Source : openexchangerates.org ";
        ?></td>
