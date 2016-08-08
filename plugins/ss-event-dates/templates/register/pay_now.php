@@ -37,7 +37,7 @@ IPAYMU suitable for Local Transaction (Indonesia). Support Bank Transfer for var
 <input type="hidden" name="return" value="<?php echo get_site_url().'/login/user_dashboard?step=paypal_success&trxname='.$_POST['payname']; ?>" />
 <input type="hidden" name="notify_url" value="<?php echo get_site_url()."/wp-content/plugins/ss-event-dates/ajax/pyipn_v2.php?auth_code=".$_POST['ebarcode']; ?>" />
 <input type="hidden" name="cancel_return" value="<?php echo get_site_url()."/login/user_dashboard?step=paypal_cancel"; ?>" />
-<input type="image" src="https://my.ipaymu.com/assets/img/logo.png" border="0" name="submit" alt="Check out with PayPal">
+<input type="image" src="https://my.ipaymu.com/assets/img/logo.png" border="0" name="submit" alt="Check out with IPAYMU">
 </form>
 
 

@@ -5,8 +5,22 @@ if (isset($_GET['step']) && $_GET['step'] == "payment") {
     $post_url = "";
 }
 
-$idr_rates = $latest_price->rates->IDR;
+// Get Rupiah Rates
+$app_id = '242fb9ae64974346985dcec68f9986e8';
+$oxr_url = "https://openexchangerates.org/api/latest.json?app_id=" . $app_id;
 
+// Open CURL session:
+$ch = curl_init($oxr_url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+// Get the data:
+$json = curl_exec($ch);
+curl_close($ch);
+
+// Decode JSON response:
+$latest_price = json_decode($json);
+$idr_rates = $latest_price->rates->IDR;
+echo "Rates ID:".$idr_rates;
 // get Get User Login
 global $current_user;
 wp_get_current_user();
