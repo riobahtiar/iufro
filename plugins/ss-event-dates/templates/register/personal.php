@@ -12,7 +12,7 @@
 	</div>
 	<form action="" method="post">
 		  	<div class="form-group">
-	    	<label for="user_type">Register as <a data-toggle="modal" data-target="#registerInfo">Learn more.</a></label>
+	    	<label for="user_type">Register as (<a data-toggle="modal" data-target="#registerInfo">Learn more.</a>)</label>
 	    	<select class="form-control" name="user_type" id="user_type">
 	    		<option value="">== Select Account ==</option>
   				<option value="free_type">Free Account</option>
@@ -75,7 +75,7 @@ Paticipant also able to join extra field trip during the conference (extra charg
 
 		  	<div class="form-group form-group col-md-6">
 		    	<label for="phone">Phone number</label>
-		    	<input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number" value="<?php if(isset( $_POST['phone'] ))  echo $_POST['phone']; else echo null; ?>" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+		    	<input type="text" class="form-control" name="phone" id="phone" value="<?php if(isset( $_POST['phone'] ))  echo $_POST['phone']; else echo null; ?>" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
 		  	</div>
 	  	</div>
 	  	<div class="row">
@@ -126,9 +126,26 @@ Paticipant also able to join extra field trip during the conference (extra charg
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://lab.iamrohit.in/js/location.js"></script>
 <script src="<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/js/intlTelInput.min.js'; ?>"></script>
-<script src="<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/js/utils.js'; ?>"></script>
-<script>
-  jQuery("#phone").intlTelInput({
-  	preferredCountries: ["id"]
-  });
-</script>
+
+  <script>
+    $("#phone").intlTelInput({
+       allowDropdown: false,
+       autoHideDialCode: true,
+       autoPlaceholder: true,
+      // dropdownContainer: "body",
+      // excludeCountries: ["us"],
+      geoIpLookup: function(callback) {
+        $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+          var countryCode = (resp && resp.country) ? resp.country : "";
+          callback(countryCode);
+        });
+      },
+       initialCountry: "auto",
+      // nationalMode: false,
+      // numberType: "MOBILE",
+      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+       preferredCountries: 'id',
+       separateDialCode: true,
+      utilsScript: "<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/js/utils.js'; ?>"
+    });
+  </script>
