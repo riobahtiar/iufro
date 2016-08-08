@@ -21,7 +21,7 @@ curl_close($ch);
 $latest_price = json_decode($json);
 $idr_rates = $latest_price->rates->IDR;
 $idr_good = round($idr_rates);
-echo "Rates ID:".$idr_rates." Dibulatkan: ".$idr_good;
+//echo "Rates ID:".$idr_rates." Dibulatkan: ".$idr_good;
 // get Get User Login
 global $current_user;
 wp_get_current_user();
@@ -226,8 +226,9 @@ if ($user_detail['euser_type'] == "local student") {
     <tr class="success">
       <td colspan="2" > Net Total </td>
       <td>US$ <?php echo $total_price; ?> | IDR <?php
-        $idr_total = $idr_rates * $total_price; 
-        echo $idr_total;
+        $idr_total = $idr_good * $total_price; 
+        echo $idr_total."*<hr>";
+        echo "*- Current IDR Rates US$1 = IDR ".$idr_good."<br> Source : openexchangerates.org ";
        ?></td>
     </tr>
   </tfoot>
@@ -245,6 +246,7 @@ if ($user_detail['euser_type'] == "local student") {
 </div>
 
 <form action="<?php echo get_permalink() . "?step=paynow"; ?>" method="post">
+<input type="hidden" name="total_idr_amount" value="<?php echo $total_price; ?>">
 <input type="hidden" name="total_amount" value="<?php echo $total_price; ?>">
 <input type="hidden" name="ebarcode" value="<?php echo $user_detail['euser_barcode']; ?>">
 <input type="hidden" name="payname" value="IAC2017-<?php echo $user_detail['euser_barcode']; ?>">
