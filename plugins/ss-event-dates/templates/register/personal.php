@@ -75,7 +75,7 @@ Paticipant also able to join extra field trip during the conference (extra charg
 
 		  	<div class="form-group form-group col-md-6">
 		    	<label for="phone">Phone number</label>
-		    	<input type="text" class="form-control" name="phone" id="phone" value="<?php if(isset( $_POST['phone'] ))  echo $_POST['phone']; else echo null; ?>" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+		    	<input type="text" class="form-control" name="phone" id="phone">
 		  	</div>
 	  	</div>
 	  	<div class="row">
