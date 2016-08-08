@@ -1,10 +1,4 @@
 <?php
-if (isset($_GET['step']) && $_GET['step'] == "ipaymu") {
-    $post_url = get_permalink() . "?step=ipaymu";
-} else {
-    $post_url = "";
-}
-
 // Open CURL session:
 $ch = curl_init($oxr_url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);

@@ -29,11 +29,11 @@ Paypal suitable for Foreigner transaction. Support Credit Card and Paypal Credit
 IPAYMU suitable for Local Transaction (Indonesia). Support Bank Transfer for various banks in indonesia.
 </div>
 
-<form action="<?php echo get_permalink() . "?step=ipaymu"; ?>" method="post">
+<form action="<?php echo get_site_url().'/wp-content/plugins/ss-event-dates/templates/register/ipaymu.php'; ?>" method="post">
 <input type="hidden" name="item_name" value="<?php echo $_POST['payname']; ?>">
 <input type="hidden" name="amount" value="<?php echo $_POST['total_idr_amount']; ?>">
 <input type="hidden" name="ebarcode" value="<?php echo $_POST['ebarcode']; ?>">
-<button type="submit" class="btn btn-primary btn-block">PROCESS WITH IPAYMU</button>
+<input type="submit" class="btn btn-primary btn-block" name="submit" alt="PROCESS WITH IPAYMU">
 </form>
 	</div>
 </div>
