@@ -66,6 +66,14 @@
 		    array( '%s'), 
 		    array( '%s' ) 
   		);	
+  	}else{
+  		$wpdb->update( 
+		    'wp_ss_event_user_detail', 
+		    array( 'euser_addon_dinner' => 'No' ), 
+		    array( 'euser_email' => $euser_email ), 
+		    array( '%s'), 
+		    array( '%s' ) 
+  		);
   	}
 
   	if(isset($_FILES['abstrak']) && $_FILES['abstrak']!="" ){

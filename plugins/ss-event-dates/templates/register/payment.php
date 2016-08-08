@@ -1,9 +1,11 @@
 <?php
-if(isset($_GET['step']) && $_GET['step']=="payment"){
-	$post_url=get_permalink()."?step=paynow";
-}else{
-	$post_url="";
+if (isset($_GET['step']) && $_GET['step'] == "payment") {
+    $post_url = get_permalink() . "?step=paynow";
+} else {
+    $post_url = "";
 }
+
+$idr_rates = $latest_price->rates->IDR;
 
 // get Get User Login
 global $current_user;
@@ -12,100 +14,98 @@ $euser_email = $current_user->user_email;
 
 //get user data
 global $wpdb;
-$query="SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email}'";
-$user_detail = $wpdb->get_row( $query, ARRAY_A );
+$query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email}'";
+$user_detail = $wpdb->get_row($query, ARRAY_A);
 
 // mid conf
-if(isset($user_detail['euser_addon_mid'] )){
+if (isset($user_detail['euser_addon_mid'])) {
 
-        if ( $user_detail['euser_addon_mid'] == "gunung-kidul" ) {
-          $string_mid_conf="Gunung Kidul";
-          $price_mid_conf = 0;
-        }elseif ( $user_detail['euser_addon_mid'] == "klaten" ) {
-          $string_mid_conf="Klaten";
-          $price_mid_conf = 0;
-        }elseif ( $user_detail['euser_addon_mid'] == "mount-merapi" ) {
-          $string_mid_conf="Mount Merapi";
-          $price_mid_conf = 0;
-        }else{
-          $string_mid_conf=" - ";
-          $price_mid_conf = 0;
-        } 
+    if ($user_detail['euser_addon_mid'] == "gunung-kidul") {
+        $string_mid_conf = "Gunung Kidul";
+        $price_mid_conf  = 0;
+    } elseif ($user_detail['euser_addon_mid'] == "klaten") {
+        $string_mid_conf = "Klaten";
+        $price_mid_conf  = 0;
+    } elseif ($user_detail['euser_addon_mid'] == "mount-merapi") {
+        $string_mid_conf = "Mount Merapi";
+        $price_mid_conf  = 0;
+    } else {
+        $string_mid_conf = " - ";
+        $price_mid_conf  = 0;
+    }
 
-}else{
-  $string_mid_conf=" - ";
-  $price_mid_conf == 0;
+} else {
+    $string_mid_conf = " - ";
+    $price_mid_conf == 0;
 }
 
 // post conf
-if(isset($user_detail['euser_addon_post'])){
+if (isset($user_detail['euser_addon_post'])) {
     // Pricing Post Conference
-        if ( $user_detail['euser_addon_post'] == "pacitan" ) {
-          $string_post_conf="Pacitan ( USD 250 )";
-          $price_post_conf = 250;
-        }elseif ( $user_detail['euser_addon_post'] == "pekanbaru_shared" ) {
-          $string_post_conf="Pekanbaru | Shared Room ( USD 475 )";
-          $price_post_conf = 475;
-        }elseif ( $user_detail['euser_addon_post'] == "pekanbaru_single" ) {
-          $string_post_conf="Pekanbaru | Single Room ( USD 510 )";
-          $price_post_conf = 510;
-        }else{
-          $string_post_conf=" - ";
-          $price_post_conf = 0;
-        }
-}else{
-  $string_post_conf=" - ";
-  $price_post_conf = 0;
+    if ($user_detail['euser_addon_post'] == "pacitan") {
+        $string_post_conf = "Pacitan ( USD 250 )";
+        $price_post_conf  = 250;
+    } elseif ($user_detail['euser_addon_post'] == "pekanbaru_shared") {
+        $string_post_conf = "Pekanbaru | Shared Room ( USD 475 )";
+        $price_post_conf  = 475;
+    } elseif ($user_detail['euser_addon_post'] == "pekanbaru_single") {
+        $string_post_conf = "Pekanbaru | Single Room ( USD 510 )";
+        $price_post_conf  = 510;
+    } else {
+        $string_post_conf = " - ";
+        $price_post_conf  = 0;
+    }
+} else {
+    $string_post_conf = " - ";
+    $price_post_conf  = 0;
 }
 
-if(isset($user_detail['euser_addon_dinner'])){
-  $string_dinner=" Yes ";
-}else{
-  $string_dinner=" No ";
+if (isset($user_detail['euser_addon_dinner'])) {
+    if ($user_detail['euser_addon_dinner'] == "Yes") {
+        $string_dinner = " Yes ";
+    } elseif ($user_detail['euser_addon_dinner'] == "No") {
+        $string_dinner = " No ";
+    } else {
+        $string_dinner = "-";
+    }
 }
 
+// Payment Dates Earlybird
+$paymentDate    = date('Y-m-d');
+$paymentDate    = date('Y-m-d', strtotime($paymentDate));
+$earlyBirdBegin = date('Y-m-d', strtotime("01/1/2016"));
+$earlyBirdEnd   = date('Y-m-d', strtotime("04/30/2017"));
 
-
-    // Payment Dates Earlybird
-    $paymentDate = date('Y-m-d');
-    $paymentDate=date('Y-m-d', strtotime($paymentDate));
-    $earlyBirdBegin = date('Y-m-d', strtotime("01/1/2016"));
-    $earlyBirdEnd = date('Y-m-d', strtotime("04/30/2017"));
-
-
-if ($user_detail['euser_type']=="local student") {
-  $user_string = "Local | Students";
-  $total_price=$price_post_conf+20;
-  $user_price=20;
-}elseif ($user_detail['euser_type']=="local regular") {
-  // Early Bird Conf
-    if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd))
-    {
+if ($user_detail['euser_type'] == "local student") {
+    $user_string = "Local | Students";
+    $total_price = $price_post_conf + 20;
+    $user_price  = 20;
+} elseif ($user_detail['euser_type'] == "local regular") {
+    // Early Bird Conf
+    if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd)) {
         $user_string = "Local | Regular ( Early Bird Rates )";
-        $total_price=$price_post_conf+23;
-        $user_price=23;
+        $total_price = $price_post_conf + 23;
+        $user_price  = 23;
     } else {
         $user_string = "Local | Regular ( Regular Rates )";
-        $total_price=$price_post_conf+39;
-        $user_price=39;
+        $total_price = $price_post_conf + 39;
+        $user_price  = 39;
     }
-}elseif ($user_detail['euser_type']=="foreigner") {
+} elseif ($user_detail['euser_type'] == "foreigner") {
 
-    if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd))
-    {
+    if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd)) {
         $user_string = "Foreign ( Early Bird Rates )";
-        $total_price=$price_post_conf+350;
-        $user_price=350;
+        $total_price = $price_post_conf + 350;
+        $user_price  = 350;
     } else {
         $user_string = "Foreign ( Regular Rates )";
-        $total_price=$price_post_conf+400;
-        $user_price=400;
+        $total_price = $price_post_conf + 400;
+        $user_price  = 400;
     }
 
-}else{
-  $total_price=0;
+} else {
+    $total_price = 0;
 }
-
 
 ?>
 
@@ -118,42 +118,43 @@ if ($user_detail['euser_type']=="local student") {
 <div class="col-md-6">
 
 </div>
-<?php if ($user_detail['euser_meta_type']!="participant_type") {?>
+<?php if ($user_detail['euser_meta_type'] != "participant_type") {
+    ?>
 <div class="col-md-6">
 <h5>Your Documents</h5>
-<?php 
+<?php
 //Abstract URL
-$abstract_download = wp_get_attachment_url( $user_detail['euser_abstrak'] );
-$paper_download = wp_get_attachment_url( $user_detail['euser_paper']  );
-$poster_download = wp_get_attachment_url( $user_detail['euser_poster']  );
-if(!empty($abstract_download)){
- ?>
+    $abstract_download = wp_get_attachment_url($user_detail['euser_abstrak']);
+    $paper_download    = wp_get_attachment_url($user_detail['euser_paper']);
+    $poster_download   = wp_get_attachment_url($user_detail['euser_poster']);
+    if (!empty($abstract_download)) {
+        ?>
 <dl class="dl-horizontal">
   <dt>Abstract</dt>
   <dd><a href="<?php echo $abstract_download; ?>">Download</a></dd>
 </dl>
 <?php
 }
-if(!empty($paper_download)){
-?>
+    if (!empty($paper_download)) {
+        ?>
 <dl class="dl-horizontal">
   <dt>Paper</dt>
   <dd><a href="<?php echo $paper_download; ?>">Download</a></dd>
 </dl>
 <?php
 }
-if(!empty($poster_download)){
-  //var_dump($poster_download); 
-?>
+    if (!empty($poster_download)) {
+        //var_dump($poster_download);
+        ?>
 <dl class="dl-horizontal">
   <dt>Poster</dt>
   <dd><a href="<?php echo $poster_download; ?>">Download</a></dd>
 </dl>
 <?php
 }
-?>
+    ?>
 </div>
-<?php } ?>
+<?php }?>
 <div class="col-md-12">
 <table class="table table-bordered">
     <thead>
@@ -209,32 +210,35 @@ if(!empty($poster_download)){
     <tfoot>
     <tr class="success">
       <td colspan="2" > Net Total </td>
-      <td>US$ <?php echo $total_price; ?></td>
+      <td>US$ <?php echo $total_price; ?> | IDR <?php
+        $idr_total = $idr_rates * $total_price; 
+        echo $idr_total;
+       ?></td>
     </tr>
   </tfoot>
   </table>
 
 </div>
 <hr>
-<?php if ($user_detail['euser_meta_type']=="author_type" && $user_detail['euser_doc_status'] !== NULL || $user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] == 'accepted' ) {?>
+<?php if ($user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] !== null || $user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] == 'accepted') {?>
 <div class="well payment-alert">
-  You may continue to the payment after your document has been approved by us. 
+  You may continue to the payment after your document has been approved by us.
 </div>
-<?php } ?>
+<?php }?>
 </div><!-- row -->
 
 </div>
 
-<form action="<?php echo get_permalink()."?step=paynow"; ?>" method="post">
+<form action="<?php echo get_permalink() . "?step=paynow"; ?>" method="post">
 <input type="hidden" name="total_amount" value="<?php echo $total_price; ?>">
 <input type="hidden" name="ebarcode" value="<?php echo $user_detail['euser_barcode']; ?>">
 <input type="hidden" name="payname" value="IAC2017-<?php echo $user_detail['euser_barcode']; ?>">
 <div>
-  	<a href="<?php echo get_permalink()."?step=addon"; ?>" class="btn btn-default pull-left">Back</a>
-<?php if ($user_detail['euser_meta_type']=="author_type" && $user_detail['euser_doc_status'] !== NULL || $user_detail['euser_meta_type']=="participant_type" || $user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] == 'accepted' ) {?>
-  	<button type="submit" name="submit" class="btn btn-default pull-right" value="payment">Pay Now</button>
-  	<a href="<?php echo get_permalink(); ?>?step=pay_later" class="btn btn-default pull-right">Pay Later</a>
-<?php } ?>
+    <a href="<?php echo get_permalink() . "?step=addon"; ?>" class="btn btn-default pull-left">Back</a>
+<?php if ($user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] !== null || $user_detail['euser_meta_type'] == "participant_type" || $user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] == 'accepted') {?>
+    <button type="submit" name="submit" class="btn btn-default pull-right" value="payment">Pay Now</button>
+    <a href="<?php echo get_permalink(); ?>?step=pay_later" class="btn btn-default pull-right">Pay Later</a>
+<?php }?>
 </div>
 </form>
 </div>

@@ -28,7 +28,7 @@
 				break;
 
 			case 'update_profile':
-					$wpdb->update( 
+				$wpdb->update( 
 					'wp_ss_event_user_detail', 
 					array( 
 						'euser_fullname' => $_POST['euser_fullname'],	
@@ -43,7 +43,7 @@
 					), 
 					array( '%s' ) 
 				);
-					$wpdb->update( 
+				$wpdb->update( 
 					'wp_users', 
 					array( 
 						'display_name' => $_POST['euser_fullname']
