@@ -32,6 +32,8 @@ global $wpdb;
 $query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email}'";
 $user_detail = $wpdb->get_row($query, ARRAY_A);
 
+// ======== Start Payment Conditional Block ======== //
+
 // mid conf
 if (isset($user_detail['euser_addon_mid'])) {
 
@@ -58,13 +60,13 @@ if (isset($user_detail['euser_addon_mid'])) {
 if (isset($user_detail['euser_addon_post'])) {
     // Pricing Post Conference
     if ($user_detail['euser_addon_post'] == "pacitan") {
-        $string_post_conf = "Pacitan ( USD 250 )";
+        $string_post_conf = "Pacitan ( US$ 250 )";
         $price_post_conf  = 250;
     } elseif ($user_detail['euser_addon_post'] == "pekanbaru_shared") {
-        $string_post_conf = "Pekanbaru | Shared Room ( USD 475 )";
+        $string_post_conf = "Pekanbaru | Shared Room ( US$ 475 )";
         $price_post_conf  = 475;
     } elseif ($user_detail['euser_addon_post'] == "pekanbaru_single") {
-        $string_post_conf = "Pekanbaru | Single Room ( USD 510 )";
+        $string_post_conf = "Pekanbaru | Single Room ( US$ 510 )";
         $price_post_conf  = 510;
     } else {
         $string_post_conf = " - ";
@@ -121,6 +123,9 @@ if ($user_detail['euser_type'] == "local student") {
 } else {
     $total_price = 0;
 }
+
+// ======== End of Payment Conditional Block ======== //
+
 
 ?>
 
@@ -230,8 +235,8 @@ if ($user_detail['euser_type'] == "local student") {
         echo number_format($idr_total, 0, ".", ".");
 
 
-        echo "&nbsp;&nbsp;*<br><br><br><hr>";
-        echo "*- Current IDR Rates US$1 = IDR ".$idr_good."<br> Source : openexchangerates.org ";
+        echo "<p>&nbsp;*<br><hr>";
+        echo "*- Current IDR Rates US$1 = IDR ".$idr_good."<br> Source : openexchangerates.org </p>";
        ?></td>
     </tr>
   </tfoot>
@@ -249,7 +254,7 @@ if ($user_detail['euser_type'] == "local student") {
 </div>
 
 <form action="<?php echo get_permalink() . "?step=paynow"; ?>" method="post">
-<input type="hidden" name="total_idr_amount" value="<?php echo $total_price; ?>">
+<input type="hidden" name="total_idr_amount" value="<?php echo $idr_total; ?>">
 <input type="hidden" name="total_amount" value="<?php echo $total_price; ?>">
 <input type="hidden" name="ebarcode" value="<?php echo $user_detail['euser_barcode']; ?>">
 <input type="hidden" name="payname" value="IAC2017-<?php echo $user_detail['euser_barcode']; ?>">

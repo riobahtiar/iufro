@@ -216,7 +216,7 @@ function save_custom_userdata($fullname, $password, $email, $phone, $address, $z
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
     $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
     $headers[] = 'Reply-To: IUFRO ACACIA TEAM <secretariat@iufroacacia2017.com>';
-    $headers[] = 'Cc: Rio Hotmail <riobahtiar@live.com>'; 
+    $headers[] = 'Cc: IUFRO Keeper <keep@iufroacacia2017.com>'; 
     wp_mail( $to, $subject, $body, $headers );
     }
 }

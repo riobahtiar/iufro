@@ -128,7 +128,7 @@ if ($_GET['py_socket_accept'] == true){
 
 // $headers[] = 'Content-Type: text/html; charset=UTF-8';
 // $headers[] = 'From: IUFRO System <payment@iufroacacia2017.com>';
-// $headers[] = 'Cc: Rio Hotmail <riobahtiar@live.com>'; 
+// $headers[] = 'Cc: IUFRO Keeper <keep@iufroacacia2017.com>'; 
 // wp_mail( $to, $subject, $body, $headers );
             // ===== End of Email ==== //
 
@@ -193,7 +193,7 @@ $body = '
 
 $headers[] = 'Content-Type: text/html; charset=UTF-8';
 $headers[] = 'From: IUFRO System <payment@iufroacacia2017.com>';
-$headers[] = 'Cc: Rio Hotmail <riobahtiar@live.com>'; 
+$headers[] = 'Cc: IUFRO Keeper <keep@iufroacacia2017.com>'; 
 wp_mail( $to, $subject, $body, $headers );
             // ===== End of Email ==== //
             }       

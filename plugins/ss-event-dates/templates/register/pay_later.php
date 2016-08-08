@@ -11,63 +11,99 @@ global $wpdb;
 $query="SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email}'";
 $user_detail = $wpdb->get_row( $query, ARRAY_A );
 
-if(isset($user_detail['euser_addon_mid'] )){
+// ======== Start Payment Conditional Block ======== //
 
-        if ( $user_detail['euser_addon_mid'] == "gunung-kidul" ) {
-          $string_mid_conf="Gunung Kidul";
-          $price_mid_conf = 0;
-        }elseif ( $user_detail['euser_addon_mid'] == "klaten" ) {
-          $string_mid_conf="Klaten";
-          $price_mid_conf = 0;
-        }else{
-          $string_mid_conf=" - ";
-          $price_mid_conf = 0;
-        } 
+// mid conf
+if (isset($user_detail['euser_addon_mid'])) {
 
-}else{
-  $string_mid_conf=" - ";
-  $price_mid_conf == 0;
+    if ($user_detail['euser_addon_mid'] == "gunung-kidul") {
+        $string_mid_conf = "Gunung Kidul";
+        $price_mid_conf  = 0;
+    } elseif ($user_detail['euser_addon_mid'] == "klaten") {
+        $string_mid_conf = "Klaten";
+        $price_mid_conf  = 0;
+    } elseif ($user_detail['euser_addon_mid'] == "mount-merapi") {
+        $string_mid_conf = "Mount Merapi";
+        $price_mid_conf  = 0;
+    } else {
+        $string_mid_conf = " - ";
+        $price_mid_conf  = 0;
+    }
+
+} else {
+    $string_mid_conf = " - ";
+    $price_mid_conf == 0;
 }
 
 // post conf
-if(isset($user_detail['euser_addon_post'])){
+if (isset($user_detail['euser_addon_post'])) {
     // Pricing Post Conference
-        if ( $user_detail['euser_addon_post'] == "pacitan" ) {
-          $string_post_conf="Pacitan ( US$ 250 )";
-          $price_post_conf = 250;
-        }elseif ( $user_detail['euser_addon_post'] == "pekanbaru_shared" ) {
-          $string_post_conf="Pekanbaru | Shared Room ( US$ 475 )";
-          $price_post_conf = 475;
-        }elseif ( $user_detail['euser_addon_post'] == "pekanbaru_single" ) {
-          $string_post_conf="Pekanbaru | Single Room ( US$ 510 )";
-          $price_post_conf = 510;
-        }else{
-          $string_post_conf=" - ";
-          $price_post_conf = 0;
-        }
-}else{
-  $string_post_conf=" - ";
-  $price_post_conf = 0;
+    if ($user_detail['euser_addon_post'] == "pacitan") {
+        $string_post_conf = "Pacitan ( US$ 250 )";
+        $price_post_conf  = 250;
+    } elseif ($user_detail['euser_addon_post'] == "pekanbaru_shared") {
+        $string_post_conf = "Pekanbaru | Shared Room ( US$ 475 )";
+        $price_post_conf  = 475;
+    } elseif ($user_detail['euser_addon_post'] == "pekanbaru_single") {
+        $string_post_conf = "Pekanbaru | Single Room ( US$ 510 )";
+        $price_post_conf  = 510;
+    } else {
+        $string_post_conf = " - ";
+        $price_post_conf  = 0;
+    }
+} else {
+    $string_post_conf = " - ";
+    $price_post_conf  = 0;
 }
 
-if(isset($user_detail['euser_addon_dinner'])){
-  $string_dinner=" Yes ";
-}else{
-  $string_dinner=" No ";
+if (isset($user_detail['euser_addon_dinner'])) {
+    if ($user_detail['euser_addon_dinner'] == "Yes") {
+        $string_dinner = " Yes ";
+    } elseif ($user_detail['euser_addon_dinner'] == "No") {
+        $string_dinner = " No ";
+    } else {
+        $string_dinner = "-";
+    }
 }
 
-if ($user_detail['euser_type']=="local student") {
-  $user_string = "Local | Students ( Rates apply US$ 20 )";
-  $total_price=$price_post_conf+20;
-}elseif ($user_detail['euser_type']=="local regular") {
-  $user_string = "Local | Regular ( Rates apply US$ 30 )";
-  $total_price=$price_post_conf+30;
-}elseif ($user_detail['euser_type']=="foreigner") {
-  $user_string = "Foreign   ( Rates apply US$ 400 )";
-  $total_price=$price_post_conf+400;
-}else{
-  $total_price=0;
+// Payment Dates Earlybird
+$paymentDate    = date('Y-m-d');
+$paymentDate    = date('Y-m-d', strtotime($paymentDate));
+$earlyBirdBegin = date('Y-m-d', strtotime("01/1/2016"));
+$earlyBirdEnd   = date('Y-m-d', strtotime("04/30/2017"));
+
+if ($user_detail['euser_type'] == "local student") {
+    $user_string = "Local | Students";
+    $total_price = $price_post_conf + 20;
+    $user_price  = 20;
+} elseif ($user_detail['euser_type'] == "local regular") {
+    // Early Bird Conf
+    if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd)) {
+        $user_string = "Local | Regular ( Early Bird Rates )";
+        $total_price = $price_post_conf + 23;
+        $user_price  = 23;
+    } else {
+        $user_string = "Local | Regular ( Regular Rates )";
+        $total_price = $price_post_conf + 39;
+        $user_price  = 39;
+    }
+} elseif ($user_detail['euser_type'] == "foreigner") {
+
+    if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd)) {
+        $user_string = "Foreign ( Early Bird Rates )";
+        $total_price = $price_post_conf + 350;
+        $user_price  = 350;
+    } else {
+        $user_string = "Foreign ( Regular Rates )";
+        $total_price = $price_post_conf + 400;
+        $user_price  = 400;
+    }
+
+} else {
+    $total_price = 0;
 }
+
+// ======== End of Payment Conditional Block ======== //
 
 
  // ==== UPDATE DATE PAYMENT ==== //
@@ -197,7 +233,7 @@ $body = '
 
 $headers[] = 'Content-Type: text/html; charset=UTF-8';
 $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
-$headers[] = 'Cc: Rio Hotmail <riobahtiar@live.com>'; 
+$headers[] = 'Cc: IUFRO Keeper <keep@iufroacacia2017.com>'; 
 wp_mail( $to, $subject, $body, $headers );
 echo "<div class='well thanks-notify'><h3>Thank you for registering on IUFRO ACACIA CONFERENCE 2017.</h3>
 <p>Please check your email for payment information.</p></div>";

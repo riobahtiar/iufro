@@ -81,7 +81,7 @@ if ($_GET['do_model'] == 'do_membership') {
 
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
     $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
-    $headers[] = 'Cc: Rio Hotmail <riobahtiar@live.com>';
+    $headers[] = 'Cc: IUFRO Keeper <keep@iufroacacia2017.com>';
     wp_mail($to, $subject, $body, $headers);
 
 // ========= END Email =========//
@@ -146,7 +146,7 @@ if ($_GET['do_model'] == 'do_membership') {
 
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
     $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
-    $headers[] = 'Cc: Rio Hotmail <riobahtiar@live.com>';
+    $headers[] = 'Cc: IUFRO Keeper <keep@iufroacacia2017.com>';
     wp_mail($to, $subject, $body, $headers);
 
 // ========= END Email =========//
@@ -225,7 +225,7 @@ if ($_GET['do_model'] == 'do_membership') {
 
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
     $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
-    $headers[] = 'Cc: Rio Hotmail <riobahtiar@live.com>';
+    $headers[] = 'Cc: IUFRO Keeper <keep@iufroacacia2017.com>';
     wp_mail($to, $subject, $body, $headers);
 
 // ========= END Email =========//
@@ -291,7 +291,7 @@ if ($_GET['do_model'] == 'do_membership') {
 
     $headers[] = 'Content-Type: text/html; charset=UTF-8';
     $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
-    $headers[] = 'Cc: Rio Hotmail <riobahtiar@live.com>';
+    $headers[] = 'Cc: IUFRO Keeper <keep@iufroacacia2017.com>';
     wp_mail($to, $subject, $body, $headers);
 
 // ========= END Email =========//
