@@ -230,7 +230,7 @@ if ($user_detail['euser_type'] == "local student") {
         echo number_format($idr_total, 0, ".", ".");
 
 
-        echo "*<br><br><br><hr>";
+        echo "&nbsp;&nbsp;*<br><br><br><hr>";
         echo "*- Current IDR Rates US$1 = IDR ".$idr_good."<br> Source : openexchangerates.org ";
        ?></td>
     </tr>
