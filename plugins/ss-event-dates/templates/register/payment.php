@@ -157,9 +157,7 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 <p>Here you can see the details of your transaction activity.</p>
 <hr>
 <div class="row">
-<div class="col-md-6">
 
-</div>
 <?php if ($user_detail['euser_meta_type'] != "participant_type") {
     ?>
 <div class="col-md-6">
@@ -173,7 +171,7 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
         ?>
 <dl class="dl-horizontal">
   <dt>Abstract</dt>
-  <dd><a href="<?php echo $abstract_download; ?>">Download</a></dd>
+  <dd><a href="<?php echo $abstract_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Download</a></dd>
 </dl>
 <?php
 }
@@ -181,7 +179,7 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
         ?>
 <dl class="dl-horizontal">
   <dt>Paper</dt>
-  <dd><a href="<?php echo $paper_download; ?>">Download</a></dd>
+  <dd><a href="<?php echo $paper_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Download</a></dd>
 </dl>
 <?php
 }
@@ -190,7 +188,7 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
         ?>
 <dl class="dl-horizontal">
   <dt>Poster</dt>
-  <dd><a href="<?php echo $poster_download; ?>">Download</a></dd>
+  <dd><a href="<?php echo $poster_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Download</a></dd>
 </dl>
 <?php
 }

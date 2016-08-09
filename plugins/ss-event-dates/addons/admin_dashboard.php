@@ -209,15 +209,15 @@ if (isset($show_me->euser_addon_mid)) {
 if (isset($show_me->euser_addon_post)) {
     // Pricing Post Conference
     if ($show_me->euser_addon_post == "pacitan") {
-        $string_post_conf = "Pacitan ( US$ 250 )";
+        $string_post_conf = "Pacitan";
         $price_post_conf  = 250;
         $product_pc = "PC1";
     } elseif ($show_me->euser_addon_post == "pekanbaru_shared") {
-        $string_post_conf = "Pekanbaru | Shared Room ( US$ 475 )";
+        $string_post_conf = "Pekanbaru | Shared Room";
         $price_post_conf  = 475;
         $product_pc = "PC2";
     } elseif ($show_me->euser_addon_post == "pekanbaru_single") {
-        $string_post_conf = "Pekanbaru | Single Room ( US$ 510 )";
+        $string_post_conf = "Pekanbaru | Single Room";
         $price_post_conf  = 510;
         $product_pc = "PC3";
     } else {
