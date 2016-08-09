@@ -80,7 +80,7 @@ abstract class BarcodeGenerator
     protected function getBarcodeData($code, $type)
     {
         switch (strtoupper($type)) {
-            case self::TYPE_CODE_39: { // CODE 39 - ANSI MH10.8M-1983 - USD-3 - 3 of 9.
+            case self::TYPE_CODE_39: { // CODE 39 - ANSI MH10.8M-1983 - US$-3 - 3 of 9.
                 $arrcode = $this->barcode_code39($code, false, false);
                 break;
             }
@@ -214,7 +214,7 @@ abstract class BarcodeGenerator
     }
 
     /**
-     * CODE 39 - ANSI MH10.8M-1983 - USD-3 - 3 of 9.
+     * CODE 39 - ANSI MH10.8M-1983 - US$-3 - 3 of 9.
      * General-purpose code in very wide use world-wide
      *
      * @param $code (string) code to represent.

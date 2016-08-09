@@ -26,7 +26,7 @@ if (isset($_GET['step']) && $_GET['step'] == "membership") {
 Registration fee for local :<br>
 - Early bird registration (1st January - 30th April 2017) : US$ 23<br>
 - Regular registration (1st May - 24th July 2017) : US$ 39<br>
-- Student : USD 20<br><br>
+- Student : US$ 20<br><br>
 
 Also has the ability to choose the available field trip that we provide (there will be extra charge for each field trip).<br><br>
 
@@ -48,8 +48,8 @@ Please choose your local type:<br>
 					<div id="foreign" class="panel-collapse collapse">
 						<div class="panel-body">
 Registration fee for foreigner :<br>
-- Early bird registration (1st January - 30th April 2017) : USD 350<br>
-- Regular registration (1st May - 24th July 2017) : USD 400<br><br>
+- Early bird registration (1st January - 30th April 2017) : US$ 350<br>
+- Regular registration (1st May - 24th July 2017) : US$ 400<br><br>
 
 Also has the ability to choose the available field trip that we provide (there will be extra charge for each field trip).<br><br>
 

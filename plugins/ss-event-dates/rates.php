@@ -21,4 +21,4 @@ $latest_price = json_decode($json);
 //     $oxr_latest->rates->IDR,
 //     date('H:i jS F, Y', $oxr_latest->timestamp)
 // );
-// -> eg. "1 USD equals: 0.656741 IDR at 11:11, 11th December 2015"
+// -> eg. "1 US$ equals: 0.656741 IDR at 11:11, 11th December 2015"

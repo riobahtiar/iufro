@@ -321,13 +321,13 @@ if ($show_me->euser_type == "local student") {
 //         if (isset($show_me->euser_addon_post)) {
 //             // Pricing Post Conference
 //             if ($show_me->euser_addon_post == "pacitan") {
-//                 $string_post_conf = "Pacitan ( USD 250 )";
+//                 $string_post_conf = "Pacitan ( US$ 250 )";
 //                 $price_post_conf  = 250;
 //             } elseif ($show_me->euser_addon_post == "pekanbaru_shared") {
-//                 $string_post_conf = "Pekanbaru | Shared Room ( USD 475 )";
+//                 $string_post_conf = "Pekanbaru | Shared Room ( US$ 475 )";
 //                 $price_post_conf  = 475;
 //             } elseif ($show_me->euser_addon_post == "pekanbaru_single") {
-//                 $string_post_conf = "Pekanbaru | Single Room ( USD 510 )";
+//                 $string_post_conf = "Pekanbaru | Single Room ( US$ 510 )";
 //                 $price_post_conf  = 510;
 //             } else {
 //                 $string_post_conf = " - ";

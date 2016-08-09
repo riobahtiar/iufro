@@ -8,7 +8,7 @@ class PaypalPayment{
         //default settings
         $settings = array(
             'business' => 'riob-facilitator@softwareseni.com', //paypal email address
-            'currency' => 'USD', //paypal currency
+            'currency' => 'US$', //paypal currency
             'cursymbol' => '$', //currency symbol
             'location' => 'IDN', //location code (ex GB)
             'returnurl' => 'http://www.iufroacacia2017.com/myreturnpage', //where to go back when the transaction is done.
