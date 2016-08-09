@@ -760,22 +760,7 @@ function blockusers_init()
     }
 }
 
-// Generator Acak string
-function incrementalHash($len = 5)
-{
-    $charset = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    $base    = strlen($charset);
-    $result  = '';
-
-    $now = explode(' ', microtime())[1];
-    while ($now >= $base) {
-        $i      = $now % $base;
-        $result = $charset[$i] . $result;
-        $now /= $base;
-    }
-    return substr($result, -5);
-}
-
+// ========== USER ACTIVATION ========== //
 function user_activation()
 {
     ob_start();
@@ -829,3 +814,60 @@ function user_activation()
 }
 
 add_shortcode('user_activation', 'user_activation');
+// ========== END USER ACTIVATION ========== //
+
+
+// ========== AUTHOR TO PARTICIPANT LINK ========== //
+
+function participant_converter(){
+    ob_start();
+    if (isset($_GET['user_auth'])) {
+        $user_auth = sanitize_text_field($_GET['user_auth']);
+        //get user data
+        global $wpdb;
+        $query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_activationkey = '{$user_auth}'";
+        $user_detail = $wpdb->get_row($query, ARRAY_A);
+        $userchecker = $wpdb->update(
+            'wp_ss_event_user_detail',
+            array('euser_meta_type' => 'participant_type'),
+            array('euser_activationkey' => $user_auth),
+            array('%s'),
+            array('%s')
+        );
+        if ($userchecker === false) {
+            echo "<div class='alert alert-danger'>
+                    <h1>Oops!</h1><br>
+                    <p>We can't seem to find the page you're looking for.</p>
+                    <h4>Error code: <strong>404</strong></h4>
+                    <br>
+                    <br></div>";
+        } elseif ($userchecker === 0) {
+            echo "<div class='alert alert-danger'>
+                    <h1>Oops!</h1><br>
+                    <p>We can't seem to find the page you're looking for.</p>
+                    <h4>Error code: <strong>404</strong></h4>
+                    <br>
+                    <br></div>";
+        } elseif ($userchecker > 0) {
+            echo "<div class='alert alert-danger'>Congratulation " . $user_detail['euser_fullname'] . ", your account has been changed to Participant. Please <a href='" . get_permalink() . "/login'>Login</a> to your account to continue payment process.</div>";
+        } else {
+            echo "<div class='alert alert-danger'>
+                    <h1>Oops!</h1><br>
+                    <p>We can't seem to find the page you're looking for.</p>
+                    <h4>Error code: <strong>404</strong></h4>
+                    <br>
+                    <br></div>";
+        }
+
+    } else {
+        echo "<div class='alert alert-danger'>
+                    <h1>Oops!</h1><br>
+                    <p>We can't seem to find the page you're looking for.</p>
+                    <h4>Error code: <strong>404</strong></h4>
+                    <br>
+                    <br></div>";
+    }
+    return ob_get_clean();
+}
+
+add_shortcode('participant_converter', 'participant_converter');
