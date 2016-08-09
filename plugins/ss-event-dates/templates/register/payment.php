@@ -255,7 +255,7 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
         echo number_format($idr_total, 0, ".", ".");
 
 
-        echo "<p>&nbsp;*<br><hr>";
+        echo "&nbsp;*<br><hr><p>";
         echo "*- Current IDR Rates US$1 = IDR ".$idr_good."<br> Source : openexchangerates.org </p>";
        ?></td>
     </tr>
