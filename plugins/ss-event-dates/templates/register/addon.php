@@ -72,7 +72,7 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 			    	<a href="<?php echo site_url(); ?>/field-trip/pekanbaru" target="_blank">Learn more</a>
 			    </div>
 				<div class="col-md-6">
-					<input type="radio" name="post-conf-child" value="pacitan">
+					<input type="radio" name="post-conf-child" value="pacitan" checked>
 					<div class = "thumbnail">
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Pacitan.jpg" alt = "Pacitan">
 			     	</div>
@@ -138,24 +138,17 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 	});
 
 	jQuery("#form-addon").submit(function(e){
-	   	if (jQuery('#mydoc1').val()==''){
-			alert('please upload your Abstract');
-			e.preventDefault(e);
-		}
-	   	if (jQuery('#mydoc2').val()==''){
-			alert('please upload your Paper');
-			e.preventDefault(e);
-		}	    
+	   		if (jQuery('#mydoc1').val()==''){
+				alert('please upload your Abstract');
+				e.preventDefault(e);
+			}
+	   		if (jQuery('#mydoc2').val()==''){
+				alert('please upload your Paper');
+				e.preventDefault(e);
+			}
+
 	});
 
-
-// jQuery('input[name=post-conf]').change(function() {
-//   if (jQuery(this).is(':checked')) {
-//     console.log('Checked');
-//   } else {
-//     console.log('Unchecked');
-//   }
-// });
 
 
 
