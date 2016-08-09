@@ -14,7 +14,7 @@ Paypal suitable for Foreigner transaction. Support Credit Card and Paypal Credit
 <form name="_xclick" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_xclick">
 <input type="hidden" name="business" value="riob-facilitator@softwareseni.com">
-<input type="hidden" name="currency_code" value="US$">
+<input type="hidden" name="currency_code" value="USD">
 <input type="hidden" name="item_name" value="<?php echo $_POST['payname']; ?>">
 <input type="hidden" name="amount" value="<?php echo $_POST['total_amount']; ?>">
 <input type="hidden" name="return" value="<?php echo get_site_url().'/login/user_dashboard?step=paypal_success&trxname='.$_POST['payname']; ?>" />

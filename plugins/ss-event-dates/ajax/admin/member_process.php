@@ -216,6 +216,21 @@ if ($_GET['do_model'] == 'do_membership') {
             <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
                 Your Document was Rejected to IUFRO ACACIA CONFERENCE 2017 Website
             </div>
+            <div>
+            <p>With regret, we want to inform you that your document still doesn\'t meet our requirements.
+Therefore, you can\'t continue to participate on this conference as an Author.</p>
+
+<p>But you still can continue to participate as a "Participant" type user, instead of author.
+To continue the registration as a participant, simply click the button below.</p>
+</div>
+
+                <div style="width:100%;text-align: left;border-bottom:1px solid #809062;">
+                    <a href="http://staging.iufroacacia2017.com/changer?user_auth='.$user_detail['euser_activationkey'].'&fromxmail=true" style="background-color: #809062;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">CHANGE TO PARTICIPANT</a>
+                </div>
+
+<div>
+<p>You still need to proceed with the payment. Your payment details can be seen on the summaries page after you click the button above.</p>
+            </div>
 
         </div>
     </body>
