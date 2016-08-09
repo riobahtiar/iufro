@@ -146,7 +146,22 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 				alert('please upload your Paper');
 				e.preventDefault(e);
 			}
+
+	   		if (jQuery('input[name=post-conf]').is(':checked') && jQuery('input[name=post-conf-child]:checked').val()=="pekanbaru" || jQuery('input[name=post-conf]').is(':checked') && jQuery('input[name=post-conf-child]').prop('checked') == false){
+				alert('Post Conference field is empty, please choose on of the choices');
+				e.preventDefault(e);
+			}
+
+
+
+
 			    
 	});
+
+
+
+
+
+
 </script>
 <?php } ?>
