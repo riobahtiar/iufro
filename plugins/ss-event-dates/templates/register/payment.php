@@ -259,14 +259,14 @@ echo "*- Current IDR Rates US$1 = IDR " . $idr_good . "<br> Source : openexchang
     </tr>
   </tfoot>
   </table>
-
-</div>
-<hr>
 <?php if ($user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] !== null || $user_detail['euser_meta_type'] == "participant_type" || $user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] == 'accepted') {} else {?>
   <div class="well payment-alert">
   You may continue to the payment after your document has been approved by us!
 </div>
 <?php }?>
+</div>
+<hr>
+
 </div><!-- row -->
 
 </div>
