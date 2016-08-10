@@ -1,3 +1,12 @@
+<?php
+$parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
+require_once $parse_uri[0] . 'wp-load.php';
+$euser_barcode = $_GET['brcd'];
+global $wpdb;
+$query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_barcode = '{$euser_barcode}'";
+$user_detail = $wpdb->
+    get_row($query, ARRAY_A);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,325 +15,123 @@
                 <meta content="width=device-width, initial-scale=1" name="viewport">
                     <title>
                     </title>
+                    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
+                    </link>
                 </meta>
             </meta>
         </meta>
     </head>
-<body style="background: #f7f7f7; padding: 20px; font-size: 15px; text-align: center;">
+    <body style="padding: 17px">
+    <form action="" method="post">
+            <div class="form-group">
+            <label for="user_type">Register as (<a data-toggle="modal" data-target="#registerInfo">Learn more.</a>)</label>
+            <select class="form-control" name="user_type" id="user_type">
+                <option value="">== Select Account ==</option>
+                <option value="free_type">Free Account</option>
+                <option value="author_type">Author</option>
+                <option value="participant_type">Participant</option>
+            </select>
+            <!-- Button trigger modal -->
 
-<?php
-$parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
-require_once $parse_uri[0] . 'wp-load.php';
-global $wpdb;
-$euser_barcode = $_GET['barcode'];
-$query         = "SELECT * FROM wp_ss_event_user_detail WHERE euser_barcode = '{$euser_barcode}'";
-$user_detail   = $wpdb->get_row($query, ARRAY_A);
 
-if ($_GET['do_model'] == 'do_membership') {
-
-    $getx_result = $wpdb->update(
-        'wp_ss_event_user_detail',
-        array(
-            'euser_meta_type' => $_GET['user_type'],
-        ),
-        array('euser_barcode' => $_GET['barcode']),
-        array(
-            '%s',
-        ),
-        array('%s')
-    );
-    echo "Member type changed Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
-
-// ========= Email Block =========//
-    $to      = $user_detail['euser_email'];
-    $subject = 'Member type changed Successfully | IUFRO ACACIA 2017';
-    $body    = '
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>IUFRO</title>
-        <style type="text/css">
-@media (max-width: 992px) {
-    #content {
-        max-width: 100% !important;
-        padding-left: 30px;
-        padding-right: 30px;
-    }
-    #logo img {
-        width: 100% !important;
-        max-width: 300px !important;
-    }
-}
-
-        </style>
-    </head>
-
-    <body style="font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:16px;color:#525252;margin:0;line-height:1.5;padding: 15px 0;background:#fff;">
-        <div id="content" style="max-width:550px;letter-spacing:0.5px; margin: 0 auto">
-            <div id="logo" style="background:#fff;overflow:hidden;padding:16px;text-align:center">
-                <img src="http://demosite.softwareseni.com/iufro/wp-content/uploads/2016/06/logo.png" alt="IufroLogo" style="min-height:30px;width:200px;max-width:100%;vertical-align:top" class="CToWUd">
-            </div>
-            <div>
-                <h2 style="text-align:center;color:#809062;margin-top: 0;">Dear Sir / Madam</h2>
-            </div>
-            <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
-                Your Member type changed Successfully
-            </div>
-
-        </div>
-    </body>
-
-</html>
-';
-
-    $headers[] = 'Content-Type: text/html; charset=UTF-8';
-    $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
-    $headers[] = 'Cc: IUFRO Keeper <keep@iufroacacia2017.com>';
-    wp_mail($to, $subject, $body, $headers);
-
-// ========= END Email =========//
-
-} elseif ($_GET['do_model'] == 'do_doc_publish') {
-    $getx_result = $wpdb->update(
-        'wp_ss_event_user_detail',
-        array(
-            'euser_doc_status' => 'published',
-        ),
-        array('euser_barcode' => $_GET['barcode']),
-        array(
-            '%s',
-        ),
-        array('%s')
-    );
-    echo "Document Publised Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
-
-// ========= Email Block =========//
-    $to      = $user_detail['euser_email'];
-    $subject = 'Document Published Notification | IUFRO ACACIA 2017';
-    $body    = '
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>IUFRO</title>
-        <style type="text/css">
-@media (max-width: 992px) {
-    #content {
-        max-width: 100% !important;
-        padding-left: 30px;
-        padding-right: 30px;
-    }
-    #logo img {
-        width: 100% !important;
-        max-width: 300px !important;
-    }
-}
-
-        </style>
-    </head>
-
-    <body style="font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:16px;color:#525252;margin:0;line-height:1.5;padding: 15px 0;background:#fff;">
-        <div id="content" style="max-width:550px;letter-spacing:0.5px; margin: 0 auto">
-            <div id="logo" style="background:#fff;overflow:hidden;padding:16px;text-align:center">
-                <img src="http://demosite.softwareseni.com/iufro/wp-content/uploads/2016/06/logo.png" alt="IufroLogo" style="min-height:30px;width:200px;max-width:100%;vertical-align:top" class="CToWUd">
-            </div>
-            <div>
-                <h2 style="text-align:center;color:#809062;margin-top: 0;">Dear Sir / Madam</h2>
-            </div>
-            <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
-                Your Document was published to IUFRO ACACIA CONFERENCE 2017 Website
-            </div>
-
-        </div>
-    </body>
-
-</html>
-';
-
-    $headers[] = 'Content-Type: text/html; charset=UTF-8';
-    $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
-    $headers[] = 'Cc: IUFRO Keeper <keep@iufroacacia2017.com>';
-    wp_mail($to, $subject, $body, $headers);
-
-// ========= END Email =========//
-
-} elseif ($_GET['do_model'] == 'do_doc_unpublish') {
-    $getx_result = $wpdb->update(
-        'wp_ss_event_user_detail',
-        array(
-            'euser_doc_status' => 'unpublished',
-        ),
-        array('euser_barcode' => $_GET['barcode']),
-        array(
-            '%s',
-        ),
-        array('%s')
-    );
-    echo "Document Unpublised Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
-} elseif ($_GET['do_model'] == 'do_doc_rejected') {
-    $getx_result = $wpdb->update(
-        'wp_ss_event_user_detail',
-        array(
-            'euser_doc_status' => 'rejected',
-        ),
-        array('euser_barcode' => $_GET['barcode']),
-        array(
-            '%s',
-        ),
-        array('%s')
-    );
-    echo "Document Rejected Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
-    $authkey = $user_detail['euser_activationkey'];
-
-// ========= Email Block =========//
-    $to      = $user_detail['euser_email'];
-    $subject = 'Document Rejected Notification | IUFRO ACACIA 2017';
-    $body    = '
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>IUFRO</title>
-        <style type="text/css">
-@media (max-width: 992px) {
-    #content {
-        max-width: 100% !important;
-        padding-left: 30px;
-        padding-right: 30px;
-    }
-    #logo img {
-        width: 100% !important;
-        max-width: 300px !important;
-    }
-}
-
-        </style>
-    </head>
-
-    <body style="font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:16px;color:#525252;margin:0;line-height:1.5;padding: 15px 0;background:#fff;">
-        <div id="content" style="max-width:550px;letter-spacing:0.5px; margin: 0 auto">
-            <div id="logo" style="background:#fff;overflow:hidden;padding:16px;text-align:center">
-                <img src="http://demosite.softwareseni.com/iufro/wp-content/uploads/2016/06/logo.png" alt="IufroLogo" style="min-height:30px;width:200px;max-width:100%;vertical-align:top" class="CToWUd">
-            </div>
-            <div>
-                <h2 style="text-align:center;color:#809062;margin-top: 0;">Dear Sir / Madam</h2>
-            </div>
-            <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
-                Your Document was Rejected to IUFRO ACACIA CONFERENCE 2017 Website
-            </div>
-            <div>
-            <p>With regret, we want to inform you that your document still does not meet our requirements.
-Therefore, you can not continue to participate on this conference as an Author.</p>
-
-<p>But you still can continue to participate as a "Participant" type user, instead of author.
-To continue the registration as a participant, simply click the button below.</p>
+<!-- Modal -->
+<div class="modal fade" id="registerInfo" tabindex="-1" role="dialog" aria-labelledby="registerInfoLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h2>Account types :</h2>
+<h3>Free Account</h3>
+<p>Free account will not participate on the conference. Free account user able to login into website and read papers that created by our author, but will not able to download it.
+Free account user can upgrade his membership type (into author or participant) later.</p>
+<h3>Author :</h3>
+<p>Will participate on the conference as the author. There's registration fee for Author.
+To be an author, user need to submit document (abstract, paper, and poster) on the form after finishing registration phase.
+Author also able to join extra field trip during the conference (extra charge will be applied).</p>
+<h3>Participant :</h3>
+<p>Will participate on the conference as the participant. There's registration fee for Participant.  No need to upload any file.
+Paticipant also able to join extra field trip during the conference (extra charge will be applied).</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
-
-                <div style="width:100%;text-align: left;border-bottom:1px solid #809062;">
-                    <a href="http://staging.iufroacacia2017.com/changer?user_auth='.$authkey.'&fromxmail=true" style="background-color: #809062;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">CHANGE TO PARTICIPANT</a>
-                </div>
-
-<div>
-<p>You still need to proceed with the payment. Your payment details can be seen on the summaries page after you click the button above.</p>
-            </div>
-
         </div>
-    </body>
-
-</html>
-';
-
-    $headers[] = 'Content-Type: text/html; charset=UTF-8';
-    $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
-    $headers[] = 'Cc: IUFRO Keeper <keep@iufroacacia2017.com>';
-    wp_mail($to, $subject, $body, $headers);
-
-// ========= END Email =========//
-
-} elseif ($_GET['do_model'] == 'do_doc_approved') {
-    $getx_result = $wpdb->update(
-        'wp_ss_event_user_detail',
-        array(
-            'euser_doc_status' => 'approved',
-        ),
-        array('euser_barcode' => $_GET['barcode']),
-        array(
-            '%s',
-        ),
-        array('%s')
-    );
-    echo "Document Approved Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
-
-
-// ========= Email Block =========//
-    $to      = $user_detail['euser_email'];
-    $subject = 'Document Approved Notification | IUFRO ACACIA 2017';
-    $body    = '
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>IUFRO</title>
-        <style type="text/css">
-@media (max-width: 992px) {
-    #content {
-        max-width: 100% !important;
-        padding-left: 30px;
-        padding-right: 30px;
-    }
-    #logo img {
-        width: 100% !important;
-        max-width: 300px !important;
-    }
-}
-
-        </style>
-    </head>
-
-    <body style="font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:16px;color:#525252;margin:0;line-height:1.5;padding: 15px 0;background:#fff;">
-        <div id="content" style="max-width:550px;letter-spacing:0.5px; margin: 0 auto">
-            <div id="logo" style="background:#fff;overflow:hidden;padding:16px;text-align:center">
-                <img src="http://demosite.softwareseni.com/iufro/wp-content/uploads/2016/06/logo.png" alt="IufroLogo" style="min-height:30px;width:200px;max-width:100%;vertical-align:top" class="CToWUd">
+        <br>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="salutation">Salutation</label>
+                <select id="salutation" name="salutation" class="form-control">
+                    <option value="Mr." <?php isset( $_POST['salutation'] ) ? 'checked' : null?> >Mr.</option>
+                    <option value="Mrs." <?php isset( $_POST['salutation'] ) ? 'checked' : null?> >Mrs.</option>
+                </select>
             </div>
-            <div>
-                <h2 style="text-align:center;color:#809062;margin-top: 0;">Dear Sir / Madam</h2>
+            <div class="form-group form-group col-md-6">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" name="title" id="title" placeholder="Title" value="<?php if(isset( $_POST['title'] ))  echo $_POST['title']; else echo null; ?>">
             </div>
-            <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
-                Your Document was Approved to IUFRO ACACIA CONFERENCE 2017 Website
-            </div>
-
         </div>
-    </body>
+        <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Full Name" value="<?php if(isset( $_POST['fullname'] ))  echo $_POST['fullname']; else echo null;?>">
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php if(isset( $_POST['email'] ))  echo $_POST['email']; else echo null; ?>">
+            </div>
 
-</html>
-';
-
-    $headers[] = 'Content-Type: text/html; charset=UTF-8';
-    $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
-    $headers[] = 'Cc: IUFRO Keeper <keep@iufroacacia2017.com>';
-    wp_mail($to, $subject, $body, $headers);
-
-// ========= END Email =========//
-
-
-
-
-} else {
-    echo "ERR21. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
-}
-
-// echo "<pre>";
-// var_dump($getx_result);
-// echo "</pre><hr>Lagi";
-// echo "<pre>";
-// var_dump($wpdb);
-// echo "</pre><hr>Lagi";
-
-?>
+            <div class="form-group form-group col-md-6">
+                <label for="phone">Phone number</label>
+                <input type="text" class="form-control" name="phone" id="phone">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+            </div>
+            <div class="form-group form-group col-md-6">
+                <label for="c_password">Confirm Password</label>
+                <input type="password" class="form-control" name="c_password" id="c_password" placeholder="Confirm Password">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <textarea class="form-control" name="address" id="address" placeholder="Address"><?php if(isset( $_POST['address'] ))  echo $_POST['address']; else echo null; ?></textarea>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="zip">Zip Code</label>
+                <input type="text" class="form-control" name="zip" id="zip" placeholder="Zip Code" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="<?php if(isset( $_POST['zip'] ))  echo $_POST['zip']; else echo null; ?>">
+            </div>
+            <div class="form-group form-group col-md-6">
+                <label for="city">City</label>
+                <input type="text" class="form-control" name="city" id="city" placeholder="City" value="<?php if(isset( $_POST['city'] ))  echo $_POST['city']; else echo null; ?>">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="state">Country</label>
+                <select name="country" class="form-control countries" id="countryId">
+<option>Select Country</option>
+                </select>
+            </div>
+            <div class="form-group form-group col-md-6">
+                <label for="country">State/Province</label>
+                <select name="state" class="form-control states" id="stateId">
+<option>Select State</option>
+            </select>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <button type="submit" name="submit" class="btn btn-default pull-right" value="Register">Register</button>
+        </div>
+    </form>
     </body>
 </html>
