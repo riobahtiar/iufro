@@ -147,7 +147,7 @@ function init_iufro_dash()
 {
 
     //create new top-level menu
-    add_menu_page('IUFRO U', 'IUFRO U', 'administrator', IUFRO_DIR, 'users_page_control', plugins_url('ss-event-dates/assets/muda.png', IUFRO_DIR));
+    add_menu_page('IUFRO U', 'IUFRO U', 'administrator', IUFRO_DIR, 'users_page_control', plugins_url('ss-event-dates/assets/muda.png', IUFRO_DIR), 2);
 }
 
 function users_page_control()
