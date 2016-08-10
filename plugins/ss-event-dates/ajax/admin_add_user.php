@@ -39,6 +39,13 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
     <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_save_process.php'; ?>" method="post">
         <div class="row">
             <div class="form-group col-md-6">
+            <div class="form-group">
+            <label for="user_type">Register as </label>
+            <select class="form-control" name="user_type" id="user_type">
+                <option value="participant_type">Participant</option>
+                <option value="free_type">Free Pass</option>
+            </select>
+            </div>
                 <label for="salutation">Salutation</label>
                 <select id="salutation" name="salutation" class="form-control">
                     <option value="Mr." <?php isset( $_POST['salutation'] ) ? 'checked' : null?> >Mr.</option>
@@ -68,11 +75,7 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
         <div class="row">
             <div class="form-group col-md-6">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-            </div>
-            <div class="form-group form-group col-md-6">
-                <label for="c_password">Confirm Password</label>
-                <input type="password" class="form-control" name="c_password" id="c_password" placeholder="Confirm Password">
+                <input type="text" class="form-control" name="password" id="password" placeholder="Auto Generated" disabled>
             </div>
         </div>
         <div class="form-group">
