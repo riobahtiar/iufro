@@ -10,16 +10,11 @@ $user_detail = $wpdb->
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-            <meta content="IE=edge" http-equiv="X-UA-Compatible">
-                <meta content="width=device-width, initial-scale=1" name="viewport">
-                    <title>
-                    </title>
-                    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
-                    </link>
-                </meta>
-            </meta>
-        </meta>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title></title>
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
     </head>
     <body style="padding: 17px">
         <!-- User Changer -->

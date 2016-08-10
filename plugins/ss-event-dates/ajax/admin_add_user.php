@@ -10,58 +10,26 @@ $user_detail = $wpdb->
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-            <meta content="IE=edge" http-equiv="X-UA-Compatible">
-                <meta content="width=device-width, initial-scale=1" name="viewport">
-                    <title>
-                    </title>
-                    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
-                    </link>
-                </meta>
-            </meta>
-        </meta>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title></title>
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://lab.iamrohit.in/js/location.js"></script>
     </head>
     <body style="padding: 17px">
+<script>
+document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-content/uploads/2016/08/ajax-loader.gif'></p>");
+</script>
+<style type="text/css">
+    #loading {
+    position:         absolute;
+    left:             0px;
+    top:              0px;
+}
+</style>
     <form action="" method="post">
-            <div class="form-group">
-            <label for="user_type">Register as (<a data-toggle="modal" data-target="#registerInfo">Learn more.</a>)</label>
-            <select class="form-control" name="user_type" id="user_type">
-                <option value="">== Select Account ==</option>
-                <option value="free_type">Free Account</option>
-                <option value="author_type">Author</option>
-                <option value="participant_type">Participant</option>
-            </select>
-            <!-- Button trigger modal -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="registerInfo" tabindex="-1" role="dialog" aria-labelledby="registerInfoLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="modal-body">
-        <h2>Account types :</h2>
-<h3>Free Account</h3>
-<p>Free account will not participate on the conference. Free account user able to login into website and read papers that created by our author, but will not able to download it.
-Free account user can upgrade his membership type (into author or participant) later.</p>
-<h3>Author :</h3>
-<p>Will participate on the conference as the author. There's registration fee for Author.
-To be an author, user need to submit document (abstract, paper, and poster) on the form after finishing registration phase.
-Author also able to join extra field trip during the conference (extra charge will be applied).</p>
-<h3>Participant :</h3>
-<p>Will participate on the conference as the participant. There's registration fee for Participant.  No need to upload any file.
-Paticipant also able to join extra field trip during the conference (extra charge will be applied).</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-        </div>
-        <br>
         <div class="row">
             <div class="form-group col-md-6">
                 <label for="salutation">Salutation</label>
@@ -130,8 +98,19 @@ Paticipant also able to join extra field trip during the conference (extra charg
         </div>
         <hr>
         <div>
-            <button type="submit" name="submit" class="btn btn-default pull-right" value="Register">Register</button>
+            <button type="submit" name="submit" class="btn btn-primary pull-right" value="Register">Register</button>
         </div>
     </form>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+ jQuery('#loading').remove();
+});
+</script>
+
+
+
+
+
     </body>
 </html>
