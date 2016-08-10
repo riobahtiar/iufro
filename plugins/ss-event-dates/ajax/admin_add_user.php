@@ -105,7 +105,7 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
         </div>
     </form>
   <script>
-    $("#phone").intlTelInput({
+    jQuery("#phone").intlTelInput({
        allowDropdown: true,
        //autoHideDialCode: true,
       // autoPlaceholder: false,
