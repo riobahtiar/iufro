@@ -25,6 +25,9 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
     top: 50%;
     text-align: center;
 }
+.intl-tel-input{
+    width: 100%;
+}
 </style>
     <link rel="stylesheet" href="<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/css/intlTelInput.css'; ?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
