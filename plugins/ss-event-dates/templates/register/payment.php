@@ -21,7 +21,7 @@ curl_close($ch);
 $latest_price = json_decode($json);
 $idr_rates    = $latest_price->rates->IDR;
 $idr_good     = round($idr_rates);
-echo "Rates ID:".$idr_rates." Dibulatkan: ".$idr_good;
+//echo "Rates ID:".$idr_rates." Dibulatkan: ".$idr_good;
 // get Get User Login
 global $current_user;
 wp_get_current_user();

@@ -153,11 +153,23 @@ function users_page_control()
 
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/r-2.1.0/sc-1.4.2/datatables.min.js"></script>
 
+
 <div class="wrap">
 <h2>IUFRO ACACIA CONFERENCE 2017</h2>
+<?php
+$url = add_query_arg(array(
+            'brcd'      => $show_me->euser_barcode,
+            'type'      => 'member',
+            'TB_iframe' => 'true',
+            'width'     => '800',
+            'height'    => '500',
+        ), plugins_url('ss-event-dates') . '/ajax/admin_add_user.php');
+echo '<a href="' . $url . '" class="button button-primary thickbox">' . __('Add User', 'iufro') . '</a>';
+?>
+
 <h4>Control Dashboard</h4>
 <div class="dtbl-btn"></div>
-<p>&nbsp;| &nbsp;Payment Details: <button id="ihide">Hide</button>&nbsp;<button id="ishow">Show</button></p>
+<p>&nbsp;| &nbsp;Payment Details: <button id="ihide">Hide</button>&nbsp;<button id="ishow">Show</button>    </p>
 <table class="etable" id="iufro-member" class="display" cellspacing="0" width="100%">
 <thead>
 <tr>
