@@ -156,6 +156,9 @@ function users_page_control()
 
 <div class="wrap">
 <h2>IUFRO ACACIA CONFERENCE 2017</h2>
+<h4>Control Dashboard</h4>
+<div class="dtbl-btn"></div>
+<p>&nbsp;| &nbsp;Payment Details: <button id="ihide">Hide</button>&nbsp;<button id="ishow">Show</button>
 <?php
 $url = add_query_arg(array(
             'brcd'      => $show_me->euser_barcode,
@@ -166,10 +169,7 @@ $url = add_query_arg(array(
         ), plugins_url('ss-event-dates') . '/ajax/admin_add_user.php');
 echo '<a href="' . $url . '" class="button thickbox">' . __('Add User', 'iufro') . '</a>';
 ?>
-
-<h4>Control Dashboard</h4>
-<div class="dtbl-btn"></div>
-<p>&nbsp;| &nbsp;Payment Details: <button id="ihide">Hide</button>&nbsp;<button id="ishow">Show</button>    </p>
+ </p>
 <table class="etable" id="iufro-member" class="display" cellspacing="0" width="100%">
 <thead>
 <tr>
