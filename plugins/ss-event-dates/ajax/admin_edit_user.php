@@ -19,7 +19,7 @@ $user_detail = $wpdb->
     <body style="padding: 17px">
         <!-- User Changer -->
         <p class="bg-primary">
-            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_process.php'; ?>" type="post">
+            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
                 <h4>
                     User Type Changer
                 </h4>

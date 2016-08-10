@@ -33,7 +33,7 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
     </head>
     <body style="padding: 20px">
 
-    <form action="" method="post">
+    <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_save_process.php'; ?>" method="post">
         <div class="row">
             <div class="form-group col-md-6">
                 <label for="salutation">Salutation</label>
@@ -102,7 +102,10 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
         </div>
         <hr>
         <div>
-            <button type="submit" name="submit" class="btn btn-primary pull-right" value="Register">Register</button>
+        <br>
+            <button type="submit" name="submit" class="btn btn-primary btn-lg pull-right" value="Register">Register</button>
+        <br>
+        <br>
         </div>
     </form>
   <script>
