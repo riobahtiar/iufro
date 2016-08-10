@@ -127,6 +127,12 @@ div#iufro-member_filter {
     color: #4f0450;
 }
 
+.button.btn-add-user{
+    background: #59524c;
+    color: white;
+    border-color: #59524c;
+}
+
 
   </style>
   ";
@@ -167,7 +173,7 @@ $url = add_query_arg(array(
             'width'     => '800',
             'height'    => '500',
         ), plugins_url('ss-event-dates') . '/ajax/admin_add_user.php');
-echo '<a href="' . $url . '" class="button thickbox">' . __('Add User', 'iufro') . '</a>';
+echo '<a href="' . $url . '" class="button btn-add-user thickbox">' . __('Add User', 'iufro') . '</a>';
 ?>
  </p>
 <table class="etable" id="iufro-member" class="display" cellspacing="0" width="100%">
