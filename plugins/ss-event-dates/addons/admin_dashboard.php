@@ -472,7 +472,7 @@ $url = add_query_arg(array(
             'TB_iframe' => 'true',
             'width'     => '800',
             'height'    => '500',
-        ), plugins_url('ss-event-dates') . '/ajax/admin_model.php');
+        ), plugins_url('ss-event-dates') . '/ajax/admin_edit_user.php');
         echo '<a href="' . $url . '" class="button button-primary thickbox">' . __('options', 'iufro') . '</a>';
         ?>
   </td>
