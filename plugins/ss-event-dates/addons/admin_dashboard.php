@@ -164,7 +164,7 @@ $url = add_query_arg(array(
             'width'     => '800',
             'height'    => '500',
         ), plugins_url('ss-event-dates') . '/ajax/admin_add_user.php');
-echo '<a href="' . $url . '" class="button button-primary thickbox">' . __('Add User', 'iufro') . '</a>';
+echo '<a href="' . $url . '" class="buttonthickbox">' . __('Add User', 'iufro') . '</a>';
 ?>
 
 <h4>Control Dashboard</h4>
