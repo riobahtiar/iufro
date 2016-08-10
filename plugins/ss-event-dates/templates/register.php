@@ -26,12 +26,6 @@ if ($success == 0){
 }
 
 
-
-//
-if ($success == 0){
-    require_once dirname(__FILE__) . '/register/personal.php';
-}
-
 function registration_validation( $fullname, $password, $email, $phone, $c_password, $address, $zip, $city, $state, $country, $user_reg_type) {
     global $reg_errors;
     $reg_errors = new WP_Error;
