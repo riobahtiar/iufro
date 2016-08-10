@@ -15,10 +15,6 @@ $user_detail = $wpdb->
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title></title>
     <link href="<?php echo plugins_url(); ?>/ss-event-dates/assets/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://lab.iamrohit.in/js/location.js"></script>
-    </head>
-    <body style="padding: 17px">
 <script>
 document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-content/uploads/2016/08/ajax-loader.gif'></p>");
 </script>
@@ -30,6 +26,12 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
     text-align: center;
 }
 </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://lab.iamrohit.in/js/location.js"></script>
+    <script src="<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/js/intlTelInput.min.js'; ?>"></script>
+    </head>
+    <body style="padding: 20px">
+
     <form action="" method="post">
         <div class="row">
             <div class="form-group col-md-6">
@@ -102,8 +104,28 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
             <button type="submit" name="submit" class="btn btn-primary pull-right" value="Register">Register</button>
         </div>
     </form>
+  <script>
+    $("#phone").intlTelInput({
+       allowDropdown: true,
+       //autoHideDialCode: true,
+      // autoPlaceholder: false,
+      // dropdownContainer: "body",
+      // excludeCountries: ["us"],
+      // geoIpLookup: function(callback) {
+      //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+      //     var countryCode = (resp && resp.country) ? resp.country : "";
+      //     callback(countryCode);
+      //   });
+      // },
+      // initialCountry: "auto",
+       nationalMode: false,
+      // numberType: "MOBILE",
+      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+       preferredCountries: ['id'],
+      // separateDialCode: true,
+      utilsScript: "<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/js/utils.js'; ?>"
+    });
 
-<script type="text/javascript">
 jQuery(document).ready(function(){
  jQuery('#loading').remove();
 });
