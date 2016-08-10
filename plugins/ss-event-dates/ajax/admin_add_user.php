@@ -23,10 +23,11 @@ $user_detail = $wpdb->
 document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-content/uploads/2016/08/ajax-loader.gif'></p>");
 </script>
 <style type="text/css">
-    #loading {
-    position:         absolute;
-    left:             0px;
-    top:              0px;
+#loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
 }
 </style>
     <form action="" method="post">
