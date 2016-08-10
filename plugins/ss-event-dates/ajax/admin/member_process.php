@@ -225,7 +225,7 @@ To continue the registration as a participant, simply click the button below.</p
 </div>
 
                 <div style="width:100%;text-align: left;border-bottom:1px solid #809062;">
-                    <a href="http://staging.iufroacacia2017.com/changer?user_auth='.$user_detail['euser_activationkey'].'&fromxmail=true" style="background-color: #809062;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">CHANGE TO PARTICIPANT</a>
+                    <a href="http://staging.iufroacacia2017.com/changer?user_auth='.$user_detail[euser_activationkey].'&fromxmail=true" style="background-color: #809062;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">CHANGE TO PARTICIPANT</a>
                 </div>
 
 <div>

@@ -6,7 +6,7 @@ if (isset($_GET['step']) && $_GET['step'] == "payment") {
 }
 
 // Get Rupiah Rates
-$app_id = '242fb9ae64974346985dcec68f9986e8';
+$app_id  = '242fb9ae64974346985dcec68f9986e8';
 $oxr_url = "https://openexchangerates.org/api/latest.json?app_id=" . $app_id;
 
 // Open CURL session:
@@ -19,8 +19,8 @@ curl_close($ch);
 
 // Decode JSON response:
 $latest_price = json_decode($json);
-$idr_rates = $latest_price->rates->IDR;
-$idr_good = round($idr_rates);
+$idr_rates    = $latest_price->rates->IDR;
+$idr_good     = round($idr_rates);
 //echo "Rates ID:".$idr_rates." Dibulatkan: ".$idr_good;
 // get Get User Login
 global $current_user;
@@ -40,19 +40,19 @@ if (isset($user_detail['euser_addon_mid'])) {
     if ($user_detail['euser_addon_mid'] == "gunung-kidul") {
         $string_mid_conf = "Gunung Kidul";
         $price_mid_conf  = 0;
-        $product_mc = "MC1";
+        $product_mc      = "MC1";
     } elseif ($user_detail['euser_addon_mid'] == "klaten") {
         $string_mid_conf = "Klaten";
         $price_mid_conf  = 0;
-        $product_mc = "MC2";
+        $product_mc      = "MC2";
     } elseif ($user_detail['euser_addon_mid'] == "mount-merapi") {
         $string_mid_conf = "Mount Merapi";
         $price_mid_conf  = 0;
-        $product_mc = "MC3";
+        $product_mc      = "MC3";
     } else {
         $string_mid_conf = " - ";
         $price_mid_conf  = 0;
-        $product_mc = "MC0";
+        $product_mc      = "MC0";
     }
 
 } else {
@@ -67,36 +67,36 @@ if (isset($user_detail['euser_addon_post'])) {
     if ($user_detail['euser_addon_post'] == "pacitan") {
         $string_post_conf = "Pacitan ( US$ 250 )";
         $price_post_conf  = 250;
-        $product_pc = "PC1";
+        $product_pc       = "PC1";
     } elseif ($user_detail['euser_addon_post'] == "pekanbaru_shared") {
         $string_post_conf = "Pekanbaru | Shared Room ( US$ 475 )";
         $price_post_conf  = 475;
-        $product_pc = "PC2";
+        $product_pc       = "PC2";
     } elseif ($user_detail['euser_addon_post'] == "pekanbaru_single") {
         $string_post_conf = "Pekanbaru | Single Room ( US$ 510 )";
         $price_post_conf  = 510;
-        $product_pc = "PC3";
+        $product_pc       = "PC3";
     } else {
         $string_post_conf = " - ";
         $price_post_conf  = 0;
-        $product_pc = "PC0";
+        $product_pc       = "PC0";
     }
 } else {
     $string_post_conf = " - ";
     $price_post_conf  = 0;
-    $product_pc = "PC0";
+    $product_pc       = "PC0";
 }
 
 if (isset($user_detail['euser_addon_dinner'])) {
     if ($user_detail['euser_addon_dinner'] == "Yes") {
         $string_dinner = " Yes ";
-        $product_d = "D1";
+        $product_d     = "D1";
     } elseif ($user_detail['euser_addon_dinner'] == "No") {
         $string_dinner = " No ";
-        $product_d = "D2";
+        $product_d     = "D2";
     } else {
         $string_dinner = "-";
-        $product_d = "D0";
+        $product_d     = "D0";
     }
 }
 
@@ -147,7 +147,6 @@ if ($user_detail['euser_type'] == "local student") {
 $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md');
 
 // ======== End of Payment Conditional Block ======== //
-
 
 ?>
 
@@ -251,24 +250,23 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
     <tr class="success">
       <td colspan="2" > Net Total </td>
       <td>US$ <?php echo $total_price; ?> | IDR <?php
-        $idr_total = $idr_good * $total_price; 
-        echo number_format($idr_total, 0, ".", ".");
+$idr_total = $idr_good * $total_price;
+echo number_format($idr_total, 0, ".", ".");
 
-
-        echo "&nbsp;*<br><hr><p>";
-        echo "*- Current IDR Rates US$1 = IDR ".$idr_good."<br> Source : openexchangerates.org </p>";
-       ?></td>
+echo "&nbsp;*<br><hr><p>";
+echo "*- Current IDR Rates US$1 = IDR " . $idr_good . "<br> Source : openexchangerates.org </p>";
+?></td>
     </tr>
   </tfoot>
   </table>
 
 </div>
 <hr>
-<?php if ($user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] !== null || $user_detail['euser_meta_type'] == "participant_type" || $user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] == 'accepted') { }else { ?>
+<?php if ($user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] !== null || $user_detail['euser_meta_type'] == "participant_type" || $user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] == 'accepted') {} else {?>
   <div class="well payment-alert">
   You may continue to the payment after your document has been approved by us!
 </div>
-<?php } ?>
+<?php }?>
 </div><!-- row -->
 
 </div>
