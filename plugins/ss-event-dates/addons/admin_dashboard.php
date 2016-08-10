@@ -15,7 +15,6 @@ add_action('admin_action_foo_modal_box', 'modal_action');
 
 function dash_css()
 {
-    $x = is_rtl() ? 'left' : 'right';
 
     echo "
   <style type='text/css'>

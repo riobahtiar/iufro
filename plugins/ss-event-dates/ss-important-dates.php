@@ -870,4 +870,4 @@ function participant_converter(){
     return ob_get_clean();
 }
 
-// add_shortcode('participant_converter', 'participant_converter');
+add_shortcode('participant_converter', 'participant_converter');

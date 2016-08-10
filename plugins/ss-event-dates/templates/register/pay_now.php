@@ -36,7 +36,7 @@ IPAYMU suitable for Local Transaction (Indonesia). Support Bank Transfer for var
 <input type="hidden" name="item_name" value="<?php echo $_POST['payname']; ?>">
 <input type="hidden" name="amount" value="<?php echo $_POST['total_idr_amount']; ?>">
 <input type="hidden" name="ebarcode" value="<?php echo $_POST['ebarcode']; ?>">
-<input type="submit" class="btn btn-primary btn-block" name="submit" alt="PROCESS WITH IPAYMU">
+<input type="image" src="<?php echo get_site_url()."/wp-content/plugins/ss-event-dates/assets/ipaymu-btn.png"; ?>" border="0" name="submit" alt="PROCESS WITH IPAYMU">
 </form>
 	</div>
 </div>
