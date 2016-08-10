@@ -38,9 +38,6 @@ function registration_validation( $fullname, $password, $email, $phone, $address
     if ( 5 > strlen( $password ) ) {
         $reg_errors->add( 'password', 'Password length must be greater than 5' );
     }
-    if ($password != $c_password ) {
-        $reg_errors->add( 'password', 'Password and confirmation password must be same' );
-    }
 
     if ( !is_email( $email ) ) {
         $reg_errors->add( 'email_invalid', 'Email is not valid' );
