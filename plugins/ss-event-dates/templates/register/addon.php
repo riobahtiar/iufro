@@ -159,8 +159,16 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 			}
 	});
 
+	jQuery( 'input[name=post-conf-child]' ).click(function() {
+  		jQuery( 'input[name=post-conf-parent]' ).attr('checked', false);
+	});
 
 
+	jQuery(document).ready(function(){
+	    jQuery('input[name=post-conf-parent]').click(function(){
+	        jQuery('.pekanbaru-selected').toggle();
+	    });
+	});
 
 
 
