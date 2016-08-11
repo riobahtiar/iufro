@@ -153,7 +153,7 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 						e.preventDefault(e);
 				}
 			}elseif (jQuery('input[name=post-conf-parent]:checked').val()!=='pekanbaru') {
-				if ( jQuery('input[name=post-conf-child]:checked').val()!==''{
+				if ( jQuery('input[name=post-conf-child]:checked').val()!=='' ){
 						alert('Please choose Post Conference options');
 				}
 			}
