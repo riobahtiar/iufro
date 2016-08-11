@@ -239,7 +239,7 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
         <td>4</td>
         <td>
 <dl class="dl-horizontal">
-  <dt>Dinner Conference</dt>
+  <dt>Conference Dinner</dt>
   <dd><?php echo $string_dinner; ?></dd>
 </dl>
         </td>

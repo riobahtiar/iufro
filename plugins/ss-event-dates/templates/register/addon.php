@@ -64,7 +64,7 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 			</div>
 			<div class="row">
 				<div class="col-md-6">
-					<input type="radio" name="post-conf-child" value="pekanbaru" id="radio-custom-toggle">
+					<input type="radio" name="post-conf-parent" value="pekanbaru" id="radio-custom-toggle">
 					<div class = "thumbnail">
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Pekanbaru.jpg" alt = "Pekanbaru">
 			     	</div>
@@ -95,7 +95,7 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 		</div>
 	</div>
 	<div class="field-trip">
-		<div class="col-md-8"> <span>Dinner Conference<span> </div>
+		<div class="col-md-8"> <span>Conference Dinner<span> </div>
 		<div class="col-md-4"><input class="switch-btn" data-on="Yes" data-off="No" type="checkbox" name="dinner-conf" checked data-toggle="toggle"></div>
 	</div>
 <br>
@@ -147,8 +147,19 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 				e.preventDefault(e);
 			}
 
+			if (jQuery('input[name=post-conf-parent]:checked').val()=="pekanbaru" ){
+				if ( jQuery('input[name=post-conf-child]:checked').val()!=='pekanbaru_single' || jQuery('input[name=post-conf-child]:checked').val()!=='pekanbaru_shared' ){
+						alert('Please choose pekanbaru options');
+						e.preventDefault(e);
+				}
+			}
 	});
 
+	jQuery('#form-addon').on('change', function() {
+	   if(jQuery('input[name=post-conf-child]:checked').val()=='pacitan'){
+	   		jQuery('input[name=post-conf-parent]:checked').attr('checked', false);
+	   }
+	});
 
 
 

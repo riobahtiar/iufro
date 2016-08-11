@@ -54,7 +54,7 @@
   		$wpdb->insert( 
 			'wp_ss_event_package', 
 			array( 	'package_user' => $euser_email, 
-					'package_item' => 'Dinner Conference', 
+					'package_item' => 'Conference Dinner', 
 				), 
 			array( '%s','%s')
 		);

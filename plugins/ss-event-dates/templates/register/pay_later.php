@@ -218,7 +218,7 @@ $body    = '
                             <td>' . $string_post_conf . '</td>
                         </tr>
                         <tr>
-                            <td>Dinner Conference</td>
+                            <td>Conference Dinner</td>
                             <td>:</td>
                             <td>' . $user_detail['euser_addon_dinner'] . '</td>
                         </tr>

@@ -68,7 +68,7 @@ $pdf->Write(5,' ~ Mid Conference : ');
 $pdf->SetXY(47,110);
 $pdf->Write(5,' ~ Post Conference : ');
 $pdf->SetXY(45,116);
-$pdf->Write(5,' Dinner Conference : ');
+$pdf->Write(5,' Conference Dinner : ');
 $pdf->SetXY(45,1122);
 $pdf->Write(5,' Payment : ');
 

@@ -179,7 +179,7 @@ Please complete the payment before 24 July 2017.<p>
                             <td>' . $string_post_conf . '</td>
                         </tr>
                         <tr>
-                            <td>Dinner Conference</td>
+                            <td>Conference Dinner</td>
                             <td>:</td>
                             <td>' . $vuser->euser_addon_dinner . '</td>
                         </tr>

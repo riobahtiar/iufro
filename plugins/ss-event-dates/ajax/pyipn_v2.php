@@ -342,7 +342,7 @@ if (strcmp($res, "VERIFIED") == 0) {
     $pdf->SetXY(47, 108);
     $pdf->Write(5, ' ~ Post Conference : ' . $string_post_conf);
     $pdf->SetXY(45, 114);
-    $pdf->Write(5, ' Dinner Conference : ' . $string_dinner);
+    $pdf->Write(5, ' Conference Dinner : ' . $string_dinner);
     $pdf->SetXY(45, 120);
     $pdf->Write(5, ' Payment : US$' . $payment_amount);
 
@@ -433,7 +433,7 @@ if (strcmp($res, "VERIFIED") == 0) {
                             <td>' . $string_post_conf . '</td>
                         </tr>
                         <tr>
-                            <td>Dinner Conference</td>
+                            <td>Conference Dinner</td>
                             <td>:</td>
                             <td>' . $user_detail['euser_addon_dinner'] . '</td>
                         </tr>
