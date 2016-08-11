@@ -152,7 +152,7 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 						alert('Please choose pekanbaru options');
 						e.preventDefault(e);
 				}
-			}elseif (jQuery('input[name=post-conf-parent]:checked').val()!=='pekanbaru') {
+			}else {
 				if ( jQuery('input[name=post-conf-child]:checked').val()!=='' ){
 						alert('Please choose Post Conference options');
 				}
