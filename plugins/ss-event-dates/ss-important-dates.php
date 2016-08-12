@@ -124,9 +124,19 @@ function html_important_date_code()
             echo '    </h3>
                           </div></div>';
             echo '  <div class="row"><div class="col-md-5"> ';
+            // ====== FROM NOW ===== // 
+                if ( get_post_meta( get_the_ID(), 'rw_date', true ) !== '2017-01-01'){
             echo '  <h2 class="date-day">' . date("d", strtotime(get_post_meta(get_the_ID(), 'rw_date', true))) . '<span>' . date("S", strtotime(get_post_meta(get_the_ID(), 'rw_date', true))) . '</span></h2>';
+                }
+            // ====== END FROM NOW ===== //
             if ((get_post_meta(get_the_ID(), 'rw_date_end', true))) {
+            // ====== FROM NOW ===== // 
+                if ( get_post_meta( get_the_ID(), 'rw_date', true ) !== '2017-01-01'){
                 echo '  <h4>' . date("F Y", strtotime(get_post_meta(get_the_ID(), 'rw_date', true))) . '</h4>';
+                }else{
+                    echo "<h4> FROM NOW </h4>";
+                }
+            // ====== END FROM NOW ===== //
                 echo '  <h2> - </h2>';
                 echo '  <h2 class="date-day">' . date("d", strtotime(get_post_meta(get_the_ID(), 'rw_date_end', true))) . '<span>' . date("S", strtotime(get_post_meta(get_the_ID(), 'rw_date_end', true))) . '</span></h2>';
                 echo '  <h4>' . date("F Y", strtotime(get_post_meta(get_the_ID(), 'rw_date_end', true))) . '</h4>';
