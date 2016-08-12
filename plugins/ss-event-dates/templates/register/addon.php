@@ -108,6 +108,9 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 <div class="well">
 <input id="okeread" type="checkbox" name="readme_ok" value="readme">&nbsp;I have read all  <a href="<?php echo get_permalink(); ?>/poster">the guidelines</a>, and ready to upload
 </div>
+	<div class="field-trip col-md-8">
+		<label> <span>Abstract Title</span> <textarea id="abs_title" name="euser_abstract_title" class="form-control" rows="3"></textarea> </label>
+	</div>
 	<div class="field-trip col-md-4">
 		<label> <span>Upload Abstract</span> <input id="mydoc1" name="abstrak" type="file" /></label>
 	</div>
@@ -139,11 +142,11 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 
 	jQuery("#form-addon").submit(function(e){
 	   		if (jQuery('#mydoc1').val()==''){
-				alert('please upload your Abstract');
+				alert('Please upload your Abstract');
 				e.preventDefault(e);
 			}
-	   		if (jQuery('#mydoc2').val()==''){
-				alert('please upload your Paper');
+	   		if (jQuery('#abs_title').val()==''){
+				alert('Please write your Abstract title');
 				e.preventDefault(e);
 			}
 

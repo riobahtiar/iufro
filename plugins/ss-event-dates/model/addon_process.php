@@ -76,6 +76,17 @@
   		);
   	}
 
+if( isset($_POST['euser_abstract_title']) ){
+  		$wpdb->update( 
+		    'wp_ss_event_user_detail', 
+		    array( 'euser_abstract_title' => $_POST['euser_abstract_title'] ), 
+		    array( 'euser_email' => $euser_email ), 
+		    array( '%s'), 
+		    array( '%s' ) 
+  		);
+}
+
+
   	if(isset($_FILES['abstrak']) && $_FILES['abstrak']!="" ){
   		
   		$get_id = upload_user_file($_FILES['abstrak']);
