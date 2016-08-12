@@ -23,9 +23,21 @@
 				<div class="content-wrap">
 					<div class="col-md-4 dates">
 					<?php
+						// ====== FROM NOW ===== // 
+						if ( get_post_meta( get_the_ID(), 'rw_date', true ) !== '2017-01-01'){
 						echo '  <div class="date-one"><h2 class="date-day">'.date("d", strtotime( get_post_meta( get_the_ID(), 'rw_date', true ) )).'<span>'.date("S", strtotime( get_post_meta( get_the_ID(), 'rw_date', true ) )).'</span></h2>';
+						}else{
+							echo "<div class='date-one'><h2 class='date-day'>";
+						}
+						// ====== END FROM NOW ===== // 
 			        	if ((get_post_meta( get_the_ID(), 'rw_date_end', true ))){
-		        		echo '  <h4>'.date("F Y", strtotime( get_post_meta( get_the_ID(), 'rw_date', true ) )).'</h4></div>';
+			        		// ====== FROM NOW ===== //
+			        		if ( get_post_meta( get_the_ID(), 'rw_date', true ) !== '2017-01-01'){
+		        				echo '  <h4>'.date("F Y", strtotime( get_post_meta( get_the_ID(), 'rw_date', true ) )).'</h4></div>';
+		        			}else{
+		        				echo '  <h4> FROM NOW </h4></div>';
+		        			}
+		        			// ====== END FROM NOW ===== // 
 			        	echo '  <h2> - </h2>';
 
 			        	echo '  <div class="date-two"><h2 class="date-day">'.date("d", strtotime( get_post_meta( get_the_ID(), 'rw_date_end', true ) )).'<span>'.date("S", strtotime( get_post_meta( get_the_ID(), 'rw_date_end', true ) )).'</span></h2>';
