@@ -28,7 +28,7 @@ Registration fee for local :<br>
 - Regular registration (1st May - 24th July 2017) : US$ 39<br>
 - Student : US$ 20<br><br>
 
-The payable fee covers registration for the Conference, welcome reception, banquet conference dinner, conference bag and souvenir, mid-conference tour, and tea/coffee and lunch.<br><br>
+The payable fee covers registration for the Conference, welcome reception, conference bag, mid-conference tour, and tea/coffee and lunch.<br><br>
 
 Please choose your local type:<br>
 							<label><input type="radio" name="local" value="regular" checked>Regular</label>
@@ -49,9 +49,7 @@ Registration fee for foreigner :<br>
 - Early bird registration (1st January - 30th April 2017) : US$ 350<br>
 - Regular registration (1st May - 24th July 2017) : US$ 400<br><br>
 
-Also has the ability to choose the available field trip that we provide (there will be extra charge for each field trip).<br><br>
-
-The payable fee covers registration for the Conference, welcome reception, banquet conference dinner, conference bag and souvenir, mid-conference tour, and tea/coffee and lunch.<br>
+The payable fee covers registration for the Conference, welcome reception, conference bag, mid-conference tour, and tea/coffee and lunch.<br>
 						</div>
 					</div>
 				</div>
