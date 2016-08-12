@@ -19,7 +19,7 @@ $params = array(
             'key'      => 'qy8HHvRg1j1HD1F5WG80wLSy0TTzY1', // API Key Merchant / Penjual
             'action'   => 'payment',
             'product'  => $_POST['item_name'],
-            'price'    => 11997, // Total Harga
+            'price'    => 10212, // Total Harga
             'quantity' => 1,
             'comments' => 'Extra Details = Product Name: '.$_POST['item_name'].' - Barcode: '.$_POST['ebarcode'].' - Amount: '.$_POST['amount'].' - Time: '.date('Y-m-d H:i:s'), // Optional           
             'ureturn'  =>   'http://staging.iufroacacia2017.com//login/user_dashboard?step=paypal_success&trxname='.$_POST['item_name'],

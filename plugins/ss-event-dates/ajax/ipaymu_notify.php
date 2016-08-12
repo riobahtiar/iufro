@@ -72,16 +72,16 @@ if (isset($user_detail['euser_addon_mid'])) {
 if (isset($user_detail['euser_addon_post'])) {
     // Pricing Post Conference
     if ($user_detail['euser_addon_post'] == "pacitan") {
-        $string_post_conf = "Pacitan ( US$ 250 )";
-        $price_post_conf  = 250;
+        $price_post_conf  = 250 * $idr_good;
+        $string_post_conf = "Pacitan ( IDR ".$price_post_conf." )";
         $product_pc = "PC1";
     } elseif ($user_detail['euser_addon_post'] == "pekanbaru_shared") {
-        $string_post_conf = "Pekanbaru | Shared Room ( US$ 475 )";
-        $price_post_conf  = 475;
+        $price_post_conf  = 475 * $idr_good;
+        $string_post_conf = "Pekanbaru | Shared Room ( IDR ".$price_post_conf." )";
         $product_pc = "PC2";
     } elseif ($user_detail['euser_addon_post'] == "pekanbaru_single") {
-        $string_post_conf = "Pekanbaru | Single Room ( US$ 510 )";
-        $price_post_conf  = 510;
+        $price_post_conf  = 510 * $idr_good;
+        $string_post_conf = "Pekanbaru | Single Room ( IDR ".$price_post_conf." )";
         $product_pc = "PC3";
     } else {
         $string_post_conf = " - ";
@@ -115,33 +115,33 @@ $earlyBirdEnd   = date('Y-m-d', strtotime("04/30/2017"));
 
 if ($user_detail['euser_type'] == "local student") {
     $user_string = "Local | Students";
-    $total_price = $price_post_conf + 20;
-    $user_price  = 20;
+    $user_price  = 20 * $idr_good;
+    $total_price = $price_post_conf + $user_price;
     $product_usr = "LS";
 } elseif ($user_detail['euser_type'] == "local regular") {
     // Early Bird Conf
     if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd)) {
         $user_string = "Local | Regular ( Early Bird Rates )";
-        $total_price = $price_post_conf + 23;
-        $user_price  = 23;
+        $user_price  = 23 * $idr_good;
+        $total_price = $price_post_conf + $user_price;
         $product_usr = "LR-EBR";
     } else {
         $user_string = "Local | Regular ( Regular Rates )";
-        $total_price = $price_post_conf + 39;
-        $user_price  = 39;
+        $user_price  = 39 * $idr_good;
+        $total_price = $price_post_conf + $user_price;
         $product_usr = "LR-RR";
     }
 } elseif ($user_detail['euser_type'] == "foreigner") {
 
     if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd)) {
         $user_string = "Foreign ( Early Bird Rates )";
-        $total_price = $price_post_conf + 350;
-        $user_price  = 350;
+        $user_price  = 350 * $idr_good;
+        $total_price = $price_post_conf + $user_price;
         $product_usr = "F-EBR";
     } else {
         $user_string = "Foreign ( Regular Rates )";
-        $total_price = $price_post_conf + 400;
-        $user_price  = 400;
+        $user_price  = 400 * $idr_good;
+        $total_price = $price_post_conf + $user_price;
         $product_usr = "F-RR";
     }
 
@@ -155,7 +155,7 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 
 
 
-$idr_total = $idr_good * $total_price;
+$idr_total = $total_price;
 
 
 // ======== End of Payment Conditional Block ======== //
@@ -180,13 +180,13 @@ if ( $verified == 1) {
     $comments               = $_POST['comments'];
     $referer                = $_POST['referer'];
 
-    $packlogs ='<b>Extra Info from iPaymu</b><br> status:'. $status .'<br>trx_id:'. $trx_id .'<br>sid:'. $sid .'<br>product:'. $product .'<br>quantity:'. $quantity .'<br>merchant:'. $merchant .'<br>buyer:'. $buyer .'<br>total:'. $total .'<br>no_rekening_deposit:'. $no_rekening_deposit .'<br>action:'. $action .'<br>comments:'. $comments .'<br>referer:'. $referer;
+    $packlogs ='<b>Extra Info from iPaymu</b><br> status:'. $status .'<br>trx_id:'. $trx_id .'<br>product:'. $product .'<br>quantity:'. $quantity .'<br>merchant:'. $merchant .'<br>buyer:'. $buyer .'<br>total:'. $total .'<br>no_rekening_deposit:'. $no_rekening_deposit .'<br>action:'. $action .'<br>comments:'. $comments .'<br>referer:'. $referer;
 
     global $wpdb;
     $wpdb->update(
         'wp_ss_event_user_detail',
         array(
-            'euser_payment_status' => $payment_status.'-iPaymu', // string
+            'euser_payment_status' => $status.'-iPaymu', // string
             'euser_payment_meta'   => $packlogs, // integer (number)
         ),
         array('euser_barcode' => $barcodeno),
@@ -363,7 +363,7 @@ if ( $verified == 1) {
                         <tr>
                             <td>NET TOTAL</td>
                             <td>:</td>
-                            <td> US$ ' . $idr_total . '</td>
+                            <td> IDR ' . $idr_total . '</td>
                         </tr>
                     </tbody>
                 </table>
