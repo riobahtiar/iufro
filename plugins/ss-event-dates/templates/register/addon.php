@@ -85,9 +85,9 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 <div class="custom-toggle" id="custom-toggle">
 <div class="well">
     <input type="radio" name="post-conf-child" id="single-room" value="pekanbaru_single">
-    Single room = US$ 510/pax<span class="label label-primary">Remaining 20 Seats</span><br>
+    Single room = US$ 510/pax&nbsp;&nbsp;<span class="label label-primary">Remaining 20 Seats</span><br>
     <input type="radio" name="post-conf-child" id="shared-room" value="pekanbaru_shared">
-    Shared room = US$ 475/pax<span class="label label-primary">Remaining 20 Seats</span>
+    Shared room = US$ 475/pax&nbsp;&nbsp;<span class="label label-primary">Remaining 20 Seats</span>
 </div>
 </div>
 			    </div>
