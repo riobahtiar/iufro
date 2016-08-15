@@ -144,7 +144,7 @@ echo "<p>User count is {$user_count}</p>";
 		</div>
 	</div>
 	<div class="field-trip">
-		<div class="col-md-8"> <span>Conference Dinner<span> </div>
+		<div class="col-md-8"> <span>Conference Dinner<span>&nbsp;<span class="label label-primary">Remaining <?php echo $dinner_av;  ?> Seats</span> </div>
 		<div class="col-md-4"><input class="switch-btn" data-on="Yes" data-off="No" type="checkbox" name="dinner-conf" checked data-toggle="toggle"></div>
 	</div>
 <br>
