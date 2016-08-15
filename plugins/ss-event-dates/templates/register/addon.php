@@ -150,30 +150,11 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 				e.preventDefault(e);
 			}
 
-			if (jQuery('input[name=post-conf-parent]:checked').val()=='pekanbaru' ){
-				if ( jQuery('input[name=post-conf-child]:checked').val()!=='pekanbaru_single' || jQuery('input[name=post-conf-child]:checked').val()!=='pekanbaru_shared' ){
-						alert('Please choose pekanbaru options');
-						e.preventDefault(e);
-				}
-			}else {
-				if ( jQuery('input[name=post-conf-child]:checked').val()!=='' ){
-						alert('Please choose Post Conference options');
-				}
+			if (jQuery('input[name=post-conf-child]:checked').val()=='pekanbaru' ){
+				alert('Please choose pekanbaru options');
+				e.preventDefault(e);
 			}
 	});
-
-	jQuery( 'input[name=post-conf-child]' ).click(function() {
-  		jQuery( 'input[name=post-conf-parent]' ).attr('checked', false);
-	});
-
-
-	jQuery(document).ready(function(){
-	    jQuery('input[name=post-conf-parent]').click(function(){
-	        jQuery('.pekanbaru-selected').toggle();
-	    });
-	});
-
-
 
 </script>
 <?php } ?>
