@@ -178,7 +178,7 @@ if ($_GET['do_model'] == 'do_membership') {
     );
     echo "Document Rejected Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
     $authkey = $user_detail['euser_activationkey'];
-
+    $rejection_wording = $_GET['reason'];
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
     $subject = 'Document Rejected Notification | IUFRO ACACIA 2017';
@@ -219,7 +219,9 @@ if ($_GET['do_model'] == 'do_membership') {
             <div>
             <p>With regret, we want to inform you that your document still does not meet our requirements.
 Therefore, you can not continue to participate on this conference as an Author.</p>
-
+<div>
+<p>'.$rejection_wording.'</p>
+</div>
 <p>But you still can continue to participate as a "Participant" type user, instead of author.
 To continue the registration as a participant, simply click the button below.</p>
 </div>

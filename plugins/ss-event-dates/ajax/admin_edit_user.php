@@ -70,7 +70,9 @@ $user_detail = $wpdb->
         <br>
             <!--  Rejected -->
             <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_process.php'; ?>" type="post">
+
                 <input name="do_model" type="hidden" value="do_doc_rejected">
+                <textarea class="form-control" rows="3" placeholder="Reason for rejection" name="reason"></textarea>
                     <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                         <button class="btn btn-danger" type="submit">
                             Rejected
