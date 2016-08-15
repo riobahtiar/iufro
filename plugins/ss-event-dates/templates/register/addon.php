@@ -20,53 +20,53 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 
 // ====== Query to check availabel seats on database ======== //
 
-echo "<pre>";
-// Gunung Kidul
-$gkidul_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "gunung-kidul"' );
-echo  $gkidul_rows . ' &nbsp; Gunung Kidul Found<br>';
-$gkidul_av = $ss_theme_opt['text-gunungkidul'] - $gkidul_rows;
+// echo "<pre>";
+// // Gunung Kidul
+// $gkidul_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "gunung-kidul"' );
+// echo  $gkidul_rows . ' &nbsp; Gunung Kidul Found<br>';
+// $gkidul_av = $ss_theme_opt['text-gunungkidul'] - $gkidul_rows;
 
 
-// Klaten
-$klaten_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "klaten"' );
-echo  $klaten_rows . ' &nbsp; Klaten Found<br>';
-$klaten_av = $ss_theme_opt['text-klaten'] - $klaten_rows;
+// // Klaten
+// $klaten_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "klaten"' );
+// echo  $klaten_rows . ' &nbsp; Klaten Found<br>';
+// $klaten_av = $ss_theme_opt['text-klaten'] - $klaten_rows;
 
 
-// Mount Merapi
-$merapi_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "mount-merapi"' );
-echo  $merapi_rows . ' &nbsp; Merapi Found<br>';
-$merapi_av = $ss_theme_opt['text-gunung-merapi'] - $merapi_rows;
+// // Mount Merapi
+// $merapi_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "mount-merapi"' );
+// echo  $merapi_rows . ' &nbsp; Merapi Found<br>';
+// $merapi_av = $ss_theme_opt['text-gunung-merapi'] - $merapi_rows;
 
-// Pekanbaru Single
-$pekanbaru_single_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pekanbaru_single"' );
-echo  $pekanbaru_single_rows . ' &nbsp; Pekanbaru Single Found<br>';
-$pekanbaru_single_av = $ss_theme_opt['text-pb-single'] - $pekanbaru_single_rows;
+// // Pekanbaru Single
+// $pekanbaru_single_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pekanbaru_single"' );
+// echo  $pekanbaru_single_rows . ' &nbsp; Pekanbaru Single Found<br>';
+// $pekanbaru_single_av = $ss_theme_opt['text-pb-single'] - $pekanbaru_single_rows;
 
-// Pekanbaru Shared
-$pekanbaru_shared_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pekanbaru_shared"' );
-echo  $pekanbaru_shared_rows . ' &nbsp; Pekanbaru Shared Found<br>';
-$pekanbaru_shared_av = $ss_theme_opt['text-pb-shared'] - $pekanbaru_shared_rows;
+// // Pekanbaru Shared
+// $pekanbaru_shared_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pekanbaru_shared"' );
+// echo  $pekanbaru_shared_rows . ' &nbsp; Pekanbaru Shared Found<br>';
+// $pekanbaru_shared_av = $ss_theme_opt['text-pb-shared'] - $pekanbaru_shared_rows;
 
-// Pacitan
-$pacitan_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pacitan"' );
-echo  $pacitan_rows . ' &nbsp; Pacitan Found<br>';
-$pacitan_av = $ss_theme_opt['text-pacitan'] - $pacitan_rows;
-
-
-// Dinner 
-$dinner_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_dinner = "Yes"' );
-echo  $dinner_rows . ' &nbsp; Dinner Found<br>';
-$dinner_av = $ss_theme_opt['text-dinner'] - $dinner_rows;
+// // Pacitan
+// $pacitan_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pacitan"' );
+// echo  $pacitan_rows . ' &nbsp; Pacitan Found<br>';
+// $pacitan_av = $ss_theme_opt['text-pacitan'] - $pacitan_rows;
 
 
-
-echo "</pre>";
+// // Dinner 
+// $dinner_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_dinner = "Yes"' );
+// echo  $dinner_rows . ' &nbsp; Dinner Found<br>';
+// $dinner_av = $ss_theme_opt['text-dinner'] - $dinner_rows;
 
 
 
-$user_count = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->users" );
-echo "<p>User count is {$user_count}</p>";
+// echo "</pre>";
+
+
+
+// $user_count = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->users" );
+// echo "<p>User count is {$user_count}</p>";
 
 ?>
 
