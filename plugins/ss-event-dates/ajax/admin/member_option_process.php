@@ -501,7 +501,6 @@ To continue the registration as a participant, simply click the button below.</p
             </div>
 
         </div>
-        <div>
             <br>
         <div>
             <div>
