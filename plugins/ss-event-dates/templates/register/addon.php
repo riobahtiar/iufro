@@ -85,7 +85,7 @@ echo "<p>User count is {$user_count}</p>";
 				 	<div class = "thumbnail">
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Gunungkidul.jpg" alt = "Gunungkidul">
 			     	</div>
-			      	Gunungkidul<br><span class="label label-primary">Remaining 20 Seats</span><br>
+			      	Gunungkidul<br><span class="label label-primary">Remaining <?php echo $gkidul_av;  ?> Seats</span><br>
 			    	<a href="<?php echo site_url(); ?>/field-trip/gunung-kidul" target="_blank">Learn more</a> 
 			    </div>
 				<div class="col-md-6">
@@ -93,7 +93,7 @@ echo "<p>User count is {$user_count}</p>";
 					<div class = "thumbnail">
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Klaten.jpg" alt = "Klaten">
 			     	</div>
-			    	Klaten<br><span class="label label-primary">Remaining 20 Seats</span><br>
+			    	Klaten<br><span class="label label-primary">Remaining <?php echo $klaten_av;  ?> Seats</span><br>
 			    	<a href="<?php echo site_url(); ?>/field-trip/klaten/" target="_blank">Learn more</a> 
 			    </div>
 				<div class="col-md-6">
@@ -101,7 +101,7 @@ echo "<p>User count is {$user_count}</p>";
 					<div class = "thumbnail">
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/merapi-1.png" alt = "Mount Merapi">
 			     	</div>
-			    	Mount Merapi<br><span class="label label-primary">Remaining 20 Seats</span><br>
+			    	Mount Merapi<br><span class="label label-primary">Remaining <?php echo $merapi_av;  ?> Seats</span><br>
 			    	<a href="<?php echo site_url(); ?>/field-trip/mount-merapi/" target="_blank">Learn more</a> 
 			    </div>
 			</div>
@@ -125,7 +125,7 @@ echo "<p>User count is {$user_count}</p>";
 					<div class = "thumbnail">
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Pacitan.jpg" alt = "Pacitan">
 			     	</div>
-			    	Pacitan<br><span class="label label-primary">Remaining 20 Seats</span> 
+			    	Pacitan<br><span class="label label-primary">Remaining <?php echo $pacitan_av;  ?> Seats</span> 
 			    	<p class="item-price-x">US$ 250/pax<br>
 			    	<a href="<?php echo site_url(); ?>/field-trip/pacitan/" target="_blank">Learn more</a>
 			    	</p>
@@ -134,9 +134,9 @@ echo "<p>User count is {$user_count}</p>";
 <div class="custom-toggle" id="custom-toggle">
 <div class="well">
     <input type="radio" name="post-conf-child" id="single-room" value="pekanbaru_single">
-    Single room = US$ 510/pax&nbsp;&nbsp;<span class="label label-primary">Remaining 20 Seats</span><br>
+    Single room = US$ 510/pax&nbsp;&nbsp;<span class="label label-primary">Remaining <?php echo $pekanbaru_single_av;  ?> Seats</span><br>
     <input type="radio" name="post-conf-child" id="shared-room" value="pekanbaru_shared">
-    Shared room = US$ 475/pax&nbsp;&nbsp;<span class="label label-primary">Remaining 20 Seats</span>
+    Shared room = US$ 475/pax&nbsp;&nbsp;<span class="label label-primary">Remaining <?php echo $pekanbaru_shared_av;  ?> Seats</span>
 </div>
 </div>
 			    </div>
