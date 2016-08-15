@@ -27,7 +27,7 @@
 						if ( get_post_meta( get_the_ID(), 'rw_date', true ) !== '2017-01-01'){
 						echo '  <div class="date-one"><h2 class="date-day">'.date("d", strtotime( get_post_meta( get_the_ID(), 'rw_date', true ) )).'<span>'.date("S", strtotime( get_post_meta( get_the_ID(), 'rw_date', true ) )).'</span></h2>';
 						}else{
-							echo "<div class='date-one'><h2 class='date-day'>";
+							echo "<div class='date-one'><h2 class='date-day'>FROM NOW";
 						}
 						// ====== END FROM NOW ===== // 
 			        	if ((get_post_meta( get_the_ID(), 'rw_date_end', true ))){
@@ -35,7 +35,7 @@
 			        		if ( get_post_meta( get_the_ID(), 'rw_date', true ) !== '2017-01-01'){
 		        				echo '  <h4>'.date("F Y", strtotime( get_post_meta( get_the_ID(), 'rw_date', true ) )).'</h4></div>';
 		        			}else{
-		        				echo '  <h4> FROM NOW </h4></div>';
+		        				echo ' </div>';
 		        			}
 		        			// ====== END FROM NOW ===== // 
 			        	echo '  <h2> - </h2>';

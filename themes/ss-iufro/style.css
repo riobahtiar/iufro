@@ -599,7 +599,7 @@ body .gform_wrapper .gfield.gfield_error.gfield_contains_required .ginput_contai
 
 body .gform_wrapper .gfield.gfield_error.gfield_contains_required .gfield_description {
     max-width: 100% !important;
-    padding: 0 15px 10px 15px !important !important;
+    padding: 0 15px 10px 15px !important;
 }
 
 .gform_wrapper .top_label .gfield_label,

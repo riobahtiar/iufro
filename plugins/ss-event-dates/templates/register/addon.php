@@ -64,7 +64,7 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 			</div>
 			<div class="row">
 				<div class="col-md-6">
-					<input type="radio" name="post-conf-parent" value="pekanbaru" id="radio-custom-toggle">
+					<input type="radio" name="post-conf-child" value="pekanbaru" id="radio-custom-toggle">
 					<div class = "thumbnail">
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Pekanbaru.jpg" alt = "Pekanbaru">
 			     	</div>
