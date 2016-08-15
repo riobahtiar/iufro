@@ -72,7 +72,7 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 			    	<a href="<?php echo site_url(); ?>/field-trip/pekanbaru" target="_blank">Learn more</a>
 			    </div>
 				<div class="col-md-6">
-					<input type="radio" name="post-conf-child" value="pacitan">
+					<input type="radio" name="post-conf-child" value="pacitan" checked>
 					<div class = "thumbnail">
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Pacitan.jpg" alt = "Pacitan">
 			     	</div>
