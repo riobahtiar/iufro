@@ -440,16 +440,15 @@ To continue the registration as a participant, simply click the button below.</p
                 <h2 style="text-align:center;color:#809062;margin-top: 0;">Dear Sir / Madam</h2>
             </div>
             <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
-                Your Document was Approved to IUFRO ACACIA CONFERENCE 2017 Website
+                Document Approved Notification | IUFRO ACACIA 2017
             </div>
             <div>
-
 <p>This is to inform you that your document has been approved by us.</p>
 <p>'.$approve_wording.'</p>
 <p>In order to continue the registration process, you have to complete the payment.<p>
 
-<p>Below is your payment detail :</p></div>
-            <div id="registration" style="padding:15px 0;">
+<p>Below is your payment detail :</p>
+
                 <table>
                     <tbody style="color:#525252;font-size:16px;">
                         <tr>
@@ -498,11 +497,9 @@ To continue the registration as a participant, simply click the button below.</p
                         </tr>
                     </tbody>
                 </table>
-            </div>
 
-        </div>
-            <br>
-      
+            </div>
+            <div>
             <div>
                 <p>PAYMENT METHOD </p>
                 <p>We accept the payment via Paypal and iPaymu. Please access to your payment page by <a href="http://www.iufroacacia2017.com/login">Login</a> to your account and choose menu payment summary on Dashboard page</p>
@@ -513,7 +510,7 @@ To continue the registration as a participant, simply click the button below.</p
                 <p style="font-size:12px;margin: 0;color:#809062">Phone: 0274-895954</p>
                 <p style="font-size:12px;margin: 0;color:#809062">Email: secretariat@iufroacacia2017.com</p>
             </div>
-
+        </div>
     </body>
 
 </html>
