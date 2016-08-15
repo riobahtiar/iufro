@@ -444,9 +444,10 @@ To continue the registration as a participant, simply click the button below.</p
             </div>
             <div>
 
-<p>This is to inform you that your document has been approved by us.
-In order to continue the registration process, you have to complete the payment.<p>
+<p>This is to inform you that your document has been approved by us.</p>
 <p>'.$approve_wording.'</p>
+<p>In order to continue the registration process, you have to complete the payment.<p>
+
 <p>Below is your payment detail :</p></div>
             <div id="registration" style="padding:15px 0;">
                 <table>
