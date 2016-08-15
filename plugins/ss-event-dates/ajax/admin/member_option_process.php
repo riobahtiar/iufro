@@ -502,6 +502,7 @@ In order to continue the registration process, you have to complete the payment.
         </div>
         <div>
             <br>
+        <div>
             <div>
                 <p>PAYMENT METHOD </p>
                 <p>We accept the payment via Paypal and iPaymu. Please access to your payment page by <a href="http://www.iufroacacia2017.com/login">Login</a> to your account and choose menu payment summary on Dashboard page</p>

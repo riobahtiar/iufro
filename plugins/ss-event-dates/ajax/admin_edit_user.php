@@ -62,6 +62,7 @@ $user_detail = $wpdb->
             <input name="do_model" type="hidden" value="do_doc_approved">
             <p>Approve Document? </p>
             <textarea class="form-control" rows="3" placeholder="Reason.." name="reason"></textarea>
+            <br>
                 <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                     <button class="btn btn-primary" type="submit">
                         Approve
