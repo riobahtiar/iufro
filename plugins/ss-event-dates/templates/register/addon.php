@@ -36,7 +36,7 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 				 	<div class = "thumbnail">
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Gunungkidul.jpg" alt = "Gunungkidul">
 			     	</div>
-			      	Gunungkidul<br>
+			      	Gunungkidul<br><span class="label label-primary">Remaining 20 Seats</span><br>
 			    	<a href="<?php echo site_url(); ?>/field-trip/gunung-kidul" target="_blank">Learn more</a> 
 			    </div>
 				<div class="col-md-6">
@@ -44,7 +44,7 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 					<div class = "thumbnail">
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Klaten.jpg" alt = "Klaten">
 			     	</div>
-			    	Klaten<br>
+			    	Klaten<br><span class="label label-primary">Remaining 20 Seats</span><br>
 			    	<a href="<?php echo site_url(); ?>/field-trip/klaten/" target="_blank">Learn more</a> 
 			    </div>
 				<div class="col-md-6">
@@ -52,7 +52,7 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 					<div class = "thumbnail">
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/merapi-1.png" alt = "Mount Merapi">
 			     	</div>
-			    	Mount Merapi<br>
+			    	Mount Merapi<br><span class="label label-primary">Remaining 20 Seats</span><br>
 			    	<a href="<?php echo site_url(); ?>/field-trip/mount-merapi/" target="_blank">Learn more</a> 
 			    </div>
 			</div>
@@ -76,7 +76,7 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 					<div class = "thumbnail">
 			         	<img src = "<?php echo site_url(); ?>/wp-content/uploads/2016/07/Pacitan.jpg" alt = "Pacitan">
 			     	</div>
-			    	Pacitan 
+			    	Pacitan<br><span class="label label-primary">Remaining 20 Seats</span> 
 			    	<p class="item-price-x">US$ 250/pax<br>
 			    	<a href="<?php echo site_url(); ?>/field-trip/pacitan/" target="_blank">Learn more</a>
 			    	</p>
@@ -85,9 +85,9 @@ $user_detail = $wpdb->get_row( $query, ARRAY_A );
 <div class="custom-toggle" id="custom-toggle">
 <div class="well">
     <input type="radio" name="post-conf-child" id="single-room" value="pekanbaru_single">
-    Single room = US$ 510/pax<br>
+    Single room = US$ 510/pax<span class="label label-primary">Remaining 20 Seats</span><br>
     <input type="radio" name="post-conf-child" id="shared-room" value="pekanbaru_shared">
-    Shared room = US$ 475/pax
+    Shared room = US$ 475/pax<span class="label label-primary">Remaining 20 Seats</span>
 </div>
 </div>
 			    </div>

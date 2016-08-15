@@ -7,95 +7,10 @@ $query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_paylater_date 
 $user_detail = $wpdb->get_results($query);
 echo "<pre>";
 foreach ($user_detail as $vuser) {
-    var_dump($vuser);
-    // Conditional Logic for user string payment //
-    if (isset($vuser->euser_addon_mid)) {
-
-        if ($vuser->euser_addon_mid == "gunung-kidul") {
-            $string_mid_conf = "Gunung Kidul";
-            $price_mid_conf  = 0;
-        } elseif ($vuser->euser_addon_mid == "klaten") {
-            $string_mid_conf = "Klaten";
-            $price_mid_conf  = 0;
-        } else {
-            $string_mid_conf = " - ";
-            $price_mid_conf  = 0;
-        }
-
-    } else {
-        $string_mid_conf = " - ";
-        $price_mid_conf == 0;
-    }
-
-// post conf
-    if (isset($vuser->euser_addon_post)) {
-        // Pricing Post Conference
-        if ($vuser->euser_addon_post == "pacitan") {
-            $string_post_conf = "Pacitan ( US$ 250 )";
-            $price_post_conf  = 250;
-        } elseif ($vuser->euser_addon_post == "pekanbaru_shared") {
-            $string_post_conf = "Pekanbaru | Shared Room ( US$ 475 )";
-            $price_post_conf  = 475;
-        } elseif ($vuser->euser_addon_post == "pekanbaru_single") {
-            $string_post_conf = "Pekanbaru | Single Room ( US$ 510 )";
-            $price_post_conf  = 510;
-        } else {
-            $string_post_conf = " - ";
-            $price_post_conf  = 0;
-        }
-    } else {
-        $string_post_conf = " - ";
-        $price_post_conf  = 0;
-    }
-
-    if (isset($vuser->euser_addon_dinner)) {
-        $string_dinner = " Yes ";
-    } else {
-        $string_dinner = " No ";
-    }
-
-// === USER DETAIL === //
-
-    // Paymen Dates Earlybird
-    $paymentDate    = date('Y-m-d');
-    $paymentDate    = date('Y-m-d', strtotime($paymentDate));
-    $earlyBirdBegin = date('Y-m-d', strtotime("01/1/2016"));
-    $earlyBirdEnd   = date('Y-m-d', strtotime("04/30/2017"));
-
-    if ($vuser->euser_type == "local student") {
-        $user_string = "Local | Students";
-        $total_price = $price_post_conf + 20;
-        $user_price  = 20;
-    } elseif ($vuser->euser_type == "local regular") {
-        // Early Bird Conf
-        if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd)) {
-            $user_string = "Local | Regular ( Early Bird Rates )";
-            $total_price = $price_post_conf + 23;
-            $user_price  = 23;
-        } else {
-            $user_string = "Local | Regular ( Regular Rates )";
-            $total_price = $price_post_conf + 39;
-            $user_price  = 39;
-        }
-    } elseif ($vuser->euser_type == "foreigner") {
-
-        if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd)) {
-            $user_string = "Foreign ( Early Bird Rates )";
-            $total_price = $price_post_conf + 350;
-            $user_price  = 350;
-        } else {
-            $user_string = "Foreign ( Regular Rates )";
-            $total_price = $price_post_conf + 400;
-            $user_price  = 400;
-        }
-
-    } else {
-        $total_price = 0;
-    }
 
     // === SEND USER EMAIL === //
     $to      = $vuser->euser_email;
-    $subject = 'Reminder for Payment';
+    $subject = 'Reminder for Payment | IUFRO ACACIA CONFERENCE 2017';
     $body    = '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -131,66 +46,12 @@ foreach ($user_detail as $vuser) {
                 Reminder for Payment | IUFRO ACACIA CONFERENCE 2017
             </div>
             <div>
-            <p>We notice that you have not finish the payment on IUFRO ACACIA 2017.
+            <p>We notice that you have not finished the payment on IUFRO ACACIA 2017.
 Please complete the payment before 24 July 2017.<p>
 
 <p>Also you can get the cheaper fee if you complete the payment before 30 April 2017.</p>
             </div>
-            <div style="width:100%;text-align: left;border-bottom:1px solid #809062;">
-                <p>Below is the fee information :</p>
-            </div>
             <div>
-
-<div id="registration" style="padding:15px 0;">
-                <table>
-                    <tbody style="color:#525252;font-size:16px;">
-                        <tr>
-                            <td>Registration Number</td>
-                            <td>:</td>
-                            <td>' . $vuser->euser_barcode . '</td>
-                        </tr>
-                        <tr>
-                            <td>Full Name</td>
-                            <td>:</td>
-                            <td>' . $vuser->euser_fullname . '</td>
-                        </tr>
-                        <tr>
-                            <td>Address</td>
-                            <td>:</td>
-                            <td>' . $vuser->euser_address . '</td>
-                        </tr>
-                        <tr>
-                            <td>Membership Type</td>
-                            <td>:</td>
-                            <td>' . $user_string . '</td>
-                        </tr>
-                        <tr>
-                            <td>Field Trip</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td> - Mid Conference</td>
-                            <td>:</td>
-                            <td>' . $string_mid_conf . '</td>
-                        </tr>
-                        <tr>
-                            <td> - Post Conference</td>
-                            <td>:</td>
-                            <td>' . $string_post_conf . '</td>
-                        </tr>
-                        <tr>
-                            <td>Conference Dinner</td>
-                            <td>:</td>
-                            <td>' . $vuser->euser_addon_dinner . '</td>
-                        </tr>
-                        <tr>
-                            <td>NET TOTAL</td>
-                            <td>:</td>
-                            <td> US$ ' . $total_price . '</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
             <br>
             <div>
                 <p>PAYMENT METHOD </p>
