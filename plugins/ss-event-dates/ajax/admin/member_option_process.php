@@ -502,7 +502,7 @@ To continue the registration as a participant, simply click the button below.</p
 
         </div>
             <br>
-        <div>
+      
             <div>
                 <p>PAYMENT METHOD </p>
                 <p>We accept the payment via Paypal and iPaymu. Please access to your payment page by <a href="http://www.iufroacacia2017.com/login">Login</a> to your account and choose menu payment summary on Dashboard page</p>
@@ -513,7 +513,7 @@ To continue the registration as a participant, simply click the button below.</p
                 <p style="font-size:12px;margin: 0;color:#809062">Phone: 0274-895954</p>
                 <p style="font-size:12px;margin: 0;color:#809062">Email: secretariat@iufroacacia2017.com</p>
             </div>
-        </div>
+
     </body>
 
 </html>
