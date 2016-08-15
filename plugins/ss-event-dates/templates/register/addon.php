@@ -36,7 +36,7 @@ $klaten_av = $ss_theme_opt['text-klaten'] - $klaten_rows;
 // Mount Merapi
 $merapi_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "mount-merapi"' );
 echo  $merapi_rows . ' &nbsp; Merapi Found<br>';
-$merapi_av = $ss_theme_opt['text-merapi'] - $merapi_rows;
+$merapi_av = $ss_theme_opt['text-gunung-merapi'] - $merapi_rows;
 
 // Pekanbaru Single
 $pekanbaru_single_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pekanbaru_single"' );
