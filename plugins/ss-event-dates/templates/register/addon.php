@@ -109,7 +109,7 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 <input id="okeread" type="checkbox" name="readme_ok" value="readme">&nbsp;I have read all  <a href="<?php echo get_permalink(); ?>/poster">the guidelines</a>, and ready to upload
 </div>
 	<div class="col-md-12 abstract-tit">
-		<label> <span>Abstract Title</span> <textarea id="abs_title" name="euser_abstract_title" class="form-control" rows="3"></textarea> </label>
+		<label> <span>Abstract Title</span> <textarea id="abs_title" name="euser_abstract_title" class="form-control" rows="1"></textarea> </label>
 	</div>
 	<div class="field-trip col-md-4">
 		<label> <span>Upload Abstract</span> <input id="mydoc1" name="abstrak" type="file" /></label>
