@@ -5,6 +5,9 @@ if(isset($_GET['step']) && $_GET['step']=="addon"){
 	$post_url="";
 }
 
+// call redux global Object
+global $ss_theme_opt; 
+
 // get Get User Login
 global $current_user;
 wp_get_current_user();
@@ -21,40 +24,40 @@ echo "<pre>";
 // Gunung Kidul
 $gkidul_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "gunung-kidul"' );
 echo  $gkidul_rows . ' &nbsp; Gunung Kidul Found<br>';
-$gkidul_av = 100 - $gkidul_rows;
+$gkidul_av = $ss_theme_opt['text-gunungkidul'] - $gkidul_rows;
 
 
 // Klaten
 $klaten_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "klaten"' );
 echo  $klaten_rows . ' &nbsp; Klaten Found<br>';
-$klaten_av = 100 - $klaten_rows;
+$klaten_av = $ss_theme_opt['text-klaten'] - $klaten_rows;
 
 
 // Mount Merapi
 $merapi_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "mount-merapi"' );
 echo  $merapi_rows . ' &nbsp; Merapi Found<br>';
-$merapi_av = 100 - $merapi_rows;
+$merapi_av = $ss_theme_opt['text-merapi'] - $merapi_rows;
 
 // Pekanbaru Single
 $pekanbaru_single_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pekanbaru_single"' );
 echo  $pekanbaru_single_rows . ' &nbsp; Pekanbaru Single Found<br>';
-$pekanbaru_single_av = 100 - $pekanbaru_single_rows;
+$pekanbaru_single_av = $ss_theme_opt['text-pb-single'] - $pekanbaru_single_rows;
 
 // Pekanbaru Shared
 $pekanbaru_shared_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pekanbaru_shared"' );
 echo  $pekanbaru_shared_rows . ' &nbsp; Pekanbaru Shared Found<br>';
-$pekanbaru_shared_av = 100 - $pekanbaru_shared_rows;
+$pekanbaru_shared_av = $ss_theme_opt['text-pb-shared'] - $pekanbaru_shared_rows;
 
 // Pacitan
 $pacitan_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pacitan"' );
 echo  $pacitan_rows . ' &nbsp; Pacitan Found<br>';
-$pacitan_av = 100 - $pacitan_rows;
+$pacitan_av = $ss_theme_opt['text-pacitan'] - $pacitan_rows;
 
 
 // Dinner 
 $dinner_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_dinner = "Yes"' );
 echo  $dinner_rows . ' &nbsp; Dinner Found<br>';
-$dinner_av = 100 - $dinner_rows;
+$dinner_av = $ss_theme_opt['text-dinner'] - $dinner_rows;
 
 
 

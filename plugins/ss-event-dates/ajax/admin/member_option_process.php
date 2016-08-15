@@ -404,7 +404,7 @@ To continue the registration as a participant, simply click the button below.</p
         array('%s')
     );
     echo "Document Approved Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
-    $approve_wording = $_GET['reason'];
+    $approve_wording = sanitize_text_field( $_GET['reason'] );
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
     $subject = 'Document Approved Notification | IUFRO ACACIA 2017';
@@ -443,7 +443,7 @@ To continue the registration as a participant, simply click the button below.</p
                 Document Approved Notification | IUFRO ACACIA 2017
             </div>
             <div>
-<p>This is to inform you that your document has been approved by us. <br> '.$approve_wording.' <br> In order to continue the registration process, you have to complete the payment.<p>
+<p>This is to inform you that your document has been approved by us. <br> '.$approve_wording.' </br> In order to continue the registration process, you have to complete the payment.</p>
 
 <p>Below is your payment detail :</p>
 
