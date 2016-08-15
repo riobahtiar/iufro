@@ -15,6 +15,39 @@ global $wpdb;
 $query="SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email}'";
 $user_detail = $wpdb->get_row( $query, ARRAY_A );
 
+// ====== Query to check availabel seats on database ======== //
+
+echo "<pre>";
+// Gunung Kidul
+$wpdb->get_results( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "gunung-kidul"' );
+echo  $wpdb->num_rows . 'Rows Found<br>';
+
+// Klaten
+$wpdb->get_results( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "klaten"' );
+echo  $wpdb->num_rows . 'Rows Found<br>';
+
+// Mount Merapi
+$wpdb->get_results( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "mount-merapi"' );
+echo  $wpdb->num_rows . 'Rows Found<br>';
+
+// Pekanbaru Single
+$wpdb->get_results( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pekanbaru_single"' );
+echo  $wpdb->num_rows . 'Rows Found<br>';
+
+// Pekanbaru Shared
+$wpdb->get_results( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pekanbaru_shared"' );
+echo  $wpdb->num_rows . 'Rows Found<br>';
+
+// Pacitan
+$wpdb->get_results( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pacitan"' );
+echo  $wpdb->num_rows . 'Rows Found<br>';
+
+// Dinner 
+$wpdb->get_results( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_dinner = " Yes "' );
+echo  $wpdb->num_rows . 'Rows Found<br>';
+
+echo "<pre>";
+
 
 ?>
 
