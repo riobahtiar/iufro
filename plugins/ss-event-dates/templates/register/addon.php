@@ -157,4 +157,14 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 	});
 
 </script>
+<?php }else{ ?>
+<script type="text/javascript">
+	jQuery("#form-addon").submit(function(e){
+
+			if (jQuery('input[name=post-conf-child]:checked').val()=='pekanbaru' ){
+				alert('Please choose pekanbaru options');
+				e.preventDefault(e);
+			}
+	});
+</script>
 <?php } ?>

@@ -76,8 +76,7 @@ function complete_registration($fullname, $password, $email, $phone, $address, $
         'country'   	=>   $country,
         );
         $user = wp_insert_user( $userdata );
-        echo '<div class="well register-thankyou">Thank you for registering on IUFRO ACACIA CONFERENCE 2017.</div>'; 
-        //echo "<br>Validate Data 2 ". $fullname." + ".$password." + ".$email." + ".$phone." + ".$address." + ".$zip." + ".$city." + ".$state." + ".$country." + ".$user_reg_type;
+        require_once $parse_uri[0] . '/wp-content/plugins/ss-event-dates/ajax/admin_user_extra.php';
         return 1;
     }    
 }
