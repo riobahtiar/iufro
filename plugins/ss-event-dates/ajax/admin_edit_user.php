@@ -61,6 +61,7 @@ $user_detail = $wpdb->
         <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
             <input name="do_model" type="hidden" value="do_doc_approved">
             <p>Approve Document? </p>
+            <textarea class="form-control" rows="3" placeholder="Reason.." name="reason"></textarea>
                 <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                     <button class="btn btn-primary" type="submit">
                         Approve
@@ -74,7 +75,7 @@ $user_detail = $wpdb->
 
                 <input name="do_model" type="hidden" value="do_doc_rejected">
                 <p>Reject Document? </p>
-                <textarea class="form-control" rows="3" placeholder="Reason for rejection" name="reason"></textarea>
+                <textarea class="form-control" rows="3" placeholder="Reason.." name="reason"></textarea>
                 <br>
                     <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                         <button class="btn btn-danger" type="submit">

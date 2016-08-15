@@ -20,6 +20,123 @@ $euser_barcode = $_GET['barcode'];
 $query         = "SELECT * FROM wp_ss_event_user_detail WHERE euser_barcode = '{$euser_barcode}'";
 $user_detail   = $wpdb->get_row($query, ARRAY_A);
 
+// ======== Start Payment Conditional Block ======== //
+
+// mid conf
+if (isset($user_detail['euser_addon_mid'])) {
+
+    if ($user_detail['euser_addon_mid'] == "gunung-kidul") {
+        $string_mid_conf = "Gunung Kidul";
+        $price_mid_conf  = 0;
+        $product_mc      = "MC1";
+    } elseif ($user_detail['euser_addon_mid'] == "klaten") {
+        $string_mid_conf = "Klaten";
+        $price_mid_conf  = 0;
+        $product_mc      = "MC2";
+    } elseif ($user_detail['euser_addon_mid'] == "mount-merapi") {
+        $string_mid_conf = "Mount Merapi";
+        $price_mid_conf  = 0;
+        $product_mc      = "MC3";
+    } else {
+        $string_mid_conf = " - ";
+        $price_mid_conf  = 0;
+        $product_mc      = "MC0";
+    }
+
+} else {
+    $string_mid_conf = " - ";
+    $price_mid_conf == 0;
+    $product_mc = "MC0";
+}
+
+// post conf
+if (isset($user_detail['euser_addon_post'])) {
+    // Pricing Post Conference
+    if ($user_detail['euser_addon_post'] == "pacitan") {
+        $string_post_conf = "Pacitan ( US$ 250 )";
+        $price_post_conf  = 250;
+        $product_pc       = "PC1";
+    } elseif ($user_detail['euser_addon_post'] == "pekanbaru_shared") {
+        $string_post_conf = "Pekanbaru | Shared Room ( US$ 475 )";
+        $price_post_conf  = 475;
+        $product_pc       = "PC2";
+    } elseif ($user_detail['euser_addon_post'] == "pekanbaru_single") {
+        $string_post_conf = "Pekanbaru | Single Room ( US$ 510 )";
+        $price_post_conf  = 510;
+        $product_pc       = "PC3";
+    } else {
+        $string_post_conf = " - ";
+        $price_post_conf  = 0;
+        $product_pc       = "PC0";
+    }
+} else {
+    $string_post_conf = " - ";
+    $price_post_conf  = 0;
+    $product_pc       = "PC0";
+}
+
+if (isset($user_detail['euser_addon_dinner'])) {
+    if ($user_detail['euser_addon_dinner'] == "Yes") {
+        $string_dinner = " Yes ";
+        $product_d     = "D1";
+    } elseif ($user_detail['euser_addon_dinner'] == "No") {
+        $string_dinner = " No ";
+        $product_d     = "D2";
+    } else {
+        $string_dinner = "-";
+        $product_d     = "D0";
+    }
+}
+
+// Payment Dates Earlybird
+$paymentDate    = date('Y-m-d');
+$paymentDate    = date('Y-m-d', strtotime($paymentDate));
+$earlyBirdBegin = date('Y-m-d', strtotime("01/1/2016"));
+$earlyBirdEnd   = date('Y-m-d', strtotime("04/30/2017"));
+
+if ($user_detail['euser_type'] == "local student") {
+    $user_string = "Local | Students";
+    $total_price = $price_post_conf + 20;
+    $user_price  = 20;
+    $product_usr = "LS";
+} elseif ($user_detail['euser_type'] == "local regular") {
+    // Early Bird Conf
+    if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd)) {
+        $user_string = "Local | Regular ( Early Bird Rates )";
+        $total_price = $price_post_conf + 23;
+        $user_price  = 23;
+        $product_usr = "LR-EBR";
+    } else {
+        $user_string = "Local | Regular ( Regular Rates )";
+        $total_price = $price_post_conf + 39;
+        $user_price  = 39;
+        $product_usr = "LR-RR";
+    }
+} elseif ($user_detail['euser_type'] == "foreigner") {
+
+    if (($paymentDate > $earlyBirdBegin) && ($paymentDate < $earlyBirdEnd)) {
+        $user_string = "Foreign ( Early Bird Rates )";
+        $total_price = $price_post_conf + 350;
+        $user_price  = 350;
+        $product_usr = "F-EBR";
+    } else {
+        $user_string = "Foreign ( Regular Rates )";
+        $total_price = $price_post_conf + 400;
+        $user_price  = 400;
+        $product_usr = "F-RR";
+    }
+
+} else {
+    $total_price = 0;
+}
+
+// Assemble Product Name
+
+$product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md');
+
+// ======== End of Payment Conditional Block ======== //
+
+
 if ($_GET['do_model'] == 'do_membership') {
 
     $getx_result = $wpdb->update(
@@ -287,8 +404,7 @@ To continue the registration as a participant, simply click the button below.</p
         array('%s')
     );
     echo "Document Approved Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
-
-
+    $approve_wording = $_GET['reason'];
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
     $subject = 'Document Approved Notification | IUFRO ACACIA 2017';
@@ -326,10 +442,70 @@ To continue the registration as a participant, simply click the button below.</p
             <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
                 Your Document was Approved to IUFRO ACACIA CONFERENCE 2017 Website
             </div>
+            <div>
+
+<p>This is to inform you that your document has been approved by us.
+In order to continue the registration process, you have to complete the payment.<p>
+<p>'.$approve_wording.'</p>
+<p>Below is your payment detail :</p></div>
+            <div id="registration" style="padding:15px 0;">
+                <table>
+                    <tbody style="color:#525252;font-size:16px;">
+                        <tr>
+                            <td>Registration Number</td>
+                            <td>:</td>
+                            <td>' . $user_detail['euser_barcode'] . '</td>
+                        </tr>
+                        <tr>
+                            <td>Full Name</td>
+                            <td>:</td>
+                            <td>' . $user_detail['euser_fullname'] . '</td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>:</td>
+                            <td>' . $user_detail['euser_address'] . '</td>
+                        </tr>
+                        <tr>
+                            <td>Membership Type</td>
+                            <td>:</td>
+                            <td>' . $user_string . '</td>
+                        </tr>
+                        <tr>
+                            <td>Field Trip</td>
+                            <td>:</td>
+                        </tr>
+                        <tr>
+                            <td> - Mid Conference</td>
+                            <td>:</td>
+                            <td>' . $string_mid_conf . '</td>
+                        </tr>
+                        <tr>
+                            <td> - Post Conference</td>
+                            <td>:</td>
+                            <td>' . $string_post_conf . '</td>
+                        </tr>
+                        <tr>
+                            <td>Conference Dinner</td>
+                            <td>:</td>
+                            <td>' . $user_detail['euser_addon_dinner'] . '</td>
+                        </tr>
+                        <tr>
+                            <td>NET TOTAL</td>
+                            <td>:</td>
+                            <td> US$ ' . $total_price . '</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
         <div>
+            <br>
             <div>
+                <p>PAYMENT METHOD </p>
+                <p>We accept the payment via Paypal and iPaymu. Please access to your payment page by <a href="http://www.iufroacacia2017.com/login">Login</a> to your account and choose menu payment summary on Dashboard page</p>
+                <p style="font-style:italic;">*Registration fee will be determined based on the date you do the payment (early bird / regular), or by your type of user (local/foreigner/student).</p>
                 <p style="font-size:16px;">Should you require any further assistance, please do not hesitate to contact us on address below: </p>
                 <p style="font-size:12px;margin: 0;color:#809062">Center of Forest Biotechnology and Tree Improvement</p>
                 <p style="font-size:12px;margin: 0;color:#809062">Jl. Palagan Tentara Pelajar KM 15 Purwobinangun, Pakem, Sleman, Yogyakarta 55582</p>
