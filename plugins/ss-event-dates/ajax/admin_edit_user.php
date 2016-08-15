@@ -60,9 +60,10 @@ $user_detail = $wpdb->
         <!--  Approved -->
         <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_process.php'; ?>" type="post">
             <input name="do_model" type="hidden" value="do_doc_approved">
+            <p>Approve Document? </p>
                 <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                     <button class="btn btn-primary" type="submit">
-                        Approved
+                        Approve
                     </button>
                 </input>
             </input>
@@ -72,10 +73,12 @@ $user_detail = $wpdb->
             <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_process.php'; ?>" type="post">
 
                 <input name="do_model" type="hidden" value="do_doc_rejected">
+                <p>Reject Document? </p>
                 <textarea class="form-control" rows="3" placeholder="Reason for rejection" name="reason"></textarea>
+                <br>
                     <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                         <button class="btn btn-danger" type="submit">
-                            Rejected
+                            Reject
                         </button>
                     </input>
                 </input>
