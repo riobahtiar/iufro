@@ -151,7 +151,7 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 			}
 
 			if (jQuery('input[name=post-conf-child]:checked').val()=='pekanbaru' ){
-				alert('Please choose pekanbaru options');
+				alert('Please choose room type on Pekanbaru trip');
 				e.preventDefault(e);
 			}
 	});
@@ -162,7 +162,7 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 	jQuery("#form-addon").submit(function(e){
 
 			if (jQuery('input[name=post-conf-child]:checked').val()=='pekanbaru' ){
-				alert('Please choose pekanbaru options');
+				alert('Please choose room type on Pekanbaru trip');
 				e.preventDefault(e);
 			}
 	});
