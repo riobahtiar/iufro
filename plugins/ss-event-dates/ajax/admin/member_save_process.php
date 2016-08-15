@@ -76,8 +76,7 @@ function complete_registration($fullname, $password, $email, $phone, $address, $
         'country'   	=>   $country,
         );
         $user = wp_insert_user( $userdata );
-        echo '<div class="well register-thankyou">Thank you for registering on IUFRO ACACIA CONFERENCE 2017.<br>
-Please check your email to activate your account.</div>'; 
+        echo '<div class="well register-thankyou">Thank you for registering on IUFRO ACACIA CONFERENCE 2017.</div>'; 
         //echo "<br>Validate Data 2 ". $fullname." + ".$password." + ".$email." + ".$phone." + ".$address." + ".$zip." + ".$city." + ".$state." + ".$country." + ".$user_reg_type;
         return 1;
     }    
@@ -113,10 +112,12 @@ function save_custom_userdata($fullname, $password, $email, $phone, $address, $z
                     'euser_state' => $state, 
                     'euser_country' => $country,
                     'euser_meta_type' => $user_reg_type,
+                    'euser_status' => 'activated',
                     'euser_activationkey' => $randAct,
                     'euser_barcode' => $barcode           
                 ), 
                 array(
+                '%s',
                 '%s',
                 '%s',
                 '%s',
