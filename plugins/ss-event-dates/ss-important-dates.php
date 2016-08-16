@@ -19,7 +19,7 @@ define('IUFRO_DIR', plugin_dir_path(__FILE__));
  * Include Dashboard
  */
 
-//require_once IUFRO_DIR . 'addons/admin_dashboard.php';
+require_once IUFRO_DIR . 'addons/admin_dashboard.php';
 //require_once IUFRO_DIR . 'rates.php';
 function ss_event_install()
 {
