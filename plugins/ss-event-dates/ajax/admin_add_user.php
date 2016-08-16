@@ -135,12 +135,12 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
         </select>
     </div>
         </div>
-        <div class="alert alert-warning" id="pricing-calculator">
+<!--         <div class="alert alert-warning" id="pricing-calculator">
         <p>Registration Fee: <span id="vregister-price"></span></p> 
         <p>Mid Conference: <span id="vmid-price">-</span></p> 
         <p>Post Conference: <span id="vpost-price"></span></p> 
         <h4>Total : <span id="vtotal-price"></span></h4>
-        </div>
+        </div> -->
         <hr>
         <div>
         <br>
@@ -178,27 +178,27 @@ jQuery(document).ready(function(){
 // var midPrice = jQuery("#mid-price");
 // var postPrice = jQuery("#post-price");
 
-jQuery('#onsite-register').on('change', function() {
-    if(jQuery('input[name=user_type]', '#onsite-register').val()==""){
-            console.log('participant_type');
-            jQuery( "#vregister-price" ).attr("454");
-    } else if (jQuery('input[name=user_type]', '#onsite-register').val()=="free_pass"){
-            console.log('free_type');
-            jQuery( "#vregister-price" ).attr("545");
-    }
+// jQuery('#onsite-register').on('change', function() {
+//     if(jQuery('input[name=user_type]', '#onsite-register').val()==""){
+//             console.log('participant_type');
+//             jQuery( "#vregister-price" ).attr("454");
+//     } else if (jQuery('input[name=user_type]', '#onsite-register').val()=="free_pass"){
+//             console.log('free_type');
+//             jQuery( "#vregister-price" ).attr("545");
+//     }
 
-    if(jQuery('input[name=postc]', '#onsite-register').val()=="pacitan"){
-            console.log('pacitan');
-            jQuery( "#vpost-price" ).attr("454");
-    } else if (jQuery('input[name=postc]', '#onsite-register').val()=="pekanbaru_shared"){
-            console.log('pekanbaru_shared');
-            jQuery( "#vpost-price" ).attr("235");
-    } else if (jQuery('input[name=postc]', '#onsite-register').val()=="pekanbaru_single"){
-            console.log('pekanbaru_single');
-            jQuery( "#vpost-price" ).attr("89");
-    }
+//     if(jQuery('input[name=postc]', '#onsite-register').val()=="pacitan"){
+//             console.log('pacitan');
+//             jQuery( "#vpost-price" ).attr("454");
+//     } else if (jQuery('input[name=postc]', '#onsite-register').val()=="pekanbaru_shared"){
+//             console.log('pekanbaru_shared');
+//             jQuery( "#vpost-price" ).attr("235");
+//     } else if (jQuery('input[name=postc]', '#onsite-register').val()=="pekanbaru_single"){
+//             console.log('pekanbaru_single');
+//             jQuery( "#vpost-price" ).attr("89");
+//     }
 
-});
+// });
 
 
 
