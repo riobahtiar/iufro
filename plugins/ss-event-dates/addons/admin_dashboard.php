@@ -13,10 +13,8 @@ function modal_action()
 }
 add_action('admin_action_foo_modal_box', 'modal_action');
 
-function dash_css()
-{
-
-    echo "
+function dash_css(){
+echo "
   <style type='text/css'>
 .xdetails{
   max-width: 200px;
@@ -147,7 +145,7 @@ function init_iufro_dash()
 {
 
     //create new top-level menu
-    add_menu_page('IUFRO U', 'IUFRO U', 'administrator', IUFRO_DIR, 'users_page_control', plugins_url('ss-event-dates/assets/muda.png', IUFRO_DIR), 2);
+    add_menu_page('IUFRO U', 'IUFRO U', 'administrator', IUFRO_DIR, 'users_page_control', plugins_url('ss-event-dates/assets/muda.png', IUFRO_DIR), 4);
 }
 
 function users_page_control()
@@ -156,10 +154,6 @@ function users_page_control()
     $get_members = $wpdb->get_results("SELECT * FROM wp_ss_event_user_detail");
     ?>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/r-2.1.0/sc-1.4.2/datatables.min.css"/>
-
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/r-2.1.0/sc-1.4.2/datatables.min.js"></script>
-
-
 <div class="wrap">
 <h2>IUFRO ACACIA CONFERENCE 2017</h2>
 <h4>Control Dashboard</h4>
@@ -482,7 +476,7 @@ $url = add_query_arg(array(
 </table>
 </div>
 
-
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/r-2.1.0/sc-1.4.2/datatables.min.js"></script>
 <script type="text/javascript">
 jQuery(document).ready(function() {
     var table = jQuery('#iufro-member').DataTable( {
