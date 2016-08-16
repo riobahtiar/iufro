@@ -174,22 +174,27 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
 jQuery(document).ready(function(){
  jQuery('#loading').remove();
 
-var userType = jQuery("#user_type");
-var midPrice = jQuery("#mid-price");
-var postPrice = jQuery("#post-price");
+// var userType = jQuery("#user_type");
+// var midPrice = jQuery("#mid-price");
+// var postPrice = jQuery("#post-price");
 
 jQuery('#onsite-register').on('change', function() {
-    if(jQuery('input[name=user_type]', '#onsite-register').val()=="participant_type"){
+    if(jQuery('input[name=user_type]', '#onsite-register').val()==""){
+            console.log('participant_type');
             jQuery( "#vregister-price" ).attr("454");
     } else if (jQuery('input[name=user_type]', '#onsite-register').val()=="free_pass"){
+            console.log('free_type');
             jQuery( "#vregister-price" ).attr("545");
     }
 
     if(jQuery('input[name=postc]', '#onsite-register').val()=="pacitan"){
+            console.log('pacitan');
             jQuery( "#vpost-price" ).attr("454");
     } else if (jQuery('input[name=postc]', '#onsite-register').val()=="pekanbaru_shared"){
+            console.log('pekanbaru_shared');
             jQuery( "#vpost-price" ).attr("235");
     } else if (jQuery('input[name=postc]', '#onsite-register').val()=="pekanbaru_single"){
+            console.log('pekanbaru_single');
             jQuery( "#vpost-price" ).attr("89");
     }
 
