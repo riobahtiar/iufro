@@ -36,14 +36,14 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
     </head>
     <body style="padding: 20px">
 
-    <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_save_process.php'; ?>" method="post">
+    <form id="onsite-register" action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_save_process.php'; ?>" method="post">
         <div class="row">
             <div class="form-group col-md-6">
             <div class="form-group">
             <label for="user_type">Register as </label>
             <select class="form-control" name="user_type" id="user_type">
                 <option value="participant_type">Participant</option>
-                <option value="free_type">Free Pass</option>
+                <option value="free_pass">Free Pass</option>
             </select>
             </div>
                 <label for="salutation">Salutation</label>
@@ -137,7 +137,7 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
         </div>
         <div class="alert alert-warning" id="pricing-calculator">
         <p>Registration Fee: <span id="register-price"></span></p> 
-        <p>Mid Conference: <span id="mid-price"></span></p> 
+        <p>Mid Conference: <span id="mid-price">-</span></p> 
         <p>Post Conference: <span id="post-price"></span></p> 
         <h4>Total : <span id="total-price"></span></h4>
         </div>
@@ -173,6 +173,37 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
 
 jQuery(document).ready(function(){
  jQuery('#loading').remove();
+
+var userType = jQuery("#user_type");
+var midPrice = jQuery("#mid-price");
+var postPrice = jQuery("#post-price");
+
+jQuery('#onsite-register').on('change', function() {
+       if(jQuery('input[name=user_type]', '#onsite-register').val()=="participant_type"){
+            jQuery( "#post-price" ).attr("454");
+       } if else (jQuery('input[name=user_type]', '#onsite-register').val()=="free_pass"){
+            jQuery( "#post-price" ).attr("545");
+       }
+
+        if(jQuery('input[name=postc]', '#onsite-register').val()=="pacitan"){
+            jQuery( "#post-price" ).attr("454");
+       } if else (jQuery('input[name=postc]', '#onsite-register').val()=="pekanbaru_shared"){
+            jQuery( "#post-price" ).attr("235");
+        } if else (jQuery('input[name=postc]', '#onsite-register').val()=="pekanbaru_single"){
+            jQuery( "#post-price" ).attr("89");
+       }
+
+
+
+
+
+});
+
+
+
+
+
+
 });
 </script>
     </body>
