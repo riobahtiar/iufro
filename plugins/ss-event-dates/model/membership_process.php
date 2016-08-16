@@ -62,7 +62,8 @@ if ($_POST['account']=="local"){
 function upload_user_file( $file = array() ) {
 	
 	require_once( ABSPATH . 'wp-admin/includes/admin.php' );
-    
+  require_once( ABSPATH . 'wp-admin/includes/image.php' );
+   
   	$file_return = wp_handle_upload( $file, array('test_form' => false ) );
   	if( isset( $file_return['error'] ) || isset( $file_return['upload_error_handler'] ) ) {
   
@@ -80,7 +81,6 @@ function upload_user_file( $file = array() ) {
       	);
   
       	$attachment_id = wp_insert_attachment( $attachment, $file_return['url'] );
-      	require_once(ABSPATH . 'wp-admin/includes/image.php');
       	$attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
       	wp_update_attachment_metadata( $attachment_id, $attachment_data );
       	if( 0 < intval( $attachment_id ) ) {
