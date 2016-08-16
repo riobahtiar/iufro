@@ -126,11 +126,25 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
         <option value="pekanbaru_shared">Pekanbaru Shared</option>
         </select>
     </div>
+    <div class="form-group form-group col-md-6">
+        <label for="postc">Dinner Conference</label>
+        <select name="postc" class="form-control">
+        <option>Select Options</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        </select>
+    </div>
+        </div>
+        <div class="alert alert-warning" id="pricing-calculator">
+        <p>Registration Fee: <span id="register-price"></span></p> 
+        <p>Mid Conference: <span id="mid-price"></span></p> 
+        <p>Post Conference: <span id="post-price"></span></p> 
+        <h4>Total : <span id="total-price"></span></h4>
         </div>
         <hr>
         <div>
         <br>
-            <button type="submit" name="submit" class="btn btn-primary btn-lg pull-right" value="Register">Register</button>
+            <button type="submit" name="submit" class="btn btn-primary btn-lg pull-right" value="Register">Continue</button>
         <br>
         <br>
         </div>
@@ -161,10 +175,5 @@ jQuery(document).ready(function(){
  jQuery('#loading').remove();
 });
 </script>
-
-
-
-
-
     </body>
 </html>
