@@ -105,6 +105,27 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
 <option>Select State</option>
             </select>
             </div>
+<hr>
+
+    <div class="form-group form-group col-md-6">
+        <label for="midc">Mid Conference</label>
+        <select name="midc" class="form-control">
+        <option>Select Options</option>
+        <option value="gunung-kidul">Gunung Kidul</option>
+        <option value="mount-merapi">Mount Merapi</option>
+        <option value="klaten">Klaten</option>
+        </select>
+    </div>
+
+    <div class="form-group form-group col-md-6">
+        <label for="postc">Post Conference</label>
+        <select name="postc" class="form-control">
+        <option>Select Options</option>
+        <option value="pacitan">Pacitan</option>
+        <option value="pekanbaru_single">Pekanbaru Single</option>
+        <option value="pekanbaru_shared">Pekanbaru Shared</option>
+        </select>
+    </div>
         </div>
         <hr>
         <div>
