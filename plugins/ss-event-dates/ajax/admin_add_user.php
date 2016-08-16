@@ -136,10 +136,10 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
     </div>
         </div>
         <div class="alert alert-warning" id="pricing-calculator">
-        <p>Registration Fee: <span id="register-price"></span></p> 
-        <p>Mid Conference: <span id="mid-price">-</span></p> 
-        <p>Post Conference: <span id="post-price"></span></p> 
-        <h4>Total : <span id="total-price"></span></h4>
+        <p>Registration Fee: <span id="vregister-price"></span></p> 
+        <p>Mid Conference: <span id="vmid-price">-</span></p> 
+        <p>Post Conference: <span id="vpost-price"></span></p> 
+        <h4>Total : <span id="vtotal-price"></span></h4>
         </div>
         <hr>
         <div>
@@ -179,23 +179,19 @@ var midPrice = jQuery("#mid-price");
 var postPrice = jQuery("#post-price");
 
 jQuery('#onsite-register').on('change', function() {
-       if(jQuery('input[name=user_type]', '#onsite-register').val()=="participant_type"){
-            jQuery( "#post-price" ).attr("454");
-       } if else (jQuery('input[name=user_type]', '#onsite-register').val()=="free_pass"){
-            jQuery( "#post-price" ).attr("545");
-       }
+    if(jQuery('input[name=user_type]', '#onsite-register').val()=="participant_type"){
+            jQuery( "#vregister-price" ).attr("454");
+    } else if (jQuery('input[name=user_type]', '#onsite-register').val()=="free_pass"){
+            jQuery( "#vregister-price" ).attr("545");
+    }
 
-        if(jQuery('input[name=postc]', '#onsite-register').val()=="pacitan"){
-            jQuery( "#post-price" ).attr("454");
-       } if else (jQuery('input[name=postc]', '#onsite-register').val()=="pekanbaru_shared"){
-            jQuery( "#post-price" ).attr("235");
-        } if else (jQuery('input[name=postc]', '#onsite-register').val()=="pekanbaru_single"){
-            jQuery( "#post-price" ).attr("89");
-       }
-
-
-
-
+    if(jQuery('input[name=postc]', '#onsite-register').val()=="pacitan"){
+            jQuery( "#vpost-price" ).attr("454");
+    } else if (jQuery('input[name=postc]', '#onsite-register').val()=="pekanbaru_shared"){
+            jQuery( "#vpost-price" ).attr("235");
+    } else if (jQuery('input[name=postc]', '#onsite-register').val()=="pekanbaru_single"){
+            jQuery( "v#post-price" ).attr("89");
+    }
 
 });
 
