@@ -190,7 +190,7 @@ jQuery('#onsite-register').on('change', function() {
     } else if (jQuery('input[name=postc]', '#onsite-register').val()=="pekanbaru_shared"){
             jQuery( "#vpost-price" ).attr("235");
     } else if (jQuery('input[name=postc]', '#onsite-register').val()=="pekanbaru_single"){
-            jQuery( "v#post-price" ).attr("89");
+            jQuery( "#vpost-price" ).attr("89");
     }
 
 });
