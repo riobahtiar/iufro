@@ -10,59 +10,24 @@ $success = 0;
 
 if ( isset($_POST['submit'] ) ) {
     $fullname   =   sanitize_user( $_POST['salutation'].$_POST['title']." ".$_POST['fullname'] );
-    $password   =   'iufroacacia2017_Gen-PWD';
-    $email      =   sanitize_email( $_POST['email'] );
-    $phone      =   sanitize_text_field( $_POST['phone'] );
-    $address    =   esc_textarea( $_POST['address'] );
-    $zip        =   sanitize_text_field( $_POST['zip'] );
-    $city       =   sanitize_text_field( $_POST['city'] );
-    $state      =   sanitize_text_field( $_POST['state'] );
-    $country    =   sanitize_text_field( $_POST['country'] );
-    $user_reg_type   =  $_POST['user_type'];
+    $password           =   'iufroacacia2017_Gen-PWD';
+    $email              =   sanitize_email( $_POST['email'] );
+    $phone              =   sanitize_text_field( $_POST['phone'] );
+    $address            =   esc_textarea( $_POST['address'] );
+    $zip                =   sanitize_text_field( $_POST['zip'] );
+    $city               =   sanitize_text_field( $_POST['city'] );
+    $state              =   sanitize_text_field( $_POST['state'] );
+    $country            =   sanitize_text_field( $_POST['country'] );
+    $user_reg_type      =   $_POST['user_type'];
+    $midc               =   sanitize_text_field( $_POST['midc'] );
+    $postc              =   sanitize_text_field( $_POST['postc'] );
+    $dinner             =   sanitize_text_field( $_POST['dinner'] );
 
-    registration_validation( $fullname, $password, $email, $phone, $address, $zip, $city, $state, $country, $user_reg_type);
     save_custom_userdata($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type);
-    $success = complete_registration($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type);
+    complete_registration($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type,$midc,$postc,$dinner);
 }
-
-if ($success == 0){
-    require_once $parse_uri[0] . '/wp-content/plugins/ss-event-dates/ajax/admin_add_user.php';
-}
-
-function registration_validation( $fullname, $password, $email, $phone, $address, $zip, $city, $state, $country, $user_reg_type) {
-    global $reg_errors;
-    $reg_errors = new WP_Error;
-    if ( empty( $fullname ) || empty( $password ) || empty( $email ) || empty( $phone ) || empty( $zip ) || empty( $city ) || empty( $state ) || empty( $country ) ) {
-        $reg_errors->add('field', 'Required form field is missing');
-    }
-    if ( 5 > strlen( $password ) ) {
-        $reg_errors->add( 'password', 'Password length must be greater than 5' );
-    }
-
-    if ( !is_email( $email ) ) {
-        $reg_errors->add( 'email_invalid', 'Email is not valid' );
-    }
-
-    if ( email_exists( $email ) ) {
-        $reg_errors->add( 'email', 'Email Already in use' );
-    }
-
-    if ( is_wp_error( $reg_errors ) ) {
-        foreach ( $reg_errors->get_error_messages() as $error ) {
-            echo '<div class="alert alert-warning">';
-            echo '<strong>ERROR</strong>:';
-            echo $error . '<br/>';
-            echo '</div>';           
-        }    
-    }
-}
-
-
-
 
 function complete_registration($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type) {
-    global $reg_errors;
-    if ( 1 > count( $reg_errors->get_error_messages() ) ) {
         $userdata = array(
         'user_login'    =>   $email,
         'user_email'    =>   $email,
@@ -77,8 +42,6 @@ function complete_registration($fullname, $password, $email, $phone, $address, $
         );
         $user = wp_insert_user( $userdata );
         require_once $parse_uri[0] . '/wp-content/plugins/ss-event-dates/ajax/admin_user_extra.php';
-        return 1;
-    }    
 }
 
 function generateRandomString($length) {
@@ -91,9 +54,7 @@ function generateRandomString($length) {
     return $randomString;
 }
 
-function save_custom_userdata($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country, $user_reg_type){
-    global $reg_errors;
-    if ( 1 > count( $reg_errors->get_error_messages() ) ) {
+function save_custom_userdata($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country, $user_reg_type, $midc, $postc, $dinner){
     global $wpdb;
     $wpdb->get_results( 'SELECT COUNT(*) FROM wp_ss_event_user_detail' );
     $num_rows=$wpdb->num_rows;
@@ -111,6 +72,9 @@ function save_custom_userdata($fullname, $password, $email, $phone, $address, $z
                     'euser_state' => $state, 
                     'euser_country' => $country,
                     'euser_meta_type' => $user_reg_type,
+                    'euser_addon_mid' => $midc,
+                    'euser_addon_post' => $postc,
+                    'euser_addon_dinner' => $dinner,
                     'euser_status' => 'activated',
                     'euser_activationkey' => $randAct,
                     'euser_barcode' => $barcode           
@@ -127,8 +91,10 @@ function save_custom_userdata($fullname, $password, $email, $phone, $address, $z
                 '%s',
                 '%s',
                 '%s',
+                '%s',
+                '%s',
+                '%s',
                 '%s') 
             );
 
-    }
 }

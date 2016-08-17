@@ -127,8 +127,8 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
         </select>
     </div>
     <div class="form-group form-group col-md-6">
-        <label for="postc">Dinner Conference</label>
-        <select name="postc" class="form-control">
+        <label for="dinner">Dinner Conference</label>
+        <select name="dinner" class="form-control">
         <option>Select Options</option>
         <option value="Yes">Yes</option>
         <option value="No">No</option>
