@@ -469,7 +469,7 @@ $url = add_query_arg(array(
         ), plugins_url('ss-event-dates') . '/ajax/admin_edit_user.php');
         echo '<a href="' . $url . '" class="button button-primary thickbox">' . __('options', 'iufro') . '</a>';
         ?>
-<a href="<?php echo get_site_url() . 'wp-content/plugins/ss-event-dates/addons/barcode/card.php?brcd='.$show_me->euser_barcode; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Print ID Card</a>
+<a href="<?php echo get_site_url() . '/wp-content/plugins/ss-event-dates/addons/barcode/card.php?brcd='.$show_me->euser_barcode; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Print ID Card</a>
   </td>
 </tr>
 <?php }?>

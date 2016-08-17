@@ -20,7 +20,7 @@ $user_detail = $wpdb->
 <div class="alert alert-warning">
 <h4>Data saved successfully</h4>
 <br>
-Print user ID Card &nbsp;<a href="<?php echo get_site_url() . 'wp-content/plugins/ss-event-dates/addons/barcode/card.php?brcd='.$euser_barcode; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Print</a>
+Print user ID Card &nbsp;<a href="<?php echo get_site_url() . '/wp-content/plugins/ss-event-dates/addons/barcode/card.php?brcd='.$euser_barcode; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Print</a>
 
 </div>
 </body>
