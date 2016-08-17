@@ -60,10 +60,10 @@ $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
 <body>
 <div class="card">
 <div class="name">
-<h4> <?php echo "Prof. rio bahtiar"; ?> </h4>
+<h4> <?php echo $user_detail['euser_fullname']; ?> </h4>
 <?php
-echo '<img height="auto" width="200px" src="data:image/png;base64,' . base64_encode($generator->getBarcode('04563897', $generator::TYPE_CODE_128_B)) . '">';
-echo "<p>8565656565665</p>";
+echo '<img height="auto" width="200px" src="data:image/png;base64,' . base64_encode($generator->getBarcode($user_detail['euser_barcode'], $generator::TYPE_CODE_128_B)) . '">';
+echo "<p>".$user_detail['euser_barcode']."</p>";
   ?>
 </div>
 </div>
