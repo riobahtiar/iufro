@@ -6,6 +6,7 @@ global $wpdb;
 $query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_barcode = '{$euser_barcode}'";
 $user_detail = $wpdb->
     get_row($query, ARRAY_A);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +36,53 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
     <script src="<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/js/intlTelInput.min.js'; ?>"></script>
     </head>
     <body style="padding: 20px">
+<?php 
+// ====== Query to check availabel seats on database ======== //
+// call redux global Object
+global $ss_theme_opt; 
+ echo "<pre>";
+// Gunung Kidul
+$gkidul_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "gunung-kidul"' );
+$gkidul_av = $ss_theme_opt['text-gunungkidul'] - $gkidul_rows;
+echo  $gkidul_av . ' &nbsp; Gunung Kidul Seats Available<br>';
 
+
+// Klaten
+$klaten_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "klaten"' );
+$klaten_av = $ss_theme_opt['text-klaten'] - $klaten_rows;
+echo  $klaten_av . ' &nbsp; Klaten Seats Available<br>';
+
+// Mount Merapi
+$merapi_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "mount-merapi"' );
+$merapi_av = $ss_theme_opt['text-gunung-merapi'] - $merapi_rows;
+echo  $merapi_av . ' &nbsp; Merapi Seats Available<br>';
+
+// Pekanbaru Single
+$pekanbaru_single_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pekanbaru_single"' );
+$pekanbaru_single_av = $ss_theme_opt['text-pb-single'] - $pekanbaru_single_rows;
+echo  $pekanbaru_av . ' &nbsp; Pekanbaru Single Seats Available<br>';
+
+
+// Pekanbaru Shared
+$pekanbaru_shared_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pekanbaru_shared"' );
+$pekanbaru_shared_av = $ss_theme_opt['text-pb-shared'] - $pekanbaru_shared_rows;
+echo  $pekanbaru_shared_av . ' &nbsp; Pekanbaru Shared Seats Available<br>';
+
+// Pacitan
+$pacitan_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pacitan"' );
+$pacitan_av = $ss_theme_opt['text-pacitan'] - $pacitan_rows;
+echo  $pacitan_av . ' &nbsp; Pacitan Seats Available<br>';
+
+// Dinner 
+$dinner_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_dinner = "Yes"' );
+$dinner_av = $ss_theme_opt['text-dinner'] - $dinner_rows;
+echo  $dinner_av . ' &nbsp; Dinner Seats Available<br>';
+
+ echo "</pre>";
+
+// ====== end check availabel seats on database ======== //
+
+?>
     <form id="onsite-register" action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_save_process.php'; ?>" method="post">
         <div class="row">
             <div class="form-group col-md-6">
@@ -111,9 +158,13 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
         <label for="midc">Mid Conference</label>
         <select name="midc" class="form-control">
         <option>Select Options</option>
-        <option value="gunung-kidul">Gunung Kidul</option>
-        <option value="mount-merapi">Mount Merapi</option>
-        <option value="klaten">Klaten</option>
+<?php if ($gkidul_av >= 1){ ?>
+    <option value="gunung-kidul">Gunung Kidul</option>
+<?php }  if ($merapi_av >= 1){ ?>
+    <option value="mount-merapi">Mount Merapi</option>
+<?php }  if ($klaten_av >= 1){ ?>
+    <option value="klaten">Klaten</option>
+<?php } ?>  
         </select>
     </div>
 
@@ -121,17 +172,23 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
         <label for="postc">Post Conference</label>
         <select name="postc" class="form-control">
         <option>Select Options</option>
-        <option value="pacitan">Pacitan</option>
-        <option value="pekanbaru_single">Pekanbaru Single</option>
-        <option value="pekanbaru_shared">Pekanbaru Shared</option>
+<?php if ($pacitan_av >= 1){ ?>
+    <option value="pacitan">Pacitan</option>
+<?php }  if ($pekanbaru_single_av >= 1){ ?>
+    <option value="pekanbaru_single">Pekanbaru Single</option>
+<?php }  if ($pekanbaru_shared_av >= 1){ ?>
+    <option value="pekanbaru_shared">Pekanbaru Shared</option>
+<?php } ?> 
         </select>
     </div>
     <div class="form-group form-group col-md-6">
         <label for="dinner">Dinner Conference</label>
         <select name="dinner" class="form-control">
         <option>Select Options</option>
+<?php if ($dinner_av >= 1){ ?>
         <option value="Yes">Yes</option>
         <option value="No">No</option>
+<?php } ?> 
         </select>
     </div>
         </div>

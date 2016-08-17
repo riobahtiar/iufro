@@ -5,8 +5,7 @@ if(isset($_GET['step']) && $_GET['step']=="addon"){
 	$post_url="";
 }
 
-// call redux global Object
-global $ss_theme_opt; 
+
 
 // get Get User Login
 global $current_user;
@@ -19,7 +18,8 @@ $query="SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email
 $user_detail = $wpdb->get_row( $query, ARRAY_A );
 
 // ====== Query to check availabel seats on database ======== //
-
+// call redux global Object
+global $ss_theme_opt; 
 // echo "<pre>";
 // Gunung Kidul
 $gkidul_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "gunung-kidul"' );
@@ -59,11 +59,9 @@ $dinner_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHE
 // echo  $dinner_rows . ' &nbsp; Dinner Found<br>';
 $dinner_av = $ss_theme_opt['text-dinner'] - $dinner_rows;
 
-
-
 // echo "</pre>";
 
-
+// ====== end check availabel seats on database ======== //
 
 // $user_count = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->users" );
 // echo "<p>User count is {$user_count}</p>";
