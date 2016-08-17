@@ -40,7 +40,7 @@ document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-
 // ====== Query to check availabel seats on database ======== //
 // call redux global Object
 global $ss_theme_opt; 
- echo "<pre>";
+ echo "<div class='alert alert-info'>";
 // Gunung Kidul
 $gkidul_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "gunung-kidul"' );
 $gkidul_av = $ss_theme_opt['text-gunungkidul'] - $gkidul_rows;
@@ -60,7 +60,7 @@ echo  $merapi_av . ' &nbsp; Merapi Seats Available<br>';
 // Pekanbaru Single
 $pekanbaru_single_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pekanbaru_single"' );
 $pekanbaru_single_av = $ss_theme_opt['text-pb-single'] - $pekanbaru_single_rows;
-echo  $pekanbaru_av . ' &nbsp; Pekanbaru Single Seats Available<br>';
+echo  $pekanbaru_single_av . ' &nbsp; Pekanbaru Single Seats Available<br>';
 
 
 // Pekanbaru Shared
@@ -78,7 +78,7 @@ $dinner_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHE
 $dinner_av = $ss_theme_opt['text-dinner'] - $dinner_rows;
 echo  $dinner_av . ' &nbsp; Dinner Seats Available<br>';
 
- echo "</pre>";
+ echo "</div>";
 
 // ====== end check availabel seats on database ======== //
 
