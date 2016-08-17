@@ -1,15 +1,10 @@
 <?php
 $parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
 require_once $parse_uri[0] . 'wp-load.php';
-$euser_barcode = $_GET['brcd'];
 global $wpdb;
-$query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_barcode = '{$euser_barcode}'";
-$user_detail = $wpdb->get_row($query, ARRAY_A);
-
-$success = 0;
 
 if ( isset($_POST['submit'] ) ) {
-    $fullname   =   sanitize_user( $_POST['salutation'].$_POST['title']." ".$_POST['fullname'] );
+    $fullname   =   sanitize_user( $_POST['salutation']." ".$_POST['title']." ".$_POST['fullname'] );
     $password           =   'iufroacacia2017_Gen-PWD';
     $email              =   sanitize_email( $_POST['email'] );
     $phone              =   sanitize_text_field( $_POST['phone'] );
@@ -23,7 +18,9 @@ if ( isset($_POST['submit'] ) ) {
     $postc              =   sanitize_text_field( $_POST['postc'] );
     $dinner             =   sanitize_text_field( $_POST['dinner'] );
     complete_registration($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type);
-    save_custom_userdata($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type,$midc,$postc,$dinner);
+    $ubarcode = save_custom_userdata($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type,$midc,$postc,$dinner);
+    
+    wp_redirect( get_site_url().'/wp-content/plugins/ss-event-dates/ajax/admin_user_extra.php?brcd='.$ubarcode );
 }
 
 function complete_registration($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type) {
@@ -54,8 +51,6 @@ function generateRandomString($length) {
 
 function save_custom_userdata($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country, $user_reg_type, $midc, $postc, $dinner){
     global $wpdb;
-    $wpdb->get_results( 'SELECT COUNT(*) FROM wp_ss_event_user_detail' );
-    $num_rows=$wpdb->num_rows;
     $barcode='17'.date('md').rand(1000, 9999);
     $randAct=generateRandomString(15);
     $wpdb->insert( 
@@ -94,6 +89,6 @@ function save_custom_userdata($fullname, $password, $email, $phone, $address, $z
                 '%s',
                 '%s') 
             );
-    require_once $parse_uri[0] . '/wp-content/plugins/ss-event-dates/ajax/admin_user_extra.php?brcd='.$barcode;
+    return $barcode;
 
 }
