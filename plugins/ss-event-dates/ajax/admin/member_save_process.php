@@ -22,9 +22,8 @@ if ( isset($_POST['submit'] ) ) {
     $midc               =   sanitize_text_field( $_POST['midc'] );
     $postc              =   sanitize_text_field( $_POST['postc'] );
     $dinner             =   sanitize_text_field( $_POST['dinner'] );
-
-    save_custom_userdata($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type);
-    complete_registration($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type,$midc,$postc,$dinner);
+    complete_registration($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type);
+    save_custom_userdata($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type,$midc,$postc,$dinner);
 }
 
 function complete_registration($fullname, $password, $email, $phone, $address, $zip, $city, $state, $country,$user_reg_type) {
@@ -41,7 +40,6 @@ function complete_registration($fullname, $password, $email, $phone, $address, $
         'country'   	=>   $country,
         );
         $user = wp_insert_user( $userdata );
-        require_once $parse_uri[0] . '/wp-content/plugins/ss-event-dates/ajax/admin_user_extra.php';
 }
 
 function generateRandomString($length) {
@@ -96,5 +94,6 @@ function save_custom_userdata($fullname, $password, $email, $phone, $address, $z
                 '%s',
                 '%s') 
             );
+    require_once $parse_uri[0] . '/wp-content/plugins/ss-event-dates/ajax/admin_user_extra.php?brcd='.$barcode;
 
 }
