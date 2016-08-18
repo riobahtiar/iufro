@@ -44,39 +44,39 @@ global $ss_theme_opt;
 // Gunung Kidul
 $gkidul_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "gunung-kidul"' );
 $gkidul_av = $ss_theme_opt['text-gunungkidul'] - $gkidul_rows;
-echo  $gkidul_av . ' &nbsp; Gunung Kidul Seats Available<br>';
+echo  $gkidul_av . ' &nbsp; Gunung Kidul (Seats Available)<br>';
 
 
 // Klaten
 $klaten_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "klaten"' );
 $klaten_av = $ss_theme_opt['text-klaten'] - $klaten_rows;
-echo  $klaten_av . ' &nbsp; Klaten Seats Available<br>';
+echo  $klaten_av . ' &nbsp; Klaten (Seats Available)<br>';
 
 // Mount Merapi
 $merapi_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "mount-merapi"' );
 $merapi_av = $ss_theme_opt['text-gunung-merapi'] - $merapi_rows;
-echo  $merapi_av . ' &nbsp; Merapi Seats Available<br>';
+echo  $merapi_av . ' &nbsp; Merapi (Seats Available)<br>';
 
 // Pekanbaru Single
 $pekanbaru_single_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pekanbaru_single"' );
 $pekanbaru_single_av = $ss_theme_opt['text-pb-single'] - $pekanbaru_single_rows;
-echo  $pekanbaru_single_av . ' &nbsp; Pekanbaru Single Seats Available<br>';
+echo  $pekanbaru_single_av . ' &nbsp; Pekanbaru Single (Seats Available)<br>';
 
 
 // Pekanbaru Shared
 $pekanbaru_shared_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pekanbaru_shared"' );
 $pekanbaru_shared_av = $ss_theme_opt['text-pb-shared'] - $pekanbaru_shared_rows;
-echo  $pekanbaru_shared_av . ' &nbsp; Pekanbaru Shared Seats Available<br>';
+echo  $pekanbaru_shared_av . ' &nbsp; Pekanbaru Shared (Seats Available)<br>';
 
 // Pacitan
 $pacitan_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pacitan"' );
 $pacitan_av = $ss_theme_opt['text-pacitan'] - $pacitan_rows;
-echo  $pacitan_av . ' &nbsp; Pacitan Seats Available<br>';
+echo  $pacitan_av . ' &nbsp; Pacitan (Seats Available)<br>';
 
 // Dinner 
 $dinner_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_dinner = "Yes"' );
 $dinner_av = $ss_theme_opt['text-dinner'] - $dinner_rows;
-echo  $dinner_av . ' &nbsp; Dinner Seats Available<br>';
+echo  $dinner_av . ' &nbsp; Dinner (Seats Available)<br>';
 
  echo "</div>";
 

@@ -10,7 +10,7 @@
 	<div class="col-md-12">
 		<h2>Your Identity</h2>
 	</div>
-	<form action="" method="post">
+	<form id="registration" action="" method="post">
 		  	<div class="form-group">
 	    	<label for="user_type">Register as (<a data-toggle="modal" data-target="#registerInfo">Learn more.</a>)</label>
 	    	<select class="form-control" name="user_type" id="user_type">
@@ -124,6 +124,8 @@ Paticipant also able to join extra field trip during the conference (extra charg
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
 <script src="http://lab.iamrohit.in/js/location.js"></script>
 <script src="<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/js/intlTelInput.min.js'; ?>"></script>
 
@@ -148,4 +150,14 @@ Paticipant also able to join extra field trip during the conference (extra charg
       // separateDialCode: true,
       utilsScript: "<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/js/utils.js'; ?>"
     });
+// Jquery Validation
+jQuery.validator.setDefaults({
+  debug: true,
+  success: "valid"
+});
+jQuery( "#registration" ).validate();
+
+
+
+
   </script>
