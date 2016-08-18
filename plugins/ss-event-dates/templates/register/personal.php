@@ -151,10 +151,6 @@ Paticipant also able to join extra field trip during the conference (extra charg
       utilsScript: "<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/js/utils.js'; ?>"
     });
 // Jquery Validation
-jQuery.validator.setDefaults({
-  debug: true,
-  success: "valid"
-});
 jQuery( "#registration" ).validate();
 
 
