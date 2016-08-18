@@ -20,6 +20,8 @@ define('IUFRO_DIR', plugin_dir_path(__FILE__));
  */
 
 require_once IUFRO_DIR . 'addons/admin_dashboard.php';
+// Email Resend
+// require_once IUFRO_DIR . 'templates/resend_email.php';
 //require_once IUFRO_DIR . 'rates.php';
 function ss_event_install()
 {

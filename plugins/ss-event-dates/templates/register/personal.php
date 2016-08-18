@@ -124,8 +124,8 @@ Paticipant also able to join extra field trip during the conference (extra charg
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
-<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
+<!-- <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script> -->
 <script src="http://lab.iamrohit.in/js/location.js"></script>
 <script src="<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/js/intlTelInput.min.js'; ?>"></script>
 
@@ -151,7 +151,53 @@ Paticipant also able to join extra field trip during the conference (extra charg
       utilsScript: "<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/js/utils.js'; ?>"
     });
 // Jquery Validation
-jQuery( "#registration" ).validate();
+	jQuery("#registration").submit(function(e){
+	   		if (jQuery('#fullname').val()==''){
+				alert('Full Name needs to be filled');
+				e.preventDefault(e);
+			}
+
+	   		if (jQuery('#email').val()==''){
+				alert('Email needs to be filled');
+				e.preventDefault(e);
+			}
+
+			if (jQuery('#password').val()==''){
+				alert('Password needs to be filled');
+				e.preventDefault(e);
+			}
+
+			if (jQuery('#c_password').val()==''){
+				alert('Password Validation needs to be filled');
+				e.preventDefault(e);
+			}
+
+			if (jQuery('#phone').val()==''){
+				alert('Phone needs to be filled');
+				e.preventDefault(e);
+			}
+
+			if (jQuery('#zip').val()==''){
+				alert('Portal Code needs to be filled');
+				e.preventDefault(e);
+			}
+
+			if (jQuery('#city').val()==''){
+				alert('City needs to be filled');
+				e.preventDefault(e);
+			}
+
+			if (jQuery('#countryId').val()==''){
+				alert('Country needs to be filled');
+				e.preventDefault(e);
+			}
+
+			if (jQuery('#stateId').val()==''){
+				alert('State needs to be filled');
+				e.preventDefault(e);
+			}
+
+	});
 
 
 
