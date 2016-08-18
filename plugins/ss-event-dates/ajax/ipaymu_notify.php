@@ -27,7 +27,7 @@ $upload_dir = wp_upload_dir();
 
 //get user data
 global $wpdb;
-
+global $ss_theme_opt; 
 // echo '<pre>';
 // var_dump($wpdb);
 // echo '</pre>';
@@ -110,8 +110,8 @@ if (isset($user_detail['euser_addon_dinner'])) {
 // Payment Dates Earlybird
 $paymentDate    = date('Y-m-d');
 $paymentDate    = date('Y-m-d', strtotime($paymentDate));
-$earlyBirdBegin = date('Y-m-d', strtotime("01/1/2016"));
-$earlyBirdEnd   = date('Y-m-d', strtotime("04/30/2017"));
+$earlyBirdBegin = date('Y-m-d', strtotime($ss_theme_opt['date_earlybird_start']));
+$earlyBirdEnd   = date('Y-m-d', strtotime($ss_theme_opt['date_earlybird_end']));
 
 if ($user_detail['euser_type'] == "local student") {
     $user_string = "Local | Students";

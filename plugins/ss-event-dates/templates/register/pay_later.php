@@ -7,6 +7,7 @@ $euser_email = $current_user->user_email;
 
 //get user data
 global $wpdb;
+global $ss_theme_opt; 
 $query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email}'";
 $user_detail = $wpdb->get_row($query, ARRAY_A);
 
@@ -81,8 +82,8 @@ if (isset($user_detail['euser_addon_dinner'])) {
 // Payment Dates Earlybird
 $paymentDate    = date('Y-m-d');
 $paymentDate    = date('Y-m-d', strtotime($paymentDate));
-$earlyBirdBegin = date('Y-m-d', strtotime("01/1/2016"));
-$earlyBirdEnd   = date('Y-m-d', strtotime("04/30/2017"));
+$earlyBirdBegin = date('Y-m-d', strtotime($ss_theme_opt['date_earlybird_start']));
+$earlyBirdEnd   = date('Y-m-d', strtotime($ss_theme_opt['date_earlybird_end']));
 
 if ($user_detail['euser_type'] == "local student") {
     $user_string = "Local | Students";
