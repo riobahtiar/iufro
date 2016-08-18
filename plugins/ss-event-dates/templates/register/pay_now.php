@@ -3,6 +3,7 @@
 ?>
 
 <div class="container">
+<div class="row">
 <div class="col-md-12">
 	<h3>Payment System</h3>
 </div>
@@ -39,4 +40,8 @@ IPAYMU suitable for Local Transaction (Indonesia). Support Bank Transfer for var
 <input type="image" src="<?php echo get_site_url()."/wp-content/plugins/ss-event-dates/assets/ipaymu-btn.png"; ?>" border="0" name="submit" alt="PROCESS WITH IPAYMU">
 </form>
 	</div>
+<div class="col-md-12">
+<div class="alert alert-succes">
+</div>
+	</div><!-- row -->
 </div>
