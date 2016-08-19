@@ -188,12 +188,15 @@ if ($_GET['do_model'] == 'do_membership') {
                 <h2 style="text-align:center;color:#809062;margin-top: 0;">Dear Sir / Madam</h2>
             </div>
             <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
-                Your Member type changed Successfully
+                Membership changed successfully | IUFRO ACACIA 2017
             </div>
-
-        </div>
-        <div>
             <div>
+<p>Thank you, you membership type changed Successfully.</p>
+
+            </div>
+            <div>
+            <div>
+
                 <p style="font-size:16px;">Should you require any further assistance, please do not hesitate to contact us on address below: </p>
                 <p style="font-size:12px;margin: 0;color:#809062">Center of Forest Biotechnology and Tree Improvement</p>
                 <p style="font-size:12px;margin: 0;color:#809062">Jl. Palagan Tentara Pelajar KM 15 Purwobinangun, Pakem, Sleman, Yogyakarta 55582</p>
