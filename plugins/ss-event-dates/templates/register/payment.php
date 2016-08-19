@@ -286,3 +286,9 @@ echo "Current IDR Rates US$1 = IDR " . $idr_good . "<br> Source : <a href='http:
 </div>
 </form>
 </div>
+<script type="text/javascript">
+        window.onbeforeunload = confirmExit;
+    function confirmExit() {
+        return "You have attempted to leave this page and your inputed data will be lost. Are you sure? ";
+    }
+</script>

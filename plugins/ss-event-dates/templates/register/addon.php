@@ -206,6 +206,10 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 			}
 	});
 
+    window.onbeforeunload = confirmExit;
+    function confirmExit() {
+        return "You have attempted to leave this page and your inputed data will be lost. Are you sure? ";
+    }
 </script>
 <?php }else{ ?>
 <script type="text/javascript">
@@ -216,5 +220,10 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 				e.preventDefault(e);
 			}
 	});
+
+	window.onbeforeunload = confirmExit;
+    function confirmExit() {
+        return "You have attempted to leave this page and your inputed data will be lost. Are you sure? ";
+    }
 </script>
 <?php } ?>

@@ -201,5 +201,8 @@ Paticipant also able to join extra field trip during the conference (extra charg
 
 
 
-
+    window.onbeforeunload = confirmExit;
+    function confirmExit() {
+        return "You have attempted to leave this page and your inputed data will be lost. Are you sure? ";
+    }
   </script>
