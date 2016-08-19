@@ -41,7 +41,17 @@ IPAYMU suitable for Local Transaction (Indonesia). Support Bank Transfer for var
 </form>
 	</div>
 <div class="col-md-12">
-<div class="alert alert-succes">
+<div class="alert alert-success">
+<h4>Before Continuing, please read this</h4>
+<p>
+<ol>
+	<li>We do not save your debit or credit card credential on our server. We only need your personal account for registration purpose. We will keep your account confidentiality.</li>
+	<li>All payment processes are safely forwarded into payment gateaway provider.</li>
+	<li>Before continue the payment transaction, make sure your payment address come from https://www.paypal.com (for paypal) or https://my.ipaymu.com (for iPaymu) domain, started with https.</li>
+	<li>Make sure your account has enough balance to do the payment transaction.</li>
+	<li>Pay the correct amount according to the total amount that already given by our system.</li>
+</ol>
+</p>
 </div>
 	</div><!-- row -->
 </div>
