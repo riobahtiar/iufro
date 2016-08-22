@@ -254,6 +254,7 @@ if ($_GET['do_model'] == 'do_membership') {
 
     }else{
         echo "Document Empty";
+        var_dump($_FILES['abstract']);
     }
         echo "Document uploaded Successfully <kbd>[F5]</kbd>";
 
