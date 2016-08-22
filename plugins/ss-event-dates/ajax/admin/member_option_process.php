@@ -1,17 +1,15 @@
+<?php 
+// Action File
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-            <meta content="IE=edge" http-equiv="X-UA-Compatible">
-                <meta content="width=device-width, initial-scale=1" name="viewport">
-                    <title>
-                    </title>
-                </meta>
-            </meta>
-        </meta>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title></title>
     </head>
 <body style="background: #f7f7f7; padding: 20px; font-size: 15px; text-align: center;">
-
 <?php
 $parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
 require_once $parse_uri[0] . 'wp-load.php';
@@ -20,6 +18,41 @@ global $ss_theme_opt;
 $euser_barcode = $_GET['barcode'];
 $query         = "SELECT * FROM wp_ss_event_user_detail WHERE euser_barcode = '{$euser_barcode}'";
 $user_detail   = $wpdb->get_row($query, ARRAY_A);
+// Function to save file and generate to document ID
+    function upload_user_file( $file = array() ) {
+    
+        require_once( ABSPATH . 'wp-admin/includes/admin.php' );
+        
+        $file_return = wp_handle_upload( $file, array('test_form' => false ) );
+        if( isset( $file_return['error'] ) || isset( $file_return['upload_error_handler'] ) ) {
+      
+            return false;
+      
+        } else {
+      
+            $filename = $file_return['file'];
+            $attachment = array(
+                'post_mime_type' => $file_return['type'],
+                'post_title' => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+                'post_content' => '',
+                'post_status' => 'inherit',
+                'guid' => $file_return['url']
+            );
+      
+            $attachment_id = wp_insert_attachment( $attachment, $file_return['url'] );
+            require_once(ABSPATH . 'wp-admin/includes/image.php');
+            $attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
+            wp_update_attachment_metadata( $attachment_id, $attachment_data );
+            if( 0 < intval( $attachment_id ) ) {
+                return $attachment_id;
+            }
+        }
+        return false;
+    }
+
+
+
+
 
 // ======== Start Payment Conditional Block ======== //
 
@@ -215,6 +248,23 @@ if ($_GET['do_model'] == 'do_membership') {
     wp_mail($to, $subject, $body, $headers);
 
 // ========= END Email =========//
+} elseif ($_GET['do_model'] == 'do_abstract_revision') {
+
+    if(isset($_FILES['abstract']) && $_FILES['abstract']!="" ){
+        
+        $get_id = upload_user_file($_FILES['abstract']);
+
+        $wpdb->update( 
+            'wp_ss_event_user_detail', 
+            array( 'euser_abstrak' => $get_id), 
+            array('euser_barcode' => $_GET['barcode']), 
+            array( '%s'), 
+            array( '%s' ) 
+        );
+    }else{
+        echo "Document Empty";
+    }
+
 
 } elseif ($_GET['do_model'] == 'do_doc_publish') {
     $getx_result = $wpdb->update(
