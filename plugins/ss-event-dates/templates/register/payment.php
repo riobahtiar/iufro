@@ -104,7 +104,8 @@ if (isset($user_detail['euser_addon_dinner'])) {
 // Payment Dates Earlybird
 $paymentDate    = date('Y-m-d');
 $paymentDate    = date('Y-m-d', strtotime($paymentDate));
-IUFRO Keeper <keep@iufroacacia2017.com>
+$earlyBirdBegin = date('Y-m-d', strtotime("01/1/2016"));
+$earlyBirdEnd   = date('Y-m-d', strtotime("04/30/2017"));
 
 if ($user_detail['euser_type'] == "local student") {
     $user_string = "Local | Students";
@@ -159,7 +160,7 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 
 <?php if ($user_detail['euser_meta_type'] != "participant_type") {
     ?>
-<div class="col-md-6">
+<div class="col-md-12">
 <h5>Your Documents</h5>
 <?php
 //Abstract URL
@@ -168,27 +169,41 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
     $poster_download   = wp_get_attachment_url($user_detail['euser_poster']);
     if (!empty($abstract_download)) {
         ?>
-<dl class="dl-horizontal">
-  <dt>Abstract</dt>
-  <dd><a href="<?php echo $abstract_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Download</a></dd>
-</dl>
+<div class="row">
+<div class="col-md-10">
+<?php echo 'Abstract Title'.$user_detail['euser_abstract_title']; ?>
+</div>
+<div class="col-md-2">
+<a href="<?php echo $abstract_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">File</a>
+</div>
+</div>
 <?php
 }
     if (!empty($paper_download)) {
         ?>
-<dl class="dl-horizontal">
-  <dt>Paper</dt>
-  <dd><a href="<?php echo $paper_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Download</a></dd>
-</dl>
+
+<div class="row">
+<div class="col-md-10">
+<?php echo 'Full Paper'; ?>
+</div>
+<div class="col-md-2">
+<a href="<?php echo $paper_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">File</a>
+</div>
+</div>
+
 <?php
 }
     if (!empty($poster_download)) {
         //var_dump($poster_download);
         ?>
-<dl class="dl-horizontal">
-  <dt>Poster</dt>
-  <dd><a href="<?php echo $poster_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Download</a></dd>
-</dl>
+<div class="row">
+<div class="col-md-10">
+<?php echo 'Poster'; ?>
+</div>
+<div class="col-md-2">
+<a href="<?php echo $poster_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">File</a>
+</div>
+</div>
 <?php
 }
     ?>
@@ -261,7 +276,7 @@ echo "Current IDR Rates US$1 = IDR " . $idr_good . "<br> Source : <a href='http:
   </table>
 <?php if ($user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] !== null || $user_detail['euser_meta_type'] == "participant_type" || $user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] == 'accepted') {} else {?>
   <div class="well payment-alert">
-  You may continue to the payment after your document has been approved by us!
+  You may continue to the payment after your abstract has been approved by us!
 </div>
 <?php }?>
 </div>
@@ -286,8 +301,5 @@ echo "Current IDR Rates US$1 = IDR " . $idr_good . "<br> Source : <a href='http:
 </form>
 </div>
 <script type="text/javascript">
-        window.onbeforeunload = confirmExit;
-    function confirmExit() {
-        return "You have attempted to leave this page and your inputed data will be lost. Are you sure? ";
-    }
+
 </script>
