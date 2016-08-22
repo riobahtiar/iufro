@@ -251,11 +251,14 @@ if ($_GET['do_model'] == 'do_membership') {
             array( '%s'), 
             array( '%s' ) 
         );
+        echo "Document uploaded Successfully <kbd>[F5]</kbd>";
 
     }else{
         echo "Document Empty";
     }
-        echo "Document uploaded Successfully <kbd>[F5]</kbd>";
+    echo "<pre>";
+    var_dump($_GET['abstract']);
+    echo "</pre>";
 
 
 } elseif ($_GET['do_model'] == 'do_doc_publish') {
