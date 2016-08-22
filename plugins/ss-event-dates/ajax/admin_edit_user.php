@@ -187,7 +187,7 @@ $user_detail = $wpdb->
     <div role="tabpanel" class="tab-pane" id="files">
 
 <!-- Abstract Revision --> 
-<form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="get" enctype="multipart/form-data">
+<form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" method="post" enctype="multipart/form-data">
 <input name="do_model" type="hidden" value="do_abstract_revision">
 <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
 <div class="form-group">
