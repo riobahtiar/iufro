@@ -242,7 +242,7 @@ if ($_GET['do_model'] == 'do_membership') {
 
     if((isset($_GET['abstract']) && $_GET['abstract']!="")){
         
-        $get_id = upload_user_file($_FILES['abstract']);
+        $get_id = upload_user_file($_GET['abstract']);
 
         $wpdb->update( 
             'wp_ss_event_user_detail', 

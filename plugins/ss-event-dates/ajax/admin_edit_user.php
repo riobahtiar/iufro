@@ -32,7 +32,7 @@ $user_detail = $wpdb->
     <div role="tabpanel" class="tab-pane active" id="membership">
         <!-- User Changer -->
         <p class="user-changer">
-            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
+            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="get">
                 <h4>
                     User Type Changer
                 </h4>
@@ -74,7 +74,7 @@ $user_detail = $wpdb->
             </strong>
         </h4>
         <!--  Approved -->
-        <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
+        <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="get">
             <input name="do_model" type="hidden" value="do_doc_approved">
             <p>Approve Document? </p>
             <textarea class="form-control" rows="3" placeholder="Reason.." name="reason"></textarea>
@@ -88,7 +88,7 @@ $user_detail = $wpdb->
         </form>
         <br>
             <!--  Rejected -->
-            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
+            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="get">
 
                 <input name="do_model" type="hidden" value="do_doc_rejected">
                 <p>Reject Document? </p>
@@ -112,7 +112,7 @@ $user_detail = $wpdb->
                 Make sure you are allowed to show this document to the public (Free User).
             </div>
             <!-- Published -->
-            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
+            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="get">
                 <input name="do_model" type="hidden" value="do_doc_publish">
                     <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                         <button class="btn btn-primary" type="submit">
@@ -132,7 +132,7 @@ $user_detail = $wpdb->
                 To stop publishing the document. press the button below
             </div>
             <!-- Stop Publish -->
-            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
+            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="get">
                 <input name="do_model" type="hidden" value="do_doc_unpublish">
                     <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                         <button class="btn btn-danger" type="submit">
@@ -152,7 +152,7 @@ $user_detail = $wpdb->
                If you have made a mistake, the button below can re-approve the rejected member.
             </div>
             <!--  Approved -->
-            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
+            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="get">
                 <input name="do_model" type="hidden" value="do_doc_approved">
                     <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                         <button class="btn btn-danger" type="submit">
@@ -171,7 +171,7 @@ $user_detail = $wpdb->
             <div class="well">
                If you have made a mistake, the button below can re-publish the document.
             </div>
-            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
+            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="get">
                 <input name="do_model" type="hidden" value="do_doc_publish">
                 <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                         <button class="btn btn-primary" type="submit">
