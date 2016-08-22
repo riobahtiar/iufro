@@ -4,7 +4,7 @@
         require_once $parse_uri[0] . 'wp-load.php';
         global $wpdb;
         global $ss_theme_opt; 
-        $euser_barcode = $_GET['barcode'];
+        $euser_barcode = $_POST['barcode'];
         $query         = "SELECT * FROM wp_ss_event_user_detail WHERE euser_barcode = '{$euser_barcode}'";
         $user_detail   = $wpdb->get_row($query, ARRAY_A);
 
@@ -161,14 +161,14 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 // ======== End of Payment Conditional Block ======== //
 
 
-if ($_GET['do_model'] == 'do_membership') {
+if ($_POST['do_model'] == 'do_membership') {
 
     $getx_result = $wpdb->update(
         'wp_ss_event_user_detail',
         array(
-            'euser_meta_type' => $_GET['user_type'],
+            'euser_meta_type' => $_POST['user_type'],
         ),
-        array('euser_barcode' => $_GET['barcode']),
+        array('euser_barcode' => $_POST['barcode']),
         array(
             '%s',
         ),
@@ -261,13 +261,13 @@ if ($_GET['do_model'] == 'do_membership') {
     echo "</pre>";
 
 
-} elseif ($_GET['do_model'] == 'do_doc_publish') {
+} elseif ($_POST['do_model'] == 'do_doc_publish') {
     $getx_result = $wpdb->update(
         'wp_ss_event_user_detail',
         array(
             'euser_doc_status' => 'published',
         ),
-        array('euser_barcode' => $_GET['barcode']),
+        array('euser_barcode' => $_POST['barcode']),
         array(
             '%s',
         ),
@@ -335,26 +335,26 @@ if ($_GET['do_model'] == 'do_membership') {
 
 // ========= END Email =========//
 
-} elseif ($_GET['do_model'] == 'do_doc_unpublish') {
+} elseif ($_POST['do_model'] == 'do_doc_unpublish') {
     $getx_result = $wpdb->update(
         'wp_ss_event_user_detail',
         array(
             'euser_doc_status' => 'unpublished',
         ),
-        array('euser_barcode' => $_GET['barcode']),
+        array('euser_barcode' => $_POST['barcode']),
         array(
             '%s',
         ),
         array('%s')
     );
     echo "Document Unpublised Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
-} elseif ($_GET['do_model'] == 'do_doc_rejected') {
+} elseif ($_POST['do_model'] == 'do_doc_rejected') {
     $getx_result = $wpdb->update(
         'wp_ss_event_user_detail',
         array(
             'euser_doc_status' => 'rejected',
         ),
-        array('euser_barcode' => $_GET['barcode']),
+        array('euser_barcode' => $_POST['barcode']),
         array(
             '%s',
         ),
@@ -362,7 +362,7 @@ if ($_GET['do_model'] == 'do_membership') {
     );
     echo "Document Rejected Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
     $authkey = $user_detail['euser_activationkey'];
-    $rejection_wording = $_GET['reason'];
+    $rejection_wording = $_POST['reason'];
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
     $subject = 'Document Rejected Notification | IUFRO ACACIA 2017';
@@ -440,20 +440,20 @@ To continue the registration as a participant, simply click the button below.</p
 
 // ========= END Email =========//
 
-} elseif ($_GET['do_model'] == 'do_doc_approved') {
+} elseif ($_POST['do_model'] == 'do_doc_approved') {
     $getx_result = $wpdb->update(
         'wp_ss_event_user_detail',
         array(
             'euser_doc_status' => 'approved',
         ),
-        array('euser_barcode' => $_GET['barcode']),
+        array('euser_barcode' => $_POST['barcode']),
         array(
             '%s',
         ),
         array('%s')
     );
     echo "Document Approved Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
-    $approve_wording = sanitize_text_field( $_GET['reason'] );
+    $approve_wording = sanitize_text_field( $_POST['reason'] );
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
     $subject = 'Document Approved Notification | IUFRO ACACIA 2017';
