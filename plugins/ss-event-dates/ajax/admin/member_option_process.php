@@ -184,7 +184,7 @@ if ($_GET['do_model'] == 'do_membership') {
         ),
         array('%s')
     );
-    echo "Member type changed Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
+    echo "Member type changed Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
 
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
@@ -264,6 +264,7 @@ if ($_GET['do_model'] == 'do_membership') {
     }else{
         echo "Document Empty";
     }
+        echo "Document uploaded Successfully <kbd>[F5]</kbd>";
 
 
 } elseif ($_GET['do_model'] == 'do_doc_publish') {
@@ -278,7 +279,7 @@ if ($_GET['do_model'] == 'do_membership') {
         ),
         array('%s')
     );
-    echo "Document Publised Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
+    echo "Document Publised Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
 
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
@@ -352,7 +353,7 @@ if ($_GET['do_model'] == 'do_membership') {
         ),
         array('%s')
     );
-    echo "Document Unpublised Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
+    echo "Document Unpublised Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
 } elseif ($_GET['do_model'] == 'do_doc_rejected') {
     $getx_result = $wpdb->update(
         'wp_ss_event_user_detail',
@@ -365,7 +366,7 @@ if ($_GET['do_model'] == 'do_membership') {
         ),
         array('%s')
     );
-    echo "Document Rejected Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
+    echo "Document Rejected Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
     $authkey = $user_detail['euser_activationkey'];
     $rejection_wording = $_GET['reason'];
 // ========= Email Block =========//
@@ -457,7 +458,7 @@ To continue the registration as a participant, simply click the button below.</p
         ),
         array('%s')
     );
-    echo "Document Approved Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
+    echo "Document Approved Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
     $approve_wording = sanitize_text_field( $_GET['reason'] );
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
@@ -579,7 +580,7 @@ To continue the registration as a participant, simply click the button below.</p
 
 
 } else {
-    echo "ERR21. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
+    echo "ERR21. Please Refresh your browser <kbd>[F5]</kbd>";
 }
 
 // echo "<pre>";
