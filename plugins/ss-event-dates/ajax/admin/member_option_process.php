@@ -213,7 +213,7 @@ if ($_GET['do_model'] == 'do_membership') {
     wp_mail($to, $subject, $body, $headers);
 
 // ========= END Email =========//
-} elseif ($_POST['do_model'] == 'do_abstract_revision') {
+} elseif ($_GET['do_model'] == 'do_abstract_revision') {
 
     if((isset($_FILES['abstract']) && $_FILES['abstract']!="") || (isset($_POST['abstract']) && $_POST['abstract']!="" ) ){
         
@@ -222,7 +222,7 @@ if ($_GET['do_model'] == 'do_membership') {
         $wpdb->update( 
             'wp_ss_event_user_detail', 
             array( 'euser_abstrak' => $get_id), 
-            array( 'euser_barcode' => $_POST['barcode']), 
+            array( 'euser_barcode' => $_GET['barcode']), 
             array( '%s'), 
             array( '%s' ) 
         );
@@ -254,8 +254,8 @@ if ($_GET['do_model'] == 'do_membership') {
 
     }else{
         echo "Document Empty<pre>";
-        var_dump($_FILES['abstract']);
-        echo "Barcode".$_POST['barcode'];
+        var_dump($_GET['abstract']);
+        echo "Barcode".$_GET['barcode'];
     }
         echo "</pre>Document uploaded Successfully <kbd>[F5]</kbd>";
 
