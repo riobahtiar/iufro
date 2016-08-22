@@ -215,7 +215,7 @@ if ($_GET['do_model'] == 'do_membership') {
 // ========= END Email =========//
 } elseif ($_GET['do_model'] == 'do_abstract_revision') {
 
-    if(isset($_FILES['abstract']) && $_FILES['abstract']!="" ){
+    if((isset($_FILES['abstract']) && $_FILES['abstract']!="") || (isset($_POST['abstract']) && $_POST['abstract']!="" ) ){
         
         $get_id = upload_user_file($_FILES['abstract']);
 
@@ -226,31 +226,31 @@ if ($_GET['do_model'] == 'do_membership') {
             array( '%s'), 
             array( '%s' ) 
         );
-    // Function to save file and generate to document ID
-    function upload_user_file( $file = array() ) {
-        require_once( ABSPATH . 'wp-admin/includes/admin.php' );
-        $file_return = wp_handle_upload( $file, array('test_form' => false ) );
-        if( isset( $file_return['error'] ) || isset( $file_return['upload_error_handler'] ) ) {
-            return false;
-        } else {
-            $filename = $file_return['file'];
-            $attachment = array(
-                'post_mime_type' => $file_return['type'],
-                'post_title' => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
-                'post_content' => '',
-                'post_status' => 'inherit',
-                'guid' => $file_return['url']
-            );
-            $attachment_id = wp_insert_attachment( $attachment, $file_return['url'] );
-            require_once(ABSPATH . 'wp-admin/includes/image.php');
-            $attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
-            wp_update_attachment_metadata( $attachment_id, $attachment_data );
-            if( 0 < intval( $attachment_id ) ) {
-                return $attachment_id;
+        // Function to save file and generate to document ID
+        function upload_user_file( $file = array() ) {
+            require_once( ABSPATH . 'wp-admin/includes/admin.php' );
+            $file_return = wp_handle_upload( $file, array('test_form' => false ) );
+            if( isset( $file_return['error'] ) || isset( $file_return['upload_error_handler'] ) ) {
+                return false;
+            } else {
+                $filename = $file_return['file'];
+                $attachment = array(
+                    'post_mime_type' => $file_return['type'],
+                    'post_title' => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+                    'post_content' => '',
+                    'post_status' => 'inherit',
+                    'guid' => $file_return['url']
+                );
+                $attachment_id = wp_insert_attachment( $attachment, $file_return['url'] );
+                require_once(ABSPATH . 'wp-admin/includes/image.php');
+                $attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
+                wp_update_attachment_metadata( $attachment_id, $attachment_data );
+                if( 0 < intval( $attachment_id ) ) {
+                    return $attachment_id;
+                }
             }
+            return false;
         }
-        return false;
-    }
 
     }else{
         echo "Document Empty<pre>";
