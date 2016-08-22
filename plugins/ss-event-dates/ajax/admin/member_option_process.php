@@ -215,9 +215,9 @@ if ($_GET['do_model'] == 'do_membership') {
 // ========= END Email =========//
 } elseif ($_GET['do_model'] == 'do_abstract_revision') {
 
-    if(isset($_FILES["abstract"]) && $_FILES["abstract"]!="" ){
+    if(isset($_FILES['abstract']) && $_FILES['abstract']!="" ){
         
-        $get_id = upload_user_file($_FILES["abstract"]);
+        $get_id = upload_user_file($_FILES['abstract']);
 
         $wpdb->update( 
             'wp_ss_event_user_detail', 
@@ -254,7 +254,7 @@ if ($_GET['do_model'] == 'do_membership') {
 
     }else{
         echo "Document Empty<pre>";
-        var_dump($_FILES["abstract"]);
+        var_dump($_FILES['abstract']);
     }
         echo "</pre>Document uploaded Successfully <kbd>[F5]</kbd>";
 
