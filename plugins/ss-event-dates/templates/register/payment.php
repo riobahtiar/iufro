@@ -174,7 +174,7 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 <?php echo 'Abstract Title'.$user_detail['euser_abstract_title']; ?>
 </div>
 <div class="col-md-3">
-<a href="<?php echo $abstract_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">File</a>
+<a class="btn btn-view" href="<?php echo $abstract_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">View</a>
 
 </div>
 <?php
@@ -187,7 +187,7 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 </div>
 
 <div class="col-md-3">
-<a href="<?php echo $paper_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">File</a>
+<a class="btn btn-view" href="<?php echo $paper_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">View</a>
 
 </div>
 
@@ -201,7 +201,7 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 </div>
 
 <div class="col-md-3">
-<a href="<?php echo $poster_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">File</a>
+<a class="btn btn-view" href="<?php echo $poster_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">View</a>
 </div>
 <?php
 }
