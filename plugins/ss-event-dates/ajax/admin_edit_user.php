@@ -24,7 +24,7 @@ $user_detail = $wpdb->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#membership" aria-controls="membership" role="tab" data-toggle="tab">Membership</a></li>
     <li role="presentation"><a href="#document" aria-controls="document" role="tab" data-toggle="tab">Documents Status</a></li>
-    <li role="presentation"><a href="#files" aria-controls="files" role="tab" data-toggle="tab">Files</a></li>
+    <li role="presentation"><a href="#files" aria-controls="files" role="tab" data-toggle="tab">Abstract</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -173,12 +173,11 @@ $user_detail = $wpdb->
             </div>
             <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
                 <input name="do_model" type="hidden" value="do_doc_publish">
-                    <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
+                <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                         <button class="btn btn-primary" type="submit">
                             Publish
                         </button>
-                    </input>
-                </input>
+
             </form>
             <?php } else { ?>
                 <strong>Something was wrong, contact Sys Administrator</strong>
@@ -186,11 +185,21 @@ $user_detail = $wpdb->
 <!-- end Document Moderation Changer --> 
     </div>
     <div role="tabpanel" class="tab-pane" id="files">
-        
 
-
-
-        
+<!-- Abstract Revision --> 
+<form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
+<input name="do_model" type="hidden" value="do_abstract_revision">
+<div class="form-group">
+    <label for="abstract"></label>
+    <input type="file" name="abstract" id="abstract">
+    <p class="help-block">Upload revised abstract</p>
+</div>
+<button class="btn btn-primary" type="submit">
+    Upload Revision
+</button>
+</form>
+<!-- Abstract Revision --> 
+    
     </div>
   </div>
 
