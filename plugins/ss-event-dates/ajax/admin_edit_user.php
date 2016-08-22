@@ -17,8 +17,21 @@ $user_detail = $wpdb->
     <link href="<?php echo plugins_url(); ?>/ss-event-dates/assets/bootstrap.min.css" rel="stylesheet">
     </head>
     <body style="padding: 17px">
+
+<div class="well">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#membership" aria-controls="membership" role="tab" data-toggle="tab">Membership</a></li>
+    <li role="presentation"><a href="#document" aria-controls="document" role="tab" data-toggle="tab">Documents Status</a></li>
+    <li role="presentation"><a href="#files" aria-controls="files" role="tab" data-toggle="tab">Files</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="membership">
         <!-- User Changer -->
-        <p class="bg-primary">
+        <p class="user-changer">
             <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
                 <h4>
                     User Type Changer
@@ -48,8 +61,11 @@ $user_detail = $wpdb->
                 </input>
             </form>
         </p>
-        <!-- User Changer -->
-<hr>
+        <!-- end User Changer -->        
+
+    </div>
+    <div role="tabpanel" class="tab-pane" id="document">
+<!-- Document Moderation Changer --> 
         <?php if ($user_detail['euser_doc_status'] == null) {?>
         <h4>
             Document Status:
@@ -155,7 +171,7 @@ $user_detail = $wpdb->
             <div class="well">
                If you have made a mistake, the button below can re-publish the document.
             </div>
-			<form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
+            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
                 <input name="do_model" type="hidden" value="do_doc_publish">
                     <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                         <button class="btn btn-primary" type="submit">
@@ -165,8 +181,20 @@ $user_detail = $wpdb->
                 </input>
             </form>
             <?php } else { ?>
-            	<strong>Something was wrong, contact Sys Administrator</strong>
+                <strong>Something was wrong, contact Sys Administrator</strong>
             <?php }?>
-        </hr>
+<!-- end Document Moderation Changer --> 
+    </div>
+    <div role="tabpanel" class="tab-pane" id="files">
+        
+
+
+
+        
+    </div>
+  </div>
+
+</div>
+
     </body>
 </html>
