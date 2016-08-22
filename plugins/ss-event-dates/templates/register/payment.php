@@ -210,6 +210,7 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 </div>
 <?php }?>
 <div class="col-md-12">
+<hr>
 <table class="table table-bordered">
     <thead>
       <tr class="success">
