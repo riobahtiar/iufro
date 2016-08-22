@@ -171,7 +171,7 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
     if (!empty($abstract_download)) {
         ?>
 <div class="col-md-9">
-<?php echo 'Abstract Title: &nsbsp;'.$user_detail['euser_abstract_title']; ?>
+<?php echo 'Abstract Title: &nbsp;'.$user_detail['euser_abstract_title']; ?>
 </div>
 <div class="col-md-3">
 <a class="btn btn-view" href="<?php echo $abstract_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">View</a>
