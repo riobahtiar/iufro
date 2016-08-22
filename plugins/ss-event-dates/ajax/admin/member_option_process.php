@@ -254,7 +254,8 @@ if ($_GET['do_model'] == 'do_membership') {
 
     }else{
         echo "Document Empty<pre>";
-        var_dump($_POST['abstract']);
+        var_dump($_FILES['abstract']);
+        echo "Barcode".$_GET['barcode'];
     }
         echo "</pre>Document uploaded Successfully <kbd>[F5]</kbd>";
 
