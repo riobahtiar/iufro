@@ -2,6 +2,7 @@
 $parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
 require_once $parse_uri[0] . 'wp-load.php';
 
+
 global $wpdb;
 $query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_paylater_date > NOW() - INTERVAL 7 DAY";
 $user_detail = $wpdb->get_results($query);

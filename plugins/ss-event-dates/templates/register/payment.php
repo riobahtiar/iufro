@@ -162,6 +162,7 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
     ?>
 <div class="col-md-12">
 <h5>Your Documents</h5>
+<div class="row">
 <?php
 //Abstract URL
     $abstract_download = wp_get_attachment_url($user_detail['euser_abstrak']);
@@ -169,26 +170,37 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
     $poster_download   = wp_get_attachment_url($user_detail['euser_poster']);
     if (!empty($abstract_download)) {
         ?>
+
 <div class="row">
 <div class="col-md-10">
 <?php echo 'Abstract Title: &nbsp;'.$user_detail['euser_abstract_title']; ?>
 </div>
 <div class="col-md-2">
 <a class="btn btn-view" href="<?php echo $abstract_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">View</a>
+
+
+<div class="col-md-9">
+<?php echo 'Abstract Title'.$user_detail['euser_abstract_title']; ?>
 </div>
+<div class="col-md-3">
+<a href="<?php echo $abstract_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">File</a>
+
 </div>
 <?php
 }
     if (!empty($paper_download)) {
         ?>
 
-<div class="row">
-<div class="col-md-10">
+<div class="col-md-9">
 <?php echo 'Full Paper'; ?>
 </div>
+
 <div class="col-md-2">
 <a class="btn btn-view" href="<?php echo $paper_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">View</a>
-</div>
+
+<div class="col-md-3">
+<a href="<?php echo $paper_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">File</a>
+
 </div>
 
 <?php
@@ -196,19 +208,24 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
     if (!empty($poster_download)) {
         //var_dump($poster_download);
         ?>
-<div class="row">
-<div class="col-md-10">
+<div class="col-md-9">
 <?php echo 'Poster'; ?>
 </div>
+
 <div class="col-md-2">
 <a class="btn btn-view" href="<?php echo $poster_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">View</a>
-</div>
+
+<div class="col-md-3">
+<a href="<?php echo $poster_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">File</a>
+
 </div>
 <?php
 }
     ?>
+
 </div>
 <?php }?>
+</div>
 <div class="col-md-12">
 <hr>
 <br>
