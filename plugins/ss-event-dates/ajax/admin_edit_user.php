@@ -93,7 +93,7 @@ $user_detail = $wpdb->
 
                 <input name="do_model" type="hidden" value="do_doc_rejected">
                 <p>Reject Document? </p>
-                <textarea class="form-control" rows="3" placeholder="Reason.." name="reason"></textarea>
+                <textarea class="form-control" rows="3" placeholder="Reason.." name="reason_reject"></textarea>
                 <br>
                     <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                         <button class="btn btn-danger" type="submit">
@@ -208,6 +208,7 @@ $user_detail = $wpdb->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script>
     CKEDITOR.replace( 'reason' );
+    CKEDITOR.replace( 'reason_reject' );
 </script>
     </body>
 </html>

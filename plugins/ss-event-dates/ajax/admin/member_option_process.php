@@ -362,7 +362,7 @@ if ($_POST['do_model'] == 'do_membership') {
     );
     echo "Document Rejected Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
     $authkey = $user_detail['euser_activationkey'];
-    $rejection_wording = $_POST['reason'];
+    $rejection_wording = $_POST['reason_reject'];
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
     $subject = 'Document Rejected Notification | IUFRO ACACIA 2017';
