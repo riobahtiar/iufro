@@ -432,8 +432,8 @@ To continue the registration as a participant, simply click the button below.</p
 
 </html>
 ';
-
-    $headers[] = 'Content-Type: text/html; charset=UTF-8';
+    $headers[] = 'MIME-Version: 1.0\r\n';
+    $headers[] = 'Content-Type: text/html; charset=ISO-8859-1\r\n';
     $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
     $headers[] = 'Cc: IUFRO Keeper <keep@iufroacacia2017.com>';
     wp_mail($to, $subject, $body, $headers);
@@ -493,9 +493,9 @@ To continue the registration as a participant, simply click the button below.</p
             </div>
             <div>
 <p>This is to inform you that your document has been approved by us. </p>
-<br><p>
+<br>
  '.$approve_wording.' 
-</p><br>
+<br>
  <p> In order to continue the registration process, you have to complete the payment.</p>
 
 <p>Below is your payment detail :</p>
@@ -568,7 +568,8 @@ To continue the registration as a participant, simply click the button below.</p
 </html>
 ';
 
-    $headers[] = 'Content-Type: text/html; charset=UTF-8';
+    $headers[] = 'MIME-Version: 1.0\r\n';
+    $headers[] = 'Content-Type: text/html; charset=ISO-8859-1\r\n';
     $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
     $headers[] = 'Cc: IUFRO Keeper <keep@iufroacacia2017.com>';
     wp_mail($to, $subject, $body, $headers);
