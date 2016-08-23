@@ -33,6 +33,7 @@ $user_detail = $wpdb->get_results($query);
 echo "<pre>";
 foreach ($user_detail as $vuser) {
 /// ======= FPDF BLOCK ============ ///
+date_default_timezone_set("Asia/Jakarta");
 $barcodeno = $vuser->euser_barcode;
     require_once $parse_uri[0] . 'wp-content/plugins/ss-event-dates/addons/fpdf/eticket.php';
     $title = 'IUFRO ACACIA CONFERENCE 2017';
@@ -97,15 +98,15 @@ $barcodeno = $vuser->euser_barcode;
 
 // Conditional Pricing by User Type
     if ($vuser->euser_type == 'local regular') {
-        $pdf->Write(5, ' Payment :' . formatIDR(750000));
+        $pdf->Write(5, ' Payment : Rp. 750.000,-');
         $wording_price = '&nbsp; &nbsp;&nbsp;&nbsp;>  &nbsp;Local participant : Rp. 750.000,-<br>';
 
     } else if ($vuser->euser_type == 'local student') {
-        $pdf->Write(5, ' Payment :' . formatIDR(250000));
+        $pdf->Write(5, ' Payment : Rp. 250.000,-');
         $wording_price = '&nbsp; &nbsp;&nbsp;&nbsp;>  &nbsp;Local students : Rp. 250.000,-<br>';
     } else {
         $wording_price = ' &nbsp; &nbsp;&nbsp;&nbsp;>  &nbsp;Foreign participant : US$ 550';
-        $pdf->Write(5, ' Payment : US$' . $payment_amount);
+        $pdf->Write(5, ' Payment : US$ 550');
     }
 
     $pdf->SetXY(50, 200);
@@ -162,10 +163,8 @@ You will no longer able to register or pay online.
 <br>
 User that still haven\'t finish the online payment process can continue the payment process onsite, by bringing the e-ticket (attached on this email).
 Please be advised that :<br>
-  &nbsp;&nbsp;-  &nbsp;The conference fee for onsite payment will be :
-<br>
-'.$wording_price.'
-<br>
+  &nbsp;&nbsp;-  &nbsp;The conference fee for onsite payment will be :<br>
+'.$wording_price.'<br>
   &nbsp;&nbsp;-  &nbsp;Onsite payment user will lose the right to join Mid and Post Trip, and also Conference Dinner
 </p>
 
@@ -193,6 +192,7 @@ Please be advised that :<br>
 
     echo "<br>Email Send to " . $vuser->euser_fullname . " at " . date("Y-m-d H:i:s") . "<hr>";
     // ==== UPDATE DATE PAYMENT ==== //
+    $euser_email = $vuser->euser_email;
     $wpdb->update(
         'wp_ss_event_user_detail',
         array(
