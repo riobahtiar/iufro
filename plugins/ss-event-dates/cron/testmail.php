@@ -17,7 +17,7 @@ $string_post_conf = 'String Post Conf';
 $string_dinner = 'Yes';
 $idr_total = 6999000;
 
-
+$upload_dir = wp_upload_dir();
 /// ======= FPDF BLOCK ============ ///
 
     require_once $parse_uri[0] . 'wp-content/plugins/ss-event-dates/addons/fpdf/eticket.php';
