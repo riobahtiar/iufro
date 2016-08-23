@@ -492,7 +492,11 @@ To continue the registration as a participant, simply click the button below.</p
                 Document Approved Notification | IUFRO ACACIA 2017
             </div>
             <div>
-<p>This is to inform you that your document has been approved by us. <br> '.$approve_wording.' </br> In order to continue the registration process, you have to complete the payment.</p>
+<p>This is to inform you that your document has been approved by us. </p>
+<br><p>
+ '.$approve_wording.' 
+</p><br>
+ <p> In order to continue the registration process, you have to complete the payment.</p>
 
 <p>Below is your payment detail :</p>
 
@@ -550,7 +554,8 @@ To continue the registration as a participant, simply click the button below.</p
             <div>
                 <p>PAYMENT METHOD </p>
                 <p>We accept the payment via Paypal and iPaymu. Please access to your payment page by <a href="http://www.iufroacacia2017.com/login">Login</a> to your account and choose menu payment summary on Dashboard page</p>
-                <p style="font-style:italic;">*Registration fee will be determined based on the date you do the payment (early bird / regular), or by your type of user (local/foreigner/student).</p>
+                <p style="font-style:italic;">*The closing date for the online payment will be on 21st June 2017. You will not be able to do the online payment after the closing date.</p>
+                <p style="font-style:italic;">Registration fee will be determined based on the date you do the payment (early bird / regular), or by your type of user (local/foreigner/student).</p>
                 <p style="font-size:16px;">Should you require any further assistance, please do not hesitate to contact us on address below: </p>
                 <p style="font-size:12px;margin: 0;color:#809062">Center of Forest Biotechnology and Tree Improvement</p>
                 <p style="font-size:12px;margin: 0;color:#809062">Jl. Palagan Tentara Pelajar KM 15 Purwobinangun, Pakem, Sleman, Yogyakarta 55582</p>
