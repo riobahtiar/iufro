@@ -140,7 +140,7 @@ User that still haven\'t finish the online payment process can continue the paym
 Please be advised that :<br>
   &nbsp;&nbsp;-  &nbsp;The conference fee for onsite payment will be :
 <br>
- &nbsp; &nbsp;>  &nbsp;Local author/participant : Rp. 750.000,-
+ &nbsp; &nbsp;>  &nbsp;Local author/participant : Rp. 750.000,-<br>
  &nbsp; &nbsp;>  &nbsp;Foreign author/participant : US$ 550
 <br>
   &nbsp;&nbsp;-  &nbsp;Onsite payment user will lose the right to join Mid and Post Trip, and also Conference Dinner
