@@ -7,9 +7,6 @@
 $parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
 require_once $parse_uri[0] . 'wp-load.php';
 
-
-
-
 global $wpdb;
 $query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_paylater_date > NOW() - INTERVAL 14 DAY";
 $user_detail = $wpdb->get_results($query);
@@ -85,10 +82,11 @@ Please complete the payment before 24 July 2017.<p>
 
     echo "<br>Email Send to " . $vuser->euser_fullname . " at " . date("Y-m-d H:i:s") . "<hr>";
     // ==== UPDATE DATE PAYMENT ==== //
+    $euser_email = $vuser->euser_email;
     $wpdb->update(
         'wp_ss_event_user_detail',
         array(
-            'euser_payment_status' => 'have not been paid for more than 14 days(cron)',
+            'euser_payment_meta' => 'have not been paid for more than 14 days(cron)',
             'euser_paylater_date'  => date("Y-m-d H:i:s"),
         ),
         array('euser_email' => $euser_email),
