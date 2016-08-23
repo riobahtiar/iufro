@@ -18,6 +18,15 @@ $string_dinner = 'Yes';
 $idr_total = 6999000;
 
 $upload_dir = wp_upload_dir();
+
+function formatIDR($nominal=0){
+$jumlah_desimal ="0";
+$pemisah_desimal =",";
+$pemisah_ribuan =".";
+echo "Rp ".number_format($nominal, $jumlah_desimal, $pemisah_desimal, $pemisah_ribuan).",-";
+}
+
+
 /// ======= FPDF BLOCK ============ ///
 
     require_once $parse_uri[0] . 'wp-content/plugins/ss-event-dates/addons/fpdf/eticket.php';
@@ -80,7 +89,7 @@ $upload_dir = wp_upload_dir();
     $pdf->SetXY(45, 89);
     $pdf->Write(5, 'Membership Type : ' . $user_string . ' ' . $user_type);
     $pdf->SetXY(45, 95);
-    $pdf->Write(5, ' Payment : US$' . $payment_amount);
+    $pdf->Write(5, ' Payment :' . formatIDR($payment_amount));
 
     $pdf->SetXY(50, 200);
     $pdf->SetFont('Arial', '', 10);
@@ -140,8 +149,8 @@ User that still haven\'t finish the online payment process can continue the paym
 Please be advised that :<br>
   &nbsp;&nbsp;-  &nbsp;The conference fee for onsite payment will be :
 <br>
- &nbsp; &nbsp;>  &nbsp;Local author/participant : Rp. 750.000,-<br>
- &nbsp; &nbsp;>  &nbsp;Foreign author/participant : US$ 550
+ &nbsp; &nbsp;&nbsp;&nbsp;>  &nbsp;Local author/participant : Rp. 750.000,-<br>
+ &nbsp; &nbsp;&nbsp;&nbsp;>  &nbsp;Foreign author/participant : US$ 550
 <br>
   &nbsp;&nbsp;-  &nbsp;Onsite payment user will lose the right to join Mid and Post Trip, and also Conference Dinner
 </p>
