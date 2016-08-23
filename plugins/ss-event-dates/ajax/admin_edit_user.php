@@ -77,7 +77,8 @@ $user_detail = $wpdb->
         <!--  Approved -->
         <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" method="post">
             <input name="do_model" type="hidden" value="do_doc_approved">
-            <p>Approve Document? </p>
+            <h5>Approve Document? </h5>
+            <p>Write reason why document is Approved or add notes for revision.(Optional)</p>
             <textarea class="form-control" rows="3" placeholder="Reason.." name="reason"></textarea>
             <br>
                 <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
@@ -92,7 +93,8 @@ $user_detail = $wpdb->
             <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" method="post">
 
                 <input name="do_model" type="hidden" value="do_doc_rejected">
-                <p>Reject Document? </p>
+                <h5>Reject Document? </h5>
+                <p>Write reason why document is rejected.(Optional)</p>
                 <textarea class="form-control" rows="3" placeholder="Reason.." name="reason_reject"></textarea>
                 <br>
                     <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
