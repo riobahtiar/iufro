@@ -296,10 +296,14 @@ echo "Current IDR Rates US$1 = IDR " . $idr_good . "<br> Source : <a href='http:
 <input type="hidden" name="payname" value="IAC17-<?php echo $product_name ?>">
 <div>
     <a href="<?php echo get_permalink() . "?step=addon"; ?>" class="btn btn-default pull-left">Back</a>
-<?php if ($user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] !== null || $user_detail['euser_meta_type'] == "participant_type" || $user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] == 'accepted') {?>
+<?php if ($user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] !== null || $user_detail['euser_meta_type'] == "participant_type" || $user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] == 'accepted') {
+
+// Check if Payment Done or Onsite
+ if ( $user_detail['euser_payment_status'] !== 'onsite-payment' || $user_detail['euser_payment_status'] !== 'berhasil-iPaymu' || $user_detail['euser_payment_status'] !== 'Completed-Paypal' ) { ?>
+
     <button type="submit" name="submit" class="btn btn-default pull-right" value="payment">Pay Now</button>
     <a href="<?php echo get_permalink(); ?>?step=pay_later" class="btn btn-default pull-right">Pay Later</a>
-<?php }?>
+<?php } } ?>
 </div>
 </form>
 </div>
