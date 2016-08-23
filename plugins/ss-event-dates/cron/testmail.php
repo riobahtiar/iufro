@@ -4,7 +4,7 @@ require_once $parse_uri[0] . 'wp-load.php';
 
 global $wpdb;
 
-$barcodeno = 19027867676;
+$barcodeno = 5645346363456;
 $user_detail[] = array();
 $user_detail['euser_fullname'] = 'Test Bahtiar';
 $user_detail['euser_address'] = 'Jalan Kaliurang';
@@ -80,14 +80,6 @@ $upload_dir = wp_upload_dir();
     $pdf->SetXY(45, 89);
     $pdf->Write(5, 'Membership Type : ' . $user_string . ' ' . $user_type);
     $pdf->SetXY(45, 95);
-    $pdf->Write(5, 'Field Trip :');
-    $pdf->SetXY(47, 102);
-    $pdf->Write(5, ' ~ Mid Conference : ' . $string_mid_conf);
-    $pdf->SetXY(47, 108);
-    $pdf->Write(5, ' ~ Post Conference : ' . $string_post_conf);
-    $pdf->SetXY(45, 114);
-    $pdf->Write(5, ' Conference Dinner : ' . $string_dinner);
-    $pdf->SetXY(45, 120);
     $pdf->Write(5, ' Payment : US$' . $payment_amount);
 
     $pdf->SetXY(50, 200);
@@ -104,7 +96,7 @@ $upload_dir = wp_upload_dir();
 
     // === SEND USER EMAIL === //
     $to      = 'gamma@softwareseni.com';
-    $subject = 'Reminder for Payment | IUFRO ACACIA CONFERENCE 2017';
+    $subject = 'Registration Closed | IUFRO ACACIA CONFERENCE 2017';
     $body    = '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -146,12 +138,12 @@ You will no longer able to register or pay online.
 <br>
 User that still haven\'t finish the online payment process can continue the payment process onsite, by bringing the e-ticket (attached on this email).
 Please be advised that :<br>
-  &nsbp;&nsbp;-  &nsbp;The conference fee for onsite payment will be :
+  &nbsp;&nbsp;-  &nbsp;The conference fee for onsite payment will be :
 <br>
- &nsbp; &nsbp;>  &nsbp;Local author/participant : Rp. 750.000,-
- &nsbp; &nsbp;>  &nsbp;Foreign author/participant : US$ 550
+ &nbsp; &nbsp;>  &nbsp;Local author/participant : Rp. 750.000,-
+ &nbsp; &nbsp;>  &nbsp;Foreign author/participant : US$ 550
 <br>
-  &nsbp;&nsbp;-  &nsbp;Onsite payment user will lose the right to join Mid and Post Trip, and also Conference Dinner
+  &nbsp;&nbsp;-  &nbsp;Onsite payment user will lose the right to join Mid and Post Trip, and also Conference Dinner
 </p>
 
             </div>
