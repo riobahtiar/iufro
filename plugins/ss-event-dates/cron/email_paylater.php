@@ -61,9 +61,9 @@ foreach ($user_detail as $vuser) {
 
 <p>But please be advised that :<br>
 - The conference fee for onsite payment will be : <br>
- > Local author/participant : Rp. 750.000,-<br>
- > Foreign author/participant : US$ 550<br>
-- Onsite payment user will lose the right to join Mid and Post Trip, and also Conference Dinner</p>
+ > Local author/participant : <strong>Rp. 750.000,-</strong><br>
+ > Foreign author/participant : <strong>US$ 550</strong><br>
+- Onsite payment user will <strong>lose the right</strong> to join Mid and Post Trip, and also Conference Dinner</p>
 
             </div>
             <div>
