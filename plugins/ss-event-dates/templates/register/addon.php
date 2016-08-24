@@ -154,15 +154,15 @@ $dinner_av = $ss_theme_opt['text-dinner'] - $dinner_rows;
 <?php 
 if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 ?>
+	<div class="well well-photo">
+		<label> <span>Upload Profile Picture*</span> <input id="profile_pict" name="profile_pict" type="file" /> </label>
+	</div>
 
 <div class="well">
 <input id="okeread" type="checkbox" name="readme_ok" value="readme">&nbsp;I have read all  <a href="<?php echo get_permalink(); ?>/poster">the guidelines</a>, and ready to upload
 </div>
 	<div class="col-md-6 abstract-tit">
 		<label> <span>Abstract Title*</span> <textarea id="abs_title" name="euser_abstract_title" class="form-control" rows="1"></textarea> </label>
-	</div>
-	<div class="col-md-6 abstract-tit">
-		<label> <span>Upload Profile Picture*</span> <input id="profile_pict" name="profile_pict" type="file" /> </label>
 	</div>
 	<div class="field-trip col-md-4">
 		<label> <span>Upload Abstract*</span> <input id="mydoc1" name="abstrak" type="file" /></label>
