@@ -10,6 +10,14 @@ global $wpdb;
 global $ss_theme_opt; 
 $query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email}'";
 $user_detail = $wpdb->get_row($query, ARRAY_A);
+$wpdb->update( 
+    'wp_ss_event_user_detail', 
+    array( 'euser_payment' => '2'), 
+    array( 'euser_email' => $euser_email ), 
+    array( '%s'), 
+    array( '%s' ) 
+);
+
 
 // ======== Start Payment Conditional Block ======== //
 
