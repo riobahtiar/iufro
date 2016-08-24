@@ -13,11 +13,6 @@ $idr_rates    = getCurrencyRate('USD','IDR');
 $idr_good     = round($idr_rates);
 //echo "Rates ID:".$idr_rates." Dibulatkan: ".$idr_good;
 // get Get User Login
-echo "<pre>";
-var_dump(getCurrencyRate('USD','IDR'));
-echo "<hr>";
-var_dump(getCurrencyRate(USD,IDR));
-echo "</pre>";
 global $current_user;
 wp_get_current_user();
 $euser_email = $current_user->user_email;

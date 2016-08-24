@@ -888,8 +888,8 @@ add_shortcode('participant_converter', 'participant_converter');
 
 function getCurrencyRate($from, $to) {
    $value = get_transient($from . $to);
-   $app_id = '242fb9ae64974346985dcec68f9986e8';
-   $url = 'https://openexchangerates.org/api/latest.json';
+   $app_id = '27e792f1d35846d6843fbde98fcce097';
+   $url = 'http://openexchangerates.org/api/historical/' . date('Y-m-d') . '.json';
 
    if ($value != '' && $value != 0) {
        $result = $value;
