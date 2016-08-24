@@ -156,7 +156,7 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 ?>
 	<div class="well well-photo">
 		<label> <span>Upload Profile Picture*</span> <input id="profile_pict" name="profile_pict" type="file" /> </label><hr>
-		* Allowed file: JPEG / JPG / PNG. Maximum file size: 5MB
+		<small>* Allowed file: JPEG / JPG / PNG. Maximum file size: 5MB</small>
 	</div>
 
 <div class="well">
@@ -167,15 +167,15 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 	</div>
 	<div class="field-trip col-md-4">
 		<label> <span>Upload Abstract*</span> <input id="mydoc1" name="abstrak" type="file" /></label>
-		* Allowed file: PDF / RTF / DOC / DOCX. Maximum file size: 5MB
+		<small>* Allowed file: PDF / RTF / DOC / DOCX. Maximum file size: 10MB</small>
 	</div>
 	<div class="field-trip col-md-4">
 		<label>  <span>Upload Paper</span> <input id="mydoc2" name="paper" type="file" /></label>
-		* Allowed file: PDF / RTF / DOC / DOCX. Maximum file size: 10MB
+		<small>* Allowed file: PDF / RTF / DOC / DOCX. Maximum file size: 10MB</small>
 	</div>
 	<div class="field-trip col-md-4">
 		<label> <span>Upload Poster</span> <input id="mydoc3" name="poster" type="file" /></label>
-		* Allowed file: PDF / RTF / DOC / DOCX. Maximum file size: 10MB
+		<small>* Allowed file: PDF / RTF / DOC / DOCX. Maximum file size: 10MB</small>
 	</div>
 	<div>
 <?php } ?>
