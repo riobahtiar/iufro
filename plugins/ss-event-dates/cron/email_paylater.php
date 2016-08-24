@@ -54,10 +54,10 @@ foreach ($user_detail as $vuser) {
             <div>
 
 <p>We notice that you have not finished your payment until a predetermined time. Because of that reason, your order for the conference trip and dinner has been automatically canceled by our system.</p>
-<p>You can re-order the conference trip by logging into your account and choose the desired conference trip (as long as there are seats remaining).</p>
+<p>You can re-order the conference trip and dinner by <a href="http://www.iufroacacia2017.com/login">Login</a> to your account and choose the desired conference trip (as long as there are seats remaining).</p>
 
-<p>The closing date for online registration and online payment is 21st June 2017
-You will no longer able to register or pay online after the closing date, but you still able to pay onsite.</p>
+<p>The closing date for online registration and online payment is <strong>21st June 2017</strong>.</p>
+<p>You will no longer able to register or pay online after the closing date, but you still able to pay onsite.</p>
 
 <p>But please be advised that :<br>
 - The conference fee for onsite payment will be : <br>
@@ -67,7 +67,6 @@ You will no longer able to register or pay online after the closing date, but yo
 
             </div>
             <div>
-            <br>
             <div>
                 <p>PAYMENT METHOD </p>
                 <p>We accept the payment via Paypal and iPaymu. Please access to your payment page by <a href="http://www.iufroacacia2017.com/login">Login</a> to your account and choose menu payment summary on Dashboard page</p>
