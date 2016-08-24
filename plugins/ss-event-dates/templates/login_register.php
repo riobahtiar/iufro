@@ -1,7 +1,15 @@
 <?php if(!is_user_logged_in()){ ?>
 	<div class="ss-btn-group">
 		<a href="<?php echo get_site_url();?>/login" class="ss-head-btn-login">Login</a>
+	<?php 
+date_default_timezone_set("Asia/Bangkok");
+// is close date or not
+$today    = date('Y-m-d');
+$closed = '2016-08-24';
+if ($today !== $closed ){
+	 ?>
 		<a href="<?php echo get_site_url();?>/register" class="ss-head-btn-register">Register</a>
+<?php } ?>
 	</div>
 <?php } else { ?>
 	<div class="ss-btn-group">

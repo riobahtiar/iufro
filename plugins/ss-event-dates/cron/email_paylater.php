@@ -8,8 +8,8 @@ $parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
 require_once $parse_uri[0] . 'wp-load.php';
 
 global $wpdb;
-//$query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_paylater_date > NOW() - INTERVAL 14 DAY";
-$query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_payment_status = 'onsite-payment'";
+$query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_paylater_date > NOW() - INTERVAL 14 DAY";
+//$query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_payment_status = 'onsite-payment'";
 $user_detail = $wpdb->get_results($query);
 echo "<pre>";
 foreach ($user_detail as $vuser) {
@@ -68,7 +68,7 @@ foreach ($user_detail as $vuser) {
             </div>
             <div>
             <div>
-                <p>PAYMENT METHOD </p>
+                <p><strong>PAYMENT METHOD</strong> </p>
                 <p>We accept the payment via Paypal and iPaymu. Please access to your payment page by <a href="http://www.iufroacacia2017.com/login">Login</a> to your account and choose menu payment summary on Dashboard page</p>
                 <p style="font-style:italic;">*Registration fee will be determined based on the date you do the payment (early bird / regular), or by your type of user (local/foreigner/student).</p>
                 <p style="font-size:16px;">Should you require any further assistance, please do not hesitate to contact us on address below: </p>
