@@ -5,9 +5,13 @@
 date_default_timezone_set("Asia/Bangkok");
 global $ss_theme_opt;
 // is close date or not
-$today    = date('Y-m-d');
-$closed = date('Y-m-d', strtotime($ss_theme_opt['date_close']));
-if ($today !== $closed ){
+// $today    = date('Y-m-d');
+// $closed = date('Y-m-d', strtotime($ss_theme_opt['date_close']));
+
+$today    = strtotime(date('Y-m-d'));
+$closed = strtotime($ss_theme_opt['date_close']);
+
+if ($today > $closed ){
 	 ?>
 		<a href="<?php echo get_site_url();?>/register" class="ss-head-btn-register">Register</a>
 <?php } ?>
