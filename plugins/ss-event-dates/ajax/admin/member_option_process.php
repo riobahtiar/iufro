@@ -259,8 +259,32 @@ if ($_POST['do_model'] == 'do_membership') {
     echo "<pre>";
     var_dump($_FILES['abstract']);
     echo "</pre>";
-
-
+} elseif ($_POST['do_model'] == 'do_absence') {
+    $getx_result = $wpdb->update(
+        'wp_ss_event_user_detail',
+        array(
+            'euser_onsite_absence' => 'present',
+        ),
+        array('euser_barcode' => $_POST['barcode']),
+        array(
+            '%s',
+        ),
+        array('%s')
+    );
+    echo "[Success]User set as present,";
+} elseif ($_POST['do_model'] == 'do_change_payment') {
+    $getx_result = $wpdb->update(
+        'wp_ss_event_user_detail',
+        array(
+            'euser_payment_status' => 'Paid-Onsite',
+        ),
+        array('euser_barcode' => $_POST['barcode']),
+        array(
+            '%s',
+        ),
+        array('%s')
+    );
+    echo "[Success]User set as Paid,";
 } elseif ($_POST['do_model'] == 'do_doc_publish') {
     $getx_result = $wpdb->update(
         'wp_ss_event_user_detail',

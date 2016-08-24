@@ -189,13 +189,13 @@ $user_detail = $wpdb->
 <!-- end Document Moderation Changer --> 
     </div>
     <div role="tabpanel" class="tab-pane" id="files">
-
+<h3>Upload revised abstract</h3>
 <!-- Abstract Revision --> 
 <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" method="post" enctype="multipart/form-data">
 <input name="do_model" type="hidden" value="do_abstract_revision">
 <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
 <div class="form-group">
-    <label for="abstract">Upload revised abstract</label>
+    <label for="abstract"></label>
     <input type="file" name="abstract" id="abstract">
     <p class="help-block">for publication only pdf file</p>
 </div>
