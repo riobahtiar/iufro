@@ -214,12 +214,16 @@ $user_detail = $wpdb->
 </form>
 <hr>
 <!-- Onsite Payment -->
+<?php if ( $user_detail['euser_payment_status'] !== 'Paid-Onsite' || $user_detail['euser_payment_status'] !== 'berhasil-iPaymu' || $user_detail['euser_payment_status'] !== 'Complete-paypal' ) { ?>
+
 <h3>Onsite Payment</h3>
 <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" method="post">
 <input name="do_model" type="hidden" value="do_change_payment">
 <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
 <input type="submit" name="submit" class="btn btn-default" value="Set as Paid">
 </form>
+
+<?php ?>
 <!-- endOnsite Payment --> 
 </div>
   </div>
