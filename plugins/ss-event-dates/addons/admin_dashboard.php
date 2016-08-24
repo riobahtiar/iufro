@@ -416,6 +416,7 @@ $abstract_download = wp_get_attachment_url($show_me->euser_abstrak);
         $paper_download    = wp_get_attachment_url($show_me->euser_paper);
         $poster_download   = wp_get_attachment_url($show_me->euser_poster);
         $ktm_download      = wp_get_attachment_url($show_me->euser_stdcard_id);
+        $profile_pict_download      = wp_get_attachment_url($show_me->euser_profile_pict);
         if (!empty($abstract_download)) {
             ?>
 Abstract &nbsp;<a href="<?php echo $abstract_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Download</a><br>
@@ -429,6 +430,13 @@ Paper &nbsp;<a href="<?php echo $paper_download; ?>" onclick="window.open(this.h
         if (!empty($poster_download)) {
             ?>
 Poster &nbsp;<a href="<?php echo $poster_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Download</a><br>
+
+<?php
+}
+        if (!empty($profile_pict_download)) {
+            ?>
+Profile Picture &nbsp;<a href="<?php echo $profile_pict_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Download</a><br>
+
 
 <?php
 }
