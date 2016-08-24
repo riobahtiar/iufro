@@ -26,7 +26,8 @@ $user_detail = $wpdb->
     <li role="presentation" class="active"><a href="#membership" aria-controls="membership" role="tab" data-toggle="tab">Membership</a></li>
     <li role="presentation"><a href="#document" aria-controls="document" role="tab" data-toggle="tab">Documents Status</a></li>
     <li role="presentation"><a href="#files" aria-controls="files" role="tab" data-toggle="tab">Abstract</a></li>
-  </ul>
+    <li role="presentation"><a href="#onsite" aria-controls="onsite" role="tab" data-toggle="tab">Onsite</a></li>
+</ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
@@ -203,6 +204,24 @@ $user_detail = $wpdb->
 <!-- Abstract Revision --> 
     
     </div>
+<div role="tabpanel" class="tab-pane" id="onsite">
+<!-- Absence -->
+<h3>Absence</h3>
+<form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" method="post">
+<input name="do_model" type="hidden" value="do_absence">
+<input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
+<input type="submit" name="submit" class="btn btn-default" value="Set as Present">
+</form>
+<hr>
+<!-- Onsite Payment -->
+<h3>Onsite Payment</h3>
+<form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" method="post">
+<input name="do_model" type="hidden" value="do_change_payment">
+<input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
+<input type="submit" name="submit" class="btn btn-default" value="Set as Paid">
+</form>
+<!-- endOnsite Payment --> 
+</div>
   </div>
 
 </div>
