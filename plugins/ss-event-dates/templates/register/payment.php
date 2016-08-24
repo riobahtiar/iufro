@@ -5,21 +5,11 @@ if (isset($_GET['step']) && $_GET['step'] == "payment") {
     $post_url = "";
 }
 
-// Get Rupiah Rates
-$app_id  = '242fb9ae64974346985dcec68f9986e8';
-$oxr_url = "https://openexchangerates.org/api/latest.json?app_id=" . $app_id;
 
-// Open CURL session:
-$ch = curl_init($oxr_url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-// Get the data:
-$json = curl_exec($ch);
-curl_close($ch);
 
 // Decode JSON response:
 $latest_price = json_decode($json);
-$idr_rates    = $latest_price->rates->IDR;
+$idr_rates    = getCurrencyRate('USD','IDR');
 $idr_good     = round($idr_rates);
 //echo "Rates ID:".$idr_rates." Dibulatkan: ".$idr_good;
 // get Get User Login

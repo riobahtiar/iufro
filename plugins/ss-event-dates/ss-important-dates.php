@@ -883,3 +883,24 @@ function participant_converter(){
 }
 
 add_shortcode('participant_converter', 'participant_converter');
+
+// Transient for currency
+
+function getCurrencyRate($from, $to) {
+   $value = get_transient($from . $to);
+   $app_id = '242fb9ae64974346985dcec68f9986e8';
+   $url = 'https://openexchangerates.org/api/latest.json';
+
+   if ($value != '' && $value != 0) {
+       $result = $value;
+   } else {
+       $data = file_get_contents($url . '?app_id=' . $app_id . '&base=' . $from . '&symbols=' . $to);
+
+       $json = json_decode($data);
+       $result = (float) $json->rates->{$to};
+       set_transient($from . $to, $result, 3 * HOUR_IN_SECONDS);
+   }
+
+   return $result;
+}
+
