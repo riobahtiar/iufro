@@ -264,8 +264,8 @@ if (isset($show_me->euser_addon_dinner)) {
 // Payment Dates Earlybird
 $paymentDate    = date('Y-m-d');
 $paymentDate    = date('Y-m-d', strtotime($paymentDate));
-$earlyBirdBegin = date('Y-m-d', strtotime("01/1/2016"));
-$earlyBirdEnd   = date('Y-m-d', strtotime("04/30/2017"));
+$earlyBirdBegin = date('Y-m-d', strtotime($ss_theme_opt['date_earlybird_start']));
+$earlyBirdEnd   = date('Y-m-d', strtotime($ss_theme_opt['date_earlybird_end']));
 
 if ($show_me->euser_type == "local student") {
     $user_string = "Local | Students";

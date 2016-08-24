@@ -3,9 +3,10 @@
 		<a href="<?php echo get_site_url();?>/login" class="ss-head-btn-login">Login</a>
 	<?php 
 date_default_timezone_set("Asia/Bangkok");
+global $ss_theme_opt;
 // is close date or not
 $today    = date('Y-m-d');
-$closed = '2016-08-24';
+$closed = date('Y-m-d', strtotime($ss_theme_opt['date_close']));
 if ($today !== $closed ){
 	 ?>
 		<a href="<?php echo get_site_url();?>/register" class="ss-head-btn-register">Register</a>
