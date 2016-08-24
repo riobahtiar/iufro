@@ -11,7 +11,7 @@ global $ss_theme_opt;
 $today    = strtotime(date('Y-m-d'));
 $closed = strtotime($ss_theme_opt['date_close']);
 
-if ($today > $closed ){
+if ($closed > $today){
 	 ?>
 		<a href="<?php echo get_site_url();?>/register" class="ss-head-btn-register">Register</a>
 <?php } ?>
