@@ -223,7 +223,7 @@ $user_detail = $wpdb->
 <input type="submit" name="submit" class="btn btn-default" value="Set as Paid">
 </form>
 
-<?php ?>
+<?php } ?>
 <!-- endOnsite Payment --> 
 </div>
   </div>
