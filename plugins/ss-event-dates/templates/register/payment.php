@@ -44,6 +44,7 @@ if (isset($user_detail['euser_addon_mid'])) {
         $string_mid_conf = " - ";
         $price_mid_conf  = 0;
         $product_mc      = "MC0";
+        $string_empty='Free';
     }
 
 } else {
@@ -232,10 +233,10 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
         </td>
         <td>
 <?php
-if ($price_mid_conf == 0){
-    echo "-";
+if (empty($string_empty)){
+    echo "Free";
 }else{
- echo 'Free';
+ echo '-';
 } 
 ?>
         </td>
