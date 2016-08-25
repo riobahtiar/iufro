@@ -1,38 +1,39 @@
-<?php 
-        // Call WOrdpress Functions
-        $parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
-        require_once $parse_uri[0] . 'wp-load.php';
-        global $wpdb;
-        global $ss_theme_opt; 
-        $euser_barcode = $_POST['barcode'];
-        $query         = "SELECT * FROM wp_ss_event_user_detail WHERE euser_barcode = '{$euser_barcode}'";
-        $user_detail   = $wpdb->get_row($query, ARRAY_A);
+<?php
+// Call WOrdpress Functions
+$parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
+require_once $parse_uri[0] . 'wp-load.php';
+global $wpdb;
+global $ss_theme_opt;
+$euser_barcode = $_POST['barcode'];
+$query         = "SELECT * FROM wp_ss_event_user_detail WHERE euser_barcode = '{$euser_barcode}'";
+$user_detail   = $wpdb->get_row($query, ARRAY_A);
 
-        // Function to save file and generate to document ID
-        function upload_user_file( $file = array() ) {
-            require_once( ABSPATH . 'wp-admin/includes/admin.php' );
-            $file_return = wp_handle_upload( $file, array('test_form' => false ) );
-            if( isset( $file_return['error'] ) || isset( $file_return['upload_error_handler'] ) ) {
-                return false;
-            } else {
-                $filename = $file_return['file'];
-                $attachment = array(
-                    'post_mime_type' => $file_return['type'],
-                    'post_title' => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
-                    'post_content' => '',
-                    'post_status' => 'inherit',
-                    'guid' => $file_return['url']
-                );
-                $attachment_id = wp_insert_attachment( $attachment, $file_return['url'] );
-                require_once(ABSPATH . 'wp-admin/includes/image.php');
-                $attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
-                wp_update_attachment_metadata( $attachment_id, $attachment_data );
-                if( 0 < intval( $attachment_id ) ) {
-                    return $attachment_id;
-                }
-            }
-            return false;
+// Function to save file and generate to document ID
+function upload_user_file($file = array())
+{
+    require_once ABSPATH . 'wp-admin/includes/admin.php';
+    $file_return = wp_handle_upload($file, array('test_form' => false));
+    if (isset($file_return['error']) || isset($file_return['upload_error_handler'])) {
+        return false;
+    } else {
+        $filename   = $file_return['file'];
+        $attachment = array(
+            'post_mime_type' => $file_return['type'],
+            'post_title'     => preg_replace('/\.[^.]+$/', '', basename($filename)),
+            'post_content'   => '',
+            'post_status'    => 'inherit',
+            'guid'           => $file_return['url'],
+        );
+        $attachment_id = wp_insert_attachment($attachment, $file_return['url']);
+        require_once ABSPATH . 'wp-admin/includes/image.php';
+        $attachment_data = wp_generate_attachment_metadata($attachment_id, $filename);
+        wp_update_attachment_metadata($attachment_id, $attachment_data);
+        if (0 < intval($attachment_id)) {
+            return $attachment_id;
         }
+    }
+    return false;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -160,7 +161,6 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 
 // ======== End of Payment Conditional Block ======== //
 
-
 if ($_POST['do_model'] == 'do_membership') {
 
     $getx_result = $wpdb->update(
@@ -240,20 +240,20 @@ if ($_POST['do_model'] == 'do_membership') {
 // ========= END Email =========//
 } elseif ($_POST['do_model'] == 'do_abstract_revision') {
 
-    if((isset($_FILES['abstract']) && $_FILES['abstract']!="")){
-        
+    if ((isset($_FILES['abstract']) && $_FILES['abstract'] != "")) {
+
         $get_id = upload_user_file($_FILES['abstract']);
 
-        $wpdb->update( 
-            'wp_ss_event_user_detail', 
-            array( 'euser_abstrak' => $get_id), 
-            array( 'euser_barcode' => $_POST['barcode']), 
-            array( '%s'), 
-            array( '%s' ) 
+        $wpdb->update(
+            'wp_ss_event_user_detail',
+            array('euser_abstrak' => $get_id),
+            array('euser_barcode' => $_POST['barcode']),
+            array('%s'),
+            array('%s')
         );
         echo "Document uploaded Successfully <kbd>[F5]</kbd>";
 
-    }else{
+    } else {
         echo "Document Empty";
     }
 } elseif ($_POST['do_model'] == 'do_absence') {
@@ -383,7 +383,13 @@ if ($_POST['do_model'] == 'do_membership') {
     );
     echo "Document Rejected Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
     $authkey = $user_detail['euser_activationkey'];
-    $rejection_wording = $_POST['reason_reject'];
+
+    if (!empty($_POST['reason_reject'])) {
+        $rejection_wording = '<p>';
+        $rejection_wording .= sanitize_text_field($_POST['reason_reject']);
+        $rejection_wording .= '<p>';
+    }
+
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
     $subject = 'Document Rejected Notification | IUFRO ACACIA 2017';
@@ -424,22 +430,19 @@ if ($_POST['do_model'] == 'do_membership') {
             <div>
             <p>With regret, we want to inform you that your document still does not meet our requirements.
 Therefore, you can not continue to participate on this conference as an Author.</p>
-<div>
-<p>'.$rejection_wording.'</p>
-</div>
+' . $rejection_wording . '
 <p>But you still can continue to participate as a "Participant" type user, instead of author.
 To continue the registration as a participant, simply click the button below.</p>
 </div>
 
                 <div style="width:100%;text-align: left;border-bottom:1px solid #809062;">
-                    <a href="http://staging.iufroacacia2017.com/changer?user_auth='.$authkey.'&fromxmail=true" style="background-color: #809062;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">CHANGE TO PARTICIPANT</a>
+                    <a href="http://staging.iufroacacia2017.com/changer?user_auth=' . $authkey . '&fromxmail=true" style="background-color: #809062;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">CHANGE TO PARTICIPANT</a>
                 </div>
 
 <div>
 <p>You still need to proceed with the payment. Your payment details can be seen on the summaries page after you click the button above.</p>
-            </div>
+</div>
 
-        </div>
         <div>
             <div>
                 <p style="font-size:16px;">Should you require any further assistance, please do not hesitate to contact us on address below: </p>
@@ -474,7 +477,13 @@ To continue the registration as a participant, simply click the button below.</p
         array('%s')
     );
     echo "Document Approved Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
-    $approve_wording = sanitize_text_field( $_POST['reason'] );
+
+    if (!empty($_POST['reason'])) {
+        $approve_wording = '<p>';
+        $approve_wording .= sanitize_text_field($_POST['reason']);
+        $approve_wording .= '<p>';
+    }
+
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
     $subject = 'Document Approved Notification | IUFRO ACACIA 2017';
@@ -514,9 +523,7 @@ To continue the registration as a participant, simply click the button below.</p
             </div>
             <div>
 <p>This is to inform you that your document has been approved by us. </p>
-<br>
- '.$approve_wording.' 
-<br>
+ ' . $approve_wording . '
  <p> In order to continue the registration process, you have to complete the payment.</p>
 
 <p>Below is your payment detail :</p>
@@ -596,9 +603,6 @@ To continue the registration as a participant, simply click the button below.</p
     wp_mail($to, $subject, $body, $headers);
 
 // ========= END Email =========//
-
-
-
 
 } else {
     echo "ERR21. Please Refresh your browser <kbd>[F5]</kbd>";
