@@ -431,15 +431,20 @@ if ($_POST['do_model'] == 'do_membership') {
             <p>With regret, we want to inform you that your document still does not meet our requirements.
 Therefore, you can not continue to participate on this conference as an Author.</p>
 ' . $rejection_wording . '
-<p>But you still can continue to participate as a "Participant" type user, instead of author.
-To continue the registration as a participant, simply click the button below.</p>
+<p>But you still can continue to participate as a "Participant" type user, instead of author.</p>
+<p>Do you want to participate on the coneference as "Participant" type user?</p>
 </div>
 
                 <div style="width:100%;text-align: left;border-bottom:1px solid #809062;">
-                    <a href="http://staging.iufroacacia2017.com/changer?user_auth=' . $authkey . '&fromxmail=true" style="background-color: #809062;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">CHANGE TO PARTICIPANT</a>
+                    <a href="http://staging.iufroacacia2017.com/changer?user_auth=' . $authkey . '&fromxmail=true" style="background-color: #809062;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">Yes</a>
+                </div>
+                <div style="width:100%;text-align: left;border-bottom:1px solid #809062;">
+                    <a href="http://staging.iufroacacia2017.com/changer?is_no=true&user_auth=' . $authkey . '&fromxmail=true" style="background-color: #809062;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">No</a>
                 </div>
 
+
 <div>
+<p><strong>Note: </strong> </p>
 <p>You still need to proceed with the payment. Your payment details can be seen on the summaries page after you click the button above.</p>
 </div>
 

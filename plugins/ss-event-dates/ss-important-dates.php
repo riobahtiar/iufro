@@ -835,40 +835,76 @@ function participant_converter(){
     ob_start();
     if (isset($_GET['user_auth'])) {
         $user_auth = sanitize_text_field($_GET['user_auth']);
+        $is_no = sanitize_text_field($_GET['is_no']);
         //get user data
         global $wpdb;
         $query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_activationkey = '{$user_auth}'";
         $user_detail = $wpdb->get_row($query, ARRAY_A);
-        $userchecker = $wpdb->update(
-            'wp_ss_event_user_detail',
-            array('euser_meta_type' => 'participant_type'),
-            array('euser_activationkey' => $user_auth),
-            array('%s'),
-            array('%s')
-        );
-        if ($userchecker === false) {
-            echo "<div class='alert alert-danger'>
-                    <h1>Oops!</h1><br>
-                    <p>We can't seem to find the page you're looking for.</p>
-                    <h4>Error code: <strong>404</strong></h4>
-                    <br>
-                    <br></div>";
-        } elseif ($userchecker === 0) {
-            echo "<div class='alert alert-danger'>
-                    <h1>Oops!</h1><br>
-                    <p>We can't seem to find the page you're looking for.</p>
-                    <h4>Error code: <strong>404</strong></h4>
-                    <br>
-                    <br></div>";
-        } elseif ($userchecker > 0) {
-            echo "<div class='alert alert-danger'>Congratulation " . $user_detail['euser_fullname'] . ", your account has been changed to Participant. Please <a href='" . get_permalink() . "/login'>Login</a> to your account to continue payment process.</div>";
-        } else {
-            echo "<div class='alert alert-danger'>
-                    <h1>Oops!</h1><br>
-                    <p>We can't seem to find the page you're looking for.</p>
-                    <h4>Error code: <strong>404</strong></h4>
-                    <br>
-                    <br></div>";
+        // Conditional if no
+        if (isset($is_no)){
+            $userchecker = $wpdb->update(
+                'wp_ss_event_user_detail',
+                array('euser_meta_type' => 'free_type'),
+                array('euser_activationkey' => $user_auth),
+                array('%s'),
+                array('%s')
+            );
+            if ($userchecker === false) {
+                echo "<div class='alert alert-danger'>
+                        <h1>Oops!</h1><br>
+                        <p>We can't seem to find the page you're looking for.</p>
+                        <h4>Error code: <strong>404</strong></h4>
+                        <br>
+                        <br></div>";
+            } elseif ($userchecker === 0) {
+                echo "<div class='alert alert-danger'>
+                        <h1>Oops!</h1><br>
+                        <p>We can't seem to find the page you're looking for.</p>
+                        <h4>Error code: <strong>404</strong></h4>
+                        <br>
+                        <br></div>";
+            } elseif ($userchecker > 0) {
+                echo "<div class='alert alert-danger'>Hello " . $user_detail['euser_fullname'] . ", your account has been changed to Free Account.<br> You are no longer able to particapete at the conference, but you still able to login at our website using your account. </div>";
+            } else {
+                echo "<div class='alert alert-danger'>
+                        <h1>Oops!</h1><br>
+                        <p>We can't seem to find the page you're looking for.</p>
+                        <h4>Error code: <strong>404</strong></h4>
+                        <br>
+                        <br></div>";
+            }
+        }else{
+            $userchecker = $wpdb->update(
+                'wp_ss_event_user_detail',
+                array('euser_meta_type' => 'participant_type'),
+                array('euser_activationkey' => $user_auth),
+                array('%s'),
+                array('%s')
+            );
+            if ($userchecker === false) {
+                echo "<div class='alert alert-danger'>
+                        <h1>Oops!</h1><br>
+                        <p>We can't seem to find the page you're looking for.</p>
+                        <h4>Error code: <strong>404</strong></h4>
+                        <br>
+                        <br></div>";
+            } elseif ($userchecker === 0) {
+                echo "<div class='alert alert-danger'>
+                        <h1>Oops!</h1><br>
+                        <p>We can't seem to find the page you're looking for.</p>
+                        <h4>Error code: <strong>404</strong></h4>
+                        <br>
+                        <br></div>";
+            } elseif ($userchecker > 0) {
+                echo "<div class='alert alert-danger'>Congratulation " . $user_detail['euser_fullname'] . ", your account has been changed to Participant. Please <a href='" . get_permalink() . "/login'>Login</a> to your account to continue payment process.</div>";
+            } else {
+                echo "<div class='alert alert-danger'>
+                        <h1>Oops!</h1><br>
+                        <p>We can't seem to find the page you're looking for.</p>
+                        <h4>Error code: <strong>404</strong></h4>
+                        <br>
+                        <br></div>";
+            }
         }
 
     } else {
