@@ -7,7 +7,7 @@
 	    'post_type' => 'presenter',
 	    'posts_per_page' => 10,
 	    'order' => 'DESC',
-	    'post_name__in'=>'1',
+	    'category_name'=>'1',
 	);
 ?>
 
