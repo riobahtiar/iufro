@@ -106,13 +106,13 @@ Paticipant also able to join extra field trip during the conference (extra charg
 		  	<div class="form-group col-md-6 gcountry">
 		    	<label for="state">Country</label>
 		    	<select name="country" class="form-control countries" id="countryId">
-<option>Select Country</option>
+<option value="">Select Country</option>
 				</select>
 		  	</div>
 		  	<div class="form-group col-md-6 gstate">
 		    	<label for="country">State/Province</label>
 		    <select name="state" class="form-control states" id="stateId">
-					<option>Select State</option>
+					<option value="">Select State</option>
 			</select>
 		  	</div>
 	  	</div>
