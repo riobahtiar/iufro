@@ -334,7 +334,7 @@ if ($_POST['do_model'] == 'do_membership') {
                 <p>Your Document was published to IUFRO ACACIA CONFERENCE 2017 Website</p>
             </div>
 
-        </div>
+        
         <div>
             <div>
                 <p style="font-size:16px;">Should you require any further assistance, please do not hesitate to contact us on address below: </p>
@@ -343,6 +343,7 @@ if ($_POST['do_model'] == 'do_membership') {
                 <p style="font-size:12px;margin: 0;color:#809062">Phone: 0274-895954</p>
                 <p style="font-size:12px;margin: 0;color:#809062">Email: secretariat@iufroacacia2017.com</p>
             </div>
+        </div>
         </div>
     </body>
 
