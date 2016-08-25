@@ -153,64 +153,54 @@ Paticipant also able to join extra field trip during the conference (extra charg
 // Jquery Validation
 
 
-	jQuery("#registration").submit(function(e){
-	   		if (jQuery('#user_type').val()==''){
-				jQuery('.accounttype').append('<p class="text-danger">Please select your account type</p>');
-				e.preventDefault(e);
-			}
+var warning = [{
+  element: "#user_type",
+  text: "Please select your account type"
+}, {
+  element: "#fullname",
+  text: "Name needs to be filled"
+}, {
+  element: "#email",
+  text: "Email needs to be filled"
+}, {
+  element: "#phone",
+  text: "Phone needs to be filled"
+}, {
+  element: "#password",
+  text: "Password needs to be filled"
+}, {
+  element: "#c_password",
+  text: "Password needs to be filled"
+}, {
+  element: "#address",
+  text: "Address needs to be filled"
+}, {
+  element: "#zip",
+  text: "Zip needs to be filled"
+}, {
+  element: "#city",
+  text: "City needs to be filled"
+}, {
+  element: "#countryId",
+  text: "Country needs to be filled"
+}, {
+  element: "#stateId",
+  text: "State needs to be filled"
+}];
 
-			if (jQuery('#fullname').val()==''){
-				jQuery('.gfanme').append('<p class="text-danger">Username needs to be filled</p>');
-				e.preventDefault(e);
-			}
 
-	   		if (jQuery('#email').val()==''){
-				jQuery('.gmail').append('<p class="text-danger">Email needs to be filled</p>');
-				e.preventDefault(e);
-			}
+jQuery("#registration").submit(function(e) {
+  jQuery.each(warning, function(i, o){
 
-	   		if (jQuery('#phone').val()==''){
-				jQuery('.gnumber').append('<p class="text-danger">Phone Number needs to be filled</p>');
-				e.preventDefault(e);
-			}
-
-			if (jQuery('#password').val()==''){
-				jQuery('.gpassword').append('<p class="text-danger">Password needs to be filled</p>');
-				e.preventDefault(e);
-			}
-
-			if (jQuery('#c_password').val()==''){
-				jQuery('.gpassword2').append('<p class="text-danger">Password needs to be filled</p>');
-				e.preventDefault(e);
-			}
-
-			if (jQuery('#address').val()==''){
-				jQuery('.gaddress').append('<p class="text-danger">Address needs to be filled</p>');
-				e.preventDefault(e);
-			}
-
-			if (jQuery('#zip').val()==''){
-				jQuery('.gzip').append('<p class="text-danger">ZIP Code needs to be filled</p>');
-
-				e.preventDefault(e);
-			}
-
-			if (jQuery('#city').val()==''){
-				jQuery('.gcity').append('<p class="text-danger">City needs to be filled</p>');
-				e.preventDefault(e);
-			}
-
-			if (jQuery('.countries').val()==''){
-				jQuery('.gcountry').append('<p class="text-danger">Country needs to be filled</p>');
-				e.preventDefault(e);
-			}
-
-			if (jQuery('.states').val()==''){
-				jQuery('.gstate').append('<p class="text-danger">State needs to be filled</p>');
-				e.preventDefault(e);
-			}
-
-	});
+    if (jQuery(o.element).val() === '') {
+        var parent = jQuery(o.element).parent();
+        parent.find(".text-danger").remove();
+        parent.append('<p class="text-danger">'+o.text+'</p>');
+        
+    }
+  });
+  e.preventDefault();
+});
 
 
 
