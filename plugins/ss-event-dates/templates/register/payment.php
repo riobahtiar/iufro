@@ -290,8 +290,8 @@ if ($string_dinner!=='Yes'){
 $idr_total = $idr_good * $total_price;
 echo number_format($idr_total, 0, ".", ".");
 
-echo "&nbsp;*<br><hr><p>";
-echo "*Current IDR Rates US$1 = IDR " . $idr_good . "<br> Source : <a href='http://openexchangerates.org' onclick='window.open(this.href); return false;' onkeypress='window.open(this.href); return false;'>www.openexchangerates.org</a> </p>";
+echo "&nbsp;*<br><hr>";
+echo "<br><p><small>*Current IDR Rates US$1 = IDR " . $idr_good . "<br> Source : <a href='http://openexchangerates.org' onclick='window.open(this.href); return false;' onkeypress='window.open(this.href); return false;'>www.openexchangerates.org</a> </p>";
 ?></td>
     </tr>
   </tfoot>
