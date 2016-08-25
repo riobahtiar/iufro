@@ -231,7 +231,13 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 </dl>
         </td>
         <td>
-        -
+<?php
+if ($string_mid_conf == 0){
+    echo "-";
+}else{
+ echo 'Free';
+} 
+?>
         </td>
       </tr>
       <tr>
@@ -262,12 +268,18 @@ if ($price_post_conf == 0){
 if ($string_dinner!=='Yes'){
     echo "-";
 }else{
- echo '-';
+ echo 'Yes';
 } 
 ?></dd>
 </dl>
         </td>
-        <td> - </td>
+        <td> <?php
+if ($string_dinner!=='Yes'){
+    echo "-";
+}else{
+ echo 'Free';
+} 
+?></td>
       </tr>
     </tbody>
     <tfoot>
