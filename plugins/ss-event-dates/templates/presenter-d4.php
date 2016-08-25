@@ -7,7 +7,13 @@
 	    'post_type' => 'presenter',
 	    'posts_per_page' => 10,
 	    'order' => 'DESC',
-	    'category_name'=>'4',
+	    'tax_query' => array(
+		array(
+			'taxonomy' => 'presenter_taxonomy',
+			'field'    => 'slug',
+			'terms'    => '4',
+		),
+	),
 	);
 ?>
 
