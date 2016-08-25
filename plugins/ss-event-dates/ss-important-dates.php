@@ -841,7 +841,7 @@ function participant_converter(){
         $query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_activationkey = '{$user_auth}'";
         $user_detail = $wpdb->get_row($query, ARRAY_A);
         // Conditional if no
-        if (isset($is_no) && $is_no=true ){
+        if (isset($is_no) && $is_no==true ){
             $userchecker = $wpdb->update(
                 'wp_ss_event_user_detail',
                 array('euser_meta_type' => 'free_type'),
