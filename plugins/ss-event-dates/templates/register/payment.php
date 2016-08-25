@@ -243,7 +243,15 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 </dl>
 
         </td>
-        <td>US$ <?php echo $price_post_conf; ?></td>
+        <td>
+<?php
+if ($price_post_conf == 0){
+    echo "-";
+}else{
+ echo 'US$ '.$price_post_conf;
+} 
+?>
+</td>
       </tr>
       <tr>
         <td>4</td>
@@ -251,10 +259,10 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 <dl class="dl-horizontal">
   <dt>Conference Dinner</dt>
   <dd><?php
-if ($string_dinner=='No'){
+if ($string_dinner!=='Yes'){
     echo "-";
 }else{
- echo $string_dinner;
+ echo '-';
 } 
 ?></dd>
 </dl>
