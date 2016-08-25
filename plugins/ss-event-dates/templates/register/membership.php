@@ -105,9 +105,6 @@ The payable fee covers registration for the Conference, welcome reception, confe
 
 
 	});
-    window.onbeforeunload = confirmExit;
-    function confirmExit() {
-        return "You have attempted to leave this page and your inputed data will be lost. Are you sure? ";
-    }
+
 </script>
 

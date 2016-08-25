@@ -195,12 +195,12 @@ Paticipant also able to join extra field trip during the conference (extra charg
 				e.preventDefault(e);
 			}
 
-			if (jQuery('#countryId').val()==''){
+			if (jQuery('.countries').val()==''){
 				jQuery('.gcountry').append('<p class="text-danger">Country needs to be filled</p>');
 				e.preventDefault(e);
 			}
 
-			if (jQuery('#stateId').val()==''){
+			if (jQuery('.states').val()==''){
 				jQuery('.gstate').append('<p class="text-danger">State needs to be filled</p>');
 				e.preventDefault(e);
 			}
