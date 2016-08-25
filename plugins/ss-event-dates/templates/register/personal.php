@@ -11,7 +11,7 @@
 		<h2>Your Identity</h2>
 	</div>
 	<form id="registration" action="" method="post">
-		  	<div class="form-group">
+		  	<div class="form-group accounttype">
 	    	<label for="user_type">Register as (<a data-toggle="modal" data-target="#registerInfo">Learn more.</a>)</label>
 	    	<select class="form-control" name="user_type" id="user_type">
 	    		<option value="">== Select Account ==</option>
@@ -154,7 +154,12 @@ Paticipant also able to join extra field trip during the conference (extra charg
 
 
 	jQuery("#registration").submit(function(e){
-	   		if (jQuery('#fullname').val()==''){
+	   		if (jQuery('#user_type').val()==''){
+				jQuery('.accounttype').append('<p class="text-danger">Please select your account type</p>');
+				e.preventDefault(e);
+			}
+
+			if (jQuery('#fullname').val()==''){
 				jQuery('.gfanme').append('<p class="text-danger">Username needs to be filled</p>');
 				e.preventDefault(e);
 			}
