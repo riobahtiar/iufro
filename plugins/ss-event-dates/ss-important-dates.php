@@ -437,9 +437,24 @@ function create_presenter()
             'rewrite'     => true,
             // 'menu_position' => 15,
             'supports'    => array('title', 'editor', 'thumbnail'),
-            'taxonomies'  => array(''),
+            'taxonomies'  => array('presenter_taxonomy'),
             'menu_icon'   => 'dashicons-laptop',
             'has_archive' => true,
+        )
+    );
+}
+
+// Register Taxonomy days
+add_action('init', 'presenter_taxonomy');
+function presenter_taxonomy()
+{
+    register_taxonomy(
+        'presenter_taxonomy',
+        'presenter',
+        array(
+            'label'        => __('Days'),
+            'rewrite'      => array('slug' => 'days_show'),
+            'hierarchical' => true,
         )
     );
 }

@@ -1,13 +1,15 @@
 <?php
-date_default_timezone_set("Asia/Bangkok");
-// is close date or not
-$today    = date('Y-m-d');
-$closed = '2017-06-21';
-if ($today == $closed ){
+// Cron for close date
 
 $parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
 require_once $parse_uri[0] . 'wp-load.php';
+date_default_timezone_set("Asia/Bangkok");
+// is close date or not
+$today    = date('Y-m-d');
+//$closed = '2017-06-21';
+$closed = '2016-08-25';
 
+if ($today == $closed ){
 // Call Wp Global Object
 global $wpdb;
 // Call Theme Options
