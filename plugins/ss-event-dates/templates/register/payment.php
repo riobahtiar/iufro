@@ -81,10 +81,10 @@ if (isset($user_detail['euser_addon_post'])) {
 
 if (isset($user_detail['euser_addon_dinner'])) {
     if ($user_detail['euser_addon_dinner'] == "Yes") {
-        $string_dinner = " Yes ";
+        $string_dinner = "Yes";
         $product_d     = "D1";
     } elseif ($user_detail['euser_addon_dinner'] == "No") {
-        $string_dinner = " No ";
+        $string_dinner = "No";
         $product_d     = "D2";
     } else {
         $string_dinner = "-";
@@ -266,7 +266,7 @@ if ($price_post_conf == 0){
 <dl class="dl-horizontal">
   <dt>Conference Dinner</dt>
   <dd><?php
-if ($string_dinner!=='Yes'){
+if ($string_dinner !== 'Yes'){
     echo "-";
 }else{
  echo 'Yes';
