@@ -232,7 +232,7 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
         </td>
         <td>
 <?php
-if ($string_mid_conf == 0){
+if ($price_mid_conf == 0){
     echo "-";
 }else{
  echo 'Free';
