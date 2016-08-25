@@ -331,7 +331,7 @@ if ($_POST['do_model'] == 'do_membership') {
                 <h2 style="text-align:center;color:#809062;margin-top: 0;">Dear Sir / Madam</h2>
             </div>
             <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
-                Your Document was published to IUFRO ACACIA CONFERENCE 2017 Website
+                <p>Your Document was published to IUFRO ACACIA CONFERENCE 2017 Website</p>
             </div>
 
         </div>
