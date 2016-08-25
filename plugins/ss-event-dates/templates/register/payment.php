@@ -230,7 +230,9 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
   <dd><?php echo $string_mid_conf; ?>  </dd>
 </dl>
         </td>
-        <td>Free</td>
+        <td>
+        -
+        </td>
       </tr>
       <tr>
         <td>3</td>
@@ -248,10 +250,16 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
         <td>
 <dl class="dl-horizontal">
   <dt>Conference Dinner</dt>
-  <dd><?php echo $string_dinner; ?></dd>
+  <dd><?php
+if ($string_dinner=='No'){
+    echo "-";
+}else{
+ echo $string_dinner;
+} 
+?></dd>
 </dl>
         </td>
-        <td> Free </td>
+        <td> - </td>
       </tr>
     </tbody>
     <tfoot>

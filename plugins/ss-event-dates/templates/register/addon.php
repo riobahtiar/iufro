@@ -2,7 +2,7 @@
 if(isset($_GET['step']) && $_GET['step']=="addon"){
 	$post_url=get_permalink()."?step=payment";
 }else{
-	$post_url="";
+	$post_url=get_permalink()."?step=payment";
 }
 
 
@@ -212,11 +212,6 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 				e.preventDefault(e);
 			}
 	});
-
-    window.onbeforeunload = confirmExit;
-    function confirmExit() {
-        return "You have attempted to leave this page and your inputed data will be lost. Are you sure? ";
-    }
 </script>
 <?php }else{ ?>
 <script type="text/javascript">
