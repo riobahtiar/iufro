@@ -24,6 +24,14 @@ if (isset($_POST['mid-conf']) && $_POST['mid-conf'] == "on") {
         array('%s'),
         array('%s')
     );
+}else{
+    $wpdb->update(
+        'wp_ss_event_user_detail',
+        array('euser_addon_mid' => ''),
+        array('euser_email' => $euser_email),
+        array('%s'),
+        array('%s')
+    );
 }
 
 // Post Conference
@@ -43,6 +51,14 @@ if (isset($_POST['post-conf']) && $_POST['post-conf'] == "on") {
     $wpdb->update(
         'wp_ss_event_user_detail',
         array('euser_addon_post' => $post_conf),
+        array('euser_email' => $euser_email),
+        array('%s'),
+        array('%s')
+    );
+}else{
+    $wpdb->update(
+        'wp_ss_event_user_detail',
+        array('euser_addon_post' => ''),
         array('euser_email' => $euser_email),
         array('%s'),
         array('%s')

@@ -256,9 +256,6 @@ if ($_POST['do_model'] == 'do_membership') {
     }else{
         echo "Document Empty";
     }
-    echo "<pre>";
-    var_dump($_FILES['abstract']);
-    echo "</pre>";
 } elseif ($_POST['do_model'] == 'do_absence') {
     $getx_result = $wpdb->update(
         'wp_ss_event_user_detail',
