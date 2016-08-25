@@ -63,56 +63,56 @@ Paticipant also able to join extra field trip during the conference (extra charg
 		    	<input type="text" class="form-control" name="title" id="title" placeholder="Title" value="<?php if(isset( $_POST['title'] ))  echo $_POST['title']; else echo null; ?>">
 		  	</div>
 	  	</div>
-	  	<div class="form-group">
+	  	<div class="form-group gfanme">
 	    	<label for="fullname">Full Name</label>
 	    	<input type="text" class="form-control" name="fullname" id="fullname" placeholder="Full Name" value="<?php if(isset( $_POST['fullname'] ))  echo $_POST['fullname']; else echo null;?>">
 	  	</div>
 	  	<div class="row">
-		  	<div class="form-group col-md-6">
+		  	<div class="form-group col-md-6 gmail">
 		    	<label for="email">Email</label>
 		    	<input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php if(isset( $_POST['email'] ))  echo $_POST['email']; else echo null; ?>">
 		  	</div>
 
-		  	<div class="form-group form-group col-md-6">
+		  	<div class="form-group col-md-6 gnumber">
 		    	<label for="phone">Phone number</label>
 		    	<input type="text" class="form-control" name="phone" id="phone">
 		  	</div>
 	  	</div>
 	  	<div class="row">
-		  	<div class="form-group col-md-6">
+		  	<div class="form-group col-md-6 gpassword">
 		    	<label for="password">Password</label>
 		    	<input type="password" class="form-control" name="password" id="password" placeholder="Password">
 		  	</div>
-		  	<div class="form-group form-group col-md-6">
+		  	<div class="form-group col-md-6 gpassword2">
 		    	<label for="c_password">Confirm Password</label>
 		    	<input type="password" class="form-control" name="c_password" id="c_password" placeholder="Confirm Password">
 		  	</div>
 	  	</div>
-	  	<div class="form-group">
+	  	<div class="form-group gaddress">
 	    	<label for="address">Address</label>
 	    	<textarea class="form-control" name="address" id="address" placeholder="Address"><?php if(isset( $_POST['address'] ))  echo $_POST['address']; else echo null; ?></textarea>
 	  	</div>
 	  	<div class="row">
-		  	<div class="form-group col-md-6">
+		  	<div class="form-group col-md-6 gzip">
 		    	<label for="zip">Zip Code</label>
 		    	<input type="text" class="form-control" name="zip" id="zip" placeholder="Zip Code" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="<?php if(isset( $_POST['zip'] ))  echo $_POST['zip']; else echo null; ?>">
 		  	</div>
-		  	<div class="form-group form-group col-md-6">
+		  	<div class="form-group col-md-6 gcity">
 		    	<label for="city">City</label>
 		    	<input type="text" class="form-control" name="city" id="city" placeholder="City" value="<?php if(isset( $_POST['city'] ))  echo $_POST['city']; else echo null; ?>">
 		  	</div>
 	  	</div>
 	  	<div class="row">
-		  	<div class="form-group col-md-6">
+		  	<div class="form-group col-md-6 gcountry">
 		    	<label for="state">Country</label>
 		    	<select name="country" class="form-control countries" id="countryId">
 <option>Select Country</option>
 				</select>
 		  	</div>
-		  	<div class="form-group form-group col-md-6">
+		  	<div class="form-group col-md-6 gstate">
 		    	<label for="country">State/Province</label>
-		    	<select name="state" class="form-control states" id="stateId">
-<option>Select State</option>
+		    <select name="state" class="form-control states" id="stateId">
+					<option>Select State</option>
 			</select>
 		  	</div>
 	  	</div>
@@ -151,5 +151,62 @@ Paticipant also able to join extra field trip during the conference (extra charg
       utilsScript: "<?php echo get_site_url() .'/wp-content/plugins/ss-event-dates/addons/intl-tel/build/js/utils.js'; ?>"
     });
 // Jquery Validation
+
+
+	jQuery("#registration").submit(function(e){
+	   		if (jQuery('#fullname').val()==''){
+				jQuery('.gfanme').append('<p class="text-danger">Username needs to be filled</p>');
+				e.preventDefault(e);
+			}
+
+	   		if (jQuery('#email').val()==''){
+				jQuery('.gmail').append('<p class="text-danger">Email needs to be filled</p>');
+				e.preventDefault(e);
+			}
+
+	   		if (jQuery('#phone').val()==''){
+				jQuery('.gnumber').append('<p class="text-danger">Phone Number needs to be filled</p>');
+				e.preventDefault(e);
+			}
+
+			if (jQuery('#password').val()==''){
+				jQuery('.gpassword').append('<p class="text-danger">Password needs to be filled</p>');
+				e.preventDefault(e);
+			}
+
+			if (jQuery('#c_password').val()==''){
+				jQuery('.gpassword2').append('<p class="text-danger">Password needs to be filled</p>');
+				e.preventDefault(e);
+			}
+
+			if (jQuery('#address').val()==''){
+				jQuery('.gaddress').append('<p class="text-danger">Address needs to be filled</p>');
+				e.preventDefault(e);
+			}
+
+			if (jQuery('#zip').val()==''){
+				jQuery('.gzip').append('<p class="text-danger">ZIP Code needs to be filled</p>');
+
+				e.preventDefault(e);
+			}
+
+			if (jQuery('#city').val()==''){
+				jQuery('.gcity').append('<p class="text-danger">City needs to be filled</p>');
+				e.preventDefault(e);
+			}
+
+			if (jQuery('#countryId').val()==''){
+				jQuery('.gcountry').append('<p class="text-danger">Country needs to be filled</p>');
+				e.preventDefault(e);
+			}
+
+			if (jQuery('#stateId').val()==''){
+				jQuery('.gstate').append('<p class="text-danger">State needs to be filled</p>');
+				e.preventDefault(e);
+			}
+
+	});
+
+
 
   </script>
