@@ -219,21 +219,21 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 
 jQuery('#doc1').on( 'change', function() {
         var fileExtension = ['doc', 'docx', 'odt', 'rtf', 'pdf'];
-        if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+        if (jQuery.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
             alert("Only formats are allowed : "+fileExtension.join(', '));
         }
 });
 
 jQuery('#doc2').on( 'change', function() {
         var fileExtension = ['doc', 'docx', 'odt', 'rtf', 'pdf'];
-        if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+        if (jQuery.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
             alert("Only formats are allowed : "+fileExtension.join(', '));
         }
 });
 
 jQuery('#doc3').on( 'change', function() {
         var fileExtension = ['doc', 'docx', 'odt', 'rtf', 'pdf'];
-        if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+        if (jQuery.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
             alert("Only formats are allowed : "+fileExtension.join(', '));
         }
 });
@@ -241,7 +241,7 @@ jQuery('#doc3').on( 'change', function() {
 
 jQuery('#profile_pict').on( 'change', function() {
         var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
-        if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+        if (jQuery.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
             alert("Only formats are allowed : "+fileExtension.join(', '));
         }
 });
