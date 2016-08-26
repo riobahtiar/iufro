@@ -184,7 +184,6 @@ function reports_page(){
 
 .container-iuf {
     font-family: 'Lato', sans-serif;
-    max-width: 1000px;
     margin: 0 auto;
     width: 100%;
     position: relative;
@@ -224,13 +223,16 @@ p {
 }
 
 .counter-item-iuf h1 {
-    padding: 15px 0 0 !important;
+    padding: 30px 0 0 !important;
     font-size: 60px;
     color: white;
+    display: inline-block;
+
 }
 
 .counter-item-iuf p {
     padding: 15px 0 !important;
+    display: block;
 }
 
 .registered-iuf> div {
