@@ -174,6 +174,11 @@ function init_iufro_dash()
     // Page of Submenu
     add_submenu_page('iufro-dashboard','Reports', 'Reports', 'administrator', 'iufro-reports','reports_page');
 }
+
+
+
+
+
 function reports_page(){
 ?>
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">

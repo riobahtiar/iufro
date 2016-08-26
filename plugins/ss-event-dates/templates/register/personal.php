@@ -190,16 +190,26 @@ var warning = [{
 
 
 jQuery("#registration").submit(function(e) {
+  var error = false;
   jQuery.each(warning, function(i, o){
 
     if (jQuery(o.element).val() === '') {
         var parent = jQuery(o.element).parent();
         parent.find(".text-danger").remove();
         parent.append('<p class="text-danger">'+o.text+'</p>');
+        error = true;
         
     }
+
+    if (i === warning.length - 1) {
+    	if (!error) {
+    		return true;
+    	}
+    }
   });
-  e.preventDefault();
+
+
+  return false;
 });
 
 
