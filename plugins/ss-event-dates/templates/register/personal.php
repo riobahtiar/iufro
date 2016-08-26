@@ -191,6 +191,7 @@ var warning = [{
 
 jQuery("#registration").submit(function(e) {
   var error = false;
+  var that = this;
   jQuery.each(warning, function(i, o){
 
     if (jQuery(o.element).val() === '') {
@@ -202,8 +203,12 @@ jQuery("#registration").submit(function(e) {
     }
 
     if (i === warning.length - 1) {
+    	console.log("last");
     	if (!error) {
-    		return true;
+    		console.log("no error");
+    		jQuery(that).submit();
+    	} else {
+    		console.log("error");
     	}
     }
   });
