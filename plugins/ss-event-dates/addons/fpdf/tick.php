@@ -22,7 +22,7 @@ $pdf->Rotate(0);
 $pdf->SetFont('Arial','B',14);
 $pdf->RotatedText(36,80,'ID 54545454',90);
 $pdf->Cell(160,30,'',1,0,'C');
-$pdf->Image('http://staging.iufroacacia2017.com/wp-content/uploads/2016/06/logo.png',146,17,50);
+$pdf->Image('http://www.iufroacacia2017.com/wp-content/uploads/2016/06/logo.png',146,17,50);
 $pdf->SetFont('Arial','B',15);
 $pdf->SetXY(45,23);
 $pdf->Write(5,$title);

@@ -437,10 +437,10 @@ Therefore, you can not continue to participate on this conference as an Author.<
 </div>
 
                 <div style="width:100%;text-align: left;">
-                    <a href="http://staging.iufroacacia2017.com/changer?user_auth=' . $authkey . '&fromxmail=true" style="background-color: #809062;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">Yes</a>
+                    <a href="http://www.iufroacacia2017.com/changer?user_auth=' . $authkey . '&fromxmail=true" style="background-color: #809062;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">Yes</a>
                 </div>
                 <div style="width:100%;text-align: right;">
-                    <a href="http://staging.iufroacacia2017.com/changer?is_no=true&user_auth=' . $authkey . '&fromxmail=true" style="background-color: red;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">No</a>
+                    <a href="http://www.iufroacacia2017.com/changer?is_no=true&user_auth=' . $authkey . '&fromxmail=true" style="background-color: red;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">No</a>
                 </div>
 
 

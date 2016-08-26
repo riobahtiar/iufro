@@ -17,7 +17,7 @@ $user_detail = $wpdb->
     <title></title>
     <link href="<?php echo plugins_url(); ?>/ss-event-dates/assets/bootstrap.min.css" rel="stylesheet">
 <script>
-document.write("<p id='loading'><img src='http://staging.iufroacacia2017.com/wp-content/uploads/2016/08/ajax-loader.gif'></p>");
+document.write("<p id='loading'><img src='http://www.iufroacacia2017.com/wp-content/uploads/2016/08/ajax-loader.gif'></p>");
 </script>
 <style type="text/css">
 #loading {

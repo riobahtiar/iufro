@@ -189,7 +189,7 @@ function save_custom_userdata($fullname, $password, $email, $phone, $address, $z
     </div>
                 <div style="width:100%;text-align: left;border-bottom:1px solid #809062;">
                     <p>To activate your IUFRO ACACIA 2017 account please validate your email address. Simply click the button below:</p>
-                    <a href="http://staging.iufroacacia2017.com/redir_xcmil?user_auth='.$randAct.'&fromxmail=true" style="background-color: #809062;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">ACTIVATE</a>
+                    <a href="http://www.iufroacacia2017.com/redir_xcmil?user_auth='.$randAct.'&fromxmail=true" style="background-color: #809062;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">ACTIVATE</a>
                 </div>';
 
 

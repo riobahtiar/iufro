@@ -22,9 +22,9 @@ $params = array(
             'price'    => 10212, // Total Harga
             'quantity' => 1,
             'comments' => 'Extra Details = Product Name: '.$_POST['item_name'].' - Barcode: '.$_POST['ebarcode'].' - Amount: '.$_POST['amount'].' - Time: '.date('Y-m-d H:i:s'), // Optional           
-            'ureturn'  =>   'http://staging.iufroacacia2017.com//login/user_dashboard?step=paypal_success&trxname='.$_POST['item_name'],
-            'unotify'  =>   'http://staging.iufroacacia2017.com/wp-content/plugins/ss-event-dates/ajax/ipaymu_notify.php?auth_code='.$_POST['ebarcode'],
-            'ucancel'  =>   'http://staging.iufroacacia2017.com/login/user_dashboard?step=paypal_cancel',
+            'ureturn'  =>   'http://www.iufroacacia2017.com//login/user_dashboard?step=paypal_success&trxname='.$_POST['item_name'],
+            'unotify'  =>   'http://www.iufroacacia2017.com/wp-content/plugins/ss-event-dates/ajax/ipaymu_notify.php?auth_code='.$_POST['ebarcode'],
+            'ucancel'  =>   'http://www.iufroacacia2017.com/login/user_dashboard?step=paypal_cancel',
             'format'   => 'json' // Format: xml / json. Default: xml 
         );
 
