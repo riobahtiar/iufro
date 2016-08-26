@@ -433,7 +433,7 @@ if ($_POST['do_model'] == 'do_membership') {
 Therefore, you can not continue to participate on this conference as an Author.</p>
 ' . $rejection_wording . '
 <p>But you still can continue to participate as a "Participant" type user, instead of author.</p>
-<p>Do you want to participate on the coneference as "Participant" type user?</p>
+<p>Do you want to participate on the conference as "Participant" type user?</p>
 </div>
 
                 <div style="width:100%;text-align: left;">

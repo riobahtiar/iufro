@@ -137,6 +137,25 @@ div#iufro-member_filter {
     border-color: #59524c;
 }
 
+.iufro-toolbar {
+    background-color: #ffffff;
+    padding: 7px;
+    border-color: #cccccc;
+    border-width: 2px;
+    border-style: solid;
+    margin-bottom: 10px;
+}
+
+label.iufro-toolbar-label {
+    color: #403d3d;
+    padding: 5px;
+    vertical-align: middle;
+    font-size: 18px;
+
+}
+.iufro-toolbar-secondary{
+    vertical-align: middle;
+}
 
   </style>
   ";
@@ -151,8 +170,112 @@ function init_iufro_dash()
 {
 
     //create new top-level menu
-    add_menu_page('IUFRO U', 'IUFRO U', 'administrator', IUFRO_DIR, 'users_page_control', plugins_url('ss-event-dates/assets/muda.png', IUFRO_DIR), 4);
+    add_menu_page('IUFRO U', 'IUFRO U', 'administrator','iufro-dashboard','users_page_control', plugins_url('ss-event-dates/assets/muda.png', IUFRO_DIR), 4);
+    // Page of Submenu
+    add_submenu_page('iufro-dashboard','Reports', 'Reports', 'administrator', 'iufro-reports','reports_page');
 }
+function reports_page(){
+?>
+<h3> Report Page </h3>
+<hr>
+<!-- General -->
+<div class="iufro-toolbar">
+    <div class="iufro-toolbar-secondary">
+        <label class="iufro-toolbar-label" for="iufro-attachment-filters">
+            General
+        </label>
+        <a class="button iufro-popup" href="http://google.co.id">Test Pop Up</a>
+
+        <button class="button iufro-button select-mode-toggle-button" type="button">
+            Show Attending Member
+        </button>
+        <button class="button iufro-button select-mode-toggle-button" type="button">
+            Show Not Attending Member
+        </button>
+
+    </div>
+</div>
+
+<!-- Payment -->
+<div class="iufro-toolbar">
+    <div class="iufro-toolbar-secondary">
+        <label class="iufro-toolbar-label" for="iufro-attachment-filters">
+            Payment
+        </label>
+
+        <button class="button iufro-button select-mode-toggle-button" type="button">
+            Show All Paid Member
+        </button>
+        <button class="button iufro-button select-mode-toggle-button" type="button">
+            Show All Unpaid Member
+        </button>
+
+    </div>
+</div>
+
+<!-- Payment Status -->
+<div class="iufro-toolbar">
+    <div class="iufro-toolbar-secondary">
+        <label class="iufro-toolbar-label" for="iufro-attachment-filters">
+            Payment Status
+        </label>
+
+        <button class="button iufro-button select-mode-toggle-button" type="button">
+            Author
+        </button>
+        <button class="button iufro-button select-mode-toggle-button" type="button">
+            Participant
+        </button>
+
+    </div>
+</div>
+
+<!-- Mid Trip -->
+<div class="iufro-toolbar">
+    <div class="iufro-toolbar-secondary">
+        <label class="iufro-toolbar-label" for="iufro-attachment-filters">
+            Mid Trip
+        </label>
+
+        <button class="button iufro-button select-mode-toggle-button" type="button">
+            Author
+        </button>
+        <button class="button iufro-button select-mode-toggle-button" type="button">
+            Participant
+        </button>
+
+    </div>
+</div>
+
+<!-- Post Trip -->
+<div class="iufro-toolbar">
+    <div class="iufro-toolbar-secondary">
+        <label class="iufro-toolbar-label" for="iufro-attachment-filters">
+            Mid Trip
+        </label>
+
+        <button class="button iufro-button select-mode-toggle-button" type="button">
+            Author
+        </button>
+        <button class="button iufro-button select-mode-toggle-button" type="button">
+            Participant
+        </button>
+
+    </div>
+</div>
+
+
+<script type="text/javascript" src="<?php echo get_site_url() . '/wp-content/plugins/ss-event-dates/assets/js/popup.js' ?>"></script>
+<script>
+// Activate All PopUp Windows
+jQuery('.iufro-popup').popupWindow(); 
+
+</script>
+
+<?php
+}
+
+
 
 function users_page_control()
 {
@@ -513,6 +636,9 @@ jQuery(document).ready(function(){
         jQuery(".xdetails").show();
     });
 });
+
+
+
 
 
 </script>
