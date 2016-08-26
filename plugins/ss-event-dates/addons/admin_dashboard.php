@@ -176,93 +176,353 @@ function init_iufro_dash()
 }
 function reports_page(){
 ?>
-<h3> Report Page </h3>
-<hr>
-<!-- General -->
-<div class="iufro-toolbar">
-    <div class="iufro-toolbar-secondary">
-        <label class="iufro-toolbar-label" for="iufro-attachment-filters">
-            General
-        </label>
-        <a class="button iufro-popup" href="http://google.co.id">Test Pop Up</a>
+<style>
+    * {
+    box-sizing: border-box;
+}
 
-        <button class="button iufro-button select-mode-toggle-button" type="button">
-            Show Attending Member
-        </button>
-        <button class="button iufro-button select-mode-toggle-button" type="button">
-            Show Not Attending Member
-        </button>
+.container-iuf {
+    font-family: 'Lato', sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    color: #333;
+    padding: 15px 0;
+    overflow: hidden;
+}
 
-    </div>
-</div>
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 15px 0;
+}
 
-<!-- Payment -->
-<div class="iufro-toolbar">
-    <div class="iufro-toolbar-secondary">
-        <label class="iufro-toolbar-label" for="iufro-attachment-filters">
-            Payment
-        </label>
 
-        <button class="button iufro-button select-mode-toggle-button" type="button">
-            Show All Paid Member
-        </button>
-        <button class="button iufro-button select-mode-toggle-button" type="button">
-            Show All Unpaid Member
-        </button>
+/*Counter */
 
-    </div>
-</div>
+.counter-iuf {
+    margin: 0 -5px;
+    overflow: hidden;
+}
 
-<!-- Payment Status -->
-<div class="iufro-toolbar">
-    <div class="iufro-toolbar-secondary">
-        <label class="iufro-toolbar-label" for="iufro-attachment-filters">
-            Payment Status
-        </label>
+.counter-item-iuf {
+    width: 16.6667%;
+    float: left;
+    text-align: center;
+    padding: 5px;
+    color: #fff;
+    margin-bottom: 15px;
+}
 
-        <button class="button iufro-button select-mode-toggle-button" type="button">
-            Author
-        </button>
-        <button class="button iufro-button select-mode-toggle-button" type="button">
-            Participant
-        </button>
+.counter-item-iuf h1,
+.counter-item-iuf p {
+    margin: 0;
+}
 
-    </div>
-</div>
+.counter-item-iuf h1 {
+    padding: 15px 0 0;
+    font-size: 60px;
+}
 
-<!-- Mid Trip -->
-<div class="iufro-toolbar">
-    <div class="iufro-toolbar-secondary">
-        <label class="iufro-toolbar-label" for="iufro-attachment-filters">
-            Mid Trip
-        </label>
+.counter-item-iuf p {
+    padding: 15px 0;
+}
 
-        <button class="button iufro-button select-mode-toggle-button" type="button">
-            Author
-        </button>
-        <button class="button iufro-button select-mode-toggle-button" type="button">
-            Participant
-        </button>
+.registered-iuf> div {
+    background-color: #f17d4a;
+}
 
-    </div>
-</div>
+.attended-iuf> div {
+    background-color: #ffb500;
+}
 
-<!-- Post Trip -->
-<div class="iufro-toolbar">
-    <div class="iufro-toolbar-secondary">
-        <label class="iufro-toolbar-label" for="iufro-attachment-filters">
-            Mid Trip
-        </label>
+.paid-iuf> div {
+    background-color: #78b732;
+}
 
-        <button class="button iufro-button select-mode-toggle-button" type="button">
-            Author
-        </button>
-        <button class="button iufro-button select-mode-toggle-button" type="button">
-            Participant
-        </button>
+.participant-iuf> div {
+    background-color: #1eadd9;
+}
 
-    </div>
-</div>
+.auth-iuf> div {
+    background-color: #dc5a7c;
+}
+
+.unpaid-iuf> div {
+    background-color: #78808b;
+}
+
+
+/*Add on facilities */
+
+.info-iuf h2 {
+    margin-bottom: 0;
+}
+
+.mid-trip-iuf,
+.post-trip-iuf,
+.place-iuf,
+.numb-iuf {
+    width: 50%;
+    float: left;
+}
+
+.trip-iuf {
+    overflow: hidden;
+    margin: 0 -5px;
+}
+
+.mid-trip-iuf,
+.post-trip-iuf {
+    padding: 5px;
+}
+
+.trip-item {
+    overflow: hidden;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.place-iuf {
+    padding-left: 15px;
+    background-color: #1eadd9;
+}
+
+.numb-iuf {
+    text-align: center;
+    background-color: #1b95bb;
+}
+
+
+/* Dinner */
+
+.dinner-iuf,
+.dinner-numb-iuf {
+    width: 50%;
+    float: left;
+    color: #fff;
+}
+
+.dinner-wrap-iuf,
+.dinner-iuf-item {
+    width: 100%;
+    float: left;
+}
+
+.dinner-wrap-iuf {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.dinner-numb-iuf {
+    background-color: #649a29;
+    text-align: center;
+}
+
+.dinner-iuf {
+    background-color: #78b732;
+    padding-left: 15px;
+}
+
+
+/* Content Iufro */
+
+.content-wrap-iuf {
+    width: 100%;
+    float: left;
+    border: 1px solid #ccc;
+    padding: 5px 15px;
+    margin-bottom: 10px;
+}
+
+.content-wrap-iuf> h3 {
+    float: left;
+    display: inline-block;
+}
+
+.btn-admin-iuf {
+    padding: 7px 30px;
+    display: inline-block;
+    float: right;
+    margin: 8px 0;
+    text-decoration: none;
+    color: #fff;
+}
+
+.btn-black-iuf {
+    background-color: #4d5361;
+}
+
+.btn-grey-iuf {
+    background-color: #949fb3;
+}
+
+
+/*Media  Queries  */
+
+@media (max-width: 767px) {
+    .counter-item-iuf {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .mid-trip-iuf,
+    .post-trip-iuf {
+        width: 100%;
+    }
+}
+</style>
+
+            <!-- Title -->
+            <div class="title-iuf">
+                <h2>Dashboard</h2>
+            </div>
+            <!-- End of Title -->
+
+            <!-- Counter Wrap -->
+            <div class="counter-iuf">
+                <div class="registered-iuf counter-item-iuf">
+                    <div class="counter-wrap-iuf">
+                        <h1>23</h1>
+                        <p>Total Registered</p>
+                    </div>
+                </div>
+                <div class="attended-iuf counter-item-iuf">
+                    <div class="counter-wrap-iuf">
+                        <h1>45</h1>
+                        <p>Total Attended</p>
+                    </div>
+                </div>
+                <div class="paid-iuf counter-item-iuf">
+                    <div class="counter-wrap-iuf">
+                        <h1>45</h1>
+                        <p>Paid Member</p>
+                    </div>
+                </div>
+                <div class="participant-iuf counter-item-iuf">
+                    <div class="counter-wrap-iuf">
+                        <h1>56</h1>
+                        <p>Participant</p>
+                    </div>
+                </div>
+                <div class="auth-iuf counter-item-iuf">
+                    <div class="counter-wrap-iuf">
+                        <h1>8</h1>
+                        <p>Author</p>
+                    </div>
+                </div>
+                <div class="unpaid-iuf counter-item-iuf">
+                    <div class="counter-wrap-iuf">
+                        <h1>45</h1>
+                        <p>Unpaid Member</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Counter Wrap -->
+
+            <!-- Add on facilities -->
+            <div class="info-iuf">
+                <h2>Add-on facilities</h2>
+                <div class="trip-iuf">
+
+                    <div class="mid-trip-iuf">
+                        <h3>Mid Trip</h3>
+                        <!-- Mid Trip Item -->
+                        <div class="trip-item">
+                            <div class="place-iuf">
+                                <p>Gunung Kidul</p>
+                            </div>
+                            <div class="numb-iuf">
+                                <p>45</p>
+                            </div>
+                        </div>
+                        <!-- End of Mid Trip Item -->
+                        <!-- Mid Trip Item -->
+                        <div class="trip-item">
+                            <div class="place-iuf">
+                                <p>Klaten</p>
+                            </div>
+                            <div class="numb-iuf">
+                                <p>45</p>
+                            </div>
+                        </div>
+                        <!-- End of Mid Trip Item -->
+                        <!-- Mid Trip Item -->
+                        <div class="trip-item">
+                            <div class="place-iuf">
+                                <p>Merapi</p>
+                            </div>
+                            <div class="numb-iuf">
+                                <p>45</p>
+                            </div>
+                        </div>
+                        <!-- End of Mid Trip Item -->
+                    </div>
+
+                    <div class="post-trip-iuf">
+                        <h3>Post Trip</h3>
+                        <!-- Post Trip Item -->
+                        <div class="trip-item">
+                            <div class="place-iuf">
+                                <p>Pacitan</p>
+                            </div>
+                            <div class="numb-iuf">
+                                <p>56</p>
+                            </div>
+                        </div>
+                        <!-- End of Post Trip Item -->
+                        <!-- Post Trip Item -->
+                        <div class="trip-item">
+                            <div class="place-iuf">
+                                <p>Pekanbaru Shared</p>
+                            </div>
+                            <div class="numb-iuf">
+                                <p>34</p>
+                            </div>
+                        </div>
+                        <!-- End of Post Trip Item -->
+                        <!-- Post Trip Item -->
+                        <div class="trip-item">
+                            <div class="place-iuf">
+                                <p>Pekanbaru Single</p>
+                            </div>
+                            <div class="numb-iuf">
+                                <p>34</p>
+                            </div>
+                        </div>
+                        <!-- End of Post Trip Item -->
+                    </div>
+                </div>
+            </div>
+            <!-- End of Add on facilities -->
+            <!-- Dinner -->
+            <div class="dinner-wrap-iuf">
+                <div class="dinner-iuf-item">
+                    <div class="dinner-iuf">
+                        <p>Dinner</p>
+                    </div>
+                    <div class="dinner-numb-iuf">
+                        <p>23</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Dinner -->
+
+            <div class="content-wrap-iuf">
+                <h3>Content Wrap</h3>
+                <a href="#" class="btn-admin-iuf btn-black-iuf">VIEW</a>
+            </div>
+
+            <div class="content-wrap-iuf">
+                <h3>Content Wrap</h3>
+                <a href="#" class="btn-admin-iuf btn-grey-iuf">VIEW</a>
+            </div>
+
+
+
+
 
 
 <script type="text/javascript" src="<?php echo get_site_url() . '/wp-content/plugins/ss-event-dates/assets/js/popup.js' ?>"></script>
