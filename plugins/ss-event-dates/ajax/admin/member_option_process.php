@@ -481,6 +481,19 @@ Therefore, you can not continue to participate on this conference as an Author.<
         ),
         array('%s')
     );
+    $wpdb->update(
+        'wp_ss_event_user_detail',
+        array(
+            'euser_payment_status' => 'Pay Later',
+            'euser_paylater_date'  => date("Y-m-d H:i:s"),
+        ),
+        array('euser_email' => $euser_email),
+        array(
+            '%s',
+            '%s',
+        ),
+        array('%s')
+    );
     echo "Abstract Approved Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
 
 
@@ -535,6 +548,8 @@ $approve_wording = implode("", $paragraphs);
             </div>
             <div>
 <p>This is to inform you that your Abstract has been approved by us. </p>' . $approve_wording . '<p> In order to continue the registration process, you have to complete the payment.</p>
+<p>Please note if you have not complete the online payment within 14 days after you receive this email, all of your order (mid and post conference trip and also dinner) will be automatically canceled by our system.</p>
+<p>After that, you can re-order the conference trip and dinner again by login to your account and choose the desired conference trip and also dinner (as long as there are seats remaining).</p>
 
 <p>Below is your payment detail :</p>
 

@@ -212,6 +212,24 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 				e.preventDefault(e);
 			}
 	});
+
+var ext = jQuery('#profile_pict').val().split('.').pop().toLowerCase();
+if(jQuery.inArray(ext, ['png','jpg','jpeg']) == -1) {
+    alert('Allowed file: JPEG / JPG / PNG.');
+}
+var doc1 = jQuery('#mydoc1').val().split('.').pop().toLowerCase();
+if(jQuery.inArray(doc1, ['pdf','rtf','doc','docx']) == -1) {
+    alert('Allowed file: PDF / RTF / DOC / DOCX.');
+}
+var doc2 = jQuery('#mydoc1').val().split('.').pop().toLowerCase();
+if(jQuery.inArray(doc2, ['pdf','rtf','doc','docx']) == -1) {
+    alert('Allowed file: PDF / RTF / DOC / DOCX.');
+}
+var doc3 = jQuery('#mydoc1').val().split('.').pop().toLowerCase();
+if(jQuery.inArray(doc3, ['pdf','rtf','doc','docx']) == -1) {
+    alert('Allowed file: PDF / RTF / DOC / DOCX.');
+}
+
 </script>
 <?php }else{ ?>
 <script type="text/javascript">
