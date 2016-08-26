@@ -431,7 +431,7 @@ if ($_POST['do_model'] == 'do_membership') {
             <div>
             <p>With regret, we want to inform you that your Abstract still does not meet our requirements.
 Therefore, you can not continue to participate on this conference as an Author.</p>
-' . $rejection_wording . '
+' . nl2br($rejection_wording) . '
 <p>But you still can continue to participate as a "Participant" type user, instead of author.</p>
 <p>Do you want to participate on the conference as "Participant" type user?</p>
 </div>
@@ -528,7 +528,7 @@ Therefore, you can not continue to participate on this conference as an Author.<
             </div>
             <div>
 <p>This is to inform you that your Abstract has been approved by us. </p>
- ' . $approve_wording . '
+ ' . nl2br($approve_wording) . '
  <p> In order to continue the registration process, you have to complete the payment.</p>
 
 <p>Below is your payment detail :</p>

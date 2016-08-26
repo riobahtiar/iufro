@@ -15,7 +15,6 @@ $user_detail = $wpdb->
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title></title>
     <link href="<?php echo plugins_url(); ?>/ss-event-dates/assets/bootstrap.min.css" rel="stylesheet">
-    <script src="//cdn.ckeditor.com/4.5.10/standard-all/ckeditor.js"></script>
     </head>
     <body style="padding: 17px">
 
@@ -80,7 +79,7 @@ $user_detail = $wpdb->
             <input name="do_model" type="hidden" value="do_doc_approved">
             <h5>Approve Document? </h5>
             <p>Write reason why document is Approved or add notes for revision.(Optional)</p>
-            <textarea class="form-control" rows="3" placeholder="Reason.." name="reason"></textarea>
+            <textarea class="form-control" rows="5" placeholder="Reason.." name="reason"></textarea>
             <br>
                 <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                     <button class="btn btn-primary" type="submit">
@@ -96,7 +95,7 @@ $user_detail = $wpdb->
                 <input name="do_model" type="hidden" value="do_doc_rejected">
                 <h5>Reject Document? </h5>
                 <p>Write reason why document is rejected.(Optional)</p>
-                <textarea class="form-control" rows="3" placeholder="Reason.." name="reason_reject"></textarea>
+                <textarea class="form-control" rows="5" placeholder="Reason.." name="reason_reject"></textarea>
                 <br>
                     <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                         <button class="btn btn-danger" type="submit">
@@ -232,8 +231,8 @@ $user_detail = $wpdb->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script>
-    CKEDITOR.replace( 'reason' );
-    CKEDITOR.replace( 'reason_reject' );
+    // CKEDITOR.replace( 'reason' );
+    // CKEDITOR.replace( 'reason_reject' );
 </script>
     </body>
 </html>
