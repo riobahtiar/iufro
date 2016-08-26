@@ -389,7 +389,7 @@ $text = $_POST['reason_reject'];
 $text = str_replace("\r\n","\n",$text);
 $paragraphs = preg_split("/[\n]{2,}/",$text);
 foreach ($paragraphs as $key => $p) {
-    $paragraphs[$key] = "<p>".str_replace("\n","<br />",$paragraphs[$key])."</p>";
+    $paragraphs[$key] = "<p>".str_replace("\n","<br>",$paragraphs[$key])."</p>";
 }
 $rejection_wording = implode("", $paragraphs);
 
@@ -432,9 +432,7 @@ $rejection_wording = implode("", $paragraphs);
             </div>
             <div>
             <p>With regret, we want to inform you that your Abstract still does not meet our requirements.
-Therefore, you can not continue to participate on this conference as an Author.</p>
-' . $rejection_wording . '
-<p>But you still can continue to participate as a "Participant" type user, instead of author.</p>
+Therefore, you can not continue to participate on this conference as an Author.</p>' . $rejection_wording . '<p>But you still can continue to participate as a "Participant" type user, instead of author.</p>
 <p>Do you want to participate on the conference as "Participant" type user?</p>
 </div>
 
@@ -492,7 +490,7 @@ $text = $_POST['reason'];
 $text = str_replace("\r\n","\n",$text);
 $paragraphs = preg_split("/[\n]{2,}/",$text);
 foreach ($paragraphs as $key => $p) {
-    $paragraphs[$key] = "<p>".str_replace("\n","<br />",$paragraphs[$key])."</p>";
+    $paragraphs[$key] = "<p>".str_replace("\n","<br>",$paragraphs[$key])."</p>";
 }
 $approve_wording = implode("", $paragraphs);
 
@@ -536,9 +534,7 @@ $approve_wording = implode("", $paragraphs);
                 Abstract Approved Notification | IUFRO ACACIA 2017
             </div>
             <div>
-<p>This is to inform you that your Abstract has been approved by us. </p>
- ' . $approve_wording . '
- <p> In order to continue the registration process, you have to complete the payment.</p>
+<p>This is to inform you that your Abstract has been approved by us. </p>' . $approve_wording . '<p> In order to continue the registration process, you have to complete the payment.</p>
 
 <p>Below is your payment detail :</p>
 
