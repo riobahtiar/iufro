@@ -176,6 +176,7 @@ function init_iufro_dash()
 }
 function reports_page(){
 ?>
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 <style>
     * {
     box-sizing: border-box;
@@ -374,7 +375,8 @@ p {
     }
 }
 </style>
-
+        <!-- Container -->
+        <div class="container-iuf">
             <!-- Title -->
             <div class="title-iuf">
                 <h2>Dashboard</h2>
@@ -520,9 +522,8 @@ p {
                 <a href="#" class="btn-admin-iuf btn-grey-iuf">VIEW</a>
             </div>
 
-
-
-
+        </div>
+        <!-- End of Container -->
 
 
 <script type="text/javascript" src="<?php echo get_site_url() . '/wp-content/plugins/ss-event-dates/assets/js/popup.js' ?>"></script>
