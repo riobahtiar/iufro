@@ -11,7 +11,7 @@
 		<h2>Your Identity</h2>
 	</div>
 	<form id="registration" action="" method="post">
-		  	<div class="form-group">
+		  	<div class="form-group accounttype">
 	    	<label for="user_type">Register as (<a data-toggle="modal" data-target="#registerInfo">Learn more.</a>)</label>
 	    	<select class="form-control" name="user_type" id="user_type">
 	    		<option value="">== Select Account ==</option>
@@ -63,56 +63,56 @@ Paticipant also able to join extra field trip during the conference (extra charg
 		    	<input type="text" class="form-control" name="title" id="title" placeholder="Title" value="<?php if(isset( $_POST['title'] ))  echo $_POST['title']; else echo null; ?>">
 		  	</div>
 	  	</div>
-	  	<div class="form-group">
+	  	<div class="form-group gfanme">
 	    	<label for="fullname">Full Name</label>
 	    	<input type="text" class="form-control" name="fullname" id="fullname" placeholder="Full Name" value="<?php if(isset( $_POST['fullname'] ))  echo $_POST['fullname']; else echo null;?>">
 	  	</div>
 	  	<div class="row">
-		  	<div class="form-group col-md-6">
+		  	<div class="form-group col-md-6 gmail">
 		    	<label for="email">Email</label>
 		    	<input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php if(isset( $_POST['email'] ))  echo $_POST['email']; else echo null; ?>">
 		  	</div>
 
-		  	<div class="form-group form-group col-md-6">
+		  	<div class="form-group col-md-6 gnumber">
 		    	<label for="phone">Phone number</label>
 		    	<input type="text" class="form-control" name="phone" id="phone">
 		  	</div>
 	  	</div>
 	  	<div class="row">
-		  	<div class="form-group col-md-6">
+		  	<div class="form-group col-md-6 gpassword">
 		    	<label for="password">Password</label>
 		    	<input type="password" class="form-control" name="password" id="password" placeholder="Password">
 		  	</div>
-		  	<div class="form-group form-group col-md-6">
+		  	<div class="form-group col-md-6 gpassword2">
 		    	<label for="c_password">Confirm Password</label>
 		    	<input type="password" class="form-control" name="c_password" id="c_password" placeholder="Confirm Password">
 		  	</div>
 	  	</div>
-	  	<div class="form-group">
+	  	<div class="form-group gaddress">
 	    	<label for="address">Address</label>
 	    	<textarea class="form-control" name="address" id="address" placeholder="Address"><?php if(isset( $_POST['address'] ))  echo $_POST['address']; else echo null; ?></textarea>
 	  	</div>
 	  	<div class="row">
-		  	<div class="form-group col-md-6">
+		  	<div class="form-group col-md-6 gzip">
 		    	<label for="zip">Zip Code</label>
 		    	<input type="text" class="form-control" name="zip" id="zip" placeholder="Zip Code" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="<?php if(isset( $_POST['zip'] ))  echo $_POST['zip']; else echo null; ?>">
 		  	</div>
-		  	<div class="form-group form-group col-md-6">
+		  	<div class="form-group col-md-6 gcity">
 		    	<label for="city">City</label>
 		    	<input type="text" class="form-control" name="city" id="city" placeholder="City" value="<?php if(isset( $_POST['city'] ))  echo $_POST['city']; else echo null; ?>">
 		  	</div>
 	  	</div>
 	  	<div class="row">
-		  	<div class="form-group col-md-6">
+		  	<div class="form-group col-md-6 gcountry">
 		    	<label for="state">Country</label>
 		    	<select name="country" class="form-control countries" id="countryId">
-<option>Select Country</option>
+<option value="">Select Country</option>
 				</select>
 		  	</div>
-		  	<div class="form-group form-group col-md-6">
+		  	<div class="form-group col-md-6 gstate">
 		    	<label for="country">State/Province</label>
-		    	<select name="state" class="form-control states" id="stateId">
-<option>Select State</option>
+		    <select name="state" class="form-control states" id="stateId">
+					<option value="">Select State</option>
 			</select>
 		  	</div>
 	  	</div>
@@ -152,9 +152,56 @@ Paticipant also able to join extra field trip during the conference (extra charg
     });
 // Jquery Validation
 
-    
-    function confirmExit() {
-        return "You have attempted to leave this page and your inputed data will be lost. Are you sure? ";
+
+var warning = [{
+  element: "#user_type",
+  text: "Please select your account type"
+}, {
+  element: "#fullname",
+  text: "Name needs to be filled"
+}, {
+  element: "#email",
+  text: "Email needs to be filled"
+}, {
+  element: "#phone",
+  text: "Phone needs to be filled"
+}, {
+  element: "#password",
+  text: "Password needs to be filled"
+}, {
+  element: "#c_password",
+  text: "Password needs to be filled"
+}, {
+  element: "#address",
+  text: "Address needs to be filled"
+}, {
+  element: "#zip",
+  text: "Zip needs to be filled"
+}, {
+  element: "#city",
+  text: "City needs to be filled"
+}, {
+  element: "#countryId",
+  text: "Country needs to be filled"
+}, {
+  element: "#stateId",
+  text: "State needs to be filled"
+}];
+
+
+jQuery("#registration").submit(function(e) {
+  jQuery.each(warning, function(i, o){
+
+    if (jQuery(o.element).val() === '') {
+        var parent = jQuery(o.element).parent();
+        parent.find(".text-danger").remove();
+        parent.append('<p class="text-danger">'+o.text+'</p>');
+        
     }
-    window.onbeforeunload = confirmExit;
+  });
+  e.preventDefault();
+});
+
+
+
   </script>

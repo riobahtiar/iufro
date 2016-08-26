@@ -437,9 +437,24 @@ function create_presenter()
             'rewrite'     => true,
             // 'menu_position' => 15,
             'supports'    => array('title', 'editor', 'thumbnail'),
-            'taxonomies'  => array(''),
+            'taxonomies'  => array('presenter_taxonomy'),
             'menu_icon'   => 'dashicons-laptop',
             'has_archive' => true,
+        )
+    );
+}
+
+// Register Taxonomy days
+add_action('init', 'presenter_taxonomy');
+function presenter_taxonomy()
+{
+    register_taxonomy(
+        'presenter_taxonomy',
+        'presenter',
+        array(
+            'label'        => __('Days'),
+            'rewrite'      => array('slug' => 'days_show'),
+            'hierarchical' => true,
         )
     );
 }
@@ -835,40 +850,76 @@ function participant_converter(){
     ob_start();
     if (isset($_GET['user_auth'])) {
         $user_auth = sanitize_text_field($_GET['user_auth']);
+        $is_no = sanitize_text_field($_GET['is_no']);
         //get user data
         global $wpdb;
         $query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_activationkey = '{$user_auth}'";
         $user_detail = $wpdb->get_row($query, ARRAY_A);
-        $userchecker = $wpdb->update(
-            'wp_ss_event_user_detail',
-            array('euser_meta_type' => 'participant_type'),
-            array('euser_activationkey' => $user_auth),
-            array('%s'),
-            array('%s')
-        );
-        if ($userchecker === false) {
-            echo "<div class='alert alert-danger'>
-                    <h1>Oops!</h1><br>
-                    <p>We can't seem to find the page you're looking for.</p>
-                    <h4>Error code: <strong>404</strong></h4>
-                    <br>
-                    <br></div>";
-        } elseif ($userchecker === 0) {
-            echo "<div class='alert alert-danger'>
-                    <h1>Oops!</h1><br>
-                    <p>We can't seem to find the page you're looking for.</p>
-                    <h4>Error code: <strong>404</strong></h4>
-                    <br>
-                    <br></div>";
-        } elseif ($userchecker > 0) {
-            echo "<div class='alert alert-danger'>Congratulation " . $user_detail['euser_fullname'] . ", your account has been changed to Participant. Please <a href='" . get_permalink() . "/login'>Login</a> to your account to continue payment process.</div>";
-        } else {
-            echo "<div class='alert alert-danger'>
-                    <h1>Oops!</h1><br>
-                    <p>We can't seem to find the page you're looking for.</p>
-                    <h4>Error code: <strong>404</strong></h4>
-                    <br>
-                    <br></div>";
+        // Conditional if no
+        if (isset($is_no) && $is_no==true ){
+            $userchecker = $wpdb->update(
+                'wp_ss_event_user_detail',
+                array('euser_meta_type' => 'free_type'),
+                array('euser_activationkey' => $user_auth),
+                array('%s'),
+                array('%s')
+            );
+            if ($userchecker === false) {
+                echo "<div class='alert alert-danger'>
+                        <h1>Oops!</h1><br>
+                        <p>We can't seem to find the page you're looking for.</p>
+                        <h4>Error code: <strong>404</strong></h4>
+                        <br>
+                        <br></div>";
+            } elseif ($userchecker === 0) {
+                echo "<div class='alert alert-danger'>
+                        <h1>Oops!</h1><br>
+                        <p>We can't seem to find the page you're looking for.</p>
+                        <h4>Error code: <strong>404</strong></h4>
+                        <br>
+                        <br></div>";
+            } elseif ($userchecker > 0) {
+                echo "<div class='alert alert-danger'>Hello " . $user_detail['euser_fullname'] . ", your account has been changed to Free Account.<br> You are no longer able to particapete at the conference, but you still able to login at our website using your account. </div>";
+            } else {
+                echo "<div class='alert alert-danger'>
+                        <h1>Oops!</h1><br>
+                        <p>We can't seem to find the page you're looking for.</p>
+                        <h4>Error code: <strong>404</strong></h4>
+                        <br>
+                        <br></div>";
+            }
+        }else{
+            $userchecker = $wpdb->update(
+                'wp_ss_event_user_detail',
+                array('euser_meta_type' => 'participant_type'),
+                array('euser_activationkey' => $user_auth),
+                array('%s'),
+                array('%s')
+            );
+            if ($userchecker === false) {
+                echo "<div class='alert alert-danger'>
+                        <h1>Oops!</h1><br>
+                        <p>We can't seem to find the page you're looking for.</p>
+                        <h4>Error code: <strong>404</strong></h4>
+                        <br>
+                        <br></div>";
+            } elseif ($userchecker === 0) {
+                echo "<div class='alert alert-danger'>
+                        <h1>Oops!</h1><br>
+                        <p>We can't seem to find the page you're looking for.</p>
+                        <h4>Error code: <strong>404</strong></h4>
+                        <br>
+                        <br></div>";
+            } elseif ($userchecker > 0) {
+                echo "<div class='alert alert-danger'>Congratulation " . $user_detail['euser_fullname'] . ", your account has been changed to Participant. Please <a href='" . get_permalink() . "/login'>Login</a> to your account to continue payment process.</div>";
+            } else {
+                echo "<div class='alert alert-danger'>
+                        <h1>Oops!</h1><br>
+                        <p>We can't seem to find the page you're looking for.</p>
+                        <h4>Error code: <strong>404</strong></h4>
+                        <br>
+                        <br></div>";
+            }
         }
 
     } else {
@@ -883,3 +934,24 @@ function participant_converter(){
 }
 
 add_shortcode('participant_converter', 'participant_converter');
+
+// Transient for currency
+
+function getCurrencyRate($from, $to) {
+   $value = get_transient($from . $to);
+   $app_id = '27e792f1d35846d6843fbde98fcce097';
+   $url = 'http://openexchangerates.org/api/historical/' . date('Y-m-d') . '.json';
+
+   if ($value != '' && $value != 0) {
+       $result = $value;
+   } else {
+       $data = file_get_contents($url . '?app_id=' . $app_id . '&base=' . $from . '&symbols=' . $to);
+
+       $json = json_decode($data);
+       $result = (float) $json->rates->{$to};
+       set_transient($from . $to, $result, 3 * HOUR_IN_SECONDS);
+   }
+
+   return $result;
+}
+

@@ -1,26 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-            <meta content="IE=edge" http-equiv="X-UA-Compatible">
-                <meta content="width=device-width, initial-scale=1" name="viewport">
-                    <title>
-                    </title>
-                </meta>
-            </meta>
-        </meta>
-    </head>
-<body style="background: #f7f7f7; padding: 20px; font-size: 15px; text-align: center;">
-
 <?php
+// Call WOrdpress Functions
 $parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
 require_once $parse_uri[0] . 'wp-load.php';
 global $wpdb;
-global $ss_theme_opt; 
-$euser_barcode = $_GET['barcode'];
+global $ss_theme_opt;
+$euser_barcode = $_POST['barcode'];
 $query         = "SELECT * FROM wp_ss_event_user_detail WHERE euser_barcode = '{$euser_barcode}'";
 $user_detail   = $wpdb->get_row($query, ARRAY_A);
 
+// Function to save file and generate to abstract ID
+function upload_user_file($file = array())
+{
+    require_once ABSPATH . 'wp-admin/includes/admin.php';
+    $file_return = wp_handle_upload($file, array('test_form' => false));
+    if (isset($file_return['error']) || isset($file_return['upload_error_handler'])) {
+        return false;
+    } else {
+        $filename   = $file_return['file'];
+        $attachment = array(
+            'post_mime_type' => $file_return['type'],
+            'post_title'     => preg_replace('/\.[^.]+$/', '', basename($filename)),
+            'post_content'   => '',
+            'post_status'    => 'inherit',
+            'guid'           => $file_return['url'],
+        );
+        $attachment_id = wp_insert_attachment($attachment, $file_return['url']);
+        require_once ABSPATH . 'wp-admin/includes/image.php';
+        $attachment_data = wp_generate_attachment_metadata($attachment_id, $filename);
+        wp_update_attachment_metadata($attachment_id, $attachment_data);
+        if (0 < intval($attachment_id)) {
+            return $attachment_id;
+        }
+    }
+    return false;
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>x</title>
+    </head>
+<body style="background: #f7f7f7; padding: 20px; font-size: 15px; text-align: center;">
+<?php
 // ======== Start Payment Conditional Block ======== //
 
 // mid conf
@@ -92,7 +116,8 @@ if (isset($user_detail['euser_addon_dinner'])) {
 // Payment Dates Earlybird
 $paymentDate    = date('Y-m-d');
 $paymentDate    = date('Y-m-d', strtotime($paymentDate));
-IUFRO Keeper <keep@iufroacacia2017.com>
+$earlyBirdBegin = date('Y-m-d', strtotime($ss_theme_opt['date_earlybird_start']));
+$earlyBirdEnd   = date('Y-m-d', strtotime($ss_theme_opt['date_earlybird_end']));
 
 if ($user_detail['euser_type'] == "local student") {
     $user_string = "Local | Students";
@@ -136,21 +161,20 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 
 // ======== End of Payment Conditional Block ======== //
 
-
-if ($_GET['do_model'] == 'do_membership') {
+if ($_POST['do_model'] == 'do_membership') {
 
     $getx_result = $wpdb->update(
         'wp_ss_event_user_detail',
         array(
-            'euser_meta_type' => $_GET['user_type'],
+            'euser_meta_type' => $_POST['user_type'],
         ),
-        array('euser_barcode' => $_GET['barcode']),
+        array('euser_barcode' => $_POST['barcode']),
         array(
             '%s',
         ),
         array('%s')
     );
-    echo "Member type changed Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
+    echo "Member type changed Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
 
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
@@ -214,24 +238,67 @@ if ($_GET['do_model'] == 'do_membership') {
     wp_mail($to, $subject, $body, $headers);
 
 // ========= END Email =========//
+} elseif ($_POST['do_model'] == 'do_abstract_revision') {
 
-} elseif ($_GET['do_model'] == 'do_doc_publish') {
+    if ((isset($_FILES['abstract']) && $_FILES['abstract'] != "")) {
+
+        $get_id = upload_user_file($_FILES['abstract']);
+
+        $wpdb->update(
+            'wp_ss_event_user_detail',
+            array('euser_abstrak' => $get_id),
+            array('euser_barcode' => $_POST['barcode']),
+            array('%s'),
+            array('%s')
+        );
+        echo "Abstract uploaded Successfully <kbd>[F5]</kbd>";
+
+    } else {
+        echo "Abstract Empty";
+    }
+} elseif ($_POST['do_model'] == 'do_absence') {
+    $getx_result = $wpdb->update(
+        'wp_ss_event_user_detail',
+        array(
+            'euser_onsite_absence' => 'present',
+        ),
+        array('euser_barcode' => $_POST['barcode']),
+        array(
+            '%s',
+        ),
+        array('%s')
+    );
+    echo "[Success]User set as present,";
+} elseif ($_POST['do_model'] == 'do_change_payment') {
+    $getx_result = $wpdb->update(
+        'wp_ss_event_user_detail',
+        array(
+            'euser_payment_status' => 'Paid-Onsite',
+        ),
+        array('euser_barcode' => $_POST['barcode']),
+        array(
+            '%s',
+        ),
+        array('%s')
+    );
+    echo "[Success]User set as Paid,";
+} elseif ($_POST['do_model'] == 'do_doc_publish') {
     $getx_result = $wpdb->update(
         'wp_ss_event_user_detail',
         array(
             'euser_doc_status' => 'published',
         ),
-        array('euser_barcode' => $_GET['barcode']),
+        array('euser_barcode' => $_POST['barcode']),
         array(
             '%s',
         ),
         array('%s')
     );
-    echo "Document Publised Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
+    echo "Abstract Published Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
 
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
-    $subject = 'Document Published Notification | IUFRO ACACIA 2017';
+    $subject = 'Abstract Published Notification | IUFRO ACACIA 2017';
     $body    = '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -264,10 +331,10 @@ if ($_GET['do_model'] == 'do_membership') {
                 <h2 style="text-align:center;color:#809062;margin-top: 0;">Dear Sir / Madam</h2>
             </div>
             <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
-                Your Document was published to IUFRO ACACIA CONFERENCE 2017 Website
+                <p>Your Abstract was published to IUFRO ACACIA CONFERENCE 2017 Website</p>
             </div>
 
-        </div>
+        
         <div>
             <div>
                 <p style="font-size:16px;">Should you require any further assistance, please do not hesitate to contact us on address below: </p>
@@ -276,6 +343,7 @@ if ($_GET['do_model'] == 'do_membership') {
                 <p style="font-size:12px;margin: 0;color:#809062">Phone: 0274-895954</p>
                 <p style="font-size:12px;margin: 0;color:#809062">Email: secretariat@iufroacacia2017.com</p>
             </div>
+        </div>
         </div>
     </body>
 
@@ -289,37 +357,45 @@ if ($_GET['do_model'] == 'do_membership') {
 
 // ========= END Email =========//
 
-} elseif ($_GET['do_model'] == 'do_doc_unpublish') {
+} elseif ($_POST['do_model'] == 'do_doc_unpublish') {
     $getx_result = $wpdb->update(
         'wp_ss_event_user_detail',
         array(
             'euser_doc_status' => 'unpublished',
         ),
-        array('euser_barcode' => $_GET['barcode']),
+        array('euser_barcode' => $_POST['barcode']),
         array(
             '%s',
         ),
         array('%s')
     );
-    echo "Document Unpublised Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
-} elseif ($_GET['do_model'] == 'do_doc_rejected') {
+    echo "Abstract Unpublised Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
+} elseif ($_POST['do_model'] == 'do_doc_rejected') {
     $getx_result = $wpdb->update(
         'wp_ss_event_user_detail',
         array(
             'euser_doc_status' => 'rejected',
         ),
-        array('euser_barcode' => $_GET['barcode']),
+        array('euser_barcode' => $_POST['barcode']),
         array(
             '%s',
         ),
         array('%s')
     );
-    echo "Document Rejected Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
+    echo "Abstract Rejected Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
     $authkey = $user_detail['euser_activationkey'];
-    $rejection_wording = $_GET['reason'];
+
+$text = $_POST['reason_reject'];
+$text = str_replace("\r\n","\n",$text);
+$paragraphs = preg_split("/[\n]{2,}/",$text);
+foreach ($paragraphs as $key => $p) {
+    $paragraphs[$key] = "<p>".str_replace("\n","<br>",$paragraphs[$key])."</p>";
+}
+$rejection_wording = implode("", $paragraphs);
+
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
-    $subject = 'Document Rejected Notification | IUFRO ACACIA 2017';
+    $subject = 'Abstract Rejected Notification | IUFRO ACACIA 2017';
     $body    = '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -352,27 +428,26 @@ if ($_GET['do_model'] == 'do_membership') {
                 <h2 style="text-align:center;color:#809062;margin-top: 0;">Dear Sir / Madam</h2>
             </div>
             <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
-                Your Document was Rejected to IUFRO ACACIA CONFERENCE 2017 Website
+                Your Abstract was Rejected to IUFRO ACACIA CONFERENCE 2017 Website
             </div>
             <div>
-            <p>With regret, we want to inform you that your document still does not meet our requirements.
-Therefore, you can not continue to participate on this conference as an Author.</p>
-<div>
-<p>'.$rejection_wording.'</p>
-</div>
-<p>But you still can continue to participate as a "Participant" type user, instead of author.
-To continue the registration as a participant, simply click the button below.</p>
+            <p>With regret, we want to inform you that your Abstract still does not meet our requirements.
+Therefore, you can not continue to participate on this conference as an Author.</p>' . $rejection_wording . '<p>But you still can continue to participate as a "Participant" type user, instead of author.</p>
+<p>Do you want to participate on the conference as "Participant" type user?</p>
 </div>
 
-                <div style="width:100%;text-align: left;border-bottom:1px solid #809062;">
-                    <a href="http://staging.iufroacacia2017.com/changer?user_auth='.$authkey.'&fromxmail=true" style="background-color: #809062;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">CHANGE TO PARTICIPANT</a>
+                <div style="width:100%;text-align: left;">
+                    <a href="http://staging.iufroacacia2017.com/changer?user_auth=' . $authkey . '&fromxmail=true" style="background-color: #809062;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">Yes</a>
+                </div>
+                <div style="width:100%;text-align: right;">
+                    <a href="http://staging.iufroacacia2017.com/changer?is_no=true&user_auth=' . $authkey . '&fromxmail=true" style="background-color: red;color: #fff;width: 100px;text-decoration: none;display: block;margin: 0 auto;text-align: center;padding: 10px;margin-bottom: 20px;">No</a>
                 </div>
 
-<div>
-<p>You still need to proceed with the payment. Your payment details can be seen on the summaries page after you click the button above.</p>
-            </div>
 
-        </div>
+<div>
+<p>If you choose to change as Participant, you still need to proceed with the payment. Your payment details can be seen on the summaries page after you click "Yes" button above.</p>
+</div>
+
         <div>
             <div>
                 <p style="font-size:16px;">Should you require any further assistance, please do not hesitate to contact us on address below: </p>
@@ -386,31 +461,57 @@ To continue the registration as a participant, simply click the button below.</p
 
 </html>
 ';
-
-    $headers[] = 'Content-Type: text/html; charset=UTF-8';
+    $headers[] = 'MIME-Version: 1.0\r\n';
+    $headers[] = 'Content-Type: text/html; charset=ISO-8859-1\r\n';
     $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
     $headers[] = 'Cc: IUFRO Keeper <keep@iufroacacia2017.com>';
     wp_mail($to, $subject, $body, $headers);
 
 // ========= END Email =========//
 
-} elseif ($_GET['do_model'] == 'do_doc_approved') {
+} elseif ($_POST['do_model'] == 'do_doc_approved') {
     $getx_result = $wpdb->update(
         'wp_ss_event_user_detail',
         array(
             'euser_doc_status' => 'approved',
         ),
-        array('euser_barcode' => $_GET['barcode']),
+        array('euser_barcode' => $_POST['barcode']),
         array(
             '%s',
         ),
         array('%s')
     );
-    echo "Document Approved Successfully. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
-    $approve_wording = sanitize_text_field( $_GET['reason'] );
+    $wpdb->update(
+        'wp_ss_event_user_detail',
+        array(
+            'euser_payment_status' => 'Pay Later',
+            'euser_paylater_date'  => date("Y-m-d H:i:s"),
+        ),
+        array('euser_email' => $euser_email),
+        array(
+            '%s',
+            '%s',
+        ),
+        array('%s')
+    );
+    echo "Abstract Approved Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
+
+
+
+
+$text = $_POST['reason'];
+$text = str_replace("\r\n","\n",$text);
+$paragraphs = preg_split("/[\n]{2,}/",$text);
+foreach ($paragraphs as $key => $p) {
+    $paragraphs[$key] = "<p>".str_replace("\n","<br>",$paragraphs[$key])."</p>";
+}
+$approve_wording = implode("", $paragraphs);
+
+
+
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
-    $subject = 'Document Approved Notification | IUFRO ACACIA 2017';
+    $subject = 'Abstract Approved Notification | IUFRO ACACIA 2017';
     $body    = '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -443,10 +544,12 @@ To continue the registration as a participant, simply click the button below.</p
                 <h2 style="text-align:center;color:#809062;margin-top: 0;">Dear Sir / Madam</h2>
             </div>
             <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
-                Document Approved Notification | IUFRO ACACIA 2017
+                Abstract Approved Notification | IUFRO ACACIA 2017
             </div>
             <div>
-<p>This is to inform you that your document has been approved by us. <br> '.$approve_wording.' </br> In order to continue the registration process, you have to complete the payment.</p>
+<p>This is to inform you that your Abstract has been approved by us. </p>' . $approve_wording . '<p> In order to continue the registration process, you have to complete the payment.</p>
+<p>Please note if you have not complete the online payment within 14 days after you receive this email, all of your order (mid and post conference trip and also dinner) will be automatically canceled by our system.</p>
+<p>After that, you can re-order the conference trip and dinner again by login to your account and choose the desired conference trip and also dinner (as long as there are seats remaining).</p>
 
 <p>Below is your payment detail :</p>
 
@@ -504,7 +607,8 @@ To continue the registration as a participant, simply click the button below.</p
             <div>
                 <p>PAYMENT METHOD </p>
                 <p>We accept the payment via Paypal and iPaymu. Please access to your payment page by <a href="http://www.iufroacacia2017.com/login">Login</a> to your account and choose menu payment summary on Dashboard page</p>
-                <p style="font-style:italic;">*Registration fee will be determined based on the date you do the payment (early bird / regular), or by your type of user (local/foreigner/student).</p>
+                <p style="font-style:italic;">*The closing date for the online payment will be on 21st June 2017. You will not be able to do the online payment after the closing date.</p>
+                <p style="font-style:italic;">Registration fee will be determined based on the date you do the payment (early bird / regular), or by your type of user (local/foreigner/student).</p>
                 <p style="font-size:16px;">Should you require any further assistance, please do not hesitate to contact us on address below: </p>
                 <p style="font-size:12px;margin: 0;color:#809062">Center of Forest Biotechnology and Tree Improvement</p>
                 <p style="font-size:12px;margin: 0;color:#809062">Jl. Palagan Tentara Pelajar KM 15 Purwobinangun, Pakem, Sleman, Yogyakarta 55582</p>
@@ -517,18 +621,16 @@ To continue the registration as a participant, simply click the button below.</p
 </html>
 ';
 
-    $headers[] = 'Content-Type: text/html; charset=UTF-8';
+    $headers[] = 'MIME-Version: 1.0\r\n';
+    $headers[] = 'Content-Type: text/html; charset=ISO-8859-1\r\n';
     $headers[] = 'From: IUFRO ACACIA TEAM <noreply@iufroacacia2017.com>';
     $headers[] = 'Cc: IUFRO Keeper <keep@iufroacacia2017.com>';
     wp_mail($to, $subject, $body, $headers);
 
 // ========= END Email =========//
 
-
-
-
 } else {
-    echo "ERR21. Please Refresh your browser <kbd>[CTRL+F5]</kbd>";
+    echo "ERR21. Please Refresh your browser <kbd>[F5]</kbd>";
 }
 
 // echo "<pre>";
