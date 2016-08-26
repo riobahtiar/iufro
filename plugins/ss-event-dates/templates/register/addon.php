@@ -155,7 +155,7 @@ $dinner_av = $ss_theme_opt['text-dinner'] - $dinner_rows;
 if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 ?>
 	<div class="well well-photo">
-		<label> <span>Upload Profile Picture*</span> <input id="profile_pict" name="profile_pict" type="file" /> </label><hr>
+		<label> <span>Upload Profile Picture*</span> <input id="profile_pict" name="profile_pict" type="file" onChange="validate(this.value)" /> </label><hr>
 		<p class="text-warning"><small>* Allowed file: JPEG / JPG / PNG. Maximum file size: 5MB</small></p>
 	</div>
 
@@ -214,37 +214,47 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 	});
 
 
+function validate(file) {
+    var ext = file.split(".");
+    ext = ext[ext.length-1].toLowerCase();      
+    var arrayExtensions = ["jpg" , "jpeg", "png", "bmp", "gif"];
+
+    if (arrayExtensions.lastIndexOf(ext) == -1) {
+        alert("Wrong extension type.");
+        $("#image").val("");
+    }
+}
 
 
 
-jQuery('#doc1').on( 'change', function() {
-        var fileExtension = ['doc', 'docx', 'odt', 'rtf', 'pdf'];
-        if (jQuery.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
-            alert("Only formats are allowed : "+fileExtension.join(', '));
-        }
-});
+// jQuery('#doc1').on( 'change', function() {
+//         var fileExtension = ['doc', 'docx', 'odt', 'rtf', 'pdf'];
+//         if (jQuery.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+//             alert("Only formats are allowed : "+fileExtension.join(', '));
+//         }
+// });
 
-jQuery('#doc2').on( 'change', function() {
-        var fileExtension = ['doc', 'docx', 'odt', 'rtf', 'pdf'];
-        if (jQuery.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
-            alert("Only formats are allowed : "+fileExtension.join(', '));
-        }
-});
+// jQuery('#doc2').on( 'change', function() {
+//         var fileExtension = ['doc', 'docx', 'odt', 'rtf', 'pdf'];
+//         if (jQuery.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+//             alert("Only formats are allowed : "+fileExtension.join(', '));
+//         }
+// });
 
-jQuery('#doc3').on( 'change', function() {
-        var fileExtension = ['doc', 'docx', 'odt', 'rtf', 'pdf'];
-        if (jQuery.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
-            alert("Only formats are allowed : "+fileExtension.join(', '));
-        }
-});
+// jQuery('#doc3').on( 'change', function() {
+//         var fileExtension = ['doc', 'docx', 'odt', 'rtf', 'pdf'];
+//         if (jQuery.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+//             alert("Only formats are allowed : "+fileExtension.join(', '));
+//         }
+// });
 
 
-jQuery('#profile_pict').on( 'change', function() {
-        var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
-        if (jQuery.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
-            alert("Only formats are allowed : "+fileExtension.join(', '));
-        }
-});
+// jQuery('#profile_pict').on( 'change', function() {
+//         var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+//         if (jQuery.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+//             alert("Only formats are allowed : "+fileExtension.join(', '));
+//         }
+// });
 
 </script>
 <?php }else{ ?>
