@@ -213,64 +213,38 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 			}
 	});
 
-// var ext = jQuery('#profile_pict').val().split('.').pop().toLowerCase();
-// if(jQuery.inArray(ext, ['png','jpg','jpeg']) == -1) {
-//     alert('Allowed file: JPEG / JPG / PNG.');
-// }
-// var doc1 = jQuery('#mydoc1').val().split('.').pop().toLowerCase();
-// if(jQuery.inArray(doc1, ['pdf','rtf','doc','docx']) == -1) {
-//     alert('Allowed file: PDF / RTF / DOC / DOCX.');
-// }
-// var doc2 = jQuery('#mydoc2').val().split('.').pop().toLowerCase();
-// if(jQuery.inArray(doc2, ['pdf','rtf','doc','docx']) == -1) {
-//     alert('Allowed file: PDF / RTF / DOC / DOCX.');
-// }
-// var doc3 = jQuery('#mydoc3').val().split('.').pop().toLowerCase();
-// if(jQuery.inArray(doc3, ['pdf','rtf','doc','docx']) == -1) {
-//     alert('Allowed file: PDF / RTF / DOC / DOCX.');
-// }
 
-var myfile="";
-jQuery('#profile_pict').on( 'change', function() {
-   myfile= $( this ).val();
-   var ext = myfile.split('.').pop();
-   if(ext=="png" || ext=="jpg" || ext=="jpeg"){
-       alert(ext);
-   } else{
-       alert(ext);
-   }
-});
+
+
 
 jQuery('#doc1').on( 'change', function() {
-   myfile= $( this ).val();
-   var ext = myfile.split('.').pop();
-   if(ext=="pdf" || ext=="doc" || ext=="rtf" || ext=="docx"){
-       alert(ext);
-   } else{
-       alert(ext);
-   }
+        var fileExtension = ['doc', 'docx', 'odt', 'rtf', 'pdf'];
+        if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+            alert("Only formats are allowed : "+fileExtension.join(', '));
+        }
 });
 
 jQuery('#doc2').on( 'change', function() {
-   myfile= $( this ).val();
-   var ext = myfile.split('.').pop();
-   if(ext=="pdf" || ext=="doc" || ext=="rtf" || ext=="docx"){
-       alert(ext);
-   } else{
-       alert(ext);
-   }
+        var fileExtension = ['doc', 'docx', 'odt', 'rtf', 'pdf'];
+        if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+            alert("Only formats are allowed : "+fileExtension.join(', '));
+        }
 });
 
 jQuery('#doc3').on( 'change', function() {
-   myfile= $( this ).val();
-   var ext = myfile.split('.').pop();
-   if(ext=="pdf" || ext=="doc" || ext=="rtf" || ext=="docx"){
-       alert(ext);
-   } else{
-       alert(ext);
-   }
+        var fileExtension = ['doc', 'docx', 'odt', 'rtf', 'pdf'];
+        if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+            alert("Only formats are allowed : "+fileExtension.join(', '));
+        }
 });
 
+
+jQuery('#profile_pict').on( 'change', function() {
+        var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+        if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+            alert("Only formats are allowed : "+fileExtension.join(', '));
+        }
+});
 
 </script>
 <?php }else{ ?>
