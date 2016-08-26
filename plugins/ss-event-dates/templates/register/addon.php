@@ -230,46 +230,18 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 //     alert('Allowed file: PDF / RTF / DOC / DOCX.');
 // }
 
-var myfile="";
-jQuery('#profile_pict').on( 'change', function() {
-   myfile= $( this ).val();
-   var ext = myfile.split('.').pop();
-   if(ext=="png" || ext=="jpg" || ext=="jpeg"){
-       alert(ext);
-   } else{
-       alert(ext);
-   }
-});
+// var myfile="";
+// jQuery('#profile_pict').on( 'change', function() {
+//    myfile= $( this ).val();
+//    var ext = myfile.split('.').pop();
+//    if(ext=="png" || ext=="jpg" || ext=="jpeg"){
+//        alert(ext);
+//    } else{
+//        alert(ext);
+//    }
+// });
 
-jQuery('#doc1').on( 'change', function() {
-   myfile= $( this ).val();
-   var ext = myfile.split('.').pop();
-   if(ext=="pdf" || ext=="doc" || ext=="rtf" || ext=="docx"){
-       alert(ext);
-   } else{
-       alert(ext);
-   }
-});
 
-jQuery('#doc2').on( 'change', function() {
-   myfile= $( this ).val();
-   var ext = myfile.split('.').pop();
-   if(ext=="pdf" || ext=="doc" || ext=="rtf" || ext=="docx"){
-       alert(ext);
-   } else{
-       alert(ext);
-   }
-});
-
-jQuery('#doc3').on( 'change', function() {
-   myfile= $( this ).val();
-   var ext = myfile.split('.').pop();
-   if(ext=="pdf" || ext=="doc" || ext=="rtf" || ext=="docx"){
-       alert(ext);
-   } else{
-       alert(ext);
-   }
-});
 
 
 </script>
