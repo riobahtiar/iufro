@@ -879,7 +879,7 @@ function participant_converter(){
                         <br>
                         <br></div>";
             } elseif ($userchecker > 0) {
-                echo "<div class='alert alert-danger'>Hello " . $user_detail['euser_fullname'] . ", your account has been changed to Free Account.<br> You are no longer able to particapete at the conference, but you still able to login at our website using your account. </div>";
+                echo "<div class='alert alert-danger'>Hello " . $user_detail['euser_fullname'] . ", your account has been changed to Free Account.<br> You are no longer able to particapate at the conference, but you still able to login at our website using your account. </div>";
             } else {
                 echo "<div class='alert alert-danger'>
                         <h1>Oops!</h1><br>

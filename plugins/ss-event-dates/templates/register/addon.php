@@ -219,9 +219,9 @@ function validate(file) {
     ext = ext[ext.length-1].toLowerCase();      
     var arrayExtensions = ["jpg" , "jpeg", "png", "bmp", "gif"];
 
-    if (arrayExtensions.lastIndexOf(ext) == -1) {
+   if (arrayExtensions.lastIndexOf(ext) == -1) {
         alert("Allowed file: JPEG / JPG / PNG");
-        $("#profile_pict").val("");
+        jQuery("#profile_pict").val("");
     }
 }
 
@@ -232,7 +232,7 @@ function doc1(file) {
 
     if (arrayExtensions.lastIndexOf(ext) == -1) {
         alert("Allowed file: PDF / RTF / DOC / DOCX");
-        $("#doc1").val("");
+        jQuery("#doc1").val("");
     }
 }
 
@@ -243,7 +243,7 @@ function doc2(file) {
 
     if (arrayExtensions.lastIndexOf(ext) == -1) {
         alert("Allowed file: PDF / RTF / DOC / DOCX");
-        $("#doc2").val("");
+        jQuery("#doc2").val("");
     }
 }
 
@@ -254,39 +254,10 @@ function doc3(file) {
 
     if (arrayExtensions.lastIndexOf(ext) == -1) {
         alert("Allowed file: PDF / RTF / DOC / DOCX");
-        $("#doc3").val("");
+        jQuery("#doc3").val("");
     }
 }
 
-
-// jQuery('#doc1').on( 'change', function() {
-//         var fileExtension = ['doc', 'docx', 'odt', 'rtf', 'pdf'];
-//         if (jQuery.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
-//             alert("Only formats are allowed : "+fileExtension.join(', '));
-//         }
-// });
-
-// jQuery('#doc2').on( 'change', function() {
-//         var fileExtension = ['doc', 'docx', 'odt', 'rtf', 'pdf'];
-//         if (jQuery.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
-//             alert("Only formats are allowed : "+fileExtension.join(', '));
-//         }
-// });
-
-// jQuery('#doc3').on( 'change', function() {
-//         var fileExtension = ['doc', 'docx', 'odt', 'rtf', 'pdf'];
-//         if (jQuery.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
-//             alert("Only formats are allowed : "+fileExtension.join(', '));
-//         }
-// });
-
-
-// jQuery('#profile_pict').on( 'change', function() {
-//         var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
-//         if (jQuery.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
-//             alert("Only formats are allowed : "+fileExtension.join(', '));
-//         }
-// });
 
 </script>
 <?php }else{ ?>
