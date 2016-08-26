@@ -166,15 +166,15 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 		<label> <span>Abstract Title*</span> <textarea id="abs_title" name="euser_abstract_title" class="form-control" rows="1"></textarea> </label>
 	</div>
 	<div class="field-trip col-md-4">
-		<label> <span>Upload Abstract*</span> <input id="mydoc1" name="abstrak" type="file" /></label>
+		<label> <span>Upload Abstract*</span> <input id="mydoc1" name="abstrak" type="file" onChange="doc1(this.value)" /></label>
 		<hr><p class="text-warning"><small>* Allowed file: PDF / RTF / DOC / DOCX. Maximum file size: 10MB</small></p>
 	</div>
 	<div class="field-trip col-md-4">
-		<label>  <span>Upload Paper</span> <input id="mydoc2" name="paper" type="file" /></label>
+		<label>  <span>Upload Paper</span> <input id="mydoc2" name="paper" type="file" onChange="doc2(this.value)" /></label>
 		<hr><p class="text-warning"><small>* Allowed file: PDF / RTF / DOC / DOCX. Maximum file size: 10MB</small></p>
 	</div>
 	<div class="field-trip col-md-4">
-		<label> <span>Upload Poster</span> <input id="mydoc3" name="poster" type="file" /></label>
+		<label> <span>Upload Poster</span> <input id="mydoc3" name="poster" type="file" onChange="doc3(this.value)" /></label>
 		<hr><p class="text-warning"><small>* Allowed file: PDF / RTF / DOC / DOCX. Maximum file size: 10MB</small></p>
 	</div>
 	<div>
@@ -220,11 +220,43 @@ function validate(file) {
     var arrayExtensions = ["jpg" , "jpeg", "png", "bmp", "gif"];
 
     if (arrayExtensions.lastIndexOf(ext) == -1) {
-        alert("Wrong extension type.");
-        $("#image").val("");
+        alert("Allowed file: JPEG / JPG / PNG");
+        $("#profile_pict").val("");
     }
 }
 
+function doc1(file) {
+    var ext = file.split(".");
+    ext = ext[ext.length-1].toLowerCase();      
+    var arrayExtensions = ["pdf" , "doc", "docx", "rtf"];
+
+    if (arrayExtensions.lastIndexOf(ext) == -1) {
+        alert("Allowed file: PDF / RTF / DOC / DOCX");
+        $("#doc1").val("");
+    }
+}
+
+function doc2(file) {
+    var ext = file.split(".");
+    ext = ext[ext.length-1].toLowerCase();      
+    var arrayExtensions = ["pdf" , "doc", "docx", "rtf"];
+
+    if (arrayExtensions.lastIndexOf(ext) == -1) {
+        alert("Allowed file: PDF / RTF / DOC / DOCX");
+        $("#doc2").val("");
+    }
+}
+
+function doc3(file) {
+    var ext = file.split(".");
+    ext = ext[ext.length-1].toLowerCase();      
+    var arrayExtensions = ["pdf" , "doc", "docx", "rtf"];
+
+    if (arrayExtensions.lastIndexOf(ext) == -1) {
+        alert("Allowed file: PDF / RTF / DOC / DOCX");
+        $("#doc3").val("");
+    }
+}
 
 
 // jQuery('#doc1').on( 'change', function() {
