@@ -8,7 +8,7 @@ $euser_barcode = $_POST['barcode'];
 $query         = "SELECT * FROM wp_ss_event_user_detail WHERE euser_barcode = '{$euser_barcode}'";
 $user_detail   = $wpdb->get_row($query, ARRAY_A);
 
-// Function to save file and generate to document ID
+// Function to save file and generate to abstract ID
 function upload_user_file($file = array())
 {
     require_once ABSPATH . 'wp-admin/includes/admin.php';
@@ -251,10 +251,10 @@ if ($_POST['do_model'] == 'do_membership') {
             array('%s'),
             array('%s')
         );
-        echo "Document uploaded Successfully <kbd>[F5]</kbd>";
+        echo "Abstract uploaded Successfully <kbd>[F5]</kbd>";
 
     } else {
-        echo "Document Empty";
+        echo "Abstract Empty";
     }
 } elseif ($_POST['do_model'] == 'do_absence') {
     $getx_result = $wpdb->update(
@@ -294,11 +294,11 @@ if ($_POST['do_model'] == 'do_membership') {
         ),
         array('%s')
     );
-    echo "Document Publised Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
+    echo "Abstract Published Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
 
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
-    $subject = 'Document Published Notification | IUFRO ACACIA 2017';
+    $subject = 'Abstract Published Notification | IUFRO ACACIA 2017';
     $body    = '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -331,7 +331,7 @@ if ($_POST['do_model'] == 'do_membership') {
                 <h2 style="text-align:center;color:#809062;margin-top: 0;">Dear Sir / Madam</h2>
             </div>
             <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
-                <p>Your Document was published to IUFRO ACACIA CONFERENCE 2017 Website</p>
+                <p>Your Abstract was published to IUFRO ACACIA CONFERENCE 2017 Website</p>
             </div>
 
         
@@ -369,7 +369,7 @@ if ($_POST['do_model'] == 'do_membership') {
         ),
         array('%s')
     );
-    echo "Document Unpublised Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
+    echo "Abstract Unpublised Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
 } elseif ($_POST['do_model'] == 'do_doc_rejected') {
     $getx_result = $wpdb->update(
         'wp_ss_event_user_detail',
@@ -382,7 +382,7 @@ if ($_POST['do_model'] == 'do_membership') {
         ),
         array('%s')
     );
-    echo "Document Rejected Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
+    echo "Abstract Rejected Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
     $authkey = $user_detail['euser_activationkey'];
 
     if (!empty($_POST['reason_reject'])) {
@@ -393,7 +393,7 @@ if ($_POST['do_model'] == 'do_membership') {
 
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
-    $subject = 'Document Rejected Notification | IUFRO ACACIA 2017';
+    $subject = 'Abstract Rejected Notification | IUFRO ACACIA 2017';
     $body    = '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -426,10 +426,10 @@ if ($_POST['do_model'] == 'do_membership') {
                 <h2 style="text-align:center;color:#809062;margin-top: 0;">Dear Sir / Madam</h2>
             </div>
             <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
-                Your Document was Rejected to IUFRO ACACIA CONFERENCE 2017 Website
+                Your Abstract was Rejected to IUFRO ACACIA CONFERENCE 2017 Website
             </div>
             <div>
-            <p>With regret, we want to inform you that your document still does not meet our requirements.
+            <p>With regret, we want to inform you that your Abstract still does not meet our requirements.
 Therefore, you can not continue to participate on this conference as an Author.</p>
 ' . $rejection_wording . '
 <p>But you still can continue to participate as a "Participant" type user, instead of author.</p>
@@ -481,7 +481,7 @@ Therefore, you can not continue to participate on this conference as an Author.<
         ),
         array('%s')
     );
-    echo "Document Approved Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
+    echo "Abstract Approved Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
 
     if (!empty($_POST['reason'])) {
         $approve_wording = '<p>';
@@ -491,7 +491,7 @@ Therefore, you can not continue to participate on this conference as an Author.<
 
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
-    $subject = 'Document Approved Notification | IUFRO ACACIA 2017';
+    $subject = 'Abstract Approved Notification | IUFRO ACACIA 2017';
     $body    = '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -524,10 +524,10 @@ Therefore, you can not continue to participate on this conference as an Author.<
                 <h2 style="text-align:center;color:#809062;margin-top: 0;">Dear Sir / Madam</h2>
             </div>
             <div style="background:#809062;color:#fff;font-size:14px;text-align:center;width:100%;padding: 15px 0;">
-                Document Approved Notification | IUFRO ACACIA 2017
+                Abstract Approved Notification | IUFRO ACACIA 2017
             </div>
             <div>
-<p>This is to inform you that your document has been approved by us. </p>
+<p>This is to inform you that your Abstract has been approved by us. </p>
  ' . $approve_wording . '
  <p> In order to continue the registration process, you have to complete the payment.</p>
 
