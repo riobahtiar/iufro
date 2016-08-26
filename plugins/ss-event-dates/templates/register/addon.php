@@ -221,11 +221,11 @@ var doc1 = jQuery('#mydoc1').val().split('.').pop().toLowerCase();
 if(jQuery.inArray(doc1, ['pdf','rtf','doc','docx']) == -1) {
     alert('Allowed file: PDF / RTF / DOC / DOCX.');
 }
-var doc2 = jQuery('#mydoc1').val().split('.').pop().toLowerCase();
+var doc2 = jQuery('#mydoc2').val().split('.').pop().toLowerCase();
 if(jQuery.inArray(doc2, ['pdf','rtf','doc','docx']) == -1) {
     alert('Allowed file: PDF / RTF / DOC / DOCX.');
 }
-var doc3 = jQuery('#mydoc1').val().split('.').pop().toLowerCase();
+var doc3 = jQuery('#mydoc3').val().split('.').pop().toLowerCase();
 if(jQuery.inArray(doc3, ['pdf','rtf','doc','docx']) == -1) {
     alert('Allowed file: PDF / RTF / DOC / DOCX.');
 }
