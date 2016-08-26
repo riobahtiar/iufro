@@ -385,11 +385,13 @@ if ($_POST['do_model'] == 'do_membership') {
     echo "Abstract Rejected Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
     $authkey = $user_detail['euser_activationkey'];
 
-    if (!empty($_POST['reason_reject'])) {
-        $rejection_wording = '<p>';
-        $rejection_wording .= nl2br($_POST['reason_reject']);
-        $rejection_wording .= '<p>';
-    }
+$text = $_POST['reason_reject'];
+$text = str_replace("\r\n","\n",$text);
+$paragraphs = preg_split("/[\n]{2,}/",$text);
+foreach ($paragraphs as $key => $p) {
+    $paragraphs[$key] = "<p>".str_replace("\n","<br />",$paragraphs[$key])."</p>";
+}
+$rejection_wording = implode("", $paragraphs);
 
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
@@ -483,11 +485,18 @@ Therefore, you can not continue to participate on this conference as an Author.<
     );
     echo "Abstract Approved Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
 
-    if (!empty($_POST['reason'])) {
-        $approve_wording = '<p>';
-        $approve_wording .= nl2br($_POST['reason']);
-        $approve_wording .= '<p>';
-    }
+
+
+
+$text = $_POST['reason'];
+$text = str_replace("\r\n","\n",$text);
+$paragraphs = preg_split("/[\n]{2,}/",$text);
+foreach ($paragraphs as $key => $p) {
+    $paragraphs[$key] = "<p>".str_replace("\n","<br />",$paragraphs[$key])."</p>";
+}
+$approve_wording = implode("", $paragraphs);
+
+
 
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
