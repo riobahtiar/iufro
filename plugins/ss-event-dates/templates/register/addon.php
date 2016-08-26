@@ -2,7 +2,7 @@
 if(isset($_GET['step']) && $_GET['step']=="addon"){
 	$post_url=get_permalink()."?step=payment";
 }else{
-	$post_url="";
+	$post_url=get_permalink()."?step=payment";
 }
 
 
@@ -154,6 +154,10 @@ $dinner_av = $ss_theme_opt['text-dinner'] - $dinner_rows;
 <?php 
 if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 ?>
+	<div class="well well-photo">
+		<label> <span>Upload Profile Picture*</span> <input id="profile_pict" name="profile_pict" type="file" /> </label><hr>
+		<p class="text-warning"><small>* Allowed file: JPEG / JPG / PNG. Maximum file size: 5MB</small></p>
+	</div>
 
 <div class="well">
 <input id="okeread" type="checkbox" name="readme_ok" value="readme">&nbsp;I have read all  <a href="<?php echo get_permalink(); ?>/poster">the guidelines</a>, and ready to upload
@@ -163,12 +167,15 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 	</div>
 	<div class="field-trip col-md-4">
 		<label> <span>Upload Abstract*</span> <input id="mydoc1" name="abstrak" type="file" /></label>
+		<hr><p class="text-warning"><small>* Allowed file: PDF / RTF / DOC / DOCX. Maximum file size: 10MB</small></p>
 	</div>
 	<div class="field-trip col-md-4">
 		<label>  <span>Upload Paper</span> <input id="mydoc2" name="paper" type="file" /></label>
+		<hr><p class="text-warning"><small>* Allowed file: PDF / RTF / DOC / DOCX. Maximum file size: 10MB</small></p>
 	</div>
 	<div class="field-trip col-md-4">
 		<label> <span>Upload Poster</span> <input id="mydoc3" name="poster" type="file" /></label>
+		<hr><p class="text-warning"><small>* Allowed file: PDF / RTF / DOC / DOCX. Maximum file size: 10MB</small></p>
 	</div>
 	<div>
 <?php } ?>
@@ -206,10 +213,65 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 			}
 	});
 
-    window.onbeforeunload = confirmExit;
-    function confirmExit() {
-        return "You have attempted to leave this page and your inputed data will be lost. Are you sure? ";
-    }
+// var ext = jQuery('#profile_pict').val().split('.').pop().toLowerCase();
+// if(jQuery.inArray(ext, ['png','jpg','jpeg']) == -1) {
+//     alert('Allowed file: JPEG / JPG / PNG.');
+// }
+// var doc1 = jQuery('#mydoc1').val().split('.').pop().toLowerCase();
+// if(jQuery.inArray(doc1, ['pdf','rtf','doc','docx']) == -1) {
+//     alert('Allowed file: PDF / RTF / DOC / DOCX.');
+// }
+// var doc2 = jQuery('#mydoc2').val().split('.').pop().toLowerCase();
+// if(jQuery.inArray(doc2, ['pdf','rtf','doc','docx']) == -1) {
+//     alert('Allowed file: PDF / RTF / DOC / DOCX.');
+// }
+// var doc3 = jQuery('#mydoc3').val().split('.').pop().toLowerCase();
+// if(jQuery.inArray(doc3, ['pdf','rtf','doc','docx']) == -1) {
+//     alert('Allowed file: PDF / RTF / DOC / DOCX.');
+// }
+
+var myfile="";
+jQuery('#profile_pict').on( 'change', function() {
+   myfile= $( this ).val();
+   var ext = myfile.split('.').pop();
+   if(ext=="png" || ext=="jpg" || ext=="jpeg"){
+       alert(ext);
+   } else{
+       alert(ext);
+   }
+});
+
+jQuery('#doc1').on( 'change', function() {
+   myfile= $( this ).val();
+   var ext = myfile.split('.').pop();
+   if(ext=="pdf" || ext=="doc" || ext=="rtf" || ext=="docx"){
+       alert(ext);
+   } else{
+       alert(ext);
+   }
+});
+
+jQuery('#doc2').on( 'change', function() {
+   myfile= $( this ).val();
+   var ext = myfile.split('.').pop();
+   if(ext=="pdf" || ext=="doc" || ext=="rtf" || ext=="docx"){
+       alert(ext);
+   } else{
+       alert(ext);
+   }
+});
+
+jQuery('#doc3').on( 'change', function() {
+   myfile= $( this ).val();
+   var ext = myfile.split('.').pop();
+   if(ext=="pdf" || ext=="doc" || ext=="rtf" || ext=="docx"){
+       alert(ext);
+   } else{
+       alert(ext);
+   }
+});
+
+
 </script>
 <?php }else{ ?>
 <script type="text/javascript">
@@ -221,9 +283,5 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 			}
 	});
 
-	window.onbeforeunload = confirmExit;
-    function confirmExit() {
-        return "You have attempted to leave this page and your inputed data will be lost. Are you sure? ";
-    }
 </script>
 <?php } ?>

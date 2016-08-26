@@ -24,15 +24,16 @@ $user_detail = $wpdb->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#membership" aria-controls="membership" role="tab" data-toggle="tab">Membership</a></li>
     <li role="presentation"><a href="#document" aria-controls="document" role="tab" data-toggle="tab">Documents Status</a></li>
-    <li role="presentation"><a href="#files" aria-controls="files" role="tab" data-toggle="tab">Files</a></li>
-  </ul>
+    <li role="presentation"><a href="#files" aria-controls="files" role="tab" data-toggle="tab">Abstract</a></li>
+    <li role="presentation"><a href="#onsite" aria-controls="onsite" role="tab" data-toggle="tab">Onsite</a></li>
+</ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="membership">
         <!-- User Changer -->
         <p class="user-changer">
-            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
+            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" method="post">
                 <h4>
                     User Type Changer
                 </h4>
@@ -74,10 +75,11 @@ $user_detail = $wpdb->
             </strong>
         </h4>
         <!--  Approved -->
-        <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
+        <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" method="post">
             <input name="do_model" type="hidden" value="do_doc_approved">
-            <p>Approve Document? </p>
-            <textarea class="form-control" rows="3" placeholder="Reason.." name="reason"></textarea>
+            <h5>Approve Document? </h5>
+            <p>Write reason why document is Approved or add notes for revision.(Optional)</p>
+            <textarea class="form-control" rows="5" placeholder="Reason.." name="reason"></textarea>
             <br>
                 <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                     <button class="btn btn-primary" type="submit">
@@ -88,11 +90,12 @@ $user_detail = $wpdb->
         </form>
         <br>
             <!--  Rejected -->
-            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
+            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" method="post">
 
                 <input name="do_model" type="hidden" value="do_doc_rejected">
-                <p>Reject Document? </p>
-                <textarea class="form-control" rows="3" placeholder="Reason.." name="reason"></textarea>
+                <h5>Reject Document? </h5>
+                <p>Write reason why document is rejected.(Optional)</p>
+                <textarea class="form-control" rows="5" placeholder="Reason.." name="reason_reject"></textarea>
                 <br>
                     <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                         <button class="btn btn-danger" type="submit">
@@ -112,7 +115,7 @@ $user_detail = $wpdb->
                 Make sure you are allowed to show this document to the public (Free User).
             </div>
             <!-- Published -->
-            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
+            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" method="post">
                 <input name="do_model" type="hidden" value="do_doc_publish">
                     <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                         <button class="btn btn-primary" type="submit">
@@ -132,7 +135,7 @@ $user_detail = $wpdb->
                 To stop publishing the document. press the button below
             </div>
             <!-- Stop Publish -->
-            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
+            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" method="post">
                 <input name="do_model" type="hidden" value="do_doc_unpublish">
                     <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                         <button class="btn btn-danger" type="submit">
@@ -152,7 +155,7 @@ $user_detail = $wpdb->
                If you have made a mistake, the button below can re-approve the rejected member.
             </div>
             <!--  Approved -->
-            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
+            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" method="post">
                 <input name="do_model" type="hidden" value="do_doc_approved">
                     <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                         <button class="btn btn-danger" type="submit">
@@ -171,14 +174,13 @@ $user_detail = $wpdb->
             <div class="well">
                If you have made a mistake, the button below can re-publish the document.
             </div>
-            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" type="post">
+            <form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" method="post">
                 <input name="do_model" type="hidden" value="do_doc_publish">
-                    <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
+                <input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
                         <button class="btn btn-primary" type="submit">
                             Publish
                         </button>
-                    </input>
-                </input>
+
             </form>
             <?php } else { ?>
                 <strong>Something was wrong, contact Sys Administrator</strong>
@@ -186,15 +188,51 @@ $user_detail = $wpdb->
 <!-- end Document Moderation Changer --> 
     </div>
     <div role="tabpanel" class="tab-pane" id="files">
-        
-
-
-
-        
+<h3>Upload revised abstract</h3>
+<!-- Abstract Revision --> 
+<form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" method="post" enctype="multipart/form-data">
+<input name="do_model" type="hidden" value="do_abstract_revision">
+<input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
+<div class="form-group">
+    <label for="abstract"></label>
+    <input type="file" name="abstract" id="abstract">
+    <p class="help-block">for publication only pdf file</p>
+</div>
+<input type="submit" name="submit" class="btn btn-default">
+</form>
+<!-- Abstract Revision --> 
+    
     </div>
+<div role="tabpanel" class="tab-pane" id="onsite">
+<!-- Absence -->
+<h3>Absence</h3>
+<form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" method="post">
+<input name="do_model" type="hidden" value="do_absence">
+<input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
+<input type="submit" name="submit" class="btn btn-default" value="Set as Present">
+</form>
+<hr>
+<!-- Onsite Payment -->
+<?php if ( $user_detail['euser_payment_status'] !== 'Paid-Onsite' || $user_detail['euser_payment_status'] !== 'berhasil-iPaymu' || $user_detail['euser_payment_status'] !== 'Complete-paypal' ) { ?>
+
+<h3>Onsite Payment</h3>
+<form action="<?php echo plugins_url('ss-event-dates') . '/ajax/admin/member_option_process.php'; ?>" method="post">
+<input name="do_model" type="hidden" value="do_change_payment">
+<input name="barcode" type="hidden" value="<?php echo $euser_barcode; ?>">
+<input type="submit" name="submit" class="btn btn-default" value="Set as Paid">
+</form>
+
+<?php } ?>
+<!-- endOnsite Payment --> 
+</div>
   </div>
 
 </div>
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+    // CKEDITOR.replace( 'reason' );
+    // CKEDITOR.replace( 'reason_reject' );
+</script>
     </body>
 </html>

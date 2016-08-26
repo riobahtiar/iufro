@@ -5,21 +5,11 @@ if (isset($_GET['step']) && $_GET['step'] == "payment") {
     $post_url = "";
 }
 
-// Get Rupiah Rates
-$app_id  = '242fb9ae64974346985dcec68f9986e8';
-$oxr_url = "https://openexchangerates.org/api/latest.json?app_id=" . $app_id;
 
-// Open CURL session:
-$ch = curl_init($oxr_url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-// Get the data:
-$json = curl_exec($ch);
-curl_close($ch);
 
 // Decode JSON response:
 $latest_price = json_decode($json);
-$idr_rates    = $latest_price->rates->IDR;
+$idr_rates    = getCurrencyRate('USD','IDR');
 $idr_good     = round($idr_rates);
 //echo "Rates ID:".$idr_rates." Dibulatkan: ".$idr_good;
 // get Get User Login
@@ -54,6 +44,7 @@ if (isset($user_detail['euser_addon_mid'])) {
         $string_mid_conf = " - ";
         $price_mid_conf  = 0;
         $product_mc      = "MC0";
+        $string_empty='Free';
     }
 
 } else {
@@ -90,10 +81,10 @@ if (isset($user_detail['euser_addon_post'])) {
 
 if (isset($user_detail['euser_addon_dinner'])) {
     if ($user_detail['euser_addon_dinner'] == "Yes") {
-        $string_dinner = " Yes ";
+        $string_dinner = "Yes";
         $product_d     = "D1";
     } elseif ($user_detail['euser_addon_dinner'] == "No") {
-        $string_dinner = " No ";
+        $string_dinner = "No";
         $product_d     = "D2";
     } else {
         $string_dinner = "-";
@@ -104,8 +95,8 @@ if (isset($user_detail['euser_addon_dinner'])) {
 // Payment Dates Earlybird
 $paymentDate    = date('Y-m-d');
 $paymentDate    = date('Y-m-d', strtotime($paymentDate));
-$earlyBirdBegin = date('Y-m-d', strtotime("01/1/2016"));
-$earlyBirdEnd   = date('Y-m-d', strtotime("04/30/2017"));
+$earlyBirdBegin = date('Y-m-d', strtotime($ss_theme_opt['date_earlybird_start']));
+$earlyBirdEnd   = date('Y-m-d', strtotime($ss_theme_opt['date_earlybird_end']));
 
 if ($user_detail['euser_type'] == "local student") {
     $user_string = "Local | Students";
@@ -170,12 +161,12 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
     $poster_download   = wp_get_attachment_url($user_detail['euser_poster']);
     if (!empty($abstract_download)) {
         ?>
-
 <div class="col-md-9">
-<?php echo 'Abstract Title'.$user_detail['euser_abstract_title']; ?>
+<?php echo 'Abstract Title: &nbsp;'.$user_detail['euser_abstract_title']; ?>
 </div>
 <div class="col-md-3">
-<a href="<?php echo $abstract_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">File</a>
+<a class="btn btn-view" href="<?php echo $abstract_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">View</a>
+
 </div>
 <?php
 }
@@ -185,8 +176,10 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 <div class="col-md-9">
 <?php echo 'Full Paper'; ?>
 </div>
+
 <div class="col-md-3">
-<a href="<?php echo $paper_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">File</a>
+<a class="btn btn-view" href="<?php echo $paper_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">View</a>
+
 </div>
 
 <?php
@@ -197,8 +190,9 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 <div class="col-md-9">
 <?php echo 'Poster'; ?>
 </div>
+
 <div class="col-md-3">
-<a href="<?php echo $poster_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">File</a>
+<a class="btn btn-view" href="<?php echo $poster_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">View</a>
 </div>
 <?php
 }
@@ -208,6 +202,8 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 <?php }?>
 </div>
 <div class="col-md-12">
+<hr>
+<br>
 <table class="table table-bordered">
     <thead>
       <tr class="success">
@@ -235,7 +231,15 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
   <dd><?php echo $string_mid_conf; ?>  </dd>
 </dl>
         </td>
-        <td>Free</td>
+        <td>
+<?php
+if (empty($string_empty)){
+    echo "Free";
+}else{
+ echo '-';
+} 
+?>
+        </td>
       </tr>
       <tr>
         <td>3</td>
@@ -246,17 +250,37 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 </dl>
 
         </td>
-        <td>US$ <?php echo $price_post_conf; ?></td>
+        <td>
+<?php
+if ($price_post_conf == 0){
+    echo "-";
+}else{
+ echo 'US$ '.$price_post_conf;
+} 
+?>
+</td>
       </tr>
       <tr>
         <td>4</td>
         <td>
 <dl class="dl-horizontal">
   <dt>Conference Dinner</dt>
-  <dd><?php echo $string_dinner; ?></dd>
+  <dd><?php
+if ($string_dinner !== 'Yes'){
+    echo "-";
+}else{
+ echo 'Yes';
+} 
+?></dd>
 </dl>
         </td>
-        <td> Free </td>
+        <td> <?php
+if ($string_dinner!=='Yes'){
+    echo "-";
+}else{
+ echo 'Free';
+} 
+?></td>
       </tr>
     </tbody>
     <tfoot>
@@ -266,8 +290,8 @@ $product_name = $product_usr . $product_mc . $product_pc . $product_d . date('md
 $idr_total = $idr_good * $total_price;
 echo number_format($idr_total, 0, ".", ".");
 
-echo "&nbsp;*<br><hr><p>";
-echo "Current IDR Rates US$1 = IDR " . $idr_good . "<br> Source : <a href='http://openexchangerates.org' onclick='window.open(this.href); return false;' onkeypress='window.open(this.href); return false;'>www.openexchangerates.org</a> </p>";
+echo "&nbsp;*<br><hr>";
+echo "<br><p><small>*Current IDR Rates US$1 = IDR " . $idr_good . "<br> Source : <a href='http://openexchangerates.org' onclick='window.open(this.href); return false;' onkeypress='window.open(this.href); return false;'>www.openexchangerates.org</a> </p>";
 ?></td>
     </tr>
   </tfoot>
@@ -291,10 +315,15 @@ echo "Current IDR Rates US$1 = IDR " . $idr_good . "<br> Source : <a href='http:
 <input type="hidden" name="payname" value="IAC17-<?php echo $product_name ?>">
 <div>
     <a href="<?php echo get_permalink() . "?step=addon"; ?>" class="btn btn-default pull-left">Back</a>
-<?php if ($user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] !== null || $user_detail['euser_meta_type'] == "participant_type" || $user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] == 'accepted') {?>
+<?php if ($user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] !== null || $user_detail['euser_meta_type'] == "participant_type" || $user_detail['euser_meta_type'] == "author_type" && $user_detail['euser_doc_status'] == 'accepted') {
+$today  = strtotime(date('Y-m-d'));
+$closed = strtotime($ss_theme_opt['date_close']);
+// Check if Payment Done or Onsite
+ if ( $user_detail['euser_payment_status'] !== 'onsite-payment' || $user_detail['euser_payment_status'] !== 'berhasil-iPaymu' || $user_detail['euser_payment_status'] !== 'Completed-Paypal' ||  $closed > $today ) { ?>
+
     <button type="submit" name="submit" class="btn btn-default pull-right" value="payment">Pay Now</button>
     <a href="<?php echo get_permalink(); ?>?step=pay_later" class="btn btn-default pull-right">Pay Later</a>
-<?php }?>
+<?php } } ?>
 </div>
 </form>
 </div>

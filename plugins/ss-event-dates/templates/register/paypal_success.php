@@ -78,7 +78,7 @@ if ($user_detail['euser_type']=="local student") {
 
  ?>
 <div class="alert alert-success">
-	<h3>Thank you for completing the payment.<br>Please check your email for the e-ticket. You may print the e-ticket and bring it at the conference.</h3>
+	<h3>Thank you for completing the payment.<br>Check your email for the e-ticket. Please print the e-ticket and bring it at the conference.</h3>
 	<p>Transaction Code: <?php echo $product; ?></p>
 </div>
 

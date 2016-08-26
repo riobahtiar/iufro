@@ -10,6 +10,14 @@ global $wpdb;
 global $ss_theme_opt; 
 $query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$euser_email}'";
 $user_detail = $wpdb->get_row($query, ARRAY_A);
+$wpdb->update( 
+    'wp_ss_event_user_detail', 
+    array( 'euser_payment' => '2'), 
+    array( 'euser_email' => $euser_email ), 
+    array( '%s'), 
+    array( '%s' ) 
+);
+
 
 // ======== Start Payment Conditional Block ======== //
 
@@ -82,7 +90,8 @@ if (isset($user_detail['euser_addon_dinner'])) {
 // Payment Dates Earlybird
 $paymentDate    = date('Y-m-d');
 $paymentDate    = date('Y-m-d', strtotime($paymentDate));
-IUFRO Keeper <keep@iufroacacia2017.com>
+$earlyBirdBegin = date('Y-m-d', strtotime($ss_theme_opt['date_earlybird_start']));
+$earlyBirdEnd   = date('Y-m-d', strtotime($ss_theme_opt['date_earlybird_end']));
 
 if ($user_detail['euser_type'] == "local student") {
     $user_string = "Local | Students";
@@ -232,6 +241,8 @@ $body    = '
             </div>
             <br>
             <div>
+                <p>Please note if you have not complete the online payment within 14 days after you receive this email, all of your order (mid and post conference trip and also dinner) will be automatically canceled by our system.</p>
+                <p>After that, you can re-order the conference trip and dinner again by login to your account and choose the desired conference trip and also dinner (as long as there are seats remaining).</p>
                 <p>PAYMENT METHOD </p>
                 <p>We accept the payment via Paypal and iPaymu. Please access to your payment page by <a href="http://www.iufroacacia2017.com/login">Login</a> to your account and choose menu payment summary on Dashboard page</p>
                 <p style="font-style:italic;">*Registration fee will be determined based on the date you do the payment (early bird / regular), or by your type of user (local/foreigner/student).</p>
