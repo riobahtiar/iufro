@@ -175,6 +175,8 @@ function init_iufro_dash()
     add_submenu_page('iufro-dashboard','Reports', 'Reports', 'administrator', 'iufro-reports','reports_page');
 }
 
+
+function reports_page(){
 // Function to get all value for report page //
 
 global $wpdb;
@@ -204,8 +206,6 @@ $unpaid = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE eu
 $participant_t = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_meta_type = "   participant_type"' );
 // Author
 $author_t = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_meta_type = "author_type"' );
-
-function reports_page(){
 ?>
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 <style>
