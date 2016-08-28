@@ -168,7 +168,7 @@ $author_t = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE 
             </div>
             <!-- End of Dinner -->
 
-            <div class="content-wrap-iuf">
+<!--             <div class="content-wrap-iuf">
                 <h3>Content Wrap</h3>
                 <a href="#" class="btn-admin-iuf btn-black-iuf">VIEW</a>
             </div>
@@ -176,7 +176,7 @@ $author_t = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE 
             <div class="content-wrap-iuf">
                 <h3>Content Wrap</h3>
                 <a href="#" class="btn-admin-iuf btn-grey-iuf">VIEW</a>
-            </div>
+            </div> -->
 
         </div>
         <!-- End of Container -->

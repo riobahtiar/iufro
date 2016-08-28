@@ -1,6 +1,6 @@
 <?php
 global $wpdb;
-$get_members = $wpdb->get_results("SELECT * FROM wp_ss_event_user_detail");
+$get_members = $wpdb->get_results("SELECT * FROM wp_ss_event_user_detail WHERE euser_onsite_absence = 'present'");
     ?>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/af-2.1.2/b-1.2.2/b-colvis-1.2.2/b-flash-1.2.2/b-html5-1.2.2/b-print-1.2.2/r-2.1.0/sc-1.4.2/datatables.min.css"/>
   <style type='text/css'>
@@ -142,31 +142,19 @@ label.iufro-toolbar-label {
   </style>
 <div class="wrap">
 <h2>IUFRO ACACIA CONFERENCE 2017</h2>
-<h4>Control Dashboard</h4>
+<h4>Attender</h4>
 <div class="dtbl-btn"></div>
-<p>&nbsp;| &nbsp;Payment Details: <button id="ihide">Hide</button>&nbsp;<button id="ishow">Show</button>
-<?php
-$url = add_query_arg(array(
-            'brcd'      => $show_me->euser_barcode,
-            'type'      => 'member',
-            'TB_iframe' => 'true',
-            'width'     => '800',
-            'height'    => '500',
-        ), plugins_url('ss-event-dates') . '/ajax/admin_add_user.php');
-echo '<a href="' . $url . '" class="button btn-add-user thickbox">' . __('Add User', 'iufro') . '</a>';
-?>
- </p>
 <table class="etable" id="iufro-member" class="display" cellspacing="0" width="100%">
 <thead>
 <tr>
-  <th width="10%">ID</th>
-  <th width="14%">Name</th>
-  <th width="14%">Files</th>
-  <th width="10%">Status</th>
-  <th width="21%">Addon</th>
-  <th width="14%">Payment</th>
-  <th width="8%">Last Login</th>
-  <th width="8%">Act</th>
+  <th width="6%">ID</th>
+  <th width="13%">Name</th>
+  <th width="auto">Address and Contact</th>
+  <th width="10%">User Type</th>
+  <th width="14%">Abstract Title</th>
+  <th width="14%">Mid Trip</th>
+  <th width="14%">Post Trip</th>
+  <th width="8%">Dinner</th>
 </tr>
 </thead>
 <tbody>
@@ -295,72 +283,27 @@ if ($show_me->euser_type == "local student") {
         ?>
 <tr id="euser-<?php echo $show_me->euser_id; ?>">
   <td><?php echo $show_me->euser_barcode; ?></td>
-  <td><?php echo $show_me->euser_fullname . ' <br>( as ' . $user_meta_string . ' )'; ?></td>
+  <td><?php echo $show_me->euser_fullname; ?></td>
+  <td>
+<?php echo $show_me->euser_address .', &nbsp;' . $euser_city .' <br> '
+   . $euser_state .', &nbsp;' . $euser_country .', &nbsp;' . $euser_zip . ' <br>Phone: '
+   . $euser_phone .', &nbsp;'. $euser_email
+   ;  ?>
+  </td>
+  <td><?php echo $show_me->user_meta_string; ?>( <?php echo $user_string; ?> )</td>
   <td>
 <?php
-$abstract_download = wp_get_attachment_url($show_me->euser_abstrak);
-$paper_download    = wp_get_attachment_url($show_me->euser_paper);
-$poster_download   = wp_get_attachment_url($show_me->euser_poster);
-$ktm_download      = wp_get_attachment_url($show_me->euser_stdcard_id);
-$profile_pict_download      = wp_get_attachment_url($show_me->euser_profile_pict);
-if (!empty($abstract_download)) {
-            ?>
-Abstract &nbsp;<a href="<?php echo $abstract_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Download</a><br>
-<?php
-}
-        if (!empty($paper_download)) {
-            ?>
-Paper &nbsp;<a href="<?php echo $paper_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Download</a><br>
-<?php
-}
-        if (!empty($poster_download)) {
-            ?>
-Poster &nbsp;<a href="<?php echo $poster_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Download</a><br>
-
-<?php
-}
-        if (!empty($profile_pict_download)) {
-            ?>
-Profile Picture &nbsp;<a href="<?php echo $profile_pict_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Download</a><br>
-
-
-<?php
-}
-        if (!empty($ktm_download)) {
-            ?>
-Student Card &nbsp;<a href="<?php echo $ktm_download; ?>" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;">Download</a><br>
-
-<?php
+$abstract_title = $show_me->euser_abstract_title;
+if (!empty($abstract_title )) {
+            echo $abstract_title ; 
 }
         ?>
-
   </td>
-  <td><?php echo $show_me->euser_status; ?></td>
-  <td>
+  <td><?php echo $show_me->user_meta_string; ?></td>
+  <td><?php echo $string_mid_conf; ?></td>  
+  <td><?php echo $string_post_conf; ?></td>
+  <td><?php echo $string_dinner; ?></td>
 
-<?php if (isset($user_string)) {?>
-User Type: <?php echo $user_string; ?><br>
-<?php }if (isset($string_mid_conf)) {?>
-Trip Mid Conference : <?php echo $string_mid_conf; ?><br>
-<?php }if (isset($string_post_conf)) {?>
-Trip Post Conference : <?php echo $string_post_conf; ?><br>
-<?php }if (isset($string_dinner)) {?>
-  Dinner : <?php echo $string_dinner; ?><br>
-  Billed : US$<?php echo $total_price; ?>
-<?php }?>
-
-
-
-  </td>
-  <td><?php echo $show_me->euser_payment_status; ?><br>
-  <?php if (isset($show_me->euser_payment_meta)) {?>
-<div class="xdetails" style="display: none;"><p><?php echo $show_me->euser_payment_meta; ?></p></div>
-<?php }?>
-  </td>
-  <td><?php echo $show_me->updated_at; ?></td>
-  <td>
-
-  </td>
 </tr>
 <?php }?>
 </tbody>
@@ -382,12 +325,6 @@ jQuery(document).ready(function() {
 jQuery(document).ready(function(){
   jQuery("#iufro-member_filter input[type='search']").attr("placeholder", " Find Anything ");
   jQuery("#iufro-member_filter input[type='search']").attr("autofocus");
-    jQuery("#ihide").click(function(){
-        jQuery(".xdetails").hide();
-    });
-    jQuery("#ishow").click(function(){
-        jQuery(".xdetails").show();
-    });
 });
 
 </script>
