@@ -177,6 +177,7 @@ function init_iufro_dash()
 
 // Function to get all value for report page //
 
+
 // gunung kidul
 $gkidul_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "gunung-kidul"' );
 // Klaten
@@ -191,8 +192,18 @@ $pekanbaru_shared_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_
 $pacitan_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_post = "pacitan"' );
 // Dinner 
 $dinner_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_dinner = "Yes"' );
-
-
+// all users
+$all_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail' );
+// attender
+$attender = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_onsite_absence = "present"' );
+// Paid
+$paid = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_payment_status = "Paid-Onsite" OR euser_payment_status = "berhasil-iPaymu" OR euser_payment_status = "Complete-Paypal"' );
+// UN-Paid
+$unpaid = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_payment_status != "Paid-Onsite" OR euser_payment_status != "berhasil-iPaymu" OR euser_payment_status != "Complete-Paypal"' );
+// Participant 
+$participant_t = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_meta_type = "   participant_type"' );
+// Author
+$author_t = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_meta_type = "author_type"' );
 
 function reports_page(){
 ?>
@@ -410,37 +421,37 @@ p {
             <div class="counter-iuf">
                 <div class="registered-iuf counter-item-iuf">
                     <div class="counter-wrap-iuf">
-                        <h1>23</h1>
+                        <h1><?php echo $all_rows; ?></h1>
                         <p>Total Registered</p>
                     </div>
                 </div>
                 <div class="attended-iuf counter-item-iuf">
                     <div class="counter-wrap-iuf">
-                        <h1>45</h1>
+                        <h1><?php echo $attender; ?></h1>
                         <p>Total Attended</p>
                     </div>
                 </div>
                 <div class="paid-iuf counter-item-iuf">
                     <div class="counter-wrap-iuf">
-                        <h1>45</h1>
+                        <h1><?php echo $paid; ?></h1>
                         <p>Paid Member</p>
                     </div>
                 </div>
                 <div class="participant-iuf counter-item-iuf">
                     <div class="counter-wrap-iuf">
-                        <h1>56</h1>
+                        <h1><?php echo $participant_t; ?></h1>
                         <p>Participant</p>
                     </div>
-                </div>
+                </div> 
                 <div class="auth-iuf counter-item-iuf">
                     <div class="counter-wrap-iuf">
-                        <h1>8</h1>
+                        <h1><?php echo $author_t; ?></h1>
                         <p>Author</p>
                     </div>
                 </div>
                 <div class="unpaid-iuf counter-item-iuf">
                     <div class="counter-wrap-iuf">
-                        <h1>45</h1>
+                        <h1><?php echo $unpaid; ?></h1>
                         <p>Unpaid Member</p>
                     </div>
                 </div>
@@ -460,7 +471,7 @@ p {
                                 <p>Gunung Kidul</p>
                             </div>
                             <div class="numb-iuf">
-                                <p>45</p>
+                                <p><?php echo $gkidul_rows; ?></p>
                             </div>
                         </div>
                         <!-- End of Mid Trip Item -->
@@ -470,7 +481,7 @@ p {
                                 <p>Klaten</p>
                             </div>
                             <div class="numb-iuf">
-                                <p>45</p>
+                                <p><?php echo $klaten_rows; ?></p>
                             </div>
                         </div>
                         <!-- End of Mid Trip Item -->
@@ -480,7 +491,7 @@ p {
                                 <p>Merapi</p>
                             </div>
                             <div class="numb-iuf">
-                                <p>45</p>
+                                <p><?php echo $merapi_rows; ?></p>
                             </div>
                         </div>
                         <!-- End of Mid Trip Item -->
@@ -494,7 +505,7 @@ p {
                                 <p>Pacitan</p>
                             </div>
                             <div class="numb-iuf">
-                                <p>56</p>
+                                <p><?php echo $pacitan_rows; ?></p>
                             </div>
                         </div>
                         <!-- End of Post Trip Item -->
@@ -504,7 +515,7 @@ p {
                                 <p>Pekanbaru Shared</p>
                             </div>
                             <div class="numb-iuf">
-                                <p>34</p>
+                                <p><?php echo $pekanbaru_shared_rows; ?></p>
                             </div>
                         </div>
                         <!-- End of Post Trip Item -->
@@ -514,7 +525,7 @@ p {
                                 <p>Pekanbaru Single</p>
                             </div>
                             <div class="numb-iuf">
-                                <p>34</p>
+                                <p><?php echo $pekanbaru_single_rows; ?></p>
                             </div>
                         </div>
                         <!-- End of Post Trip Item -->
@@ -529,7 +540,7 @@ p {
                         <p>Dinner</p>
                     </div>
                     <div class="dinner-numb-iuf">
-                        <p>23</p>
+                        <p><?php echo $dinner_rows; ?></p>
                     </div>
                 </div>
             </div>
