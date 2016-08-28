@@ -290,7 +290,7 @@ if ($show_me->euser_type == "local student") {
    . $show_me->euser_phone .', &nbsp;'. $show_me->euser_email
    ;  ?>
   </td>
-  <td><?php echo $show_me->user_meta_string; ?>( <?php echo $user_string; ?> )</td>
+  <td><?php echo $show_me->user_meta_string; ?></td>
   <td>
 <?php
 $abstract_title = $show_me->euser_abstract_title;

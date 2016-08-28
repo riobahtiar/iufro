@@ -24,7 +24,7 @@ add_action('admin_menu', 'init_iufro_dash');
 function init_iufro_dash(){
 
     //create new top-level menu
-    add_menu_page('IUFRO U', 'IUFRO U', 'administrator','iufro-dashboard','iufro_dashboard_page', plugins_url('ss-event-dates/assets/muda.png', IUFRO_DIR), 4);
+    add_menu_page('IUFRO 1', 'IUFRO 2', 'administrator','iufro-dashboard','iufro_dashboard_page', plugins_url('ss-event-dates/assets/muda.png', IUFRO_DIR), 4);
     // Page of Submenu
     add_submenu_page('iufro-dashboard','Administration', 'Administration', 'administrator', 'iufro-administration','iufro_adminisitration_page');
     // Page of Submenu
