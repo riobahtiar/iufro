@@ -17,9 +17,6 @@ $latest_price = json_decode($json);
 $idr_rates    = $latest_price->rates->IDR;
 $idr_good     = round($idr_rates);
 
-
-
-
 // Include wp-load
 $parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
 require_once $parse_uri[0] . 'wp-load.php';
@@ -186,6 +183,7 @@ if ( $verified == 1) {
     $wpdb->update(
         'wp_ss_event_user_detail',
         array(
+            'euser_payment'   => 2,
             'euser_payment_status' => $status.'-iPaymu', // string
             'euser_payment_meta'   => $packlogs, // integer (number)
         ),
@@ -193,10 +191,10 @@ if ( $verified == 1) {
         array(
             '%s',
             '%s',
+            '%s',
         ),
         array('%s')
     );
-
 /// ======= FPDF BLOCK ============ ///
 
     require_once $parse_uri[0] . 'wp-content/plugins/ss-event-dates/addons/fpdf/eticket.php';

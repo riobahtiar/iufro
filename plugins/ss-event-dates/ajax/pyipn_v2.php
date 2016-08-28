@@ -264,11 +264,13 @@ if (strcmp($res, "VERIFIED") == 0) {
     $wpdb->update(
         'wp_ss_event_user_detail',
         array(
+            'euser_payment'   => 2,
             'euser_payment_status' => $payment_status.'-Paypal', // string
             'euser_payment_meta'   => $packlogs, // integer (number)
         ),
         array('euser_barcode' => $barcodeno),
         array(
+            '%s',
             '%s',
             '%s',
         ),

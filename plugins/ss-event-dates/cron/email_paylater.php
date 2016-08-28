@@ -8,7 +8,7 @@ $parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
 require_once $parse_uri[0] . 'wp-load.php';
 
 global $wpdb;
-$query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_payment_status = 'Pay Later' && euser_paylater_date > NOW() - INTERVAL 14 DAY";
+$query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_payment_status = 'Pay Later' AND DATEDIFF(now(),euser_paylater_date) > 14";
 //$query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_payment_status = 'onsite-payment'";
 $user_detail = $wpdb->get_results($query);
 echo "<pre>";
