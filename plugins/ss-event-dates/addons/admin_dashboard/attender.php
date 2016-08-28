@@ -301,7 +301,7 @@ if (!empty($abstract_title )) {
   </td>
   <td><?php echo $string_mid_conf; ?></td>  
   <td><?php echo $string_post_conf; ?></td>
-  <td><?php echo $string_dinner; ?></td>
+  <td><?php echo $string_dinner; ?> </td>
 </tr>
 <?php }?>
 </tbody>
