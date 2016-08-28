@@ -285,9 +285,9 @@ if ($show_me->euser_type == "local student") {
   <td><?php echo $show_me->euser_barcode; ?></td>
   <td><?php echo $show_me->euser_fullname; ?></td>
   <td>
-<?php echo $show_me->euser_address .', &nbsp;' . $euser_city .' <br> '
-   . $euser_state .', &nbsp;' . $euser_country .', &nbsp;' . $euser_zip . ' <br>Phone: '
-   . $euser_phone .', &nbsp;'. $euser_email
+<?php echo $show_me->euser_address .', &nbsp;' . $show_me->euser_city .' <br> '
+   . $show_me->euser_state .', &nbsp;' . $show_me->euser_country .', &nbsp;' . $show_me->euser_zip . ' <br>Phone: '
+   . $show_me->euser_phone .', &nbsp;'. $show_me->euser_email
    ;  ?>
   </td>
   <td><?php echo $show_me->user_meta_string; ?>( <?php echo $user_string; ?> )</td>
@@ -299,11 +299,9 @@ if (!empty($abstract_title )) {
 }
         ?>
   </td>
-  <td><?php echo $show_me->user_meta_string; ?></td>
   <td><?php echo $string_mid_conf; ?></td>  
   <td><?php echo $string_post_conf; ?></td>
   <td><?php echo $string_dinner; ?></td>
-
 </tr>
 <?php }?>
 </tbody>
