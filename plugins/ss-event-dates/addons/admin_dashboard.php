@@ -177,7 +177,7 @@ function init_iufro_dash()
 
 // Function to get all value for report page //
 
-
+global $wpdb;
 // gunung kidul
 $gkidul_rows = $wpdb->get_var( 'SELECT COUNT(*) FROM wp_ss_event_user_detail WHERE euser_addon_mid = "gunung-kidul"' );
 // Klaten
