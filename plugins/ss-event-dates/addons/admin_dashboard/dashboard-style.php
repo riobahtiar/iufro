@@ -15,6 +15,7 @@
     color: #333;
     padding: 15px 0;
     overflow: hidden;
+    padding-right: 20px;
 }
 
 h1,
@@ -48,7 +49,7 @@ p {
 }
 
 .counter-item-iuf h1 {
-    padding: 30px 0 0 !important;
+    padding: 45px 0 0 !important;
     font-size: 60px;
     color: white;
     display: inline-block;
@@ -58,6 +59,8 @@ p {
 .counter-item-iuf p {
     padding: 15px 0 !important;
     display: block;
+    background-color: rgba(0, 0, 0, 0.31);
+    margin-top: 25px;
 }
 
 .registered-iuf> div {
