@@ -166,15 +166,15 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 		<label> <span>Abstract Title*</span> <textarea id="abs_title" name="euser_abstract_title" class="form-control" rows="1"></textarea> </label>
 	</div>
 	<div class="field-trip col-md-4">
-		<label> <span>Upload Abstract*</span> <input id="mydoc1" name="abstrak" type="file" onChange="doc1(this.value)" /></label>
+		<label> <span>Upload Abstract*</span> <input id="mydoc1" name="abstrak" type="file" onChange="validate(this, 'doc')" /></label>
 		<hr><p class="text-warning"><small>* Allowed file: PDF / RTF / DOC / DOCX. Maximum file size: 10MB</small></p>
 	</div>
 	<div class="field-trip col-md-4">
-		<label>  <span>Upload Paper</span> <input id="mydoc2" name="paper" type="file" onChange="doc2(this.value)" /></label>
+		<label>  <span>Upload Paper</span> <input id="mydoc2" name="paper" type="file" onChange="validate(this, 'doc')" /></label>
 		<hr><p class="text-warning"><small>* Allowed file: PDF / RTF / DOC / DOCX. Maximum file size: 10MB</small></p>
 	</div>
 	<div class="field-trip col-md-4">
-		<label> <span>Upload Poster</span> <input id="mydoc3" name="poster" type="file" onChange="doc3(this.value)" /></label>
+		<label> <span>Upload Poster</span> <input id="mydoc3" name="poster" type="file" onChange="validate(this, 'doc')" /></label>
 		<hr><p class="text-warning"><small>* Allowed file: PDF / RTF / DOC / DOCX. Maximum file size: 10MB</small></p>
 	</div>
 	<div>
@@ -214,15 +214,37 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 	});
 
 
-function validate(file) {
-    var ext = file.split(".");
-    ext = ext[ext.length-1].toLowerCase();      
-    var arrayExtensions = ["jpg" , "jpeg", "png", "bmp", "gif"];
+// function validate(file) {
+//     var ext = file.split(".");
+//     ext = ext[ext.length-1].toLowerCase();      
+//     var arrayExtensions = ["jpg" , "jpeg", "png", "bmp", "gif"];
 
-   if (arrayExtensions.lastIndexOf(ext) == -1) {
-        alert("Allowed file: JPEG / JPG / PNG");
-        jQuery("#profile_pict").val("");
-        jQuery("#profile_pict").replaceWith(jQuery("#profile_pict").clone());
+//    if (arrayExtensions.lastIndexOf(ext) == -1) {
+//         alert("Allowed file: JPEG / JPG / PNG");
+//         jQuery("#profile_pict").val("");
+//         jQuery("#profile_pict").replaceWith(jQuery("#profile_pict").clone());
+//     }
+// }
+
+function validate(elm, allowedExt) {
+	var ext;
+	if (allowedExt === "doc") {
+		ext = ["pdf" , "doc", "docx", "rtf"];
+	}
+
+	if (allowedExt === "image") {
+		ext = ["jpg" , "jpeg", "png", "bmp", "gif"];
+	}
+
+	var file = elm.value;
+
+    var d1 = file.split(".");
+    d1 = d1[d1.length-1].toLowerCase();      
+    var arrayExtensions = ext;
+
+    if (arrayExtensions.lastIndexOf(d1) == -1) {
+        alert("Allowed file:" + ext.join(" / "));
+        jQuery(elm).val("");
     }
 }
 
