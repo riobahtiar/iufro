@@ -233,8 +233,8 @@ function doc1(file) {
 
     if (arrayExtensions.lastIndexOf(d1) == -1) {
         alert("Allowed file: PDF / RTF / DOC / DOCX");
-        jQuery("#doc1").val("");
-        jQuery("#doc1").replaceWith(jQuery("#doc1").clone());
+        $("#doc1").val("");
+        $("#doc1").replaceWith($("#doc1").clone());
         console.log(d1);
     }
 }
@@ -246,8 +246,8 @@ function doc2(file) {
 
     if (arrayExtensions.lastIndexOf(d2) == -1) {
         alert("Allowed file: PDF / RTF / DOC / DOCX");
-        jQuery("#doc2").val("");
-        jQuery("#doc2").replaceWith(jQuery("#doc2").clone());
+        $("#doc2").val("");
+        $("#doc2").replaceWith($("#doc2").clone());
         console.log(d2);
     }
 }
@@ -259,8 +259,8 @@ function doc3(file) {
 
     if (arrayExtensions.lastIndexOf(d3) == -1) {
         alert("Allowed file: PDF / RTF / DOC / DOCX");
-        jQuery("#doc3").val("");
-        jQuery("#doc3").replaceWith(jQuery("#doc3").clone());
+        $("#doc3").val("");
+        $("#doc3").replaceWith($("#doc3").clone());
         console.log(d3);
 
     }
