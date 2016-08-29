@@ -155,13 +155,7 @@ if (isset($_FILES['poster']) && $_FILES['poster'] != "") {
     );
 }
 
-$wpdb->update(
-    'wp_ss_event_user_detail',
-    array('euser_addon' => 1),
-    array('euser_email' => $euser_email),
-    array('%s'),
-    array('%s')
-);
+
 
 function upload_user_file($file = array())
 {

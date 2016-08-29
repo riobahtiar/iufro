@@ -3,7 +3,7 @@ $parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
 require_once $parse_uri[0] . 'wp-load.php';
 
 global $wpdb;
-$query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_paylater_date > NOW() - INTERVAL 2 DAY";
+$query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_paylater_date > NOW() - INTERVAL 14 DAY";
 $user_detail = $wpdb->get_results($query);
 echo "<pre>";
 foreach ($user_detail as $vuser) {
@@ -12,11 +12,14 @@ foreach ($user_detail as $vuser) {
         'wp_ss_event_user_detail',
         array(
             'euser_addon_mid' => '',
-            'euser_addon_post' => ''
+            'euser_addon_post' => '',
+            'euser_addon_dinner' => ''
         ),
         array('euser_barcode' => $vuser->euser_barcode),
         array(
             '%s',
+            '%s',
+            '%s'
         ),
         array('%s')
     );

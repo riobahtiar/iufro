@@ -198,6 +198,9 @@ Please be advised that :<br>
     $wpdb->update(
         'wp_ss_event_user_detail',
         array(
+            'euser_addon_mid' => '',
+            'euser_addon_post' => '',
+            'euser_addon_dinner' => '',
             'euser_payment_status' => 'onsite-payment',
             'euser_paylater_date'  => '0000-00-00 00:00:00',
         ),
@@ -205,9 +208,13 @@ Please be advised that :<br>
         array(
             '%s',
             '%s',
+            '%s',
+            '%s',
+            '%s'
         ),
         array('%s')
     );
+
 
     // end of forech
 

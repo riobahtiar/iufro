@@ -317,6 +317,29 @@ echo "<br><p><small>*Current IDR Rates US$1 = IDR " . $idr_good . "<br> Source :
 <?php 
 $today  = strtotime(date('Y-m-d'));
 $closed = strtotime($ss_theme_opt['date_close']);
+
+// Tag Author. and if 1 .reset in 00.00
+if ($user_detail['euser_meta_type'] == "author_type") {
+    $wpdb->update(
+        'wp_ss_event_user_detail',
+        array('euser_addon' => 2),
+        array('euser_barcode' => $user_detail['euser_barcode']),
+        array('%s'),
+        array('%s')
+    );
+}else{
+    $wpdb->update(
+        'wp_ss_event_user_detail',
+        array('euser_addon' => 1),
+        array('euser_barcode' => $user_detail['euser_barcode']),
+        array('%s'),
+        array('%s')
+    );
+}
+
+
+
+
 if (($user_detail['euser_meta_type'] == "author_type" 
     && $user_detail['euser_doc_status'] == 'approved' || $user_detail['euser_doc_status'] == 'published' ) 
     || $user_detail['euser_meta_type'] == "participant_type" 
