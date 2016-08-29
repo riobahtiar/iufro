@@ -227,11 +227,11 @@ function validate(file) {
 }
 
 function doc1(file) {
-    var ext = file.split(".");
-    ext = ext[ext.length-1].toLowerCase();      
+    var d1 = file.split(".");
+    d1 = d1[d1.length-1].toLowerCase();      
     var arrayExtensions = ["pdf" , "doc", "docx", "rtf"];
 
-    if (arrayExtensions.lastIndexOf(ext) == -1) {
+    if (arrayExtensions.lastIndexOf(d1) == -1) {
         alert("Allowed file: PDF / RTF / DOC / DOCX");
         jQuery("#doc1").val("");
         jQuery("#doc1").replaceWith(jQuery("#doc1").clone());
@@ -239,11 +239,11 @@ function doc1(file) {
 }
 
 function doc2(file) {
-    var ext = file.split(".");
-    ext = ext[ext.length-1].toLowerCase();      
+    var d2 = file.split(".");
+    d2 = d2[d2.length-1].toLowerCase();      
     var arrayExtensions = ["pdf" , "doc", "docx", "rtf"];
 
-    if (arrayExtensions.lastIndexOf(ext) == -1) {
+    if (arrayExtensions.lastIndexOf(d2) == -1) {
         alert("Allowed file: PDF / RTF / DOC / DOCX");
         jQuery("#doc2").val("");
         jQuery("#doc2").replaceWith(jQuery("#doc2").clone());
@@ -251,11 +251,11 @@ function doc2(file) {
 }
 
 function doc3(file) {
-    var ext = file.split(".");
-    ext = ext[ext.length-1].toLowerCase();      
+    var d3 = file.split(".");
+    d3 = d3[d3.length-1].toLowerCase();      
     var arrayExtensions = ["pdf" , "doc", "docx", "rtf"];
 
-    if (arrayExtensions.lastIndexOf(ext) == -1) {
+    if (arrayExtensions.lastIndexOf(d3) == -1) {
         alert("Allowed file: PDF / RTF / DOC / DOCX");
         jQuery("#doc3").val("");
         jQuery("#doc3").replaceWith(jQuery("#doc3").clone());
