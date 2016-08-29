@@ -474,13 +474,16 @@ Therefore, you can not continue to participate on this conference as an Author.<
         'wp_ss_event_user_detail',
         array(
             'euser_doc_status' => 'approved',
+            'euser_payment' => '1'
         ),
         array('euser_barcode' => $_POST['barcode']),
         array(
             '%s',
+            '%s'
         ),
         array('%s')
     );
+
     $wpdb->update(
         'wp_ss_event_user_detail',
         array(

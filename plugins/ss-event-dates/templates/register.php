@@ -134,7 +134,7 @@ function save_custom_userdata($fullname, $password, $email, $phone, $address, $z
     $wpdb->insert( 
                 'wp_ss_outbonds', 
                 array( 
-                    'link_barcode' => $randAct),
+                    'link_barcode' => $barcode),
                 array(
                 '%s') 
             );

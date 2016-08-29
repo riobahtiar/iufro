@@ -57,8 +57,5 @@ IPAYMU suitable for Local Transaction (Indonesia). Support Bank Transfer for var
 </div>
 
 <script type="text/javascript">
-	window.onbeforeunload = confirmExit;
-    function confirmExit() {
-        return "You have attempted to leave this page and your inputed data will be lost. Are you sure? ";
-    }
+
 </script>
