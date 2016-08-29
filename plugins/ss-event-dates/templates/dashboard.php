@@ -92,7 +92,7 @@ if(!is_user_logged_in()){
 					}else{
 						if ($user_detail['euser_addon']==0){
 							require_once dirname(__FILE__) . '/register/addon.php';
-						} else if ($user_detail['euser_payment']==2){
+						} else if ($user_detail['euser_payment']==1){
 							require_once dirname(__FILE__) . '/register/payment.php';
 						} else {
 							require_once dirname(__FILE__) . '/dashboard/account.php';
