@@ -118,7 +118,7 @@ Paticipant also able to join extra field trip during the conference (extra charg
 	  	</div>
 	  	<hr>
 	  	<div>
-	  		<button type="submit" name="submit" class="btn btn-default pull-right" value="Register">Register</button>
+	  		<button onclick="needToConfirm = false;"  type="submit" name="submit" class="btn btn-default pull-right" value="Register">Register</button>
 		</div>
 	</form>
 </div>
@@ -218,5 +218,18 @@ jQuery("#registration").submit(function(e) {
 });
 
 
+// Warning close
+  var needToConfirm = true;
+
+  window.onbeforeunload = confirmExit;
+  function confirmExit()
+  {
+    if (needToConfirm)
+      return 'Warning, Changes you made may not be saved';
+  }
+
+    jQuery(document).ready(function() { 
+        jQuery(':input', document.myForm).bind("change", function() { needToConfirm = true; }); // Prevent accidental navigation away
+    });
 
   </script>

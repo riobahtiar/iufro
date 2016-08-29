@@ -181,8 +181,8 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 <?php } ?>
 
 
-		<a href="<?php echo get_permalink(); ?>?step=membership" class="btn btn-default pull-left">Back</a>
-	  	<button id="btnval" type="submit" name="submit" class="btn btn-default pull-right" value="addon" <?php if ( $user_detail['euser_meta_type'] == 'author_type' ) {?>disabled<?php } ?>>Next</button>
+		<a onclick="needToConfirm = false;" href="<?php echo get_permalink(); ?>?step=membership" class="btn btn-default pull-left">Back</a>
+	  	<button onclick="needToConfirm = false;" id="btnval" type="submit" name="submit" class="btn btn-default pull-right" value="addon" <?php if ( $user_detail['euser_meta_type'] == 'author_type' ) {?>disabled<?php } ?>>Next</button>
 	</div>
 </div>
 </form>
@@ -250,3 +250,18 @@ function validate(elm, allowedExt) {
 
 </script>
 <?php } ?>
+
+<script language="JavaScript">
+  var needToConfirm = true;
+
+  window.onbeforeunload = confirmExit;
+  function confirmExit()
+  {
+    if (needToConfirm)
+      return 'Warning, Data will lose';
+  }
+
+    jQuery(document).ready(function() { 
+        jQuery(':input', document.myForm).bind("change", function() { needToConfirm = true; }); // Prevent accidental navigation away
+    });
+</script>

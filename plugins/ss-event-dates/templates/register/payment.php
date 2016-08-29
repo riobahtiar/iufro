@@ -338,7 +338,7 @@ if (($user_detail['euser_meta_type'] == "author_type"
   function confirmExit()
   {
     if (needToConfirm)
-      return 'Warning, Data will lose';
+      return 'Warning, Changes you made may not be saved';
   }
 
     jQuery(document).ready(function() { 

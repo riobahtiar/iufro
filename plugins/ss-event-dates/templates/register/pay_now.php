@@ -63,7 +63,7 @@ IPAYMU suitable for Local Transaction (Indonesia). Support Bank Transfer for var
   function confirmExit()
   {
     if (needToConfirm)
-      return 'Warning, Data will lose';
+      return 'Warning, Changes you made may not be saved';
   }
 
   	jQuery(document).ready(function() { 
