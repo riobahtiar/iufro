@@ -325,12 +325,23 @@ if (($user_detail['euser_meta_type'] == "author_type"
     && $user_detail['euser_payment_status'] != "Completed-Paypal" 
     &&  $closed > $today ) {
 ?>
-    <button type="submit" name="submit" class="btn btn-default pull-right" value="payment">Pay Now</button>
-    <a href="<?php echo get_permalink(); ?>?step=pay_later" class="btn btn-default pull-right">Pay Later</a>
+    <button type="submit" name="submit" class="btn btn-default pull-right" value="payment" onclick="needToConfirm = false;">Pay Now</button>
+    <a onclick="needToConfirm = false;" href="<?php echo get_permalink(); ?>?step=pay_later" class="btn btn-default pull-right">Pay Later</a>
 <?php } ?>
 </div>
 </form>
 </div>
-<script type="text/javascript">
+<script language="JavaScript">
+  var needToConfirm = true;
 
+  window.onbeforeunload = confirmExit;
+  function confirmExit()
+  {
+    if (needToConfirm)
+      return 'Warning, Data will lose';
+  }
+
+    jQuery(document).ready(function() { 
+        jQuery(':input', document.myForm).bind("change", function() { needToConfirm = true; }); // Prevent accidental navigation away
+    });
 </script>

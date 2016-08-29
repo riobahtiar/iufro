@@ -21,7 +21,7 @@ Paypal suitable for Foreigner transaction. Support Credit Card and Paypal Credit
 <input type="hidden" name="return" value="<?php echo get_site_url().'/login/user_dashboard?step=paypal_success&trxname='.$_POST['payname']; ?>" />
 <input type="hidden" name="notify_url" value="<?php echo get_site_url()."/wp-content/plugins/ss-event-dates/ajax/pyipn_v2.php?auth_code=".$_POST['ebarcode']; ?>" />
 <input type="hidden" name="cancel_return" value="<?php echo get_site_url()."/login/user_dashboard?step=paypal_cancel"; ?>" />
-<input type="image" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" border="0" name="submit" alt="Check out with PayPal">
+<input onclick="needToConfirm = false;" type="image" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" border="0" name="submit" alt="Check out with PayPal">
 </form>
 
 <!-- end of pay -->
@@ -37,7 +37,7 @@ IPAYMU suitable for Local Transaction (Indonesia). Support Bank Transfer for var
 <input type="hidden" name="item_name" value="<?php echo $_POST['payname']; ?>">
 <input type="hidden" name="amount" value="<?php echo $_POST['total_idr_amount']; ?>">
 <input type="hidden" name="ebarcode" value="<?php echo $_POST['ebarcode']; ?>">
-<input type="image" src="<?php echo get_site_url()."/wp-content/plugins/ss-event-dates/assets/ipaymu-btn.png"; ?>" border="0" name="submit" alt="PROCESS WITH IPAYMU">
+<input onclick="needToConfirm = false;" type="image" src="<?php echo get_site_url()."/wp-content/plugins/ss-event-dates/assets/ipaymu-btn.png"; ?>" border="0" name="submit" alt="PROCESS WITH IPAYMU">
 </form>
 	</div>
 <div class="col-md-12">
@@ -56,6 +56,17 @@ IPAYMU suitable for Local Transaction (Indonesia). Support Bank Transfer for var
 	</div><!-- row -->
 </div>
 
-<script type="text/javascript">
+<script language="JavaScript">
+  var needToConfirm = true;
 
+  window.onbeforeunload = confirmExit;
+  function confirmExit()
+  {
+    if (needToConfirm)
+      return 'Warning, Data will lose';
+  }
+
+  	jQuery(document).ready(function() { 
+    	jQuery(':input', document.myForm).bind("change", function() { needToConfirm = true; }); // Prevent accidental navigation away
+	});
 </script>

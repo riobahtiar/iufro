@@ -264,3 +264,4 @@ $headers[] = 'Cc: IUFRO Keeper <keep@iufroacacia2017.com>';
 wp_mail($to, $subject, $body, $headers);
 echo "<div class='well thanks-notify'><h3>Thank you for registering on IUFRO ACACIA CONFERENCE 2017.</h3>
 <p>Please check your email for payment information.</p></div>";
+
