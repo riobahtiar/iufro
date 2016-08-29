@@ -155,7 +155,7 @@ $dinner_av = $ss_theme_opt['text-dinner'] - $dinner_rows;
 if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 ?>
 	<div class="well well-photo">
-		<label> <span>Upload Profile Picture*</span> <input id="profile_pict" name="profile_pict" type="file" onChange="validate(this.value)" /> </label><hr>
+		<label> <span>Upload Profile Picture*</span> <input id="profile_pict" name="profile_pict" type="file" onChange="validate(this, 'image')" /> </label><hr>
 		<p class="text-warning"><small>* Allowed file: JPEG / JPG / PNG. Maximum file size: 5MB</small></p>
 	</div>
 
@@ -214,18 +214,6 @@ if ( $user_detail['euser_meta_type'] == 'author_type' ) {
 	});
 
 
-// function validate(file) {
-//     var ext = file.split(".");
-//     ext = ext[ext.length-1].toLowerCase();      
-//     var arrayExtensions = ["jpg" , "jpeg", "png", "bmp", "gif"];
-
-//    if (arrayExtensions.lastIndexOf(ext) == -1) {
-//         alert("Allowed file: JPEG / JPG / PNG");
-//         jQuery("#profile_pict").val("");
-//         jQuery("#profile_pict").replaceWith(jQuery("#profile_pict").clone());
-//     }
-// }
-
 function validate(elm, allowedExt) {
 	var ext;
 	if (allowedExt === "doc") {
@@ -243,48 +231,8 @@ function validate(elm, allowedExt) {
     var arrayExtensions = ext;
 
     if (arrayExtensions.lastIndexOf(d1) == -1) {
-        alert("Allowed file:" + ext.join(" / "));
+        alert("Allowed file: " + ext.join(" / "));
         jQuery(elm).val("");
-    }
-}
-
-function doc1(file) {
-    var d1 = file.split(".");
-    d1 = d1[d1.length-1].toLowerCase();      
-    var arrayExtensions = ["pdf" , "doc", "docx", "rtf"];
-
-    if (arrayExtensions.lastIndexOf(d1) == -1) {
-        alert("Allowed file: PDF / RTF / DOC / DOCX");
-        jQuery("#doc1").val("");
-        jQuery("#doc1").replaceWith(jQuery("#doc1").clone());
-        console.log(d1);
-    }
-}
-
-function doc2(file) {
-    var d2 = file.split(".");
-    d2 = d2[d2.length-1].toLowerCase();      
-    var arrayExtensions = ["pdf" , "doc", "docx", "rtf"];
-
-    if (arrayExtensions.lastIndexOf(d2) == -1) {
-        alert("Allowed file: PDF / RTF / DOC / DOCX");
-        jQuery("#doc2").val("");
-        jQuery("#doc2").replaceWith(jQuery("#doc2").clone());
-        console.log(d2);
-    }
-}
-
-function doc3(file) {
-    var d3 = file.split(".");
-    d3 = d3[d3.length-1].toLowerCase();      
-    var arrayExtensions = ["pdf" , "doc", "docx", "rtf"];
-
-    if (arrayExtensions.lastIndexOf(d3) == -1) {
-        alert("Allowed file: PDF / RTF / DOC / DOCX");
-        jQuery("#doc3").val("");
-        jQuery("#doc3").replaceWith(jQuery("#doc3").clone());
-        console.log(d3);
-
     }
 }
 
