@@ -330,11 +330,10 @@ $closed = strtotime($ss_theme_opt['date_close']);
 // Check if Payment Done or Onsite
  if ( $user_detail['euser_payment_status'] !== 'onsite-payment' || $user_detail['euser_payment_status'] !== 'berhasil-iPaymu' || $user_detail['euser_payment_status'] !== 'Completed-Paypal' ||  $closed > $today ) { ?>
 <pre>
-    <?php echo $user_detail->euser_payment_status.'
+    <?php echo $user_detail['euser_payment_status'].'
      <-> '.$closed.$today;
 echo "<br>";
-var_dump($user_detail->euser_payment_status);
-
+var_dump($user_detail['euser_payment_status']);
       ?>
 </pre>
     <button type="submit" name="submit" class="btn btn-default pull-right" value="payment">Pay Now</button>
