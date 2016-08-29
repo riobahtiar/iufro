@@ -324,7 +324,7 @@ $closed = strtotime($ss_theme_opt['date_close']);
     <?php echo $user_detail->euser_payment_status.'
      <-> '.$closed.$today;
 echo "<br>";
-var_dump($user_detail);
+var_dump($user_detail->euser_payment_status);
 
       ?>
 </pre>
