@@ -222,6 +222,7 @@ function validate(file) {
    if (arrayExtensions.lastIndexOf(ext) == -1) {
         alert("Allowed file: JPEG / JPG / PNG");
         jQuery("#profile_pict").val("");
+        jQuery("#profile_pict").replaceWith(jQuery("#profile_pict").clone());
     }
 }
 
@@ -233,6 +234,7 @@ function doc1(file) {
     if (arrayExtensions.lastIndexOf(ext) == -1) {
         alert("Allowed file: PDF / RTF / DOC / DOCX");
         jQuery("#doc1").val("");
+        jQuery("#doc1").replaceWith(jQuery("#doc1").clone());
     }
 }
 
@@ -244,6 +246,7 @@ function doc2(file) {
     if (arrayExtensions.lastIndexOf(ext) == -1) {
         alert("Allowed file: PDF / RTF / DOC / DOCX");
         jQuery("#doc2").val("");
+        jQuery("#doc2").replaceWith(jQuery("#doc2").clone());
     }
 }
 
@@ -255,6 +258,8 @@ function doc3(file) {
     if (arrayExtensions.lastIndexOf(ext) == -1) {
         alert("Allowed file: PDF / RTF / DOC / DOCX");
         jQuery("#doc3").val("");
+        jQuery("#doc3").replaceWith(jQuery("#doc3").clone());
+
     }
 }
 
