@@ -24,10 +24,10 @@ $query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_email = '{$eus
 $user_detail = $wpdb->get_row($query, ARRAY_A);
 ?>
 <pre>
-    <?php echo $user_detail->euser_payment_status.'
+    <?php echo $user_detail['euser_payment_status'].'
      <-> '.$closed.$today;
 echo "<br>";
-var_dump($user_detail->euser_payment_status);
+var_dump($user_detail['euser_payment_status']);
 
       ?>
 </pre>
