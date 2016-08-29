@@ -235,6 +235,7 @@ function doc1(file) {
         alert("Allowed file: PDF / RTF / DOC / DOCX");
         jQuery("#doc1").val("");
         jQuery("#doc1").replaceWith(jQuery("#doc1").clone());
+        console.log('d1');
     }
 }
 
@@ -247,6 +248,7 @@ function doc2(file) {
         alert("Allowed file: PDF / RTF / DOC / DOCX");
         jQuery("#doc2").val("");
         jQuery("#doc2").replaceWith(jQuery("#doc2").clone());
+        console.log('d2');
     }
 }
 
@@ -259,6 +261,7 @@ function doc3(file) {
         alert("Allowed file: PDF / RTF / DOC / DOCX");
         jQuery("#doc3").val("");
         jQuery("#doc3").replaceWith(jQuery("#doc3").clone());
+        console.log('d3');
 
     }
 }
