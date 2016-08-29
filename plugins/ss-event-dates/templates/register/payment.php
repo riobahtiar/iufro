@@ -318,7 +318,7 @@ echo "<br><p><small>*Current IDR Rates US$1 = IDR " . $idr_good . "<br> Source :
 $today  = strtotime(date('Y-m-d'));
 $closed = strtotime($ss_theme_opt['date_close']);
 if (($user_detail['euser_meta_type'] == "author_type" 
-    && $user_detail['euser_doc_status'] == 'approved') 
+    && $user_detail['euser_doc_status'] == 'approved' || $user_detail['euser_doc_status'] == 'published' ) 
     || $user_detail['euser_meta_type'] == "participant_type" 
     || $user_detail['euser_payment_status'] != "onsite-payment" 
     || $user_detail['euser_payment_status'] != "berhasil-iPaymu" 
