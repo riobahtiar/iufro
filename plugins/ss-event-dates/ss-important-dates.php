@@ -855,12 +855,21 @@ function participant_converter(){
         global $wpdb;
         $query       = "SELECT * FROM wp_ss_event_user_detail WHERE euser_activationkey = '{$user_auth}'";
         $user_detail = $wpdb->get_row($query, ARRAY_A);
+        $query_links = "SELECT * FROM wp_ss_outbonds WHERE link_barcode = '{$user_detail['euser_barcode']}'";
+        $user_links = $wpdb->get_row($query_links, ARRAY_A);
         // Conditional if no
-        if (isset($is_no) && $is_no==true ){
+        if (isset($is_no) && $is_no==true && $user_links['link_chg'] == NULL ){
             $userchecker = $wpdb->update(
                 'wp_ss_event_user_detail',
                 array('euser_meta_type' => 'free_type'),
                 array('euser_activationkey' => $user_auth),
+                array('%s'),
+                array('%s')
+            );
+            $wpdb->update(
+                'wp_ss_outbonds',
+                array('link_chg' => 'chg_free'),
+                array('link_barcode' => $user_detail['euser_barcode']),
                 array('%s'),
                 array('%s')
             );
@@ -889,13 +898,22 @@ function participant_converter(){
                         <br></div>";
             }
         }else{
-            $userchecker = $wpdb->update(
-                'wp_ss_event_user_detail',
-                array('euser_meta_type' => 'participant_type'),
-                array('euser_activationkey' => $user_auth),
-                array('%s'),
-                array('%s')
-            );
+            if ($user_links['link_chg'] == NULL) {
+                $userchecker = $wpdb->update(
+                    'wp_ss_event_user_detail',
+                    array('euser_meta_type' => 'participant_type'),
+                    array('euser_activationkey' => $user_auth),
+                    array('%s'),
+                    array('%s')
+                );
+                $wpdb->update(
+                    'wp_ss_outbonds',
+                    array('link_chg' => 'chg_participant'),
+                    array('link_barcode' => $user_detail['euser_barcode']),
+                    array('%s'),
+                    array('%s')
+                );
+            }
             if ($userchecker === false) {
                 echo "<div class='alert alert-danger'>
                         <h1>Oops!</h1><br>
