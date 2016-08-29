@@ -322,7 +322,11 @@ $closed = strtotime($ss_theme_opt['date_close']);
  if ( $user_detail['euser_payment_status'] !== 'onsite-payment' || $user_detail['euser_payment_status'] !== 'berhasil-iPaymu' || $user_detail['euser_payment_status'] !== 'Completed-Paypal' ||  $closed > $today ) { ?>
 <pre>
     <?php echo $user_detail['euser_payment_status'].'
-     <-> '.$closed > $today; ?>
+     <-> '.$closed > $today;
+echo "<br>";
+var_dump($user_detail);
+
+      ?>
 </pre>
     <button type="submit" name="submit" class="btn btn-default pull-right" value="payment">Pay Now</button>
     <a href="<?php echo get_permalink(); ?>?step=pay_later" class="btn btn-default pull-right">Pay Later</a>
