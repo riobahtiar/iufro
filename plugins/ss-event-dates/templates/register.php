@@ -130,6 +130,16 @@ function save_custom_userdata($fullname, $password, $email, $phone, $address, $z
                 '%s') 
             );
 
+
+    $wpdb->insert( 
+                'wp_ss_outbonds', 
+                array( 
+                    'link_barcode' => $randAct),
+                array(
+                '%s') 
+            );
+
+
     $to = $email;
     $subject = 'Email Activation | IUFRO ACACIA CONFERENCE 2017';
 
