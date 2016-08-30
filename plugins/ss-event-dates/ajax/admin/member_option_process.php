@@ -385,8 +385,8 @@ if ($_POST['do_model'] == 'do_membership') {
     echo "Abstract Rejected Successfully. Please Refresh your browser <kbd>[F5]</kbd>";
     $authkey = $user_detail['euser_activationkey'];
 
-$text = $_POST['reason_reject'];
-$text = str_replace("\r\n","\n",$text);
+$savetext = htmlspecialchars($_POST['reason_reject']);
+$text = str_replace("\r\n","\n",$savetext);
 $paragraphs = preg_split("/[\n]{2,}/",$text);
 foreach ($paragraphs as $key => $p) {
     $paragraphs[$key] = "<p>".str_replace("\n","<br>",$paragraphs[$key])."</p>";
@@ -502,8 +502,8 @@ Therefore, you can not continue to participate on this conference as an Author.<
 
 
 
-$text = $_POST['reason'];
-$text = str_replace("\r\n","\n",$text);
+$savetext = htmlspecialchars($_POST['reason']);
+$text = str_replace("\r\n","\n",$savetext);
 $paragraphs = preg_split("/[\n]{2,}/",$text);
 foreach ($paragraphs as $key => $p) {
     $paragraphs[$key] = "<p>".str_replace("\n","<br>",$paragraphs[$key])."</p>";

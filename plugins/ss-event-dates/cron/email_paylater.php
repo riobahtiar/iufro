@@ -1,6 +1,6 @@
 <?php
 /*
-* Paylater email
+* Paylater email 2 weeks
 * @author Rio Bahtiar
 */
 

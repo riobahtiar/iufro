@@ -7,7 +7,7 @@ date_default_timezone_set("Asia/Bangkok");
 // is close date or not
 $today    = date('Y-m-d');
 //$closed = '2017-06-21';
-$closed = '2016-08-25';
+$closed = '2017-06-21';
 
 if ($today == $closed ){
 // Call Wp Global Object
