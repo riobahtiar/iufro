@@ -394,7 +394,8 @@ foreach ($paragraphs as $key => $p) {
 $rejection_wording2 = implode("", $paragraphs);
 $rejection_wording1 = $_POST['reason_reject'];
 $rejection_wording3 = str_replace("\r\n","\n",$_POST['reason_reject']);
-
+$rejection_wording4 = htmlspecialchars($_POST['reason_reject'],ENT_QUOTES);
+$rejection_wording5 = sanitize_text_field($_POST['reason_reject']);
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
     $subject = 'Abstract Rejected Notification | IUFRO ACACIA 2017';
@@ -434,7 +435,12 @@ $rejection_wording3 = str_replace("\r\n","\n",$_POST['reason_reject']);
             </div>
             <div>
             <p>With regret, we want to inform you that your Abstract still does not meet our requirements.
-Therefore, you can not continue to participate on this conference as an Author.</p>' . $rejection_wording1 .'<hr>'. $rejection_wording2 .'<hr>'. rejection_wording3 . '<p>But you still can continue to participate as a "Participant" type user, instead of author.</p>
+Therefore, you can not continue to participate on this conference as an Author.</p>
+' . $rejection_wording1 
+.'<hr>[2]'. $rejection_wording2 
+.'<hr>[3]'. $rejection_wording3 
+.'<hr>[4]'. $rejection_wording4 
+.'<hr>[5]'. $rejection_wording5 . '<p>But you still can continue to participate as a "Participant" type user, instead of author.</p>
 <p>Do you want to participate on the conference as "Participant" type user?</p>
 </div>
 
