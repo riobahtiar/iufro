@@ -391,11 +391,7 @@ $paragraphs = preg_split("/[\n]{2,}/",$text);
 foreach ($paragraphs as $key => $p) {
     $paragraphs[$key] = "<p>".str_replace("\n","<br>",$paragraphs[$key])."</p>";
 }
-$rejection_wording2 = implode("", $paragraphs);
-$rejection_wording1 = $_POST['reason_reject'];
-$rejection_wording3 = str_replace("\r\n","\n",$_POST['reason_reject']);
-$rejection_wording4 = htmlspecialchars($_POST['reason_reject'],ENT_QUOTES);
-$rejection_wording5 = sanitize_text_field($_POST['reason_reject']);
+$rejection_wording = implode("", $paragraphs);
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
     $subject = 'Abstract Rejected Notification | IUFRO ACACIA 2017';
@@ -435,12 +431,11 @@ $rejection_wording5 = sanitize_text_field($_POST['reason_reject']);
             </div>
             <div>
             <p>With regret, we want to inform you that your Abstract still does not meet our requirements.
-Therefore, you can not continue to participate on this conference as an Author.</p>
-' . $rejection_wording1 
-.'<hr>[2]'. $rejection_wording2 
-.'<hr>[3]'. $rejection_wording3 
-.'<hr>[4]'. $rejection_wording4 
-.'<hr>[5]'. $rejection_wording5 . '<p>But you still can continue to participate as a "Participant" type user, instead of author.</p>
+Therefore, you can not continue to participate on this conference as an Author.</p>';
+
+$body .= $rejection_wording;
+$body .='
+<p>But you still can continue to participate as a "Participant" type user, instead of author.</p>
 <p>Do you want to participate on the conference as "Participant" type user?</p>
 </div>
 
@@ -558,7 +553,12 @@ $approve_wording = implode("", $paragraphs);
                 Abstract Approved Notification | IUFRO ACACIA 2017
             </div>
             <div>
-<p>This is to inform you that your Abstract has been approved by us. </p>' . $approve_wording . '<p> In order to continue the registration process, you have to complete the payment.</p>
+<p>This is to inform you that your Abstract has been approved by us. </p>
+';
+
+$body .= $approve_wording;
+$body .='
+<p> In order to continue the registration process, you have to complete the payment.</p>
 <p>Please note if you have not complete the online payment within 14 days after you receive this email, all of your order (mid and post conference trip and also dinner) will be automatically canceled by our system.</p>
 <p>After that, you can re-order the conference trip and dinner again by login to your account and choose the desired conference trip and also dinner (as long as there are seats remaining).</p>
 
