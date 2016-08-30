@@ -391,7 +391,9 @@ $paragraphs = preg_split("/[\n]{2,}/",$text);
 foreach ($paragraphs as $key => $p) {
     $paragraphs[$key] = "<p>".str_replace("\n","<br>",$paragraphs[$key])."</p>";
 }
-$rejection_wording = implode("", $paragraphs);
+$rejection_wording2 = implode("", $paragraphs);
+$rejection_wording1 = $_POST['reason_reject'];
+$rejection_wording3 = str_replace("\r\n","\n",$_POST['reason_reject']);
 
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
@@ -432,7 +434,7 @@ $rejection_wording = implode("", $paragraphs);
             </div>
             <div>
             <p>With regret, we want to inform you that your Abstract still does not meet our requirements.
-Therefore, you can not continue to participate on this conference as an Author.</p>' . $rejection_wording . '<p>But you still can continue to participate as a "Participant" type user, instead of author.</p>
+Therefore, you can not continue to participate on this conference as an Author.</p>' . $rejection_wording1 .'<hr>'. $rejection_wording2 .'<hr>'. rejection_wording3 . '<p>But you still can continue to participate as a "Participant" type user, instead of author.</p>
 <p>Do you want to participate on the conference as "Participant" type user?</p>
 </div>
 
