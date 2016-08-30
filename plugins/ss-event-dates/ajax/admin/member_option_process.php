@@ -392,10 +392,8 @@ foreach ($paragraphs as $key => $p) {
     $paragraphs[$key] = "<p>".str_replace("\n","<br>",$paragraphs[$key])."</p>";
 }
 $rjct = implode("", $paragraphs);
-
-if(get_magic_quotes_gpc()){
    $rejection_wording= stripslashes($rjct);
-}
+
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
     $subject = 'Abstract Rejected Notification | IUFRO ACACIA 2017';
@@ -517,9 +515,9 @@ foreach ($paragraphs as $key => $p) {
 }
 $apv = implode("", $paragraphs);
 
-if(get_magic_quotes_gpc()){
+
    $approve_wording= stripslashes($apv);
-}
+
 
 // ========= Email Block =========//
     $to      = $user_detail['euser_email'];
